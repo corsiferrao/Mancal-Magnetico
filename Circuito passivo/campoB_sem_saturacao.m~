@@ -1,0 +1,29 @@
+%% Campo B x Distância sem saturação
+
+Hc = 1054E3;
+Br = 1.29;
+
+%lg = [0:0.1:0.6]*1E-3;
+le = 0.3E-3;
+
+hfee = 4E-3;    % Altura ferro
+wfee = 14E-3;   % Largura do ferro
+reei = 61E-3;   % Raio interno ferro
+re = 75E-3;     % Raio externo
+wm = 8E-3;      % Largura imã
+Hm = 10E-3;     % Altura do ima
+
+mu0 = 4*pi*1E-7;
+
+%% correcao de nomenclatura
+lm = Hm;
+
+%% Parametros de área 
+Sm = wm*2*pi*(reei+wfee-wm/2)/8;
+Sf = wfee*2*pi*(reei+wfee/2)/8;
+Sg = le*2*pi*(reei-le/2)/8;
+
+%% Calculo constantes
+C1 = Sf^2*lm*Hc;
+C2 = 2*Sf*mu0^-1;
+C3 = 2*Sg + (Sf^2*S

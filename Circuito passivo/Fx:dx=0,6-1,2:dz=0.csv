@@ -1,0 +1,12 @@
+% Model,Modelo_circuito_passivo.mph
+% Version,COMSOL 4.4.0.150
+% Date,"Mar 4 2014, 15:34"
+% Table,Table 12 - Global Evaluation 1 (mf.Forcex_0)
+% dx,"Electromagnetic force, x component (N)"
+0,-126.48843519906157
+0.1,-138.4739721907166
+0.2,-151.82194961691292
+0.30000000000000004,-164.5303168545142
+0.4,-180.53375554843845
+0.5,-198.45395671820768
+0.6000000000000001,-218.7125611454183
