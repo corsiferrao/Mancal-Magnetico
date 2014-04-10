@@ -6,6 +6,8 @@
 % Resumo :
 %   Calculo das forças eletromagnéticas do circuito ativo, Mancal V0.2
 %
+% TODO: Revisar constantes geometricas !
+
 clear;
 
 % Comprimentos
@@ -14,9 +16,9 @@ lga = 0.6*1E-3;
 lgb = 0.6*1E-3;
 
 % Parâmetros de exitação
-I = 4; 
+I = 2; 
 N = 300; 
-w = 10E3;
+w = 1;
 
 % Constantes geométricas
 rn = 49.2E-3;
@@ -30,15 +32,16 @@ lfb = lfn ;
 lra = 2*pi*53/8;
 lrb = lra;
 
-Sgn = 2*pi*(tn/360)*rn*hn;
+Sgn = 235.1E-6;
 Sga = Sgn;
 Sgb = Sgn;
 
 Sfn = Sgn;
-Sfa = Sgn;
-Sfb = Sgn;
 
-Sra = 60E-6;
+Sfa = (111.6-99.6)/2*1E-3*10E-3;
+Sfb = Sfa;
+
+Sra = (82.4-71.4)/2*1E-3*8E-3; % Verificar !!
 Srb = Sra;
 
 % Constantes eletromanéticas
@@ -58,7 +61,7 @@ Hgn = (F*(C2+C3)/(Sgn + C1*(C2+C3)))
 Hga = (F - Hgn*C1)*C2/Sga
 Hgb = (F - Hgn*C1)*C3/Sga
 
-%%
+%
 Bgn = Hgn*mu0
 Bga = Hga*mu0
 Bgb = Hgb*mu0
@@ -67,3 +70,5 @@ Bgb = Hgb*mu0
 fn = Bgn^2*2*Sgn/(mu0*lgn)
 fa = Bga^2*2*Sga/(mu0*lga)
 fb = Bgb^2*2*Sgb/(mu0*lgb)
+
+fx = fn + fa*cos(pi/4) + fb*cos(pi/4)
