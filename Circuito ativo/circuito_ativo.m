@@ -21,27 +21,25 @@ N = 300;
 w = 1;
 
 % Constantes geométricas
-rn = 49.2E-3;
-tn = 25.89; %graus
-hn = 8E-3;
+lfn = (49.2-82.4)*1E-3;  
 
-lfn = (rn - 38.20E-3); 
-lfa = lfn ;
-lfb = lfn ;
+lfa = (55.8-(55.8- 49.8)/2)*2*pi/8*1E-3;
+lfb = lfa ;
 
-lra = 2*pi*53/8;
-lrb = lra;
+lm  = abs((41.2-(41.2-35.7)/2)*2*pi/8*1E-3);
+lra = lfn + lm;
+lrb = lfn+ lm;
 
 Sgn = 235.1E-6;
-Sga = Sgn;
-Sgb = Sgn;
+Sga = 235.1E-6;
+Sgb = 235.1E-6;
 
-Sfn = Sgn;
+Sfn = 235.1E-6;
 
-Sfa = (111.6-99.6)/2*1E-3*10E-3;
+Sfa = (111.6E-3/2-99.6E-3/2)*10E-3;
 Sfb = Sfa;
 
-Sra = (82.4-71.4)/2*1E-3*8E-3; % Verificar !!
+Sra = (82.4/2-71.4/2)*1E-3*8E-3; % Verificar !!
 Srb = Sra;
 
 % Constantes eletromanéticas
@@ -57,18 +55,20 @@ C3 = inv( (Sgb*lfb*mu0)/(Sfb*muf) + (Sgb*lrb*mu0)/(Srb*muf) + lgb)*Sgb;
 F = I*N;
 
 % Campo magnético no gap 
-Hgn = (F*(C2+C3)/(Sgn + C1*(C2+C3)))
-Hga = (F - Hgn*C1)*C2/Sga
-Hgb = (F - Hgn*C1)*C3/Sga
+Hgn = (F *(C2+C3)/(Sgn + C1*(C2+C3)));
+Hga = (F - Hgn*C1)*C2/Sga;
+Hgb = (F - Hgn*C1)*C3/Sgb;
 
-%
-Bgn = Hgn*mu0
-Bga = Hga*mu0
-Bgb = Hgb*mu0
+Bgn = Hgn*mu0;
+Bga = Hga*mu0;
+Bgb = Hgb*mu0;
 
-% Força de atração nos gaps
-fn = Bgn^2*2*Sgn/(mu0*lgn)
-fa = Bga^2*2*Sga/(mu0*lga)
-fb = Bgb^2*2*Sgb/(mu0*lgb)
+% Força de atração nos gaps - Trabalho virtual
+fn = Bgn^2*2*Sgn/(mu0*lgn);
+fa = Bga^2*2*Sga/(mu0*lga);
+fb = Bgb^2*2*Sgb/(mu0*lgb);
 
-fx = fn + fa*cos(pi/4) + fb*cos(pi/4)
+% Decomposicao das forças
+fx = (fn + fa*cos(pi/4) + fb*cos(pi/4))/1E4
+fy = (fa*sin(pi/4) - fb*sin(pi/4))/1E4
+
