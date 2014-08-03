@@ -9,64 +9,56 @@
 dz = 0.0E-3;
 dx = [0.6:0.1:1.8]*1E-3;
 
+%%
+% comprimento do gap
 lg = sqrt(dx.^2+dz.^2);
-
 
 Hc = 1054E3;    %Hc ima
 Br = 1.29;      %Br ima
 
-hfee = 4E-3;    % Altura ferro
-wfee = 14E-3;   % Largura do ferro
-reei = 61E-3;   % Raio interno ferro
-re = 75E-3;     % Raio externo
-wm = 8E-3;      % Largura imã
-Hm = 10E-3;     % Altura do ima
+hfee = 0.004;   % Altura ferro
+wfee = 0.0148;  % Largura do ferro estator externo
+re   = 0.0758;  % Raio externo
+reei = re-wfee; % Raio interno ferro estator externo
+wm   = 0.008;   % Largura imã
+Hm   = 0.010;   % Altura do ima
 
-%AS = 1.08; % Fator de espraiamento da área
-AS = 1.08;
+AS  = 1.0;     % Fator de espraiamento da área
 
 Bfs = 1.6;      % B saturacao ferro
 Hfs = 2E4;      % H saturacao ferro
-
-B2 = 1.8;       % B saturacao ferro
-H2 = 6E4;       % H saturacao ferro
+B2  = 1.8;      % B saturacao ferro
+H2  = 6E4;      % H saturacao ferro
 
 % Linearizacao da zona saturada
 ufs = (B2-Bfs)/(H2-Hfs);
 
 u0 = 4*pi*1E-7; %mu0 
 
+% correcao de nomenclatura
+lm = Hm;
+lf = wfee;      % linha de campo imã
+
 %% correcao de nomenclatura
 lm = Hm;
 lf = wfee;      % linha de campo imã
+
 
 %% Parametros de área 
 Sm = wm*2*pi*(reei+wfee-wm)/8;
 Sf = hfee*2*pi*(reei)/8;
 Sg = hfee*2*pi*(reei-lg./2)/8*AS;
 
-%% Calculo constantes
 
-C1 = ((Bfs-ufs*Hfs)/(Sm*Br)+1)*Hc*lm;
-C2 = 2*(Bfs-ufs*Sf*Hfs)/u0;
-C3 = (ufs*Hc*lm)/(Sm*Br)+2*lf;
-C4 = 2*(ufs*Sf)/(u0);
-
-%% Ferro
-
-Hf = (C1 - C2*lg./Sg)./(C2+C3*lg./Sg);
-Bf = Bfs + ufs*(Hf-Hfs);
-
-%% Novo modelo
+%% Novas constantes
 C1 = -ufs*Sf*Hc*lm/(Sm*Hm)+2*lf;
 C2 = 2*ufs*Sf/u0;
-C3 = -(ufs*Hfs*Sf/Sm+Br-Bfs);
+C3 = -(ufs*Hfs*Sf/Sm+Br-Bfs)*Hc*lm/Hm;
 C4 = -2*(Bfs-ufs*Sf*Hfs)/u0;
-
 
 %% Ferro
 
-Hf = (C1 + C2*lg/Sg)/(C3+C4*lg/Sg);
+Hf = (C1 + C2*lg./Sg)/(C3+C4*lg./Sg);
 Bf = Bfs + ufs*(Hf-Hfs);
 
 %%  Gap
@@ -84,6 +76,7 @@ az = Bgz.^2;
 
 Fx = -ax.*f/1E3;
 Fz = -az.*f/1E3;
+
 
 %% Diferencial/ resultante
 % A forca resultante vai ser F(x+x0) - F(x-x0)
