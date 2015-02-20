@@ -1,3 +1,4 @@
+%limpa variaveis
 clear
 
 % Inicialização
@@ -5,7 +6,7 @@ parametros;
 load iron;
 
 % entreferro
-wge = wge - 0E-3;
+%wge = wge - 0E-3;
 
 % Valor inicial
 Hef = 3E4;
@@ -13,42 +14,69 @@ Hrf = 3E4;
 Hrr = 3E4;
 
 % loop para convergencia
-for i=1:50
+% método de Newton
+for i=1:40
 
     % Valores iniciais dos coeficiente
     uef = iron.MuH(Hef);
     urf = iron.MuH(Hrf);
     urr = iron.MuH(Hrr);
 
-    % Relutancia
-    Rm  = hm/(um*Sm);
-    Ref = wef/(uef*Sef);
-    Rge = wge/(u0*Sge);
-    Rre = wrf/(urf*Srf);
-    Rrr = hm/(urr*Srr);
+    % Relutancias
+    Rp  = hm/(um*Sm);               % Ima
+    Ref = wef/(uef*Sef);            % estator externo
+    Rge = wge/(u0*Sge);             % gap
+    Rrf = wrf/(urf*Srf);            % rotor ferro
+    Rrr = hm/(urr*Srr);             % rotor retorno
+    
+    % Permeace de leakage no gap de acordo com 
+    % http://product.tdk.com/en/products/magnet/pdf/e371_circuit.pdf
+    Pgl1 = 0.264*u0*pei;
+    Pgl2 = 0.64*u0*pei/(wge/(wef*0.3)+1);
+    Pgl3 = 0.077*u0*wge;
+    Pgl4 = u0*wef*0.3/4;
+    
+    SumRg = 1/(Pgl1+Pgl2+Pgl3+Pgl4+inv(Rge));
+        
+    SumF = 2*Ref+2*SumRg+2*Rrf+Rrr;   % Associacao série circutio gap
+    
+    % Permeace de leakage no ima de acordo com 
+    % http://product.tdk.com/en/products/magnet/pdf/e371_circuit.pdf
+        
+    Pl = 2*hm/(um*Sm*2);            % relutância leakage
+                                    % fator 2 faz o papel de aumentar 
+                                    % o tamanho da area desse leakage
+    
+    Pl2 = 0.64*u0*ree/
+                                    
+                                    
+    RLF = SumF*Rl/(SumF+Rl);        % Associacao // entre SumL e Rl
+    
+    Fc   = (Hc*hm);                 % Coercive magnetic force
 
-    SumR = Rm+2*Ref+2*Rge+2*Rre+Rrr;
-
-    % Cálculo do fluxo magnético
-    Fc   = (Hc*hm);
-    phym = 0.8*Fc/SumR;
+    % fluxo magnético
+    phym = Fc/(RLF+Rp);             % ima
+    phyf = Rp*phym/SumF;            % circuito gap
+    phyg = phyf*SumRg/Rge;
+    phyl = Rp*phym/Rl;              % leakage
 
     % Calculo do vetor campo mag. nos componentes do sistem    
     Bm      = phym/Sm;
-    Bef     = phym/Sef;
-    Bge(i)  = phym/Sge;
-    Brf     = phym/Srf;
-    Brr     = phym/Srr;
+    Bef     = phyf/Sef;
+    Bge(i)  = phyg/Sge;
+    Brf     = phyf/Srf;
+    Brr     = phyf/Srr;
        
     % Atualiza valor do campo magnético
+    % via método de newton
     Hef = Bef/uef/2 + Hef/2;  % - H->B
     Hrf = Brf/urf/2 + Hrf/2;
     Hrr = Brr/urr/2 + Hrr/2;
 end
 
 
-Rml = inv(0.318*pee*log(1+2*(ree*0.05)/pee))/u0
-
+%%
+Bge(i)
 Fx = 2*(Bge(i)^2*Sge)/(2*u0)
 
 % campo magnetico ima
@@ -57,7 +85,8 @@ Hm = (Bm-Br)*Hc/Br;
 %%
 figure
     plot(Bge, 'o');
-    title('Convergencia gap');
+    axis([0 i 0 2]);
+    title('Convergencia B no gap');
 
 %%
 figure
