@@ -39,6 +39,8 @@ Bf = Bfs + ufs*(Hf-Hfs);
 theta = atand(dz./dx);
 
 %% porque tenho que dividir o campo por 2 ? tem alguma coisa errada !
+%   - pode ser por causa do ferro do retorno ! ?
+%   - verificar se estou fazendo a conta certa no main.
 Bg  = Bf*Sf/Sg/2;
 Bgx = Bg*cosd(theta);
 Bgz = Bg*sind(theta);
