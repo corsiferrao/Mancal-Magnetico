@@ -1,128 +1,97 @@
-%% Calcula forcas do circuito passivo do mancal
+%limpa variaveis
+clear;
+close all;
 
-%% Inicializacao
-% exporta os dados ?
-global exportar;
-exportar = 0;
-
-% Carrega parametros
+% Inicialização
 parametros;
+load iron;
 
-%% deslocamentos
-x = -0.3:0.05:0.3;
-y = -0.3:0.05:0.3;
-z = zeros(1,size(x,2));
+% Valor inicial
+Hef = 3E4;
+Hrf = 3E4;
+Hrr = 3E4;
 
-xx = 1;
-yy = 1;
-kk = 1;
-for i=1:size(x,2) 
-    for j=1:size(y,2)
-        % transforma deslocamento em gaps
-        
-        lg.n  = sqrt((1.2 - y(j))^2 + z(i)^2);
-        lg.o  = sqrt((1.2 + x(i))^2 + z(i)^2);
-        lg.l  = sqrt((1.2 - x(i))^2 + z(i)^2);
-        lg.s  = sqrt((1.2 + y(j))^2 + z(i)^2);        
-        
-        % forca em xf
-        f.n  = f_passivo(lg.n , z(kk));
-        f.o  = f_passivo(lg.o , z(kk));
-        f.s  = f_passivo(lg.s , z(kk)); 
-        f.l  = f_passivo(lg.l , z(kk)); 
+% loop para convergencia
+% método de Newton
+for i=1:40
 
-        fx(xx,yy)  = -f.l + f.o ;
-        fy(xx,yy)  = -f.n + f.s ;
-        
-        yy = yy + 1;
-    end
+    % Valores iniciais das permeabilidades
+    uef = iron.MuH(Hef);
+    urf = iron.MuH(Hrf);
+    urr = iron.MuH(Hrr);
+
+    % Relutancias
+    Rp  = hm/(um*Sm);               % Ima
+    Ref = wef/(uef*Sef);            % estator externo
+    Rrf = wrf/(urf*Srf);            % rotor ferro
+    Rrr = hm/(urr*Srr);             % rotor retorno
+    Rge = wge/(u0*Sge);             % gap
+
+    % Permeace de leakage no gap de acordo com 
+    % http://product.tdk.com/en/products/magnet/pdf/e371_circuit.pdf
+
+    Pgl1 = 0.264*u0*pei;
+    Pgl2 = 0.64*u0*pei/(wge/(wef*0.3)+1);
+    Pgl3 = 0.077*u0*wge;
+    Pgl4 = u0*wef*0.3/4;
     
-    xx = xx + 1;
-    yy = 1;    
-end
-
-%%
-figure
- surfc(x,y,sqrt(fx.^2+fy.^2))
- xlabel('\Delta_x (mm)'); 
- ylabel('\Delta_y (mm)');
- belezura
-
- %%
-figure
-  plot(x,fx, 'b');
-  xlabel('\Delta_x (mm)'); 
-  ylabel('Fx (N)'); 
-  belezura
-
-%% Dz
-% deslocamentos
-
-x = 0;
-y = 0;
-z = 0:0.01:0.4;
-
-zz = 1;
-for i=1:size(z,2)
+    SumRg = 1/(Pgl1+Pgl2+Pgl3+Pgl4+inv(Rge)); % associacao //
+            
+    % Permeace de leakage no ima de acordo com 
+    % http://product.tdk.com/en/products/magnet/pdf/e371_circuit.pdf    
+    Pl2 = 0.64*u0*ree/(hm/(hm+2*hef)+1); 
+    Rl = 1/Pl2;                             
     
-    lg.n  = sqrt((1.2 - y)^2 + z(i)^2);
-    lg.o  = sqrt((1.2 + x)^2 + z(i)^2);
-    lg.l  = sqrt((1.2 - x)^2 + z(i)^2);
-    lg.s  = sqrt((1.2 + y)^2 + z(i)^2);
-    
-    %forca em xf
-    [dum f.zn]  = f_passivo(lg.n, z(i));
-    [dum f.zo]  = f_passivo(lg.o, z(i));
-    [dum f.zs]  = f_passivo(lg.s, z(i));
-    [dum f.zl]  = f_passivo(lg.l, z(i));
-    
-    fz(zz)  = +f.zl + f.zo + f.zs + f.zn ;
-    
-    zz = zz + 1;
+    % analise de circuito
+    SumF = 2*Ref+2*SumRg+2*Rrf+Rrr; % Associacao série circutio gap
+    RLF  = SumF*Rl/(SumF+Rl);       % Associacao // entre SumL e Rl
+    Fc   = Hc*hm;                   % Coercive magnetic force
+
+    % fluxo magnético
+    phym = Fc/(RLF+Rp);             % ima
+    phyf = RLF*phym/SumF;           % circuito gap
+    phyl = RLF*phym/Rl;             % leakage
+    phyg = phyf*SumRg/Rge;          % gap
+
+    % Calculo do vetor campo mag. nos componentes do sistema    
+    Bm      = phym/Sm;
+    Bef     = phyf/Sef;
+    Bge(i)  = phyg/Sge;
+    Brf     = phyf/Srf;
+    Brr     = phyf/Srr;
+       
+    % Atualiza valor do campo magnético
+    % via método de newton
+    Hef = Bef/uef/2 + Hef/2;  % - H->B
+    Hrf = Brf/urf/2 + Hrf/2;
+    Hrr = Brr/urr/2 + Hrr/2;
 end
 
 
+%% Força de atração
+
+Fx = 2*(Bge(i)^2*Sge)/(2*u0)
+
+%% campo magnetico ima e pnt de operação
+
+Hm = (Bm-Br)*Hc/Br;
 figure
-hold on;
-  plot(z,-fz, 'b'); 
-  plot(z,-fz, '.');
-  xlabel('\Delta_z (mm)'); 
-  ylabel('F (N)'); 
-belezura
-hold off;
- 
-%% Comsol dx
-comsol_fx = [0.61214 57.16536 110.9668 165.28637];
-comsol_dx = 0:0.1:0.3
+    plot(Bge, 'o');
+    axis([0 i 0 2]);
+    title('Convergencia B no gap');
+
+%% Analise de Convergência 
 figure
-    hold on
-    plot(comsol_dx,comsol_fx);
-    plot(comsol_dx,comsol_fx, '.');
-    xlabel('\Delta_x (mm)');
-    ylabel('F (N)'); 
-    belezura
-    
-% save figure
-set(gcf, 'PaperPosition', [0 0 5 5]); 
-set(gcf, 'PaperSize', [5 5]); 
-saveas(gcf, 'test', 'pdf') %Save figure
+hold on
+    plot(-Hc:0,Br+Br/Hc.*(-Hc:0));
+    plot((Bm-Br)*Hc/Br,Bm, 'O', 'color', 'r');
+    title('pnt de operação Ima');
+hold off
 
-%% Comsol dy
-comsol_fy =[0.11564 -43.93489 -71.09197 -78.83586 -78.11995 -62.53365]
-comsol_dy =[0 0.2 0.4 0.6 0.8 1]	
 
-figure
-    hold on
-    plot(comsol_dy(1:4),comsol_fy(1:4));
-    plot(comsol_dy(1:4),comsol_fy(1:4), '.');
-    xlabel('\Delta_y (mm)');
-    ylabel('F (N)'); 
-    belezura
 
-export_pdf('forca:passivo:comsol:dy');
 
-%% Comsol vs analitico
 
-   
-  
+
+
 

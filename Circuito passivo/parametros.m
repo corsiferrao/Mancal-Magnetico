@@ -3,7 +3,7 @@
 NFRAC = 36;     % Fraçoes de mancal (partes para o calculo)
                 % nfrac = 36 representa fraçoes de 10 graus
                 
-AS    = 1.2;    % Fator de espraiamento da área (entrefeerro)
+AS  = 1.1;      % Fator de espraiamento da área (entrefeerro)
 
 Hc  = 995000;   % Hc ima (representa aberto)
                 % para igualar ao modelo do comsol
@@ -11,7 +11,7 @@ Hc  = 995000;   % Hc ima (representa aberto)
 Br  = 1.2504;   % Br ima (representa curto)
                 % datasheet Br = 1.39
 
-hef  = 4E-3;    % Altura ferro estator externo
+hef  = 6E-3;    % Altura ferro estator externo
 wef  = 14E-3;   % Largura do ferro estator externo
 
 wm   = 8E-3;    % Largura imã
@@ -37,9 +37,9 @@ Srf = 2*pi*(rre - wrf/2)*hef/NFRAC;      % Area do ferro rotor           (41.74)
 Srr = pi*((rri+wrr)^2-rri^2)/NFRAC;      % Area do retorno rotor         (validado)
 Sge = AS*2*pi*(ree - wge/2)*hge/NFRAC;   % Area do gap
 
-Sef = 42E-6;
-Srf = Sef;
-Sge = Sef;
+%Sef = 42E-6;
+%Srf = Sef;
+%Sge = Sef;
 
 
 %% Permeabilidades
