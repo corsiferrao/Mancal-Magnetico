@@ -1,97 +1,71 @@
 %limpa variaveis
+
 clear;
 close all;
 
-% Inicialização
-parametros;
-load iron;
+load comsol_varredura;
+load comsol_Fy;
 
-% Valor inicial
-Hef = 3E4;
-Hrf = 3E4;
-Hrr = 3E4;
+%% Parametros
+parametros_magneticos;
+parametros_geometricos;
 
-% loop para convergencia
-% método de Newton
-for i=1:40
+% Variacao
+dx = 0;
+dy = 0E-3;
 
-    % Valores iniciais das permeabilidades
-    uef = iron.MuH(Hef);
-    urf = iron.MuH(Hrf);
-    urr = iron.MuH(Hrr);
+m = derivados_geometricos(m, dx, dy);
 
-    % Relutancias
-    Rp  = hm/(um*Sm);               % Ima
-    Ref = wef/(uef*Sef);            % estator externo
-    Rrf = wrf/(urf*Srf);            % rotor ferro
-    Rrr = hm/(urr*Srr);             % rotor retorno
-    Rge = wge/(u0*Sge);             % gap
+%% Variação de hef e hm
 
-    % Permeace de leakage no gap de acordo com 
-    % http://product.tdk.com/en/products/magnet/pdf/e371_circuit.pdf
+i=0;
+j=1;
 
-    Pgl1 = 0.264*u0*pei;
-    Pgl2 = 0.64*u0*pei/(wge/(wef*0.3)+1);
-    Pgl3 = 0.077*u0*wge;
-    Pgl4 = u0*wef*0.3/4;
-    
-    SumRg = 1/(Pgl1+Pgl2+Pgl3+Pgl4+inv(Rge)); % associacao //
-            
-    % Permeace de leakage no ima de acordo com 
-    % http://product.tdk.com/en/products/magnet/pdf/e371_circuit.pdf    
-    Pl2 = 0.64*u0*ree/(hm/(hm+2*hef)+1); 
-    Rl = 1/Pl2;                             
-    
-    % analise de circuito
-    SumF = 2*Ref+2*SumRg+2*Rrf+Rrr; % Associacao série circutio gap
-    RLF  = SumF*Rl/(SumF+Rl);       % Associacao // entre SumL e Rl
-    Fc   = Hc*hm;                   % Coercive magnetic force
-
-    % fluxo magnético
-    phym = Fc/(RLF+Rp);             % ima
-    phyf = RLF*phym/SumF;           % circuito gap
-    phyl = RLF*phym/Rl;             % leakage
-    phyg = phyf*SumRg/Rge;          % gap
-
-    % Calculo do vetor campo mag. nos componentes do sistema    
-    Bm      = phym/Sm;
-    Bef     = phyf/Sef;
-    Bge(i)  = phyg/Sge;
-    Brf     = phyf/Srf;
-    Brr     = phyf/Srr;
-       
-    % Atualiza valor do campo magnético
-    % via método de newton
-    Hef = Bef/uef/2 + Hef/2;  % - H->B
-    Hrf = Brf/urf/2 + Hrf/2;
-    Hrr = Brr/urr/2 + Hrr/2;
+for hm=9:1:11
+    j=1;
+    for hef=5:1:7    
+        m.hef = hef*1E-3;
+        m.hm  = hm*1E-3;
+        m = derivados_geometricos(m, dx, dy);
+        res.Fx(i+j,:) = [hm, hef, resolve(m, mag, dx, dy)];
+        j=j+1;
+    end
+    i=j+i-1;
 end
 
+%% Varia Dy
+dx = 0;
+j=1;
 
-%% Força de atração
+for dy=0:0.05E-3:0.2E-3
+    m = derivados_geometricos(m, dx, dy);
+    [Fx, Fy]  = resolve(m, mag, dx, dy);
+    res.Fy(j) =  Fy;
+    j=j+1;
+end
 
-Fx = 2*(Bge(i)^2*Sge)/(2*u0)
+%% Respostas
 
-%% campo magnetico ima e pnt de operação
+res
 
-Hm = (Bm-Br)*Hc/Br;
-figure
-    plot(Bge, 'o');
-    axis([0 i 0 2]);
-    title('Convergencia B no gap');
+%comsol_varredura
 
-%% Analise de Convergência 
+%% Plot Fx
 figure
 hold on
-    plot(-Hc:0,Br+Br/Hc.*(-Hc:0));
-    plot((Bm-Br)*Hc/Br,Bm, 'O', 'color', 'r');
-    title('pnt de operação Ima');
+    plot(comsol_varredura(:,3,1), 'b')
+    plot(res.Fx(:,3,1)-2, 'r')
+    legend('EEM', 'Analitico'); 
 hold off
 
 
-
-
-
+%% Plot Fy
+figure
+hold on
+    plot(comsol_Fy(:,1), comsol_Fy(:,2), comsol_Fy(:,1), res.Fy )
+    title('Fy')
+    legend('EEM', 'Analitico'); 
+hold off
 
 
 
