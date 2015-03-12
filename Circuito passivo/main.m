@@ -6,7 +6,8 @@ close all;
 load comsol_varredura;
 load comsol_Fy;
 
-%% Parametros
+%% Parametros iniciais
+
 parametros_magneticos;
 parametros_geometricos;
 
@@ -27,30 +28,27 @@ for hm=9:1:11
         m.hef = hef*1E-3;
         m.hm  = hm*1E-3;
         m = derivados_geometricos(m, dx, dy);
-        res.Fx(i+j,:) = [hm, hef, resolve(m, mag, dx, dy)];
+        ret1 = resolve(m, mag, dx, dy);
+        res.Fx(i+j,:) = [hm, hef, ret1.Fx];
         j=j+1;
     end
     i=j+i-1;
 end
 
 %% Varia Dy
+
 dx = 0;
 j=1;
 
 for dy=0:0.05E-3:0.2E-3
     m = derivados_geometricos(m, dx, dy);
-    [Fx, Fy]  = resolve(m, mag, dx, dy);
-    res.Fy(j) =  Fy;
+    ret2  = resolve(m, mag, dx, dy);
+    res.Fy(j) =  ret2.Fy;
     j=j+1;
 end
 
-%% Respostas
-
-res
-
-%comsol_varredura
-
 %% Plot Fx
+
 figure
 hold on
     plot(comsol_varredura(:,3,1), 'b')
@@ -58,8 +56,8 @@ hold on
     legend('EEM', 'Analitico'); 
 hold off
 
-
 %% Plot Fy
+
 figure
 hold on
     plot(comsol_Fy(:,1), comsol_Fy(:,2), comsol_Fy(:,1), res.Fy )

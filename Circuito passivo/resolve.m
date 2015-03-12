@@ -1,4 +1,4 @@
-function [Fx, Fy, Bge, Bm, Bef ] = resolve(m, mag, dx, dy)
+function ret = resolve(m, mag, dx, dy)
 %%
 
 load iron;
@@ -49,10 +49,7 @@ for i=1:20
     phym  = Fc/(RLF+Rp);             % ima
     phyf  = RLF*phym/SumF;           % circuito gap
     phyl  = RLF*phym/Rl;             % leakage
-    phyg  = phyf*SumRg/Rge;          % gap
-
-    phyg = phyf*Rgl/(Rge+Rgl);
-       
+    phyg = phyf*Rgl/(Rge+Rgl);       % gap    
     
     % Calculo do vetor campo mag. nos componentes do sistema    
     Bm(i)   = phym/m.Sm;
@@ -89,6 +86,11 @@ Sgey = m.Sge;
 
 Fx = 2*(Bgex^2*Sgex)/(2*mag.u0);
 Fy = 2*(Bgey^2*Sgey)/(2*mag.u0);
+
+%% prepara dados para retorno
+
+ret.Fx = Fx; ret.Fy  = Fy; ret.Bge = Bge(i);
+ret.Bm = Bm(i); ret.Bef = Bef(i);
 
 %% Analise de Convergência 
 
