@@ -5,6 +5,12 @@ function F = merito1(po)
 %  2. Deslocamento em dx, dy= nominal
 %  3. Deslocamento nominal 
 
+global in;
+global Fx;
+global Fy;
+global V;
+global dBef;
+
 parametros_magneticos;
 parametros_geometricos;
 
@@ -20,10 +26,10 @@ m.ree = po(8);
 
 
 % valores do deslocamento
-dxx = 100E-3; dyy = 0.2E-3;
+dxx = m.wge; dyy = 0.2E-3;
 
-% interação 1:
-dx = dxx; dy=0;
+% % interação 1:
+dx = dxx/2; dy=0;
 
     % calcula derivados geométricos
     m = derivados_geometricos(m, dx, dy);
@@ -35,7 +41,7 @@ dx = dxx; dy=0;
  dx = 0; dy=dyy;
  
      % calcula derivados geométricos
-     derivados_geometricos(m, dx, dy);
+     m = derivados_geometricos(m, dx, dy);
  
      % resolve
      r2 = resolve(m, mag, dx, dy);
@@ -44,12 +50,26 @@ dx = dxx; dy=0;
 dx = 0; dy=0;
 
     % calcula derivados geométricos
-    derivados_geometricos(m, dx, dy);
+    m = derivados_geometricos(m, dx, dy);
 
     % resolve
     r3 = resolve(m, mag, dx, dy);
   
-% Calcula valor do Funcional
-%1/abs(r1.Bef-r3.Bef)
+%% Calcula valor do Funcional
 
-F = 2*abs(r1.Fx) + 1/abs(r2.Fy) + m.Vm*1E6;
+P1 = r3.Fx/10;              % pondera Fx
+P2 = 100/(r2.Fy*m.NFRAC);   % pondera Fy 
+P3 = 10*abs(r1.Bef-r3.Bef); % pondera Delta Bef
+P4 = m.Vm*1E6/10;           % pondera volume
+
+F  = P1 + P2 + P3 + P4;     % calcula funcional
+
+%% global
+Fx(in)      = r3.Fx;
+Fy(in)      = r2.Fy;
+V(in)       = m.Vm;
+dBef(in)    = abs(r1.Bef-r3.Bef);
+
+in = in+1;
+
+

@@ -2,6 +2,7 @@ function ret = resolve(m, mag, dx, dy)
 %%
 
 load iron;
+ok_conv = 0; % verifica pela convergencia
 
 % Valores iniciais
 Hef = 2E4;
@@ -10,7 +11,7 @@ Hrr = 2E4;
 
 % loop para convergencia
 % método de Newton
-for i=1:20
+for i=1:200
 
     % Valores iniciais das permeabilidades
     uef = iron.MuH(Hef);
@@ -63,8 +64,21 @@ for i=1:20
     Hef = Bef(i)/uef/2 + Hef/2;  % - H->B
     Hrf = Brf(i)/urf/2 + Hrf/2;
     Hrr = Brr(i)/urr/2 + Hrr/2;
+    
+    % Verifica por convergência
+    if(i > 2) 
+        if abs(Bge(i) - Bge(i-1)) <= 1E-3 
+            ok_conv = 1;
+            break;
+        end;
+    end;
 end
 
+%%
+
+if ok_conv ==0 
+    display('Erro na covergência');
+end;
 
 %% Força de atração
 
@@ -83,7 +97,6 @@ Sgey = m.Sge;
 %Bgex = (1-alfa*30)*Bge(i)*cosd(theta);
 %Bgey = (alfa*30)*Bge(i)*sind(theta);
 
-
 Fx = 2*(Bgex^2*Sgex)/(2*mag.u0);
 Fy = 2*(Bgey^2*Sgey)/(2*mag.u0);
 
@@ -92,10 +105,18 @@ Fy = 2*(Bgey^2*Sgey)/(2*mag.u0);
 ret.Fx = Fx; ret.Fy  = Fy; ret.Bge = Bge(i);
 ret.Bm = Bm(i); ret.Bef = Bef(i);
 
+ret.Rp  = Rp ;
+ret.Ref = Ref;
+ret.Rrf = Rrf;
+ret.Rrr = Rrr;
+ret.Rge = Rge;
+ret.Rgl = Rgl;
+ret.Rl  = Rl ;
+
 %% Analise de Convergência 
 
-%  Hm = (Bm-mag.Br)*mag.Hc/mag.Br;
-%  
+ Hm = (Bm-mag.Br)*mag.Hc/mag.Br;
+ 
 %  l = 1:i;
 %  figure
 %     hold on

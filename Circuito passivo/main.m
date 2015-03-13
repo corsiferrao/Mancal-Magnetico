@@ -3,6 +3,7 @@
 clear;
 close all;
 
+%% Carrega dados EEM
 load comsol_varredura;
 load comsol_Fy;
 
@@ -12,10 +13,19 @@ parametros_magneticos;
 parametros_geometricos;
 
 % Variacao
-dx = 0;
-dy = 0E-3;
+dx = 0; dy = 0;
 
 m = derivados_geometricos(m, dx, dy);
+
+%% Validação deslocamento dx 
+dx = 0; 
+dy = 0;
+m = derivados_geometricos(m, dx, dy);
+ret1 = resolve(m, mag, dx, dy)
+
+dx = 0.5E-3; dy = 0;
+m = derivados_geometricos(m, dx, dy);
+ret2 = resolve(m, mag, dx, dy)
 
 %% Variação de hef e hm
 

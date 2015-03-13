@@ -3,11 +3,11 @@
 m.NFRAC = 36;     % Fraçoes de m (partes para o calculo)
                   % nfrac = 36 representa fraçoes de 10 graus
                 
-m.hef  = 5E-3;    % Altura ferro estator externo
+m.hef  = 6E-3;    % Altura ferro estator externo
 m.wef  = 14E-3;   % Largura do ferro estator externo
 
 m.wm   = 8E-3;    % Largura imã
-m.hm   = 9E-3;   % Altura do ima
+m.hm   = 10E-3;   % Altura do ima
 
 m.wge  = 1.2E-3;  % Gap nominal
 
