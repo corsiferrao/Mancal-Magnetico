@@ -17,35 +17,47 @@
 %               Queremos um volume menor -> menor peso
 %
 
+%addpath('APIs')
+%addpath('APIs')
+
+
 clear all;
 clc; 
 
+% variáveis globais para armazenamento dos vlaores intermediaários
 global in;
 global Fx;
 global Fy;
 global V;
 global dBef;
 
+% versao da funcao merito a ser utilizada
+global version;
+
+% carrega valore iniciais
 parametros_geometricos;
 
 %  [m.hef   m.wef   m.wm    m.hm    m.wge   m.wrf   m.wrr   m.ree  ];
 V0=[6E-3    14E-3   8E-3    10E-3   1.2E-3  10E-3   6E-3    75E-3];
 LO=[2E-3    7E-3    4E-3    5E-3    1.0E-3  5E-3    3E-3    50E-3];
 UB=[10E-3   21E-3   12E-3   15E-3   3.0E-3  15E-3   9E-3    80E-3];
-
 po = V0;
 
-options = optimset('Display', 'iter',  ...
+% configura otimizacao
+options = optimset( 'Display', 'iter',  ...
                    'TolX',0.1,'TolFun',0.1, ...
                    'MaxIter', inf);
-              
-%%
-% a primeira otimização convergiu em i=910
-% Fx(dxx) = 12.9113
-% Fy(dyy) = 5.6684
 
+% contador para armazenameto dos resultados
 in = 1;
-[x,fval] = fminsearchbnd('merito1', po, LO, UB, options);
+
+%% Executa otimização
+
+%define funcao merito
+version = 4;        
+
+% executa otmizacao
+[x,fval] = fminsearchbnd('funcional', po, LO, UB, options);
 
 
 %% Resultados
@@ -56,7 +68,7 @@ subplot(2,2,1);
     plot(1:in-1, Fx,'o'); 
     title('Fx');
 subplot(2,2,2); 
-    plot(1:in-1, Fy*m.NFRAC,'o');
+    plot(1:in-1, Fy,'o');
     title('Fy');
 subplot(2,2,3); 
     plot(1:in-1, V,'o');
@@ -67,12 +79,7 @@ subplot(2,2,4);
     
 %% pesos funcionais
 
-P1 = Fx/10;              % pondera Fx
-P2 = 100./(Fy*m.NFRAC);   % pondera Fy 
-P3 = 10*dBef; % pondera Delta Bef
-P4 = V*1E6/10;           % pondera volume
-
-F  = P1 + P2 + P3 + P4;     % calcula funcional
+[F, P1, P2, P3, P4 ] = merito( Fx, Fy, V, dBef, m, version );
 
 figure
     plot(P1)
@@ -82,8 +89,5 @@ hold on
     plot(P4, 'c')
     plot(F,  'm')
 title('pesos');
-legend('P1', 'P2', 'P3', 'P4'); 
+legend('P1', 'P2', 'P3', 'P4', 'F'); 
 belezura
-
-%% 
-figure

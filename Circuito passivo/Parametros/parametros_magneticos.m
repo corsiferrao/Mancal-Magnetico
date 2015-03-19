@@ -1,7 +1,7 @@
 %% Parametros magneticos
 
 %% ima 
-m.AS  = 0.9;      % Fator de espraiamento da área (entrefeerro)
+m.AS  = 1;      % Fator de espraiamento da área (entrefeerro)
 
 mag.Hc  = 995000;   % Hc ima (representa aberto)
                     % para igualar ao modelo do comsol

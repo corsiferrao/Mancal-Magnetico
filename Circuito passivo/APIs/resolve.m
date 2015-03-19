@@ -33,7 +33,7 @@ for i=1:200
     Pgl4 = mag.u0*m.wef*0.3/4;
     
     Pgl  = Pgl1+Pgl2+Pgl3+Pgl4;     % somatoria l gap
-    Rgl  = inv(Pgl);
+    Rgl  = 1/Pgl;
     SumRg = 1/(Pgl+inv(Rge));       % associacao //
             
     % Permeace de leakage no ima de acordo com 
@@ -50,7 +50,7 @@ for i=1:200
     phym  = Fc/(RLF+Rp);             % ima
     phyf  = RLF*phym/SumF;           % circuito gap
     phyl  = RLF*phym/Rl;             % leakage
-    phyg = phyf*Rgl/(Rge+Rgl);       % gap    
+    phyg  = phyf*Rgl/(Rge+Rgl);       % gap    
     
     % Calculo do vetor campo mag. nos componentes do sistema    
     Bm(i)   = phym/m.Sm;
@@ -130,7 +130,7 @@ ret.Rl  = Rl ;
 %      ylabel('B(T)'); 
 %      legend('Bm','Bef','Bge','Brf','Brr'); 
 %      belezura
-%      %title('Convergencia B no gap');
+%      title('Convergencia B no gap');
 
 %% campo magnetico ima e pnt de operação
 % figure

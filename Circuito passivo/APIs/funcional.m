@@ -1,4 +1,4 @@
-function F = merito1(po)
+function F = funcional(po)
 %% Funcional
 % Toda interação devemos fazer 2 testes
 %  1. Deslocamento em dy, dx= nominal
@@ -10,6 +10,9 @@ global Fx;
 global Fy;
 global V;
 global dBef;
+
+global version;
+
 
 parametros_magneticos;
 parametros_geometricos;
@@ -57,18 +60,15 @@ dx = 0; dy=0;
   
 %% Calcula valor do Funcional
 
-P1 = r3.Fx/10;              % pondera Fx
-P2 = 100/(r2.Fy*m.NFRAC);   % pondera Fy 
-P3 = 10*abs(r1.Bef-r3.Bef); % pondera Delta Bef
-P4 = m.Vm*1E6/10;           % pondera volume
-
-F  = P1 + P2 + P3 + P4;     % calcula funcional
+dbeftemp = abs(r1.Bef-r3.Bef); %diferencial
+F = merito( r1.Fx, r2.Fy, m.Vm, dbeftemp, m, version );
 
 %% global
+
 Fx(in)      = r3.Fx;
-Fy(in)      = r2.Fy;
+Fy(in)      = r2.Fy*m.NFRAC;
 V(in)       = m.Vm;
-dBef(in)    = abs(r1.Bef-r3.Bef);
+dBef(in)    = dbeftemp;
 
 in = in+1;
 
