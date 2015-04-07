@@ -1,0 +1,73 @@
+%% Creator: Inkscape inkscape 0.48.4, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'mancal:circuito:passivo.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{355.28510742bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.62867595)%
+    \put(0,0){\includegraphics[width=\unitlength]{mancal:circuito:passivo.pdf}}%
+    \put(0.16588316,0.16370779){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{N}}}%
+    \put(0.16762307,0.06310362){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{S}}}%
+    \put(0.60015959,0.23608559){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{+}}}%
+    \put(0.59745852,0.2096078){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{-}}}%
+    \put(0.67104269,0.41653511){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{ft}$}}}%
+    \put(0.67291729,0.10891836){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{fb}$}}}%
+    \put(0.77992147,0.41767237){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{gt}$}}}%
+    \put(0.78179606,0.10891836){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{gb}$}}}%
+    \put(0.90042108,0.25415355){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$R_{fr}$}}}%
+    \put(0.55802888,0.22262985){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$F_{ima}$}}}%
+    \put(0.56071138,0.31044651){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$R_{ima}$}}}%
+    \put(0.20233393,0.60997598){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{ft}$}}}%
+    \put(0.30416139,0.61156822){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{gt}$}}}%
+    \put(0.48504626,0.45787322){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$R_{fr}$}}}%
+    \put(0.20233393,0.31832764){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{fb}$}}}%
+    \put(0.30164375,0.31832764){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{gb}$}}}%
+    \put(0.12439393,0.4923846){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$R_{ima}$}}}%
+    \put(0.16431126,0.5063774){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{N}}}%
+    \put(0.16605117,0.40577323){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{S}}}%
+  \end{picture}%
+\endgroup%

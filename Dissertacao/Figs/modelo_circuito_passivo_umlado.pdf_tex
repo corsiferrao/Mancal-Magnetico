@@ -1,0 +1,69 @@
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'modelo:circuito:passivo:umlado.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{374.87888184bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.3843804)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{modelo:circuito:passivo:umlado.pdf}}%
+    \put(0.35347827,0.15682809){\makebox(0,0)[lb]{\smash{+}}}%
+    \put(0.36153017,0.13579549){\makebox(0,0)[lb]{\smash{-}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{modelo:circuito:passivo:umlado.pdf}}%
+    \put(0.34367571,0.22682391){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$\mathcal{R}_p$}}}%
+    \put(0.33356594,0.14705375){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$\mathcal{F}_c$}}}%
+    \put(0.44034535,0.32954589){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{ef}$}}}%
+    \put(0.56685138,0.26771759){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{ge}$}}}%
+    \put(0.44034535,0.04379553){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{ef}$}}}%
+    \put(0.56958032,0.09907249){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{ge}$}}}%
+    \put(0.6726263,0.32954589){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{rf}$}}}%
+    \put(0.67400617,0.04379553){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{rf}$}}}%
+    \put(0.78375307,0.1753087){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\mathcal{R}_{rr}$}}}%
+    \put(0.22576042,0.1854358){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$\mathcal{R}_{lm}$}}}%
+    \put(0.56709136,0.36816683){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{lg}$}}}%
+    \put(0.56827951,0.00503288){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{lg}$}}}%
+  \end{picture}%
+\endgroup%

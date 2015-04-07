@@ -1,0 +1,616 @@
+\pagestyle{empty}
+\cleardoublepage
+\pagestyle{fancy}
+
+\chapter{Modelagem Eletromagnética}
+
+Passos da modelagem:
+
+\begin{enumerate}[a.]
+	\item modelagem eletromagnética da parte passiva $\rightarrow$ Força passiva dependente de x,y,z
+	\item modelagem eletromagnética da parte ativa  $\rightarrow$ Força ativa de pedente de x,y,z,i
+	\item fundir modelos
+	\item modelagem da dinâmica e acoplamentos 
+\end{enumerate}
+
+%Dimensões do mancal (Fig. \ref{Fig:Modelagem:Dimensoes})
+
+\begin{figure}[!ht]
+	\centering
+	\def\svgwidth{\columnwidth}
+	\includesvg{modelo:dim}
+		\caption{Dimensões do mancal}
+		\label{Fig:Modelagem:Dimensoes}
+\end{figure}
+
+\section{Circuito passivo}
+
+A parte passiva do mancal magnético pode ser descrita como o circuito da Fig. \ref{Fig:Modelagem:circuito:passivo}, onde um imã permanente gera um fluxo magnético que estabiliza o eixo axial (passivo) e possibilita que o eixo radial seja estabilizado com um menor gasto energético.
+
+%Os passos para obtenção do modelo são:
+%
+%\begin{enumerate}[a.]
+%	\item modelo sem saturação no ferro
+%	\item modelo com saturação no ferro
+%	\item modelo mais complexo com vazamento de campo
+%\end{enumerate}
+
+%\begin{figure}[!ht]
+%	\centering
+%	\def\svgwidth{\columnwidth}
+%	\includesvg{modelo:circuito:passivo}
+%	\caption{Circuito magnético passivo}
+%	\label{Fig:Modelagem:circuito:passivo}
+%\end{figure}
+
+Sendo:
+\begin{itemize}
+	\item $\mathcal{F}_m$ : Forca Eletromotriz gerado pelo imã permanente;
+	\item $\phi_m$ : Fluxo magnético imã permanente;
+	\item $\phi_m$ : Fluxo magnético gap;
+	\item $\mathcal{R}_m$ : Relutância devido ao imã permanente;
+	\item $\mathcal{R}_{feeX}$ : Relutância devido ao ferro do estator externo (T: Topo, B: Baixo);
+	\item $\mathcal{R}_{geX}$ : Relutância devido ao gap externo (T: Topo, B: Baixo);
+	\item $\mathcal{R}_{geX}$ : Relutância devido ao ferro do rotor.
+\end{itemize}
+
+O mancal foi seccionado em oito partes, sendo que cada parte possui uma força de atração relacionada. Para o cálculo dessas forças, utilizou-se uma zona de integração de $45^{\circ}$ com o centro alinhando com a direção da força. A Fig. \ref{Fig:Modelagem:circuito:passivo:forca} ilustra as forças de atração agindo no rotor e mostra em verde a zona de integração utilizada para o cálculo das forças.
+
+\begin{figure}[!ht]
+	\centering
+	\def\svgwidth{0.8\columnwidth}
+	\includesvg{modelo:circuito:passivo:forcas}
+	\caption{Distribuição de forças no rotor devido a parte passiva do mancal magnético}
+	\label{Fig:Modelagem:circuito:passivo:forca}
+\end{figure}
+
+\subsection{Campo magnético no entreferro}
+
+Com a premissa de que todas as linhas de campo passem pelo gap e que o \textit{fringe} possa ser desprezado, e que os ferros do estator externo estão saturados \todo[noline]{Interagir com a simulacão}, obtemos das leis de Marxell para campos quase estáticos um modelo que relaciona a força de atração magnética pela distância do rotor ao estator esterno (comprimento do gap) \todo[noline]{Verificar termo: Quasi-Static e Fringe} \todo[noline,color=magenta]{Ref. Livro Edward E. Furlani}:
+
+
+\todo[inline]{o campo no ferro do estator externo e’ saturado mesmo, estava confundindo com o campo no estrator interno.
+no estator externo a saturação é necessária, pois maximiza o B absoluto e minimiza o efeito diferencial, o que aumenta a rigidez axial (passiva) sem aumentar muito a rigidez radial.}
+
+
+\begin{eqnarray}
+	\phi_m = \phi_f = \phi_g \label{eq:p:fluxo}
+\end{eqnarray}
+
+\begin{align}
+	\oint{ \textbf{H } \cdot d\textbf{l}} &= \cancelto{0}{I_t} \notag\\ 
+	\rightarrowtail	H_m l_m + 2 H_f l_f + 2 H_g l_g &= 0 \label{eq:p:linhas}
+\end{align}
+
+Podemos derivar da Eq. \ref{eq:p:fluxo}:
+
+\begin{align}
+	B_m S_m &= B_f S_f \label{eq:p:BmSm} \\ 
+	B_f S_f &= B_g S_g \label{eq:p:BfSf} \\ 
+	B_g S_g &= B_m S_m \label{eq:p:BgSg}
+\end{align}
+
+A relação $B_m/H_m$ para imãs de terra rara como Samário-Cobalto ou Neodímio é praticamente linear podendo ser aproximada para:
+
+
+\begin{align}
+	B_m &= B_r - \frac{B_r}{H_c}H_m \label{eq:p:Bm}
+\end{align}
+
+
+Como estamos trabalhando na zona de saturação: $H > H_{sat}$ (Fig. \ref{Fig:Modelagem:Curva:BH}) adotamos que a zona de operação da curva B-H é linear e possui a seguinte equação :
+
+\begin{align}
+	B_f &= B_{fs} + \mu_s (H_f - H_{fs}) \label{eq:p:Bf}
+\end{align}
+
+\begin{figure}[!ht]
+	\centering
+	\def\svgwidth{0.7\columnwidth}
+	\includesvg{modelo:curva:bh}
+		\caption{Curva de saturação de um material magnético}
+		\label{Fig:Modelagem:Curva:BH}
+\end{figure}
+
+Substituindo \eqref{eq:p:Bm} e \eqref{eq:p:Bf} na equação \eqref{eq:p:BmSm}
+
+
+\[	[B_r - \frac{B_r}{H_c}H_m]S_m = \left[ B_{fs} + \mu_s (H_f - H_{fs}) \right] S_f \]
+
+Isolando $H_m$ em função de $H_f$ :
+
+\begin{align}
+	H_m &= \left[ -\left[B_{fs} + \mu_s (H_f - H_{fs}) \frac{S_f}{S_m}\right] - Br \right] \frac{H_c}{H_m} \\
+	%
+	&=  - H_f \frac{\mu_s S_f}{S_m}\frac{H_c}{H_m} + \left( \mu_s H_{fs} \frac{S_f}{S_m} + B_r - B_{fs}\right) \frac{H_c}{H_m}
+	\label{eq:p:Hm}
+\end{align}
+
+Obtemos da Eq. \eqref{eq:p:BfSf}:
+
+\begin{align*}
+	B_f S_f &= B_g S_g \notag \\
+%	B_f S_f &= \mu_0 H_g S_g \notag \\
+	[B_{fs} + \mu_s (H_f - H_{fs})] S_f &= \mu_0 H_g S_g \notag \\
+\end{align*}
+
+Isolando $H_g$ em função de $H_f$ :
+
+\begin{equation}
+	H_g = \frac{B_{fs} - \mu_s S_f H_{fs}}{\mu_0 S_g} + H_f \frac{\mu_s S_f}{\mu_0 S_g} \label{eq:p:Hg}
+\end{equation}
+
+Substituindo na Eq. \eqref{eq:p:linhas}  os valores de $H_g$, $H_m$ obtemos o campo magnético no ferro:
+
+\[
+	 \left(  - H_f \frac{\mu_s S_f}{S_m}\frac{H_c}{H_m} + \left( \mu_s H_{fs} \frac{S_f}{S_m} + B_r - B_{fs}\right) \frac{H_c}{H_m}\right) l_m + 2 H_f l_f + 2 \left( \frac{B_{fs} - \mu_s S_f H_{fs}}{\mu_0 S_g} + H_f \frac{\mu_s S_f}{\mu_0 S_g} \right) l_g = 0
+\]
+
+\begin{multline}
+	H_f \left[ -\frac{\mu_s S_f }{S_m}\frac{H_c}{H_m} l_m + 2 l_f + 2 \frac{\mu_s S_f}{\mu_0 S_g} l_g\right] = \\
+				 -\left( \mu_s H_{fs} \frac{S_f}{S_m} + B_r - B_{fs}\right) \frac{H_c}{H_m} l_m - 2 \left( \frac{B_{fs} - \mu_s S_f H_{fs}}{\mu_0 S_g} \right) l_g
+\end{multline}
+
+
+Definido as variáveis auxiliares
+
+\begin{align}
+	C_1 &= -\frac{\mu_s S_f }{S_m}\frac{H_c}{H_m} l_m + 2 l_f \\
+	C_2 &= 2 \frac{\mu_s S_f}{\mu_0} \\
+	C_3 &= -\left( \mu_s H_{fs} \frac{S_f}{S_m} + B_r - B_{fs}\right)  \frac{l_m H_c}{H_m}\\
+	C_4 &= - 2 \left( \frac{B_{fs} - \mu_s S_f H_{fs}}{\mu_0} \right) 
+\end{align}
+
+
+%\begin{multline}
+%	H_f = \left[-\left( \mu_s H_{fs} \frac{S_f}{S_m} + B_r - B_{fs}\right) \frac{H_c}{H_m} l_m - 2 \left( \frac{B_{fs} - \mu_s S_f H_{fs}}{\mu_0 S_g} \right) l_g \right] \; \\
+%				 \left[-\frac{\mu_s S_f }{S_m}\frac{H_c}{H_m} l_m + 2 l_f + 2 \frac{\mu_s S_f}{\mu_0 S_g} l_g\right]^{-1}
+%\end{multline}
+
+Obtemos o valor do vetor campo magnético $H_f$ :
+
+\begin{eqnarray}
+	H_f = \frac{C_1 + C_2 \, \nicefrac{l_g}{S_g}}{C_3 + C_4 \, \nicefrac{l_g}{S_g}}
+\end{eqnarray}
+
+Sendo $B_f = B_{fs} + u_{fs} (H_f-H_{fs})$ podemos então, calcular o valor do campo magnético no entreferro \eqref{eq:p:Hg}:
+
+\begin{equation}
+	B_g = \frac{B_f \; S_f}{S_m}
+\end{equation}
+
+\subsection{Decomposição do campo magnético B em X e Z} \label{SubSec:CampoX/Y}
+
+O campo magnético acumulado no entreferro pode ser decomposto em componentes $B_x$ e $B_z$ que dependem do deslocamento do rotor em $\Delta_x$ e $\Delta_z$, esse deslocamento implica também em um aumento no comprimento do gap: $l_g$, A Fig. \ref{Fig:modelo:passivo:DxDz} ilustra o deslocamento. Tal modelo não leva en consideração o \textit{tilt} do rotor, que implicaria em relutâncias diferentes para a parte superior e inferior do rotor.
+
+	\begin{figure}[!ht]
+		\centering
+		\def\svgwidth{0.7\columnwidth}
+		\includesvg{modelo:passivo:DxDy}
+			\caption{Deslocamento em X e Y}
+			\label{Fig:modelo:passivo:DxDz}
+	\end{figure}
+
+ Os campos podem então ser derivados:
+ 
+ \begin{align}
+ 	\theta &= tg^{-1}(\frac{\Delta_z}{\Delta_x}) \\
+ 	l_g &= \sqrt{\Delta_x^2 + \Delta_z^2} \\
+ 	B_{gx} &= B \, cos(\theta) \\
+ 	B_{gz} &= B \, sin(\theta) 
+ \end{align}
+
+\subsection{Parâmetros Físicos}
+
+As áreas e comprimentos médios são obtidos da seguinte maneira (com uma zona de integração de $45^{\circ}$), com referência a Fig. \ref{Fig:Modelagem:Dimensoes} e a tabela em Anexo \ref{Tabela:Modelagem:Dimensoes}: \todo[noline,color=magenta]{Gerar tabela de dim}
+
+\begin{align}
+	S_m &= w_m     	\frac{2 \pi (r_{eei} + w_{fee} - w_m)}{8} \\
+	S_f &= h_{fee} 	\frac{2 \pi r_{eei}}{8} \\
+	S_g(l_g) &= h_{fee}	\frac{2 \pi (r_{reei} - \nicefrac{l_g}{2})}{8} \alpha_g \\
+	l_m &= h_m \\
+	l_f &= w_{fee}
+\end{align}
+
+\todo[inline]{Explicar melhor o que é espraiamento e como encontrar-lo}
+
+O Termo $ \alpha_g $ é o fator de espraiamento do campo magnético no entreferro do mancal  que é devido a dispersão do campo magnético, ou seja a área em que o entreferro acumula campo magnético é sempre maior ($\alpha_g > 1)$ do que a área calculada.  
+
+\subsection{Força por trabalho virtual}
+
+\todo[inline]{Dedicar um tempo para explicar o conceito}
+
+A força magnética é então calculado por :
+
+\begin{align}
+	\vec{F} &= -\frac{ \vec{B}_{g}^2 \; S_g}{\mu_0} \label{eq:passivo:Fx}
+\end{align}
+
+\subsection{Equações de força em X}
+
+
+Desejamos obter as resultantes das forças projetadas nos eixos radiais (x e y), para obtermos um modelo mais preciso das forças, o mancal foi divido em oito partes distintas sendo que cada parte possui um componente de campo magnético diferente das outras partes. Para então obtermos o valor das forças radiais, precisamos calcular todas as forças e então decompor-las nos eixos. Similar com a força em Y :
+
+\begin{align}
+	F_x &= F_{L} + F_{NLx} + F_{SLx} - F_{O} - F_{NOx} - F_{SOx} \ref{eq:p:F:resultante:x}
+\end{align}
+
+\subsection{Equações de força em Y}
+
+A força perpendicular ao plano de rotação é a composição de todas as forças exercidas em z (não considerando tilt) :
+
+\begin{equation}
+	  		F_z = \frac{S_{g}}{\mu_0} 	\sum_{i=N}^{NO} B_{giz}^2
+\end{equation}
+
+
+\newpage
+\section{Circuito Ativo}
+
+Para o circuito ativo, utilizaremos dois diferentes modelos, um para o ferro não saturado e outro para valores de corrente que saturem o ferro do núcleo. Essa abordagem é tomada para minimizar erros numéricos.
+
+
+\subsection{Modelo sem saturação}
+
+Pela lei de Ampere:
+
+\begin{align}
+	H_{fn} l_{fn} + H_{gn} l_{gn} + H_{fa} l_{fa} + H_{ga} l_{ga} + H_{ra} l_{ra}= \mathcal{F} \label{eq:at:loop1} \\ 
+	H_{fn} l_{fn} + H_{gn} l_{gn} + H_{fb} l_{fb} + H_{gb} l_{gb} + H_{rb} l_{rb}= \mathcal{F}  \label{eq:at:loop2}
+\end{align}
+
+Da conservação do fluxo magnético:
+
+\begin{eqnarray}
+	B_{gn} S_{gn} =  B_{ga} S_{ga} + B_{gb} S_{gb} \notag \\
+	\rightarrow H_{gn} S_{gn} =  H_{ga} S_{ga} + H_{gb} S_{gb}  \label{eq:at:bgnsgn}
+\end{eqnarray}
+
+núcleo
+
+\begin{align}
+	B_{gn} S_{gn} = B_{fn} S_{fn} \notag \\
+		H_{gn} S_{gn} \mu_0 = H_{fn} S_{fn} \mu \notag \\
+		H_{fn} = \frac{H_{gn} S_{gn} \mu_0}{S_{fn} \mu} \label{eq:at:hfn}
+\end{align}
+
+loop I
+
+\begin{align}
+	B_{ga} S_{ga} = B_{fa} S_{fa} \notag \\
+		H_{ga} S_{ga} \mu_0 = H_{fa} S_{fa} \mu \notag \\
+		H_{fa} = \frac{H_{ga} S_{ga} \mu_0}{S_{fa} \mu} \label{eq:at:hfa}
+\end{align}
+
+\begin{align}
+	B_{ga} S_{ga} = B_{ra} S_{ra} \notag \\
+		H_{ga} S_{ga} \mu_0 = H_{ra} S_{ra} \mu \notag \\
+		H_{ra} = \frac{H_{ga} S_{ga} \mu_0}{S_{ra} \mu} \label{eq:at:hra}
+\end{align}
+
+ loop II
+
+\begin{align}
+	B_{gb} S_{gb} = B_{fb} S_{fb} \notag \\
+		H_{gb} S_{gb} \mu_0 = H_{fb} S_{fb} \mu \notag \\
+		H_{fb} = \frac{H_{gb} S_{gb} \mu_0}{S_{fb} \mu} \label{eq:at:hfb}
+\end{align}
+
+\begin{align}
+	B_{gb} S_{gb} = B_{rb} S_{rb} \notag \\
+		H_{gb} S_{gb} \mu_0 = H_{rb} S_{rb} \mu \notag \\
+		H_{rb} = \frac{H_{ga} S_{gb} \mu_0}{S_{rb} \mu} \label{eq:at:hrb}
+\end{align}
+
+Substituindo as equações \eqref{eq:at:hfa} e \eqref{eq:at:hra} em \eqref{eq:at:loop1} :
+\begin{align}
+	\frac{H_{gn} S_{gn} \mu_0}{S_{fn} \mu} l_{fn} + 
+	H_{gn} l_{gn} + 
+	\frac{H_{ga} S_{ga} \mu_0}{S_{fa} \mu} l_{fa} + 
+	H_{ga} l_{ga} + 
+	\frac{H_{ga} S_{ga} \mu_0}{S_{ra} \mu} l_{ra} 
+	= 
+	\mathcal{F} \notag
+	\\  % % 
+	H_{gn} \left[
+				\frac{S_{gn} l_{fn} \mu_0}{S_{fn} \mu}  + l_{gn}
+		   \right] +
+    H_{ga} \left[ 
+		    	\frac{S_{ga} l_{fa} \mu_0}{S_{fa} \mu}  + 
+		    	l_{ga} + 
+		    	\frac{S_{ga} l_{ra} \mu_0}{S_{ra} \mu} 
+   		   \right]
+ 	= 
+ 	\mathcal{F} \notag
+ 	\\ %
+ 	H_{ga} 
+ 	=  
+ 	\left(
+	 	\mathcal{F} -
+	 	H_{gn} \left[
+	 				\frac{S_{gn} l_{fn} \mu_0}{S_{fn} \mu}  + l_{gn}
+	 			\right] 
+ 	\right)
+ 	\left[ 
+ 		   	\frac{S_{ga} l_{fa} \mu_0}{S_{fa} \mu}  +  
+ 		   	\frac{S_{ga} l_{ra} \mu_0}{S_{ra} \mu}  +
+ 		   	l_{ga} 
+ 	\right]^{-1} \label{eq:at:H_ga(H_gn)}
+\end{align}
+
+Assim como na equação anterior, podemos encontrar a dependência de $H_{gb}(H_{gn})$ com \eqref{eq:at:hfb} e \eqref{eq:at:hrb} em \eqref{eq:at:loop2}:
+
+\begin{align}
+	H_{gb} 
+ 	=  
+ 	\left(
+	 	\mathcal{F} -
+	 	H_{gn} \left[
+	 				\frac{S_{gn} l_{fn} \mu_0}{S_{fn} \mu}  + l_{gn}
+	 			\right] 
+ 	\right)
+ 	\left[ 
+ 		   	\frac{S_{gb} l_{fb} \mu_0}{S_{fb} \mu}  + 
+ 		   	\frac{S_{gb} l_{rb} \mu_0}{S_{rb} \mu} +
+ 		   	l_{gb}
+ 	\right]^{-1} \label{eq:at:H_gb(H_gn)}
+\end{align}
+
+Pela Eq. \eqref{eq:at:bgnsgn} :
+
+\begin{multline*}
+		H_{gn} S_{gn} =  
+		\left(
+			 	\mathcal{F} -
+			 	H_{gn} \left[
+			 				\frac{S_{gn} l_{fn} \mu_0}{S_{fn} \mu}  + l_{gn}
+			 			\right] 
+		 	\right)
+		 	\left[ 
+		 		   	\frac{S_{ga} \mu_0}{S_{fa} \mu} l_{fa} +  
+		 		   	\frac{S_{ga} \mu_0}{S_{ra} \mu} l_{ra} +
+		 		   	l_{ga}
+		 	\right]^{-1}  S_{ga} 
+		 	+ \\
+			\left(
+			 	\mathcal{F} -
+			 	H_{gn} \left[
+			 				\frac{S_{gn} l_{fn} \mu_0}{S_{fn} \mu}  + l_{gn}
+			 			\right] 
+		 	\right)
+		 	\left[ 
+		 		   	\frac{S_{gb} l_{fb} \mu_0}{S_{fb} \mu}  +  
+		 		   	\frac{S_{gb} l_{rb} \mu_0}{S_{rb} \mu}  +
+		 		   	l_{gb}
+		 	\right]^{-1} S_{gb} 
+\end{multline*}
+
+\begin{multline}
+		H_{gn} S_{gn} =  
+		\left(
+			 	\mathcal{F} -
+			 	H_{gn} \left[
+			 				\frac{S_{gn} l_{fn} \mu_0}{S_{fn} \mu}  + l_{gn}
+			 			\right] 
+		 \right)
+		 (
+			\left[ 
+				   	\frac{S_{ga} \mu_0}{S_{fa} \mu} l_{fa} +  
+				   	\frac{S_{ga} \mu_0}{S_{ra} \mu} l_{ra} +
+				   	l_{ga}
+			\right]^{-1}  S_{ga} 
+				 	+ \\
+			\left[ 
+			 		\frac{S_{gb} l_{fb} \mu_0}{S_{fb} \mu}  +  
+			 		\frac{S_{gb} l_{rb} \mu_0}{S_{rb} \mu}  +
+			 		l_{gb}
+			\right]^{-1} S_{gb} 	\label{eq:at:H_gnS_gn}		 	
+		 )
+\end{multline}
+
+Definindo as variáveis auxiliares:
+
+\begin{align}
+	C_1(S_{gn}, l_{gn}) &= 	\frac{S_{gn} \, l_{fn} \, \mu_0}{S_{fn} \mu}  + l_{gn} \\
+	C_2(S_{ga}, l_{ga}) &= 	\left[ 
+							   	\frac{S_{ga} \mu_0}{S_{fa} \mu} l_{fa} +  
+							   	\frac{S_{ga} \mu_0}{S_{ra} \mu} l_{ra} +
+							   	l_{ga}
+							\right]^{-1}  S_{ga} \\
+	C_3(S_{gb}, l_{gb}) &= 	\left[ 
+						 		\frac{S_{gb} l_{fb} \mu_0}{S_{fb} \mu}  +  
+						 		\frac{S_{gb} l_{rb} \mu_0}{S_{rb} \mu}  +
+						 		l_{gb}
+							\right]^{-1} S_{gb} 	
+\end{align}
+
+Obtemos a Eq. \ref{eq:at:H_gnS_gn} simplificada:
+
+\begin{equation}
+	H_{gn} S_{gn} = \left(
+							\mathcal{F} - H_{gn}\, C_1
+					\right)
+					\left(
+						C_2 + C_3					
+					\right)
+\end{equation}
+
+Que implica em:
+
+\begin{equation}
+	H_{gn}  = \frac{\mathcal{F} \, (C_2 + C_3)}{S_{gn} + C_1 \, (C_2 + C_3)}
+\end{equation}
+
+Pelas equações: \eqref{eq:at:H_ga(H_gn)} e \eqref{eq:at:H_gb(H_gn)}:
+
+\begin{align}
+	H_{ga} = (\mathcal{F} - H_{gn} \, C_1) \frac{C_2 }{S_{ga}} \\
+	H_{gb} = (\mathcal{F} - H_{gn} \, C_1)\frac{C_3 }{S_{gb}}
+\end{align}
+
+Podemos então deduzir o componente campo magnético dos gaps:
+
+\begin{align}
+	B_{gn} &= \mu_0 H_{gn} \\
+	B_{ga} &= \mu_0 H_{ga} \\
+	B_{gb} &= \mu_0 H_{gb} 
+\end{align}
+
+\subsection{Força por trabalho virtual}
+
+A força magnética resultante é calculada através das resultantes de cada bobina:
+
+\begin{align}
+	\vec{F} = \vec{F}_{gn} + \vec{F}_{gn} + \vec{F}_{gn} \label{eq:ativo:F:resultante}
+\end{align}
+
+Onde a força resultante em cada bobina é calcula por:
+
+\begin{align}
+	\vec{F_{g}} = \frac{\vec{B}_g^2 \; S_g}{\mu_0} 
+\end{align}
+
+
+
+
+%\subsection{Modelo com saturação}
+%
+%Pela lei de Ampere:
+%
+%\begin{align}
+%	H_{fn} l_{fn} + H_{gn} l_{gn} + H_{fa} l_{fa} + H_{ga} l_{ga} + H_{ra} l_{ra}= \mathcal{F} \label{eq:at:loop1:s} \\ 
+%	H_{fn} l_{fn} + H_{gn} l_{gn} + H_{fb} l_{fb} + H_{gb} l_{gb} + H_{rb} l_{rb}= \mathcal{F}  \label{eq:at:loop2:s}
+%\end{align}
+%
+%Da conservação do fluxo magnético:
+%
+%\begin{eqnarray}
+%	B_{gn} S_{gn} =  B_{ga} S_{ga} + B_{gb} S_{gb} \notag \\
+%	\rightarrow H_{gn} S_{gn} =  H_{ga} S_{ga} + H_{gb} S_{gb}  \label{eq:at:bgnsgn:s}
+%\end{eqnarray}
+%
+%
+%Porém agora consideramos que o núcleo está saturado e que a equação que relaciona B e H é:
+%
+%\begin{align}
+%	B_f &= B_{fs} + \mu_s (H_f - H_{fs}) \label{eq:a:Bf}
+%\end{align}
+%
+%portanto 
+%
+%\begin{align}
+%	B_{gn} S_{gn} = B_{fn} S_{fn} \notag \\
+%		(B_{fs} + \mu_s (H_f - H_{fs})) S_{gn} \mu_0 = H_{fn} S_{fn} \mu \notag \\
+%		H_{fn} = \frac{(B_{fs} + \mu_s (H_f - H_{fs})) \,  S_{gn} \,  \mu_0}{S_{fn} \mu} \label{eq:at:hfn:S}
+%\end{align}
+%
+%loop I
+%
+%\begin{align}
+%	B_{ga} S_{ga} = B_{fa} S_{fa} \notag \\
+%		H_{ga} S_{ga} \mu_0 = H_{fa} S_{fa} \mu \notag \\
+%		H_{fa} = \frac{H_{ga} S_{ga} \mu_0}{S_{fa} \mu} \label{eq:at:hfa:s}
+%\end{align}
+%
+%\begin{align}
+%	B_{ga} S_{ga} = B_{ra} S_{ra} \notag \\
+%		H_{ga} S_{ga} \mu_0 = H_{ra} S_{ra} \mu \notag \\
+%		H_{ra} = \frac{H_{ga} S_{ga} \mu_0}{S_{ra} \mu} \label{eq:at:hra:s}
+%\end{align}
+%
+% loop II
+%
+%\begin{align}
+%	B_{gb} S_{gb} = B_{fb} S_{fb} \notag \\
+%		H_{gb} S_{gb} \mu_0 = H_{fb} S_{fb} \mu \notag \\
+%		H_{fb} = \frac{H_{gb} S_{gb} \mu_0}{S_{fb} \mu} \label{eq:at:hfb:s}
+%\end{align}
+%
+
+
+
+\newpage
+\section{Simulações}
+
+ Foi utilizado como ferramenta de modelagem o Software de elementos finitos e multi física \textit{Comsol} \todo{isso deve estar descrito na metodologia}. Nas simulações foram utilizados a curva de histerese do Aço 1020 (Curva em anexo) \todo{Colocar tabela B-H em anexo}. O solido foi criado com uma revolução de $45^\circ$ simulando uma secção das oito na qual o modelo foi dividido.  A Fig. \ref{Fig:Simulacao:Passivo:Mesh} ilustra a malha utilizada na execução das simulações com um número aproximado de 19000 elementos.
+ 
+  
+ 	\begin{figure}[!ht]
+ 		\centering
+ 		\includegraphics[width=0.5 \columnwidth,angle=0]{Figs/Simulacoes/Passivo/3D:Mesh=1,2.png}
+ 			\caption{Modelo Comsol do circuito passivo \\ Malha utilizada nos cálculos}
+ 			\label{Fig:Simulacao:Passivo:Mesh}
+ 	\end{figure}
+ 
+ \todo[inline]{falar mais sobre o mesh e o método de elementos finitos}
+
+\section{Circuito passivo}
+
+ O módulo do campo magnético pode ser visualizado para dois casos distintos na Fig. \ref{Fig:Simulacao:Passivo:2D:B}. Nessa simulação, podemos verificar que o ferro está saturado (B=1.6T), que o modelo não possui uma quantidade significativa de linhas de campo magnético que não atravessam o entreferro e que a área do entreferro ($S_g$) possui um pequeno espraiamento aumento assim sua área resultando em uma ligeira diminuição no cálculo da força. Verificamos também que o ponto de operação do imã sofre uma pequena variação passando de 1.05T para 1.06T.
+
+	\begin{figure}[!ht]
+		\centering
+		\caption*{Campo magnético (T)}
+		\subfloat[t][$\Delta_x = 0.6mm$ e $\Delta_z = 0$]
+		{
+			\includegraphics[width=0.45\columnwidth]{Figs/Simulacoes/Passivo/2D:B:dx=0,6.png}
+		} \label{Fig:Simulacao:Passivo:2D:B:dx=0.6}
+		\subfloat[b][$\Delta_x = 1.2mm$ e $\Delta_z = 0$]
+		{
+			\includegraphics[width=0.45\columnwidth]{Figs/Simulacoes/Passivo/2D:B:dx=1,2.png}
+		}	
+		\caption{Modulo do campo magnético do modelo no Comsol do circuito passivo}\label{Fig:Simulacao:Passivo:2D:B:dx=1.2}
+		\label{Fig:Simulacao:Passivo:2D:B}
+	\end{figure}
+
+% O gráfico da força magnética pela translação do rotor ilustrado na Fig. \ref{Fig:Modelagem:Curva:passivo:fxd} é somente de um oitavo da revolução do mancal e, a curva possui um valor de singularidade quando o rotor se aproxima da ferro do estator externo ($l_g = 0$). O gráfico mostra o valor da da força em x, utilizou-se a Eq. \eqref{eq:passivo:Fx} sem deslocamento em Z ($\Delta_z = 0$), o valor calculado é confrontado com o simulado por elementos finitos.
+% 
+%\begin{figure}[!ht]
+%	\centering
+%	\caption*{Força magnética (N) x Deslocamento em X (mm)}
+%	\includegraphics[width=1 \columnwidth,angle=0]{Figs/Simulacoes/Passivo/modelo:circuito:passivo:fXd:calculado:comsol.pdf}
+%		\caption{Comparativo do cálculo da força magnética pela Eq. \eqref{eq:passivo:Fx} e pelo modelo no Comsol com $\Delta_z = 0$}
+%		\label{Fig:Modelagem:Curva:passivo:fxd}
+%\end{figure}
+
+% Podemos na figura verificar a não linearidade da força com a distância, essa propriedade é minimizada quando analisamos a força de atração de forma diferencial como ilustrado na Fig. \ref{Fig:Modelagem:Curva:passivo:frxd}
+
+A força magnética de atração do rotor é ilustrado na Fig. \ref{Fig:Modelagem:Curva:passivo:frxd}, a curva foi levantada implementado as Eq. \eqref{eq:p:F:resultante:x} para o translação do rotor em apenas um eixo. Foram utilizado os valores nominais do protótipo. Verificamos que o modelo apresenta uma curva linear em termos de força de atração por deslocamento, o que era desejado, já que implica em uma simplicidade no modelo e por consequência na malha de controle.
+
+\begin{figure}[!ht]
+	\centering
+	\caption*{Força magnética (N) x Deslocamento em X (mm)}
+	\includegraphics[width=1 \columnwidth,angle=0]{Figs/Simulacoes/Passivo/modelo:circuito:passivo:fXd:calculado:comsol:dx}
+		\caption{Linearização da força quando trabalhado em modo diferencial}
+		\label{Fig:Modelagem:Curva:passivo:frxd}
+\end{figure}
+
+
+A Fig. \ref{Fig:Modelagem:Curva:passivo:dy:linhas} ilustra o resultado da simulação através de elementos finitos onde o rotor é transladado verticalmente de 1.2mm em ambas. Verificamos que as linhas de campo apresentam uma grande deformação se comparamos as linhas de campo do rotor alinhado com o estator externo ($\Delta_z = 0$), essas deformações apresentam um erro numérico no calculo da força já que supusemos na Subsec. \ref{SubSec:CampoX/Y} que as linhas de campo podem ser decompostas em x e z e que essa decomposição é diretamente relacionada com o deslocamento do rotor ($\theta$). 
+
+\begin{figure}[!ht]
+	\centering
+	%\caption*{Força magnética (N) x Deslocamento x (mm)}
+	\subfloat[t][$\Delta_x = 1.2mm$ e $\Delta_z = 0mm$]
+	{
+		\includegraphics[width=0.45 \columnwidth,angle=0]{Figs/Simulacoes/Passivo/2D:B:dy=0:linhas.png}	
+	}	\label{Fig:Modelagem:Curva:passivo:dy:linhas:0}
+	\subfloat[t][$\Delta_x = 1.2mm$ e $\Delta_z = 1.2$]
+	{
+		\includegraphics[width=0.45 \columnwidth,angle=0]{Figs/Simulacoes/Passivo/2D:B:dx=1,2:linhas.png}
+	}	\label{Fig:Modelagem:Curva:passivo:dy:linhas:1,2}
+	\caption{Linhas de campo magnético para deslocamentos na vertical}
+	\label{Fig:Modelagem:Curva:passivo:dy:linhas}
+\end{figure}
+
+A Fig. \ref{Fig:Modelagem:Curva:passivo:fxd:dy} é o resultante 
+
+\begin{figure}[!htp]
+	\centering
+	\caption*{Força magnética (N) x Deslocamento em Y (mm)}
+	\includegraphics[width=1 \columnwidth,angle=0]{Figs/Simulacoes/Passivo/modelo:circuito:passivo:fXd:calculado:comsol:dy.pdf}
+		\caption{Comparativo do cálculo da força magnética pela Eq. \eqref{eq:passivo:Fx} e pelo modelo no Comsol com $\Delta_x = 1.2$ mm}
+		\label{Fig:Modelagem:Curva:passivo:fxd:dy}
+\end{figure}
+
+\todo[inline]{Verificar o Dy}

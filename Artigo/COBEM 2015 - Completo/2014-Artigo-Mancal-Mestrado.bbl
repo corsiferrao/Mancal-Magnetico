@@ -1,0 +1,42 @@
+\begin{thebibliography}{1}
+
+\bibitem{taniwaki2003experimental}
+Yoshiaki {Taniwaki, Shigemune and Ohkami}.
+\newblock {Experimental and numerical analysis of reaction wheel disturbances}.
+\newblock {\em JSME International Journal Series C}, 46:519----526, 2003.
+
+\bibitem{Krishnan2010}
+Sathyan Krishnan, Sang-heon Lee, Hung-yao Hsu, and Gopinath Konchady.
+\newblock {Lubrication of Attitude Control Systems}.
+\newblock {\em Advances in Spacecraft Technologies}, 1, 2010.
+
+\bibitem{Bangcheng2012}
+Han Bangcheng, Zheng Shiqiang, Wang Xi, and Yuan Qian.
+\newblock {Integral Design and Analysis of Passive Magnetic Bearing and Active
+  Radial Magnetic Bearing for Agile Satellite Application}.
+\newblock {\em IEEE Transactions on Magnetics}, 48(6):1959--1966, June 2012.
+
+\bibitem{Marble2006}
+Sean Marble and David Tow.
+\newblock {Bearing health monitoring and life extension in satellite
+  momentum/reaction wheels}.
+\newblock {\em Aerospace Conference, 2006 IEEE}, pages 1--7, 2006.
+
+\bibitem{Bernus1998}
+C~Bernus, P~Jamain, and JP~Roland.
+\newblock {Magnetic bearing with alternating actuators and sensors}.
+\newblock {\em US Patent 5,763,972}, 1998.
+
+\bibitem{Scharfe2001}
+Michael Scharfe, Thomas Roschke, Enrico Bindl, and Daniel Blonski.
+\newblock {Design and development of a compact magnetic bearing momentum wheel
+  for micro and small satellites}.
+\newblock In {\em Proceedings of the 15th Annual Utah State University
+  Conference on Small Satellites}, volume~15, pages 1--9, 2001.
+
+\bibitem{Chiba}
+Akira Chiba and Fukao.
+\newblock {\em {Magnetic bearings and bearingless drives}}.
+\newblock Elsevier, 2005.
+
+\end{thebibliography}

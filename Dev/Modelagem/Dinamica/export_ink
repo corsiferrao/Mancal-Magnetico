@@ -1,0 +1,6 @@
+#!/bin/bash          
+FILE1=$1
+inkscape \
+  --without-gui \
+  --file=$1 \
+  -D --export-pdf=$1

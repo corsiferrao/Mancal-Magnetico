@@ -1,0 +1,81 @@
+% Mestre em LaTeX - v0.5
+% Copyleft 2008-2013 Bruno C. Vellutini - http://organelas.com/
+%
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+% THE SOFTWARE.
+%
+% Ou seja, utilize e modifique os arquivos como desejar.
+% 
+% Para mais informações visite http://nelas.github.com/mestre-em-latex/
+
+% Classe do documento
+\documentclass[twoside,a4paper,12pt]{report}
+\usepackage[english,brazil,brazilian]{babel}
+\usepackage{caption}
+\usepackage{cancel}
+\usepackage{subfig}
+\usepackage[section]{placeins}
+
+\usepackage{tikz,xcolor}
+\usetikzlibrary{shapes,arrows}
+
+% Pacotes e comandos customizados
+\include{Config/meta}
+%\usepackage[disable]{todonotes}
+
+\usepackage{enumerate}
+\usepackage{multirow}
+
+\graphicspath{ {./Figs/} }
+
+\newcommand{\executeiffilenewer}[3]{%
+\ifnum\pdfstrcmp{\pdffilemoddate{#1}}%
+{\pdffilemoddate{#2}}>0%
+{\immediate\write18{#3}}\fi%
+}
+
+\newcommand{\includesvg}[1]{%
+\executeiffilenewer{#1.svg}{#1.pdf}%
+{inkscape -z -D --file=./Figs/#1.svg %
+--export-pdf=./Figs/#1.pdf --export-latex}%
+\input{./Figs/#1.pdf_tex}%
+}
+
+% Início do texto
+\begin{document}
+
+%\tableofcontents
+% Desenvolvimento de mancal magnético para rodas de reação
+
+%\include{Cap/pre}   			    		% Capa, prefácio e afins
+%\include{Cap/Introducao}					% Capítulo 1: Introdução
+%\include{Cap/Projeto_mancal_magnetico}		% Capítulo: Projeto
+\include{Cap/Modelagem_eletromagnetica}	% Capítulo: Modelagem elromangética
+%\include{Cap/Modelagem_dinamica}			% Capítulo: Modelagem mecanica
+%\chapter{Técnicas de Controle}
+%\chapter{Resultados e Análise}
+%\chapter{Conclusões}
+
+% Formato da bibliografia
+\bibliographystyle{Config/apalike}
+
+% Arquivo .bib
+\bibliography{library}
+
+% Apêndice(s)
+\include{apendice}
+
+% Fim do texto
+\end{document}

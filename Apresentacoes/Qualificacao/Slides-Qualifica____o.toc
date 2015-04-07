@@ -1,0 +1,10 @@
+\beamer@endinputifotherversion {3.24pt}
+\select@language {brazilian}
+\beamer@sectionintoc {1}{Introdu\IeC {\c c}\IeC {\~a}o}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Rodas de Rea\IeC {\c c}\IeC {\~a}o}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Revis\IeC {\~a}o}{7}{0}{1}
+\beamer@sectionintoc {2}{O mancal magn\IeC {\'e}tico}{9}{0}{2}
+\beamer@subsectionintoc {2}{1}{Estator Interno}{11}{0}{2}
+\beamer@subsectionintoc {2}{2}{Estator Externo}{15}{0}{2}
+\beamer@sectionintoc {3}{Modelo Din\IeC {\^a}mico}{18}{0}{3}
+\beamer@sectionintoc {4}{Pr\IeC {\'o}ximos passos}{24}{0}{4}
