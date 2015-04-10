@@ -3,6 +3,8 @@
 % 7/3/15
 % Mancal Magnético
 
+%% Relutancias
+
 %% Inicializacao
 
 % Principais resistencias
@@ -66,6 +68,9 @@ Ra = [Ra1; Ra2; Ra3; Ra4; Ra5; Ra6; Ra7; Ra8]
 % \[ (Rm-Ra)*Im = Fm    \]
 % \[ Im = inv(Rm-Ra)*Fm \]
 
-I = inv(Rm-Ra)*Vm;
+Rt = Rm-Ra;
 
-%% Solve
+%I = inv(Rm-Ra)*Vm;
+%X = linsolve(Rt*Im, Fm, Im)
+
+

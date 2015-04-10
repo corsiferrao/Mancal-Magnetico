@@ -2,6 +2,11 @@
 \cleardoublepage
 \pagestyle{fancy}
 
+\begin{center}
+\includegraphics[width=0.7\linewidth]{modelo_curva_bh}
+\end{center}
+
+
 \chapter{Modelagem Eletromagnética do Mancal}
 
 %Passos da modelagem:
@@ -17,7 +22,9 @@
 
 Abordaremos nesse capítulo a modelagem eletromagnética do mancal magnético proposto, essa etapa é importante para o entendimento das influências dos parâmetros geométricos no circuito eletromagnético além de possibilitar a criação de um modelo realista das forças atuantes no rotor. Com o equacionamento das forças um modelo inicial em elementos finitos foi criado e simulações realizadas para a obtenção de um melhor modelo. 
 
-As nomenclaturas das dimensões a serem utilizadas nas seguintes secções para modelagen e parametrização do sistema são ilustradas na Fig. \ref{Fig:Modelagem:Dimensoes}.
+As nomenclaturas das dimensões a serem utilizadas nas seguintes secções para modelagem e parametrização do sistema são ilustradas na Fig. \ref{Fig:Modelagem:Dimensoes}.
+
+
 
 \begin{figure}[!ht]
 	\centering
@@ -86,11 +93,10 @@ Considera-se nesse modelo para os materiais ferros magnéticos a curva de magnet
 	\label{eq:p:BH:ferro}
 \end{align}
 
-
 \begin{figure}[!ht]
 \centering
 	\caption*{ Vetor campo magnético (T) x Campo Magnético (A/m)}
- 	\includegraphics[width=0.6\linewidth]{modelo:curva:BH}
+ 	\includegraphics[width=0.6\linewidth]{modelo_curva_bh}
 	\caption{Curva de magnetização para o ferro 1020}
 	\label{Fig:Modelagem:BH}
 \end{figure}
@@ -242,7 +248,7 @@ Os resultados obtidos em ambos os modelos são comparados a seguir.
 
 \begin{figure}[th!]
 \centering
-\includegraphics[width=0.7\linewidth]{Simulacoes/Passivo2/validacao_passivo_dx_calibrado}
+\includegraphics[width=0.7\linewidth]{Simulacoes/Passivo2/validacao_passivo_dx_calibrado.pdf}
 \caption{}
 \label{fig:validacao_passivo_dx_calibrado}
 \end{figure}

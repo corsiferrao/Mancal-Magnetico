@@ -2,6 +2,7 @@ function [ m ] = derivados_geometricos( m, dx, dy )
 %% Calcula constantes geometricas do mancal com base
 % nos valores construtivos
 
+%% Circuito passivo
 % raios
 m.rei  = m.ree-m.wef; % Raio interno ferro estator externo
 m.rre  = m.rei-m.wge; % Raio rotor externo ferro
@@ -26,6 +27,8 @@ m.Sge = m.AS*2*pi*(m.ree - m.lg/2)*(m.hge+dy)/m.NFRAC;% Area do gap
 
 % Volume estimado Total
 m.Vm = m.Sm*m.hm+2*m.Sef*m.wef+2*m.Srf*m.wrf+m.Srr*m.wrr;
+
+%% 
 
 end
 
