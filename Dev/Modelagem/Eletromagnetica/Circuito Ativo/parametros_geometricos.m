@@ -18,24 +18,21 @@ m.wrf  = 10E-3;   % Largura ferro rotor                   x
 m.wrr  = 6E-3;    % Largura rotor retorno                 x
 
 % Estator interno
-
 m.wgi = 0.6E-3; % Gap nominal interno                     V    
  
-%Awg 33
-m.fs  = 0.0254      % secção do fio (mm2)
-m.ff  = 1.2         % fator de embobinamento
-m.nnb = 150;        % número de voltas da bobina          V
-                    % volume total dos fios 
-m.Vnb = 150*m.ff*m.Fs;
+% Fio + embobinamento
+m.fs  = 0.0254E-6;   % secção do fio (mm2) : awg 33
+m.ff  = 1.2;         % fator de embobinamento
+m.nnb = 150;         % número de voltas da bobina         V                 
+                     % Area tota de embobinamento 
+m.Anb = m.nnb*m.ff*m.fs;
+                     % Altura estator interno  
+m.hei = 2*m.hef + m.hm; 
+m.hnb = 5E-3;        % Altura do nucleo da bobina         V      
+Anbu = m.hei - m.hnb;% area útil p/ embobinamento 
 
-m.wnb = m.Vnb/m.hnb; % Largura nucleo     
-                     % m.wnb = 8E-3;                      
-m.hnb = m.hm;        % Altura núcleo                      V
+m.wnb = m.Vnb/Anbu; % Largura nucleo     
+                    % m.wnb = 8E-3;                      
 
 m.wei = 6E-3;   % Largura estator interno                 V  
 
-                % Raio estator interno interno
-m.reie = m.ree-m.wef-m.wge-m.wrf-m.wgi-m.wnb;  
-                % Raio estator interno externo
-m.reii = m.reie - m.wei;
-             

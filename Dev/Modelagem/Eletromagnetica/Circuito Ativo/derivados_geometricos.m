@@ -14,6 +14,9 @@ m.hge = m.hef;                     % Algura do ferro rotor = altura do gap
 m.lg  = sqrt((m.wge+dx)^2 + dy^2); % Comprimento do gab em funcao do deslocamento em x e y 
 m.Sge = m.AS*2*pi*(m.ree - m.lg/2)*(m.hge+dy)/m.NFRAC;% Area do gap
 
+m.dx = dx;
+m.dy = dy;
+
 %% Rotor
 m.rre = m.rei-m.wge; % Raio rotor externo ferro
 m.rri = m.rre-m.wrf; % Raio rotor interno ferro
@@ -22,6 +25,18 @@ m.Srr = pi*((m.rri+m.wrr)^2-m.rri^2)/m.NFRAC;    % Area do retorno rotor        
 
 %% Núcleo
 
+                % Raio estator nucleo externo 
+m.rene = m.rri-m.wgi;
+                % Raio estator interno externo
+m.reie = m.rene-m.wnb;
+                % Raio estator interno interno
+m.reii = m.reie-m.wei;
+
+% perimetros
+                % perimetro estator nucleo externo
+m.pene = 2*pi*m.rene;
+             
+m.wei = 6E-3;   % Largura estator interno                 V  
 
 %% Total
 
