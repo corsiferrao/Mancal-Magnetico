@@ -25,6 +25,7 @@ m.Srr = pi*((m.rri+m.wrr)^2-m.rri^2)/m.NFRAC;    % Area do retorno rotor        
 
 %% Núcleo
 
+% raios
                 % Raio estator nucleo externo 
 m.rene = m.rri-m.wgi;
                 % Raio estator interno externo
@@ -34,10 +35,18 @@ m.reii = m.reie-m.wei;
 
 % perimetros
                 % perimetro estator nucleo externo
-m.pene = 2*pi*m.rene;
-             
-m.wei = 6E-3;   % Largura estator interno                 V  
+m.pene  = 2*pi*m.rene;
 
+% encontrando porcentangem referente ao nucleo
+% Ref. C1
+theta = tan(m.rnb/m.rene); 
+parte = theta/(2*pi);
+
+% Areas
+                % Area nucleo da bobina externo (com ar)
+m.Snbe   = 2*pi*m.rene*m.hnb*(2*parte);
+
+ 
 %% Total
 
 m.Vm = m.Sm*m.hm+2*m.Sef*m.wef+2*m.Srf*m.wrf+m.Srr*m.wrr; % Volume estimado Total

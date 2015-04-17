@@ -1,4 +1,4 @@
-function [ R ] = R(gap, w, s, mu )
+function [ R ] = R(w, s, mu )
 %% relutncia gap 
 % Rafael Corsi
 % 7/3/15
