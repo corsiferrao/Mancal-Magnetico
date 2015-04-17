@@ -23,15 +23,13 @@ m.rri = m.rre-m.wrf; % Raio rotor interno ferro
 m.Srf = 2*pi*(m.rre - m.wrf/2)*m.hef/m.NFRAC;    % Area do ferro rotor           (41.74)
 m.Srr = pi*((m.rri+m.wrr)^2-m.rri^2)/m.NFRAC;    % Area do retorno rotor         (validado)
 
+m.prr = 2*pi*(m.rri-m.wrr);
+
 %% Núcleo
 
 % raios
                 % Raio estator nucleo externo 
 m.rene = m.rri-m.wgi;
-                % Raio estator interno externo
-m.reie = m.rene-m.wnb;
-                % Raio estator interno interno
-m.reii = m.reie-m.wei;
 
 % perimetros
                 % perimetro estator nucleo externo
@@ -43,9 +41,22 @@ theta = tan(m.rnb/m.rene);
 parte = theta/(2*pi);
 
 % Areas
-                % Area nucleo da bobina externo (com ar)
+           % Area nucleo da bobina externo (com ar)
 m.Snbe   = 2*pi*m.rene*m.hnb*(2*parte);
 
+%% Estator interno
+
+% raios
+                % Raio externo estator interno 
+m.reie = m.rene-m.wnb;
+                % Raio interno estator interno 
+m.reii = m.reie-m.wei;
+
+% perimetros
+m.peie = 2*pi*m.reie;
+
+                % Area da seccao estator interno
+m.Sei  = m.reie*m.hei;
  
 %% Total
 

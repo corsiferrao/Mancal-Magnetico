@@ -1,4 +1,4 @@
-function [ la, lb, lc, ld, le, lf, lg, lh ] = lg(m)
+function [ la, lb, lc, ld, le, lf, lg, lh ] = lgap(m)
 %% comprimento do gap entre os nucleos
 % Rafael Corsi
 % 14/4/15

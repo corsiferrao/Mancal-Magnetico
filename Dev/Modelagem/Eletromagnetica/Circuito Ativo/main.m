@@ -1,20 +1,32 @@
-%% Relutancias do circuito ativo
+%% Circuito Ativo, modelagem nao linear
 % Rafael Corsi
-% 7/3/15
+% 4/15
 % Mancal Magnético
+clc
+clear all
 
-
-% Deslocamentos relativos
-dx = 1E-4;
-dy = 0;
-
-% Parametros
+%% Parametros
 parametros_geometricos;
 parametros_magneticos;
-m = derivados_geometricos(m,dx,dy);
 
-% calcula gap com base no deslocamento x e y do rotor
-[la,lb,lc,ld,le,lf,lg,lh]=lgap(m);
+%% inicializacao
+% Deslocamentos relativos
+dx = 0.0E-4;
+dy = 0;
+I  = 10; 
+
+% Forcas eletromotriz
+FA = m.nnb*I;
+FB = m.nnb*I/2;
+FC = 0;
+FD = 0;
+FE = 0;
+FF = 0;
+FG = 0;
+FH = m.nnb*I/2;
+
+% derivados
+m = derivados_geometricos(m,dx,dy);
 
 % Permeabilidade inicial do rotor
 ufrAB = 2E4;
@@ -35,17 +47,22 @@ ufnF = ufnA;
 ufnG = ufnA; 
 ufnH = ufnA; 
 
-%% inicio interação
+% Relutancais
+
+% calcula gap com base no deslocamento x e y do rotor
+[la,lb,lc,ld,le,lf,lg,lh]=lgap(m);
 
 % calcula relutancia gaps
 RgA = R(la,m.Snbe,mag.u0);
-RgB = R(la,m.Snbe,mag.u0);
-RgC = R(la,m.Snbe,mag.u0);
-RgD = R(la,m.Snbe,mag.u0);
-RgE = R(la,m.Snbe,mag.u0);
-RgF = R(la,m.Snbe,mag.u0);
-RgG = R(la,m.Snbe,mag.u0);
-RgH = R(la,m.Snbe,mag.u0);
+RgB = R(lb,m.Snbe,mag.u0);
+RgC = R(lc,m.Snbe,mag.u0);
+RgD = R(ld,m.Snbe,mag.u0);
+RgE = R(le,m.Snbe,mag.u0);
+RgF = R(lf,m.Snbe,mag.u0);
+RgG = R(lg,m.Snbe,mag.u0);
+RgH = R(lh,m.Snbe,mag.u0);
+
+%% inicio interação
 
 % calcula relutancais rotor
 lr = m.prr/8;
@@ -80,3 +97,4 @@ RfFG = R(lf, m.Sei, ufnF);
 RfGH = R(lf, m.Sei, ufnG);
 RfHA = R(lf, m.Sei, ufnH);
 
+malhas
