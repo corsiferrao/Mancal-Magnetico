@@ -49,7 +49,7 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,0.78195932)%
-    \put(0,0){\includegraphics[width=\unitlength]{modelo:passivo:DxDy.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength]{modelo_passivo_DxDy.pdf}}%
     \put(0.68566669,0.18453886){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\Delta_z$}}}%
     \put(0.93662777,0.05570455){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{x}}}%
     \put(0.83813707,0.14793513){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{z}}}%

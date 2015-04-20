@@ -17,13 +17,13 @@ I  = 10;
 
 % Forcas eletromotriz
 FA = m.nnb*I;
-FB = m.nnb*I/2;
+FB = 0;m.nnb*I/2;
 FC = 0;
 FD = 0;
 FE = 0;
 FF = 0;
 FG = 0;
-FH = m.nnb*I/2;
+FH = 0;m.nnb*I/2;
 
 % derivados
 m = derivados_geometricos(m,dx,dy);

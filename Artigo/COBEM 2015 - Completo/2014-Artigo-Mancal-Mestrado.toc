@@ -1,7 +1,0 @@
-\select@language {english}
-\contentsline {section}{\numberline {I}TOC}{1}
-\contentsline {section}{\numberline {II}Introdu\IeC {\c c}\IeC {\~a}o}{1}
-\contentsline {section}{\numberline {III}Project}{1}
-\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}External Stator and Rotor}{2}
-\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}Inner stator and Rotor}{3}
-\contentsline {section}{}{4}

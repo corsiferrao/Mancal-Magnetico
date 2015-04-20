@@ -39,14 +39,14 @@ Fm = [FA + FB;
       FH + FA];
 
 %% Resistencias individual malhas
-R1 = RgA+RrAB+RfAB+RnA;
-R2 = RgB+RrBC+RfBC+RnB;
-R3 = RgC+RrCD+RfCD+RnC;
-R4 = RgD+RrDE+RfDE+RnD;
-R5 = RgE+RrEF+RfEF+RnE;
-R6 = RgF+RrFG+RfFG+RnF;
-R7 = RgG+RrGH+RfGH+RnG;
-R8 = RgH+RrHA+RfHA+RnH;
+R1 = RgA+RnA+RrAB+RfAB+RgB+RnB;
+R2 = RgB+RnB+RrBC+RfBC+RgC+RnC;
+R3 = RgC+RnC+RrCD+RfCD+RgD+RnD;
+R4 = RgD+RnD+RrDE+RfDE+RgE+RnE;
+R5 = RgE+RnE+RrEF+RfEF+RgF+RnF;
+R6 = RgF+RnF+RrFG+RfFG+RgG+RnG;
+R7 = RgG+RnG+RrGH+RfGH+RgH+RnH;
+R8 = RgH+RnH+RrHA+RfHA+RgA+RnA;
 
 % Matriz resistencia malhas
 Rm = diag([R1,R2,R3,R4,R5,R6,R7,R8]);
@@ -64,11 +64,13 @@ Ra8 = [RgA+RnA 0 0 0 0 0 RgG+RnG 0];
 % Matriz resistencia adjacente
 Ra = [Ra1; Ra2; Ra3; Ra4; Ra5; Ra6; Ra7; Ra8];
 
+% Matriz R
+R = Rm-Ra;
 %% Solução da equacao
 % \[ (Rm-Ra)*Im = Fm    \]
 % \[ Im = inv(Rm-Ra)*Fm \]
 
-I = (Rm-Ra)\Fm
+I = R\Fm
 
 phi =  [ I(1) + I(2); 
         -I(2) - I(3);

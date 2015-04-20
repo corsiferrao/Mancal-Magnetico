@@ -1,59 +1,20 @@
-%% bare_jrnl.tex
-%% V1.3
-%% 2007/01/11
-%% by Michael Shell
-%% see http://www.michaelshell.org/
-%% for current contact information.
-%%
-%% This is a skeleton file demonstrating the use of IEEEtran.cls
-%% (requires IEEEtran.cls version 1.7 or later) with an IEEE journal paper.
-%%
-%% Support sites:
-%% http://www.michaelshell.org/tex/ieeetran/
-%% http://www.ctan.org/tex-archive/macros/latex/contrib/IEEEtran/
-%% and
-%% http://www.ieee.org/
+% LaTeX .tex example for the proceedings of
+% COBEM 2015 - 23rd International Congress of Mechanical Engineering
+% November, 6-11 2015 - Rio de Janeiro, RJ, Brazil
+%
+% Based on the template of the proceedings of COBEM2013 
+%
+% Max. 8 pg
 
-\documentclass[journal,a4paper,oneside,twocolumn]{IEEEtran}
-
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
-
-\usepackage{natbib}
-
-
-\ifCLASSINFOpdf
-  \usepackage[pdftex]{graphicx}
-  % declare the path(s) where your graphic files are
-\graphicspath{ {./Figs/} }
-  % and their extensions so you won't have to specify these with
-  % every instance of \includegraphics
-  \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
-\else
-  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
-  % will default to the driver specified in the system graphics.cfg if no
-  % driver is specified.
-  % \usepackage[dvips]{graphicx}
-  % declare the path(s) where your graphic files are
-  % \graphicspath{{../eps/}}
-  % and their extensions so you won't have to specify these with
-  % every instance of \includegraphics
-  % \DeclareGraphicsExtensions{.eps}
-\fi
-
-\usepackage{multirow}
-%\usepackage[disable]{todonotes}
-\usepackage[]{todonotes}
-
-%\usepackage[colorinlistoftodos]{}  
-\setlength{\marginparwidth}{1cm}
-%\reversemarginpar
-
-% correct bad hyphenation here
-\hyphenation{op-tical net-works semi-conduc-tor}
+\documentclass[10pt,fleqn,a4paper,twoside]{article}
+\usepackage{cobem2015}
 
 \usepackage{amsmath}
+\usepackage{todo}
+\graphicspath{ {./Figs/} }
 
+\def\shortauthor{R. Corsi, J. Jaime}
+\def\shorttitle{Active Magnetic Bearing Project For a Satellite Reaction Wheel}
 
 \newcommand{\executeiffilenewer}[3]{%
 \ifnum\pdfstrcmp{\pdffilemoddate{#1}}%
@@ -68,48 +29,32 @@
 \input{./Figs/#1.pdf_tex}%
 }
 
-%\renewcommand{\IEEEkeywords}{\textbf{Palavras chave -} 
 
 \begin{document}
-%
-% paper title
-% can use linebreaks \\ within to get better formatting as desired
-\title{Active Magnetic Bearing Project For a Satellite Reaction Wheel }
+\fphead
+\hspace*{-2.5mm}\begin{tabular}{||p{\textwidth}}
+\begin{center}
+\vspace{-4mm}
+\title{ACTIVE MAGNETIC BEARING PROJECT FOR A SATELLITE REACTION WHEEL}
+\end{center}
+\authors{Rafael~Corsi~Ferr\~{a}o} \\
+\authors{Jos\'{e} Jaime da Cruz} \\
+\institution{Escola Polit\'ecnica da Cidade de S\~{a}o Paulo} \\
+\institution{corsiferrao@gmail.com, jaime@lac.usp.br} \\
+\\
+%\authors{Third Author's Name} \\
+%\institution{Institution and address for third author} \\
+%\institution{e-mail} \\
+%\\
+%\authors{Same format for others authors, if any} \\
+\\
+\abstract{\textbf{Abstract.} In this paper, the development of a novel active magnetic bearing (MB) system for reaction wheels applicable in satellite attitude control is presented. The proposed bearing has four degrees of freedom passively stable (EMB) by one pair of permanent magnet; two degrees of freedom (AMB) are actively stabilized by eight electromagnetic poles. The  magnetic model of both EMB and AMB are presented and  equations of force-current and force-position are analyzed by the magnetic circuit approach and by the finite element method. With the force characteristic curves a non-linear dynamic model for the MB and a control system that stabilizes the bearing at its operating point are presented. A flat, uncoupled and scalable magnetic bearing with good stiffness, that can be used on satellites reaction wheels to improve its performance and reliability, is obtained. A prototype is under construction. Simulation results are presented.}\\
+\\
+\keywords{\textbf{Keywords:} Magnetic Bearing, Satellite Attitude Control }\\
+\end{tabular}
 
-\author{
-		Rafael~Corsi~Ferr\~{a}o, Jos\'{e} Jaime da Cruz
-        \\%   <-this % stops a space
-        Instituto Mau\'{a} de Tecnologia -  N\'{u}cleo de Sistemas Eletr\^{o}nicos Embarcados \\
-        S\~{a}o Caetano do Sul - SP - Brazil 
-        
-\thanks{ $^{a}$Autor para correspondência: Rafael~Corsi~Ferr\~{a}o, E-mail: corsiferrao@gmail.com.}% <-this % stops a space
-}
-%\thanks{Manuscript received April 19, 2005; revised January 11, 2007.}}
-
-
-% The paper headers
-%\markboth{Journal of \LaTeX\ Class Files,~Vol.~6, No.~1, January~2007}%
-%{Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for Journals}
-
-
-\maketitle
-
-
-\begin{abstract}
-
-\end{abstract}
-
-% Note that keywords are not normally used for peerreview papers.
-\begin{IEEEkeywords}
-	Magnetic Bearing, Satellite Attitude Control 
-\end{IEEEkeywords}
-
-
-\IEEEpeerreviewmaketitle
-
-\section{Introdução}
-
-\IEEEPARstart{T}{he} attitude and orbit control is one of the most critical technology of any spatial systems []\todo{Citar}, Reaction wheels are hard to replace because they present a large operating range in torque (unlike magnetic actuators) and are powered by renewable energy provided by solar panels (unlike propellers based on a finite fuel supply). For these reasons, reaction wheels are present on virtually any satellite that with a  minimum performance requirements in attitude.
+\section{INTRODUCTION}
+The attitude and orbit control is one of the most critical technology of any spatial systems []\todo{Citar}, Reaction wheels are hard to replace because they present a large operating range in torque (unlike magnetic actuators) and are powered by renewable energy provided by solar panels (unlike propellers based on a finite fuel supply). For these reasons, reaction wheels are present on virtually any satellite that with a  minimum performance requirements in attitude.
 
 A reaction wheel can be described as an inertial actuator operating on the principle of conservation of angular momentum. The performance of the reaction wheel on the satellite takes place by exchange of angular momentum, limited to the axis of rotation of the wheel. Due to the large difference between the satellite and the inertia of the reaction wheel, a control of attitude with great precision is possible with this system.
 
@@ -131,7 +76,7 @@ Another magnetic bearing proposition is from \cite{Scharfe2001} also works with 
 
 A recent topology is proposed by \cite{Bangcheng2012} is a three degree of freedom magnetic bearing projected for a agile satellite, the focus of this topology is to supplies an substantial axial stiffness (passive axis) in other to maintain the rotor on it operation point when applied to  gyroscope effect.
 
-All topologies main topologies reaction wheel with magnetic bearing has the rotor placed outside of the bearing \ldots
+%All topologies main topologies reaction wheel with magnetic bearing has the rotor placed outside of the bearing \ldots
 
 \section{Project}
 
@@ -139,12 +84,12 @@ The magnetic bearing proposed in this work is in parts a junction topologies pro
 
 Figure \ref{fig:mancal:corte} illustrates the proposed bearing. We adopted a flat geometry to better stiffness in the unstable modes of the bearing. The outboard bearing to the motor enables a rigidity within the proposed limits of mass and dimensions.
 
-\begin{figure*}
+\begin{figure}
 \centering
-\includegraphics[width=1\linewidth]{Figs/mancais/mancal:corte2}
+\includegraphics[width=1\linewidth]{Figs/mancais/mancal_corte2}
 \caption{Radial cut of the proposed magnetic bearing. (a) External stator; (b) rotor; (c) internal stator; (d) permanent magnetics; (e) coils}
 \label{fig:mancal:corte}
-\end{figure*}
+\end{figure}
 
 \subsection{External Stator and Rotor}
 
@@ -152,7 +97,7 @@ The magnetic circuit of a section of the outer stator is illustrated in Figure \
 
 \begin{figure}[th!]
 \centering
-\includegraphics[width=0.7\linewidth]{Figs/circuito:passivo}
+\includegraphics[width=0.4\linewidth]{Figs/circuito_passivo}
 \caption{Magnetic circuit of the outer stator and rotor}
 \label{fig:circuito:passivo}
 \end{figure}
@@ -163,8 +108,8 @@ The cumulative magnetic field in the air gap (generated by the permanent magneti
 
 	\begin{figure}[!ht]
 		\centering
-		\def\svgwidth{0.7\columnwidth}
-		\includesvg{modelo:passivo:DxDy}
+		\def\svgwidth{0.4\columnwidth}
+		\includesvg{modelo_passivo_DxDy}
 			\caption{Deslocamento em X e Y}
 			\label{Fig:modelo:passivo:DxDz}
 	\end{figure}
@@ -175,7 +120,7 @@ With an analytical model it was possible to choose the initial dimensions of the
 
 \begin{figure}[th]
 \centering
-\includegraphics[width=1\linewidth]{./Figs/Simulacoes/Passivo/forca:passivo:mod:fx:fy:3d}
+\includegraphics[width=0.4\linewidth]{./Figs/Simulacoes/Passivo/forca_passivo_mod_fx_fy_3d}
 \caption{3D map of attraction force on the radial direction due to passive bearing system}
 \label{fig:forca:passivo:mod:fx:fy:3d}
 \end{figure}
@@ -184,8 +129,8 @@ The Fig. \ref{fig:forca:passivo:comsol:dy} is the result of forces in the rotor 
 
 \begin{figure}[th]
 \centering
-{\footnotesize \textit{Magnetic Force (N) x Displacement Y (mm): Equilibrium point}}
-\includegraphics[width=0.7\linewidth]{./Figs/Simulacoes/Passivo/forca:passivo:comsol:dy}
+{\textit{Magnetic Force (N) x Displacement Y (mm): Equilibrium point}}\\
+\includegraphics[width=0.4\linewidth]{./Figs/Simulacoes/Passivo/forca_passivo_comsol_dy}
 \caption{}
 \label{fig:forca:passivo:comsol:dy}
 \end{figure}
@@ -198,7 +143,7 @@ Figure \ref{fig:modelo:mancal:estator:interno:fluxo} shows the internal stator w
 
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[width=1\linewidth]{./Figs/modelo:mancal:estator:interno:fluxo}
+	\includegraphics[width=0.5\linewidth]{./Figs/modelo_mancal_estator_interno_fluxo}
 	\caption{Magnetic flux of active bearing system where A to H are the inner stator poles}
 	\label{fig:modelo:mancal:estator:interno:fluxo}
 \end{figure}
@@ -207,7 +152,7 @@ The magnetic circuit between the inner stator and the rotor can be seen in Figur
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=1\linewidth]{./Figs/modelo:circuito:ativo:explicativo}
+\includegraphics[width=0.4\linewidth]{./Figs/modelo_circuito_ativo_explicativo}
 \caption{Electromagnetic circuit of inner stator and rotor. (a) rotor reluctance, (b) airgap reluctance, (c) magnetic flux generate by the poles, (d) return ring}
 \label{fig:modelo:circuito:ativo:explicativo}
 \end{figure}
@@ -234,8 +179,8 @@ The geometric parameters of the internal stator were raised starting from the re
 
 \begin{figure}
 \centering
-Force (N) x Current (A) at maximum air gap
-\includegraphics[width=0.7\linewidth]{./Simulacoes/Ativo/Forca:ativo:artigo}
+Force (N) x Current (A) at maximum air gap\\
+\includegraphics[width=0.4\linewidth]{/Simulacoes/Ativo/Forca_ativo_artigo}
 \caption{Attraction force at maximum air gap }
 \label{fig:magnetico:ativo:comsol}
 \end{figure}
@@ -256,12 +201,12 @@ Auxiliary bearings are essential on any magnetic bearing \todo{ref.}, it prevent
 
 This bearing is locates between the outer stator and the rotor as shown on Fig. \ref{fig:mancal:batente:corte}. IT has two main parts: (a) that is project to prevent the shock by the iron parts of the rotor and to not allow the rotor to displaces verticaly beyond it maximum value; (b) to limited the maximum tilt inclination.
 
-\begin{figure}[th!]
-\centering
-\includegraphics[width=0.5\linewidth]{Figs/mancais/mancal:batente:corte}
-\caption{Auxiliary bearing. (a) Radial displacement limitation; (b) tilt and axial direction limitation}
-\label{fig:mancal:batente:corte}
-\end{figure}
+%\begin{figure}[th!]
+%\centering
+%\includegraphics[width=0.4\linewidth]{Figs/mancais/mancal_batente_corte}
+%\caption{Auxiliary bearing. (a) Radial displacement limitation; (b) tilt and axial direction limitation}
+%\label{fig:mancal:batente:corte}
+%\end{figure}
 
 \subsection{Bearing dimensions and stiffness}
 
@@ -312,146 +257,26 @@ The actuator dynamics is generated primarily by the coils,  this inductance is t
 
 We can than obtain the block diagram for the radial rotor displacement, as shown on Fig. \ref{fig:diagrama:blocos:modelo:linear}.
 
-\begin{figure*}[th!]
+\begin{figure}[th!]
 \centering
-\includegraphics[width=1\linewidth]{../Figs/Modelagem/diagrama:blocos:modelo:linear}
+\includegraphics[width=1\linewidth]{../Figs/Modelagem/diagrama_blocos_modelo_linear}
 \caption{Diagrama de blocos do modelo linearizado para descolamentos em x e y}
 \label{fig:diagrama:blocos:modelo:linear}
-\end{figure*}
-
-%\begin{figure}[!t]
-%\centering
-%\includegraphics[width=2.5in]{myfigure}
-% where an .eps filename suffix will be assumed under latex, 
-% and a .pdf suffix will be assumed for pdflatex; or what has been declared
-% via \DeclareGraphicsExtensions.
-%\caption{Simulation Results}
-%\label{fig_sim}
-%\end{figure}
-
-% Note that IEEE typically puts floats only at the top, even when this
-% results in a large percentage of a column being occupied by floats.
+\end{figure}
 
 
-% An example of a double column floating figure using two subfigures.
-% (The subfig.sty package must be loaded for this to work.)
-% The subfigure \label commands are set within each subfloat command, the
-% \label for the overall figure must come after \caption.
-% \hfil must be used as a separator to get equal spacing.
-% The subfigure.sty package works much the same way, except \subfigure is
-% used instead of \subfloat.
-%
-%\begin{figure*}[!t]
-%\centerline{\subfloat[Case I]\includegraphics[width=2.5in]{subfigcase1}%
-%\label{fig_first_case}}
-%\hfil
-%\subfloat[Case II]{\includegraphics[width=2.5in]{subfigcase2}%
-%\label{fig_second_case}}}
-%\caption{Simulation results}
-%\label{fig_sim}
-%\end{figure*}
-%
-% Note that often IEEE papers with subfigures do not employ subfigure
-% captions (using the optional argument to \subfloat), but instead will
-% reference/describe all of them (a), (b), etc., within the main caption.
+\section{ACKNOWLEDGEMENTS}
 
+This optional section must be placed before the list of references.
 
-% An example of a floating table. Note that, for IEEE style tables, the 
-% \caption command should come BEFORE the table. Table text will default to
-% \footnotesize as IEEE normally uses this smaller font for tables.
-% The \label must come after \caption as always.
-%
-%\begin{table}[!t]
-%% increase table row spacing, adjust to taste
-%\renewcommand{\arraystretch}{1.3}
-% if using array.sty, it might be a good idea to tweak the value of
-% \extrarowheight as needed to properly center the text within the cells
-%\caption{An Example of a Table}
-%\label{table_example}
-%\centering
-%% Some packages, such as MDW tools, offer better commands for making tables
-%% than the plain LaTeX2e tabular which is used here.
-%\begin{tabular}{|c||c|}
-%\hline
-%One & Two\\
-%\hline
-%Three & Four\\
-%\hline
-%\end{tabular}
-%\end{table}
+\section{REFERENCES} 
 
+\bibliographystyle{cobem2015}
+\renewcommand{\refname}{}
+\bibliography{./bibfile}
 
-% Note that IEEE does not put floats in the very first column - or typically
-% anywhere on the first page for that matter. Also, in-text middle ("here")
-% positioning is not used. Most IEEE journals use top floats exclusively.
-% Note that, LaTeX2e, unlike IEEE journals, places footnotes above bottom
-% floats. This can be corrected via the \fnbelowfloat command of the
-% stfloats package.
+\section{RESPONSIBILITY NOTICE}
 
+The authors are the only responsible for the printed material included in this paper.
 
-
-
-% if have a single appendix:
-%\appendix[Proof of the Zonklar Equations]
-% or
-%\appendix  % for no appendix heading
-% do not use \section anymore after \appendix, only \section*
-% is possibly needed
-
-% use appendices with more than one appendix
-% then use \section to start each appendix
-% you must declare a \section before using any
-% \subsection or using \label (\appendices by itself
-% starts a section numbered zero.)
-%
-\appendices
-
-
-% use section* for acknowledgement
-%\section*{Acknowledgment}
-
-
-%The authors would like to thank...
-
-
-% Can use something like this to put references on a page
-% by themselves when using endfloat and the captionsoff option.
-\ifCLASSOPTIONcaptionsoff
-  \newpage
-\fi
-
-\bibliographystyle{unsrt}
-\addcontentsline{toc}{section}{}
-\bibliography{2013-Artigo-INCT}
-
-
-% trigger a \newpage just before the given reference
-% number - used to balance the columns on the last page
-% adjust value as needed - may need to be readjusted if
-% the document is modified later
-%\IEEEtriggeratref{8}
-% The "triggered" command can be changed if desired:
-%\IEEEtriggercmd{\enlargethispage{-5in}}
-
-% references section
-
-% can use a bibliography generated by BibTeX as a .bbl file
-% BibTeX documentation can be easily obtained at:
-% http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
-% The IEEEtran BibTeX style support page is at:
-% http://www.michaelshell.org/tex/ieeetran/bibtex/
-%\bibliographystyle{IEEEtran}
-% argument is your BibTeX string definitions and bibliography database(s)
-%\bibliography{IEEEabrv,../bib/paper}
-%
-% <OR> manually copy in the resultant .bbl file
-% set second argument of \begin to the number of references
-% (used to reserve space for the reference number labels box)
-%\begin{thebibliography}{1}
-
-
-
-% that's all folks
 \end{document}
-
-
