@@ -4,44 +4,44 @@ The top-level auxiliary file: 2014-Artigo-Mancal-Mestrado.aux
 The style file: cobem2015.bst
 Database file #1: ./bibfile.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 7 entries,
+You've used 8 entries,
             3271 wiz_defined-function locations,
-            713 strings with 6803 characters,
-and the built_in function-call counts, 4774 in all, are:
-= -- 386
-> -- 174
-< -- 12
-+ -- 67
-- -- 60
-* -- 341
-:= -- 693
-add.period$ -- 29
-call.type$ -- 7
-change.case$ -- 56
-chr.to.int$ -- 7
-cite$ -- 7
-duplicate$ -- 387
-empty$ -- 358
-format.name$ -- 83
-if$ -- 956
+            718 strings with 6938 characters,
+and the built_in function-call counts, 5273 in all, are:
+= -- 424
+> -- 192
+< -- 13
++ -- 74
+- -- 66
+* -- 373
+:= -- 771
+add.period$ -- 32
+call.type$ -- 8
+change.case$ -- 62
+chr.to.int$ -- 8
+cite$ -- 8
+duplicate$ -- 427
+empty$ -- 401
+format.name$ -- 94
+if$ -- 1056
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 79
-newline$ -- 52
-num.names$ -- 28
-pop$ -- 176
+missing$ -- 88
+newline$ -- 57
+num.names$ -- 32
+pop$ -- 200
 preamble$ -- 1
-purify$ -- 48
+purify$ -- 54
 quote$ -- 0
-skip$ -- 151
+skip$ -- 167
 stack$ -- 0
-substring$ -- 185
-swap$ -- 214
+substring$ -- 196
+swap$ -- 231
 text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 60
+type$ -- 66
 warning$ -- 0
-while$ -- 33
+while$ -- 36
 width$ -- 0
-write$ -- 113
+write$ -- 125

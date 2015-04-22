@@ -1,4 +1,4 @@
-\begin{thebibliography}{7}
+\begin{thebibliography}{8}
 \newcommand{\enquote}[1]{``#1''}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
@@ -44,6 +44,11 @@ Marble, S. and Tow, D., 2006.
 \newblock \emph{Aerospace Conference, 2006 IEEE}, pp. 1--7.
 \newblock
   \urlprefix\url{http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=1656138}.
+
+\bibitem[{Markley and Crassidis(2014)}]{markley2014fundamentals}
+Markley, F.L. and Crassidis, J.L., 2014.
+\newblock \emph{Fundamentals of Spacecraft Attitude Determination and Control}.
+\newblock Springer.
 
 \bibitem[{Scharfe \emph{et~al.}(2001)Scharfe, Roschke, Bindl and
   Blonski}]{Scharfe2001}

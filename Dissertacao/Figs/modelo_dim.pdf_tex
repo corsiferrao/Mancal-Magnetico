@@ -1,6 +1,6 @@
 %% Creator: Inkscape inkscape 0.48+devel, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'modelo:dim.pdf' (pdf, eps, ps)
+%% Accompanies image file 'modelo_dim.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -49,24 +49,24 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,0.58389829)%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{modelo:dim.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{modelo_dim.pdf}}%
     \put(0.13289643,0.3879034){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$h_{fee}$}}}%
     \put(0.1250933,0.28361931){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$h_{m}$}}}%
     \put(0.22933068,0.0853762){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$w_{m}$}}}%
     \put(0.36884201,0.08465146){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$g_e$}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=2]{modelo:dim.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{modelo_dim.pdf}}%
     \put(0.25613597,0.00645205){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$w_{fee}$}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=3]{modelo:dim.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{modelo_dim.pdf}}%
     \put(0.48393764,0.00645203){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$w_{fr}$}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=4]{modelo:dim.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{modelo_dim.pdf}}%
     \put(0.81115005,0.00645202){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$w_{fei}$}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=5]{modelo:dim.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{modelo_dim.pdf}}%
     \put(0.50916274,0.08465146){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$w_{rn}$}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=6]{modelo:dim.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{modelo_dim.pdf}}%
     \put(0.60308058,0.08465146){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$g_i$}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=7]{modelo:dim.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{modelo_dim.pdf}}%
     \put(0.65824696,0.48173844){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$r_{eei}$}}}%
     \put(0.71137127,0.56088356){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$r_{re}$}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=8]{modelo:dim.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{modelo_dim.pdf}}%
   \end{picture}%
 \endgroup%

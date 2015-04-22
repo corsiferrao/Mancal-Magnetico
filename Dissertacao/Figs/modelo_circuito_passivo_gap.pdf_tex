@@ -49,7 +49,7 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,0.56021654)%
-    \put(0,0){\includegraphics[width=\unitlength]{modelo:circuito:passivo:gap.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength]{modelo_circuito_passivo_gap.pdf}}%
     \put(0.76746649,0.31771787){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$r_{eei}$}}}%
     \put(0.18970155,0.01123025){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$g_{eO}$}}}%
     \put(0.62316759,0.47059059){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$g_{eN}$}}}%

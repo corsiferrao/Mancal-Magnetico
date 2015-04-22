@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  20 APR 2015 10:09
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  20 APR 2015 10:33
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -361,10 +361,9 @@ Overfull \hbox (7.0868pt too wide) in paragraph at lines 34--55
 | [] 
  []
 
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 57.
 
-LaTeX Warning: Reference `todolbl:1' on page 1 undefined on input line 57.
+Package natbib Warning: Citation `wertz1978spacecraft' on page 1 undefined on i
+nput line 57.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -378,9 +377,6 @@ File: Figs/mancais/mancal_corte2.pdf Graphic file (type pdf)
 <use Figs/mancais/mancal_corte2.pdf>
 Package pdftex.def Info: Figs/mancais/mancal_corte2.pdf used on input line 89.
 (pdftex.def)             Requested size: 483.69684pt x 143.00165pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 LaTeX Font Info:    Try loading font information for T1+phv on input line 97.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
@@ -414,7 +410,7 @@ pe pdf)
  <use ./Figs/Simulacoes/Passivo/forca_passivo_mod_fx_fy_3d.pdf>
 Package pdftex.def Info: ./Figs/Simulacoes/Passivo/forca_passivo_mod_fx_fy_3d.p
 df used on input line 123.
-(pdftex.def)             Requested size: 193.47577pt x 146.88496pt.
+(pdftex.def)             Requested size: 241.84842pt x 183.61143pt.
 
 <./Figs/Simulacoes/Passivo/forca_passivo_comsol_dy.pdf, id=31, 361.35pt x 361.3
 5pt>
@@ -439,7 +435,7 @@ File: ./Figs/modelo_circuito_ativo_explicativo.pdf Graphic file (type pdf)
  <use ./Figs/modelo_circuito_ativo_explicativo.pdf>
 Package pdftex.def Info: ./Figs/modelo_circuito_ativo_explicativo.pdf used on i
 nput line 155.
-(pdftex.def)             Requested size: 193.47577pt x 109.94083pt.
+(pdftex.def)             Requested size: 241.84842pt x 137.4274pt.
  [4 <./Figs/Simulacoes/Passivo/forca_passivo_mod_fx_fy_3d.pdf> <./Figs/Simulaco
 es/Passivo/forca_passivo_comsol_dy.pdf>]
 <./Figs//Simulacoes/Ativo/Forca_ativo_artigo.pdf, id=91, 361.35pt x 361.35pt>
@@ -449,17 +445,6 @@ File: ./Figs//Simulacoes/Ativo/Forca_ativo_artigo.pdf Graphic file (type pdf)
 Package pdftex.def Info: ./Figs//Simulacoes/Ativo/Forca_ativo_artigo.pdf used o
 n input line 183.
 (pdftex.def)             Requested size: 193.47577pt x 193.47748pt.
-
-
-LaTeX Warning: Reference `todolbl:2' on page 5 undefined on input line 200.
-
-
-LaTeX Warning: Reference `fig:mancal:batente:corte' on page 5 undefined on inpu
-t line 202.
-
-
-Underfull \vbox (badness 6236) has occurred while \output is active []
-
  [5 <./Figs/modelo_mancal_estator_interno_fluxo.pdf> <./Figs/modelo_circuito_at
 ivo_explicativo.pdf
 
@@ -506,45 +491,46 @@ n-fer-ence, 2006 IEEE\T1/ptm/m/n/10 , pp. 1--7.  URL
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--65
+Underfull \hbox (badness 10000) in paragraph at lines 64--70
 []\T1/ptm/m/n/10 Taniwaki, Shige-mune and Ohkami, Y., 2003.  ``Ex-per-i-men-tal
  and nu-mer-i-cal anal-y-sis of re-ac-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--65
+Underfull \hbox (badness 10000) in paragraph at lines 64--70
 \T1/ptm/m/n/10 wheel dis-tur-bances''.  \T1/ptm/m/it/10 JSME In-ter-na-tional J
 our-nal Se-ries C\T1/ptm/m/n/10 , Vol. 46, pp. 519----526.  URL
  []
 
-) [7 <./Figs/../Figs/Modelagem/diagrama_blocos_modelo_linear.pdf>]
-(./2014-Artigo-Mancal-Mestrado.aux)
+)
 
-LaTeX Warning: There were undefined references.
+Package natbib Warning: There were undefined citations.
 
- ) 
+[7 <./Figs/../Figs/Modelagem/diagrama_blocos_modelo_linear.pdf>]
+(./2014-Artigo-Mancal-Mestrado.aux) ) 
 Here is how much of TeX's memory you used:
- 4558 strings out of 495004
- 61186 string characters out of 6180663
- 129196 words of memory out of 5000000
- 7642 multiletter control sequences out of 15000+600000
- 34784 words of font info for 44 fonts, out of 8000000 for 9000
+ 4552 strings out of 495004
+ 61179 string characters out of 6180663
+ 129220 words of memory out of 5000000
+ 7638 multiletter control sequences out of 15000+600000
+ 29259 words of font info for 40 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 41i,12n,45p,1201b,355s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/rafa/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk>{/usr/shar
-e/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
-></usr/share/texmf/fonts/type1/public/tex-gyre/qhvr.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/font
-s/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/tim
-es/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on 2014-Artigo-Mancal-Mestrado.pdf (7 pages, 413008 bytes).
+ 41i,12n,45p,1201b,351s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/rafa/.texmf-var/fonts/pk/ljfour/jk
+nappen/ec/ectt1000.600pk>{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r
+.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/tex-gy
+re/qhvr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
+rw/times/utmri8a.pfb>
+Output written on 2014-Artigo-Mancal-Mestrado.pdf (7 pages, 412574 bytes).
 PDF statistics:
  360 PDF objects out of 1000 (max. 8388607)
  202 compressed objects within 3 object streams

@@ -2,11 +2,6 @@
 \cleardoublepage
 \pagestyle{fancy}
 
-\begin{center}
-\includegraphics[width=0.7\linewidth]{modelo_curva_bh}
-\end{center}
-
-
 \chapter{Modelagem Eletromagnética do Mancal}
 
 %Passos da modelagem:
@@ -26,10 +21,11 @@ As nomenclaturas das dimensões a serem utilizadas nas seguintes secções para 
 
 
 
+
 \begin{figure}[!ht]
 	\centering
 	\def\svgwidth{\columnwidth}
-	\includesvg{modelo:dim}
+	\includesvg{modelo_dim}
 		\caption{Dimensões do mancal}
 		\label{Fig:Modelagem:Dimensoes}
 \end{figure} 
@@ -41,7 +37,7 @@ A parte passiva do mancal magnético pode ser descrita como o circuito da Fig. \
 \begin{figure}[!ht]
 	\centering
 	\def\svgwidth{1\columnwidth}
-	\includesvg{modelo:circuito:passivo:umlado}
+	\includesvg{modelo_circuito_passivo_umlado}
 	\caption{Circuito magnético passivo suposto}
 	\label{Fig:Modelagem:circuito:passivo:umlado}
 \end{figure}
@@ -67,12 +63,12 @@ Sendo:
 
 \subsection{Premissas}
 
-Nesse modelo, o ímã é considerado como uma fonte de fluxo magnético na forma equivalente de um circuito Thevenin. A força magnética coerciva ($\mathcal{F}_c$) representa a força magnética necessária para impor o ímã permanente a produzir um fluxo magnético nulo. Ímãs de terra rará (Samário Cobalto - Neodímio), possuem tipicamente uma curva linear de magnetização no segundo quadrante, essa curva depende de duas constantes físicas do material usado: $H_c$ uma constante que associa o comprimento do ímã com a força coerciva ($ F_c = H_c \, l_m$) e $B_r$ que descreve o fluxo máximo do ímã num cenário de curto circuíto ($\phi_r = B_r \, A_m$), a descrita é ilustrada na Fig. \ref{Fig:Modelagem:circuito:passivo:ima}.
+Nesse modelo, o ímã é considerado como uma fonte de fluxo magnético na forma equivalente de um circuito Thevenin. A força magnética coerciva ($\mathcal{F}_c$) representa a força magnética necessária para impor o ímã permanente a produzir um fluxo magnético nulo. Ímãs de terra rará (Samário Cobalto - Neodímio), possuem tipicamente uma curva linear de magnetização no segundo quadrante, essa curva depende de duas constantes físicas do material usado: $H_c$ constante que associa o comprimento do ímã com a força coerciva ($ F_c = H_c \, l_m$) e $B_r$ que descreve o fluxo máximo do ímã num cenário de curto circuíto ($\phi_r = B_r \, A_m$), a descrita é ilustrada na Fig. \ref{Fig:Modelagem:circuito:passivo:ima}.
 
 \begin{figure}[!ht]
 	\centering
 	\def\svgwidth{0.7\columnwidth}
-	\includesvg{modelo:circuito:passivo:ima}
+	\includesvg{modelo_circuito_passivo_ima}
 	\caption{Curva de desmagnetização típica de ímãs de terra rará}
 	\label{Fig:Modelagem:circuito:passivo:ima}
 \end{figure}
@@ -162,7 +158,7 @@ O campo magnético acumulado no entreferro pode ser decomposto em componentes $B
 	\begin{figure}[!ht]
 		\centering
 		\def\svgwidth{0.6\columnwidth}
-		\includesvg{modelo:passivo:DxDy}
+		\includesvg{modelo_passivo_DxDy}
 			\caption{Deslocamento em X e Y}
 			\label{Fig:modelo:passivo:DxDz}
 	\end{figure}
@@ -208,7 +204,7 @@ Onde $\boldsymbol{i}$ é a projeção da força no eixo x e $\boldsymbol{j}$ é 
 
  	\begin{figure}[!ht]
  		\centering
-			\includesvg{modelo:circuito:passivo:gap}
+			\includesvg{modelo_circuito_passivo_gap}
  			\caption{Decomposição de força passiva para uma determinada secção}
  			\label{fig:Passivo:gap}
  	\end{figure}

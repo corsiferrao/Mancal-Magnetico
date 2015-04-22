@@ -1,6 +1,6 @@
 %% Creator: Inkscape inkscape 0.91, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'modelo:circuito:passivo:ima.pdf' (pdf, eps, ps)
+%% Accompanies image file 'modelo_circuito_passivo_ima.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{117.76201511bp}%
+    \setlength{\unitlength}{117.76200001bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,13 +48,13 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.5706165)%
-    \put(0.70988062,0.06688294){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$H_m$}}}%
-    \put(0.59485288,0.50609946){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$B_m$}}}%
-    \put(0.14216325,0.01602145){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$H_{c}$}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{modelo:circuito:passivo:ima.pdf}}%
-    \put(0.61320002,0.40302271){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$B_{r}$}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=2]{modelo:circuito:passivo:ima.pdf}}%
-    \put(0.37290453,0.30201478){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{p}}}%
+  \begin{picture}(1,0.57061657)%
+    \put(0.70988059,0.06688295){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$H_m$}}}%
+    \put(0.59485304,0.50609952){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$B_m$}}}%
+    \put(0.14216335,0.01602146){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$H_{c}$}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{modelo_circuito_passivo_ima.pdf}}%
+    \put(0.61319997,0.40302297){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$B_{r}$}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{modelo_circuito_passivo_ima.pdf}}%
+    \put(0.37290466,0.30201482){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{p}}}%
   \end{picture}%
 \endgroup%

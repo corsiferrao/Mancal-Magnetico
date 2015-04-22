@@ -49,10 +49,10 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,0.3843804)%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{modelo:circuito:passivo:umlado.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{modelo_circuito_passivo_umlado.pdf}}%
     \put(0.35347827,0.15682809){\makebox(0,0)[lb]{\smash{+}}}%
     \put(0.36153017,0.13579549){\makebox(0,0)[lb]{\smash{-}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=2]{modelo:circuito:passivo:umlado.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{modelo_circuito_passivo_umlado.pdf}}%
     \put(0.34367571,0.22682391){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$\mathcal{R}_p$}}}%
     \put(0.33356594,0.14705375){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$\mathcal{F}_c$}}}%
     \put(0.44034535,0.32954589){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{ef}$}}}%
