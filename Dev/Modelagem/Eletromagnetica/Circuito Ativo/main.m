@@ -16,6 +16,7 @@ dy = 0;
 I  = 10;
 
 % Forcas eletromotriz
+
 FA = m.nnb*I;
 FB = m.nnb*I/2;
 FC = 0;
@@ -29,28 +30,17 @@ FH = m.nnb*I/2;
 m = derivados_geometricos(m,dx,dy);
 
 % Permeabilidade inicial do rotor
-ufrAB = 2E4;
-ufrBC = ufrAB;
-ufrCD = ufrAB;
-ufrDE = ufrAB;
-ufrEF = ufrAB;
-ufrFG = ufrAB;
-ufrGH = ufrAB;
-ufrHA = ufrAB;
+ufr0 = 2E4;
+ufn0 = 2E4;
 
-ufnA = 2E4;
-ufnB = ufnA;
-ufnC = ufnA;
-ufnD = ufnA;
-ufnE = ufnA;
-ufnF = ufnA;
-ufnG = ufnA;
-ufnH = ufnA;
+%      AB    BC   CD   DE   EF   FG   GH   HA
+ufr = [ufr0 ufr0 ufr0 ufr0 ufr0 ufr0 ufr0 ufr0]; 
+ufn = [ufn0 ufn0 ufn0 ufn0 ufn0 ufn0 ufn0 ufn0];
 
 % Relutancais
 
 % calcula gap com base no deslocamento x e y do rotor
-[la,lb,lc,ld,le,lf,lg,lh]=lgap(m);
+lg =lgap(m);
 
 % calcula relutancia gaps
 RgA = R(la,m.Snbe,mag.u0);

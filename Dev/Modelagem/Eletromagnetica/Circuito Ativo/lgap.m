@@ -1,4 +1,4 @@
-function [ la, lb, lc, ld, le, lf, lg, lh ] = lgap(m)
+function [l] = lgap(m)
 %% comprimento do gap entre os nucleos
 % Rafael Corsi
 % 14/4/15
@@ -36,6 +36,8 @@ ld = h-m.rene;
 
 h  = double(sqrt(x0(1)^2+y0(2)^2));
 lh = h-m.rene;
+
+l = [la lb lc ld le lf lg lh];
 
 end
 
