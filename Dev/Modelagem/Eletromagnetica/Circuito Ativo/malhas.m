@@ -30,13 +30,13 @@
 % adotando o sentido horario/ anti-horario de rotacao correto
 % (referencial)
 Fm = [FA + FB;
-      FB + FC;
+     -FB - FC;
       FC + FD;
-      FD + FE;
+     -FD - FE;
       FE + FF;
-      FF + FG;
+     -FF - FG;
       FG + FH;
-      FH + FA];
+     -FH - FA];
 
 %% Resistencias individual malhas
 R1 = RgA+RnA+RrAB+RfAB+RgB+RnB;
