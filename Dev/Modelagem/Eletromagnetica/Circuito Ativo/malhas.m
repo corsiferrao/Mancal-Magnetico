@@ -66,11 +66,12 @@ Ra = [Ra1; Ra2; Ra3; Ra4; Ra5; Ra6; Ra7; Ra8];
 
 % Matriz R
 R = Rm-Ra;
+
 %% Solução da equacao
 % \[ (Rm-Ra)*Im = Fm    \]
 % \[ Im = inv(Rm-Ra)*Fm \]
 
-I = R\Fm
+I = R\Fm;
 
 phi =  [ I(1) - I(8); % A
          I(1) - I(2); % B
@@ -80,6 +81,7 @@ phi =  [ I(1) - I(8); % A
          I(5) - I(6); % F 
          I(7) - I(6); % G 
          I(7) - I(8)] % H
+
 
 
 
