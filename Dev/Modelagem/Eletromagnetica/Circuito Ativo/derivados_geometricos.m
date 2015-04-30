@@ -20,8 +20,10 @@ m.dy = dy;
 %% Rotor
 m.rre = m.rei-m.wge; % Raio rotor externo ferro
 m.rri = m.rre-m.wrf; % Raio rotor interno ferro
+
 m.Srf = 2*pi*(m.rre - m.wrf/2)*m.hef/m.NFRAC;    % Area do ferro rotor           (41.74)
-m.Srr = pi*((m.rri+m.wrr)^2-m.rri^2)/m.NFRAC;    % Area do retorno rotor         (validado)
+m.Srr = pi*((m.rri+m.wrr)^2-m.rri^2)/m.NFRAC;    % Area do retorno rotor trasversal (validado)
+m.Srrr = 2*pi*(m.wrf)*m.hnb;                     % Area retorno rotor radial
 
 m.prr = 2*pi*(m.rri-m.wrr);
 
@@ -55,8 +57,15 @@ m.reii = m.reie-m.wei;
 % perimetros
 m.peie = 2*pi*m.reie;
 
-                % Area da seccao estator interno
+                % Area seccao estator interno
 m.Sei  = m.reie*m.hei;
+
+                % Area seccao gap interno
+m.Sgi  = (m.reie+m.wnb+m.wgi/2)*m.hei;
+
+                % Area seccao nucleo da bobina
+                % continuar
+m.Snb  = 2*pi*(m.reie+m.wnb)*m.hnb;
  
 %% Total
 

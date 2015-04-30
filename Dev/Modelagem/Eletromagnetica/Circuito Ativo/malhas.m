@@ -39,27 +39,27 @@ Fm = [FA + FB;
      -FH - FA];
 
 %% Resistencias individual malhas
-R1 = RgA+RnA+RrAB+RfAB+RgB+RnB;
-R2 = RgB+RnB+RrBC+RfBC+RgC+RnC;
-R3 = RgC+RnC+RrCD+RfCD+RgD+RnD;
-R4 = RgD+RnD+RrDE+RfDE+RgE+RnE;
-R5 = RgE+RnE+RrEF+RfEF+RgF+RnF;
-R6 = RgF+RnF+RrFG+RfFG+RgG+RnG;
-R7 = RgG+RnG+RrGH+RfGH+RgH+RnH;
-R8 = RgH+RnH+RrHA+RfHA+RgA+RnA;
+R1 = Rg(1)+Rn(1)+Rr(1)+Rf(1)+Rg(2)+Rn(2);
+R2 = Rg(2)+Rn(2)+Rr(2)+Rf(2)+Rg(3)+Rn(3);
+R3 = Rg(3)+Rn(3)+Rr(3)+Rf(3)+Rg(4)+Rn(4);
+R4 = Rg(4)+Rn(4)+Rr(4)+Rf(4)+Rg(5)+Rn(5);
+R5 = Rg(5)+Rn(5)+Rr(5)+Rf(5)+Rg(6)+Rn(6);
+R6 = Rg(6)+Rn(6)+Rr(6)+Rf(6)+Rg(7)+Rn(7);
+R7 = Rg(7)+Rn(7)+Rr(7)+Rf(7)+Rg(8)+Rn(8);
+R8 = Rg(8)+Rn(8)+Rr(8)+Rf(8)+Rg(1)+Rn(1);
 
 % Matriz resistencia malhas
 Rm = diag([R1,R2,R3,R4,R5,R6,R7,R8]);
       
 %% Resistencias adjacentes
-Ra1 = [0 RgB+RnB 0 0 0 0 0 RgH+RnH];
-Ra2 = [RgA+RnA 0 RgC+RnC 0 0 0 0 0];
-Ra3 = [0 RgB+RnB 0 RgD+RnD 0 0 0 0];
-Ra4 = [0 0 RgC+RnC 0 RgE+RnE 0 0 0];
-Ra5 = [0 0 0 RgD+RnD 0 RgF+RnF 0 0];
-Ra6 = [0 0 0 0 RgE+RnE 0 RgG+RnG 0];
-Ra7 = [0 0 0 0 0 RgF+RnF 0 RgH+RnH];
-Ra8 = [RgA+RnA 0 0 0 0 0 RgG+RnG 0];
+Ra1 = [0 Rg(2)+Rn(2) 0 0 0 0 0 Rg(8)+Rn(8)];
+Ra2 = [Rg(1)+Rn(1) 0 Rg(3)+Rn(3) 0 0 0 0 0];
+Ra3 = [0 Rg(2)+Rn(2) 0 Rg(4)+Rn(4) 0 0 0 0];
+Ra4 = [0 0 Rg(3)+Rn(3) 0 Rg(5)+Rn(5) 0 0 0];
+Ra5 = [0 0 0 Rg(4)+Rn(4) 0 Rg(6)+Rn(6) 0 0];
+Ra6 = [0 0 0 0 Rg(5)+Rn(5) 0 Rg(7)+Rn(7) 0];
+Ra7 = [0 0 0 0 0 Rg(6)+Rn(6) 0 Rg(8)+Rn(8)];
+Ra8 = [Rg(1)+Rn(1) 0 0 0 0 0 Rg(7)+Rn(7) 0];
 
 % Matriz resistencia adjacente
 Ra = [Ra1; Ra2; Ra3; Ra4; Ra5; Ra6; Ra7; Ra8];

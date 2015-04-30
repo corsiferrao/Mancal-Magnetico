@@ -6,12 +6,15 @@ clc
 clear all
 
 %% Parametros
+
+load iron;
+
 parametros_geometricos;
 parametros_magneticos;
 
 %% inicializacao
 % Deslocamentos relativos
-dx = 0.0E-4;
+dx = 0E-4;
 dy = 0;
 I  = 10;
 
@@ -32,86 +35,61 @@ m = derivados_geometricos(m,dx,dy);
 % Permeabilidade inicial do rotor
 ufr0 = 2E4;
 ufn0 = 2E4;
+uff0 = 2E4;
 
 %      AB    BC   CD   DE   EF   FG   GH   HA
-ufr = [ufr0 ufr0 ufr0 ufr0 ufr0 ufr0 ufr0 ufr0]; 
-ufn = [ufn0 ufn0 ufn0 ufn0 ufn0 ufn0 ufn0 ufn0];
-
+ufr = [ufr0 ufr0 ufr0 ufr0 ufr0 ufr0 ufr0 ufr0]'; 
+ufn = [ufn0 ufn0 ufn0 ufn0 ufn0 ufn0 ufn0 ufn0]';
+uff = [uff0 uff0 uff0 uff0 uff0 uff0 uff0 uff0]';
 % Relutancais
 
 % calcula gap com base no deslocamento x e y do rotor
 lg =lgap(m);
 
 % calcula relutancia gaps
-RgA = R(la,m.Snbe,mag.u0);
-RgB = R(lb,m.Snbe,mag.u0);
-RgC = R(lc,m.Snbe,mag.u0);
-RgD = R(ld,m.Snbe,mag.u0);
-RgE = R(le,m.Snbe,mag.u0);
-RgF = R(lf,m.Snbe,mag.u0);
-RgG = R(lg,m.Snbe,mag.u0);
-RgH = R(lh,m.Snbe,mag.u0);
+Rg = R(lg,m.Snbe,mag.u0);
+
 
 %% inicio interação
 
 % loop para convergencia
 % método de Newton
-%for i=1:200
-        
-    % Atualiza permeabilidades
-    %ufrAB = iron.MuH(Hef);
-    ufrBC = ufrAB;
-    ufrCD = ufrAB;
-    ufrDE = ufrAB;
-    ufrEF = ufrAB;
-    ufrFG = ufrAB;
-    ufrGH = ufrAB;
-    ufrHA = ufrAB;
-    
-    ufnA = 2E4;
-    ufnB = ufnA;
-    ufnC = ufnA;
-    ufnD = ufnA;
-    ufnE = ufnA;
-    ufnF = ufnA;
-    ufnG = ufnA;
-    ufnH = ufnA;
-    
+for i=1:50
+            
     % calcula relutancais rotor
     lr = m.prr/8;
-    RrAB = R(lr, m.Srr, ufrAB);
-    RrBC = R(lr, m.Srr, ufrBC);
-    RrCD = R(lr, m.Srr, ufrCD);
-    RrDE = R(lr, m.Srr, ufrDE);
-    RrEF = R(lr, m.Srr, ufrEF);
-    RrFG = R(lr, m.Srr, ufrFG);
-    RrGH = R(lr, m.Srr, ufrGH);
-    RrHA = R(lr, m.Srr, ufrHA);
+    Rr = R(lr,m.Srr, ufr);
     
     % calcula relutancais nucleo
     ln = m.wnb;
-    RnA = R(ln, m.Snbe, ufnA);
-    RnB = R(ln, m.Snbe, ufnB);
-    RnC = R(ln, m.Snbe, ufnC);
-    RnD = R(ln, m.Snbe, ufnD);
-    RnE = R(ln, m.Snbe, ufnE);
-    RnF = R(ln, m.Snbe, ufnF);
-    RnG = R(ln, m.Snbe, ufnG);
-    RnH = R(ln, m.Snbe, ufnH);
+    Rn = R(ln, m.Snbe, ufn);
     
     % calcula retorno estator
     lf = m.peie/8;
-    RfAB = R(lf, m.Sei, ufnA);
-    RfBC = R(lf, m.Sei, ufnB);
-    RfCD = R(lf, m.Sei, ufnC);
-    RfDE = R(lf, m.Sei, ufnD);
-    RfEF = R(lf, m.Sei, ufnE);
-    RfFG = R(lf, m.Sei, ufnF);
-    RfGH = R(lf, m.Sei, ufnG);
-    RfHA = R(lf, m.Sei, ufnH);
-    
+    Rf = R(lf, m.Sei, uff);
+     
+    % resolve malhas
     malhas
     
-    %Bga = 
+    % calcula campos nos componentes
+    Bg = phi/m.Sgi;
+    Bn = phi/m.Snb;
+    Br = phi/m.Srrr;
+    Bf = phi/m.Sei;
     
-%end;
+    Hg = Bg*mag.u0;
+    Hn = Bn'*diag(ufn);
+    Hr = Br'*diag(ufr);
+    Hf = Bf'*diag(uff);
+    
+    % Atualiza permeabilidades
+    % via método de newton
+    ufn = iron.MuH(Hn)/2 + ufn/2;
+    ufr = iron.MuH(Hr)/2 + ufr/2;
+    uff = iron.MuH(Hf)/2 + uff/2;
+       
+    
+    auxBg(i) = Bg(1);
+    auxHn(i) = Hn(1);
+    
+end;
