@@ -20,14 +20,14 @@ I  = 10;
 
 % Forcas eletromotriz
 
-FA = m.nnb*I;
-FB = 0;%m.nnb*I/2;
+FA = m.nnb*I
+FB = 0%m.nnb*I/2;
 FC = 0;
 FD = 0;
 FE = 0;
 FF = 0;
 FG = 0;
-FH = 0;m.nnb*I/2;
+FH = 0%m.nnb*I/2;
 
 % derivados
 m = derivados_geometricos(m,dx,dy);
@@ -49,7 +49,6 @@ lg =lgap(m);
 % calcula relutancia gaps
 Rg = R(lg,m.Snbe,mag.u0);
 
-
 %% inicio interação
 
 % loop para convergencia
@@ -69,7 +68,7 @@ for i=1:150
     Rf = R(lf, m.Sei, uff);
      
     % resolve malhas
-    malhas
+    malhas;
     
     % calcula campos nos componentes
     Bg = abs(phi/m.Sgi/1.1);
@@ -88,7 +87,14 @@ for i=1:150
     ufr = iron.MuH(Hr)/2 + ufr/2;
     uff = iron.MuH(Hf)/2 + uff/2;
        
-    auxBg(i) = Bg(1);
-    auxHn(i) = Hn(1);
-    
 end;
+
+%% Força
+
+projecao = diag([1 0.7071 1 0.7071 1 0.7071 1 0.7071])
+
+Fmag = F(Bg,m.Sgi,mag)'*projecao
+
+Fx = Fmag(1) + Fmag(2) - Fmag(4) - Fmag(5) -Fmag(6) + Fmag(8)
+
+Fy = -Fmag(2)-Fmag(3)-Fmag(4)+Fmag(6)+Fmag(7)+Fmag(8)
