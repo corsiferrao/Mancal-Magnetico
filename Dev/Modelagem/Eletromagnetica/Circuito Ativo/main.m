@@ -21,13 +21,13 @@ I  = 10;
 % Forcas eletromotriz
 
 FA = m.nnb*I;
-FB = m.nnb*I/2;
+FB = 0;%m.nnb*I/2;
 FC = 0;
 FD = 0;
 FE = 0;
 FF = 0;
 FG = 0;
-FH = m.nnb*I/2;
+FH = 0;m.nnb*I/2;
 
 % derivados
 m = derivados_geometricos(m,dx,dy);
@@ -54,7 +54,7 @@ Rg = R(lg,m.Snbe,mag.u0);
 
 % loop para convergencia
 % método de Newton
-for i=1:50
+for i=1:150
             
     % calcula relutancais rotor
     lr = m.prr/8;
@@ -72,15 +72,15 @@ for i=1:50
     malhas
     
     % calcula campos nos componentes
-    Bg = phi/m.Sgi;
-    Bn = phi/m.Snb;
-    Br = phi/m.Srrr;
-    Bf = phi/m.Sei;
+    Bg = abs(phi/m.Sgi/1.1);
+    Bn = abs(phi/m.Snbe);
+    Br = abs(phi/m.Srrr);
+    Bf = abs(phi/m.Sei);
     
-    Hg = Bg*mag.u0;
-    Hn = Bn'*diag(ufn);
-    Hr = Br'*diag(ufr);
-    Hf = Bf'*diag(uff);
+    Hg = Bg/mag.u0;
+    Hn = Bn'/diag(ufn);
+    Hr = Br'/diag(ufr);
+    Hf = Bf'/diag(uff);
     
     % Atualiza permeabilidades
     % via método de newton
@@ -88,7 +88,6 @@ for i=1:50
     ufr = iron.MuH(Hr)/2 + ufr/2;
     uff = iron.MuH(Hf)/2 + uff/2;
        
-    
     auxBg(i) = Bg(1);
     auxHn(i) = Hn(1);
     

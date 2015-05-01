@@ -39,12 +39,12 @@ m.pene  = 2*pi*m.rene;
 
 % encontrando porcentangem referente ao nucleo
 % Ref. C1
-theta = tan(m.rnb/m.rene); 
-parte = theta/(2*pi);
+theta = tand(m.rnb/m.rene);
+parte = theta*100/(360);
 
 % Areas
            % Area nucleo da bobina externo (com ar)
-m.Snbe   = 2*pi*m.rene*m.hnb*(2*parte);
+m.Snbe  = m.lnb*m.hnb;
 
 %% Estator interno
 
@@ -58,14 +58,13 @@ m.reii = m.reie-m.wei;
 m.peie = 2*pi*m.reie;
 
                 % Area seccao estator interno
-m.Sei  = m.reie*m.hei;
+m.Sei  = m.wei*m.hei;
+
+%% Gap interno
 
                 % Area seccao gap interno
-m.Sgi  = (m.reie+m.wnb+m.wgi/2)*m.hei;
+m.Sgi  = m.Snbe;
 
-                % Area seccao nucleo da bobina
-                % continuar
-m.Snb  = 2*pi*(m.reie+m.wnb)*m.hnb;
  
 %% Total
 

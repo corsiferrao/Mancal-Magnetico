@@ -5,7 +5,7 @@ m.NFRAC = 36;     % Fraçoes de m (partes para o calculo)
                 
 m.ree  = 75E-3;   % Raio externo estator                  I
 
-m.hef  = 6E-3;    % Altura ferro estator externo          I
+m.hef  = 4E-3;    % Altura ferro estator externo          I
 m.wef  = 14E-3;   % Largura do ferro estator externo      I
 
 m.wm   = 8E-3;    % Largura imã                           I
@@ -30,9 +30,10 @@ Anb = 2*m.nnb*m.ff*m.fs;
                      % Altura estator interno  
                      % = a altura do estator externo
 m.hei = 2*m.hef + m.hm; 
-m.hei = 4E-3;
 
 m.hnb = 10E-3;       % Altura do nucleo da bobina         II
+
+m.lnb = 22E-3;      % comrpimento do nucelo da bobina     II
 
 % Altutra de uma parte (cima ou baixo)
 Hnbu = (m.hei-m.hnb)/2;  % Altura util p/ embobinamento
@@ -41,7 +42,7 @@ Hnbu = (m.hei-m.hnb)/2;  % Altura util p/ embobinamento
 % a bobina
 m.wnb = 8E-3 ;%Anb/Hnbu;  % Largura nucleo     
                      
-m.wei = 4E-3;     % Largura estator interno               II  
+m.wei = 6E-3;     % Largura estator interno               II  
 
 %  - gera a pronfundidade do nucleo
 % devemos verificar se o 8*(rnb + 2*Hnbu) <= 360 graus
