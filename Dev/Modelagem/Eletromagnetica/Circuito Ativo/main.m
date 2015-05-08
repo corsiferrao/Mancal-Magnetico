@@ -14,28 +14,20 @@ parametros_magneticos;
 
 %% inicializacao
 % Deslocamentos relativos
-dx = 0E-4;
+dx = 0;
 dy = 0;
-I  = 10;
+I  = [0 0 10 0 0 0 0 0 0 0];
 
 % Forcas eletromotriz
-
-FA = m.nnb*I
-FB = 0%m.nnb*I/2;
-FC = 0;
-FD = 0;
-FE = 0;
-FF = 0;
-FG = 0;
-FH = 0%m.nnb*I/2;
+F = I*m.nnb;
 
 % derivados
 m = derivados_geometricos(m,dx,dy);
 
 % Permeabilidade inicial do rotor
-ufr0 = 2E4;
-ufn0 = 2E4;
-uff0 = 2E4;
+ufr0 = 4E4;
+ufn0 = 4E4;
+uff0 = 4E4;
 
 %      AB    BC   CD   DE   EF   FG   GH   HA
 ufr = [ufr0 ufr0 ufr0 ufr0 ufr0 ufr0 ufr0 ufr0]'; 
@@ -47,25 +39,25 @@ uff = [uff0 uff0 uff0 uff0 uff0 uff0 uff0 uff0]';
 lg =lgap(m);
 
 % calcula relutancia gaps
-Rg = R(lg,m.Snbe,mag.u0);
+Rg = Rm(lg,m.Snbe,mag.u0);
 
 %% inicio interação
 
 % loop para convergencia
 % método de Newton
-for i=1:150
+for i=1:300
             
     % calcula relutancais rotor
     lr = m.prr/8;
-    Rr = R(lr,m.Srr, ufr);
-    
+    Rr = Rm(lr,m.Srr, ufr);
+       
     % calcula relutancais nucleo
     ln = m.wnb;
-    Rn = R(ln, m.Snbe, ufn);
+    Rn = Rm(ln, m.Snbe, ufn);
     
     % calcula retorno estator
     lf = m.peie/8;
-    Rf = R(lf, m.Sei, uff);
+    Rf = Rm(lf, m.Sei, uff);
      
     % resolve malhas
     malhas;
@@ -86,15 +78,29 @@ for i=1:150
     ufn = iron.MuH(Hn)/2 + ufn/2;
     ufr = iron.MuH(Hr)/2 + ufr/2;
     uff = iron.MuH(Hf)/2 + uff/2;
+    
+    auxHr(i) = Hr(1);
+    auxHn(i) = Hn(1);
+    auxHf(i) = Hf(1);
+    
+    if( ufn(2)-ufn(8) ~= 0)
+       i 
+       ufn(2)-ufn(8)
+    end
        
 end;
 
 %% Força
 
-projecao = diag([1 0.7071 1 0.7071 1 0.7071 1 0.7071])
+projecao = diag([1 0.7071 1 0.7071 1 0.7071 1 0.7071]);
 
-Fmag = F(Bg,m.Sgi,mag)'*projecao
+Fmag = F(Bg,m.Sgi,mag)'*projecao;
 
 Fx = Fmag(1) + Fmag(2) - Fmag(4) - Fmag(5) -Fmag(6) + Fmag(8)
 
 Fy = -Fmag(2)-Fmag(3)-Fmag(4)+Fmag(6)+Fmag(7)+Fmag(8)
+
+figure; plot(auxHr)
+figure; plot(auxHn, 'g')
+figure; plot(auxHf, 'b')
+
