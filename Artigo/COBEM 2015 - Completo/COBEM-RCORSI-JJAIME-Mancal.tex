@@ -180,30 +180,21 @@
 	
 	\subsection{Indutance} \label{subsec:at:indutancia}
 	
-	The calculation of inductance is important because it harnesses a dynamic to the actuator, and it can be used to as a mean to measurement the rotor displacement position. Inductance is correlated with generation capacity of magnetic flux in a coil and its current, and can be defined by:
+	The calculation of inductance is important because it impose a dynamic to the actuator also it can be used to as a mean to measurement the rotor displacement position. Inductance is correlated with generation capacity of magnetic flux in a coil and its current, It is defined by:
 	
 	\begin{equation}
 		L = \frac{d \phi}{di} .
 	\end{equation}
 	
-	The achieved inductance for each coils is of $56 mH$ with a electrical resistance of $4 \Omega$. Increasing the size of the coil generates a positive gain on the attraction force but decreases the cut-off frequency, implying a slower actuator.
+	The achieved inductance for each coils is of $56 mH$ with a electrical resistance of $4 \Omega$. Increasing the size of the coil generates a positive gain on the attraction force but decreases the cut-off frequency, implying a slower actuators and complex control system.
 	
 	\subsection{Auxiliary Bearing}
 	
-	Auxiliary bearings are essential on any magnetic bearing, it prevents the shock between the rotor and any critical part when the magnetic bearing are disabled or on a failure situation. The proposed auxiliary bearing is a solid bearing that prevents the shock between irons (rotor and inner or outer stator), it also limited the rotor tilt angle not allowing it to get on a non stable zone (where the radial attraction force is grater than the axial force). 
+	Auxiliary bearings are essential on any magnetic bearing, it prevents the shock between the rotor and any critical part when the magnetic bearing is disabled or on a failure situation. The proposed auxiliary bearing is a solid bearing that prevents the shock between irons (rotor and inner or outer stator), it also limited the rotor tilt angle not allowing it to get on a non stable zone (where the radial attraction force is greater than the axial force).
+	1	
+	\subsection{Bearing dimensions}
 	
-	%This bearing is locates between the outer stator and the rotor as shown on Fig. \ref{fig:mancal:batente:corte}. IT has two main parts: (a) that is project to prevent the shock by the iron parts of the rotor and to not allow the rotor to displaces verticaly beyond it maximum value; (b) to limited the maximum tilt inclination.
-	
-	%\begin{figure}[th!]
-	%\centering
-	%\includegraphics[width=0.4\linewidth]{Figs/mancais/mancal_batente_corte}
-	%\caption{Auxiliary bearing. (a) Radial displacement limitation; (b) tilt and axial direction limitation}
-	%\label{fig:mancal:batente:corte}
-	%\end{figure}
-	
-	\subsection{Bearing dimensions and stiffness}
-	
-	The achieved magnetic bearing has an external radio of 75.8 mm and height of 18.0 mm. The nominal air gap between the rotor and the external stator is of 1.2mm and of 0.6 between rotor and inner stator. The maximum rotor displa
+	The achieved magnetic bearing has an external radio of 75.8 mm and height of 18.0 mm. The nominal air gap between the rotor and the external stator is of 1.2mm and of 0.6 between rotor and inner stator. 
 	
 	\section{Dynamic Model}
 	
@@ -214,7 +205,7 @@
 		V_z &= m \, g \, z + \frac{1}{2} \, K \, z^2
 	\end{align}
 	
-	There is two types of forces acting on the rotor, the  non-conservative forces ($Q^{nc}$) that are caused by the active part of the bearing and the conservative ($Q^{c}$) forces (which depend only on the position of the rotor) are result of the passive bearing part.
+	There are two types of forces acting on the rotor, the  non-conservative forces ($Q^{nc}$) that are caused by the active part of the bearing and the conservative ($Q^{c}$) forces (which depend only on the position of the rotor) are result of the passive bearing part.
 	
 	\begin{align}
 		Q_y^{nc} &= F_{by}(x,y,i)  \\
@@ -223,13 +214,8 @@
 		Q^{c}_y &= K_p \, y 
 	\end{align}
 	
-	We can obtain the differential equations that govern the model:
-	
-	% \begin{align}
-	% 		L = T - V \notag \\
-	% 		\frac{\partial}{\partial t} \left[ \frac{\partial L}{\partial \dot{r}} \right] -  \frac{\partial L}{\partial r} = Q^{nc} + Q^{c}
-	% \end{align} 
-	
+	Is possible to obtain the differential equations that govern the model:
+		
 	\begin{align}
 		I \ddot{\theta} &= 0 \\
 		m \ddot{x}		&=  F_{px}(x,y) - F_{by}(x,y,i) \\
@@ -239,13 +225,13 @@
 	
 	%\subsection{Actuator Dynamic}
 	
-	The actuator dynamics is generated primarily by the coils,  this inductance is time-varying since it depends on the rotor position. On this linear model we used the worst case model (largest inductance) witch has a cut-off frequency of $11Hz$. The actuator dynamic is than :
+	The actuator dynamics is generated primarily by the coils,  this inductance is time-varying since it depends on the rotor position. On this linear model we used the worst case model (largest inductance) which has a cut-off frequency of $11Hz$. The actuator dynamic is than :
 	
 	\begin{align}
 		\frac{I(s)}{V(s)} = G_a(s) = \frac{1}{R + L \, s} = \frac{V(s)}{4 + 0.056 \, s}
 	\end{align}
 	
-	We can than obtain the block diagram for the radial rotor displacement, as shown on Fig. \ref{fig:diagrama:blocos:modelo:linear}.
+	The block diagram for the radial rotor displacement is shown on Fig. \ref{fig:diagrama:blocos:modelo:linear}.
 	
 	\begin{figure}[th!]
 		\centering
