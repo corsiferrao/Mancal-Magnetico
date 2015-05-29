@@ -192,7 +192,7 @@
 	\begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.4\linewidth]{/mancais/prototipo.jpg}
-	\caption{Constructed magnetic bearing prototype}
+	\caption{First magnetic bearing prototype}
 	\label{fig:prototipo}
 	\end{figure}	
 	
@@ -231,7 +231,7 @@
 		G_a(s) = \frac{1}{L(dx,dy) \, s + R} 
 	\end{align}
 	
-	Magnetic bearing radial dynamic model can be represented by the block diagram on Fig. \ref{fig:diagrama_blocos_modelo_linear}. A controller ($C(s)$) is needed to stabilities the system controlling the current on actuators ($i$), the controller is project to work as regulatory ($R=0$) since the bearing is project to work at  operation point ($dx=0, dy=0$).	Open loop system transfer function is derivate on Eq. \ref{eq:MA}, begin current the input of the system and the radial (x) position the output, the system is unstable with negative phase margin. 
+	Magnetic bearing radial dynamic model can be represented by the block diagram on Fig. \ref{fig:diagrama_blocos_modelo_linear}. A controller ($C(s)$) is needed to stabilities the system controlling the current on actuators ($i$), the controller is project to work as regulatory ($R=0$) since the bearing is project to work at  operation point ($dx=0, dy=0$).	Open loop transfer function used to project controller is derivate on Eq. \ref{eq:MA}.
 	
 	\begin{equation}
 	dx = i_x \frac{K_b(dx,dy)}{[m s^2 - K_p (dx,dy)] \; [L(dx,dy) \, s + R] } 
@@ -262,9 +262,9 @@
 	\label{fig:diagrama_controlador_estimador}
 	\end{figure}
 		
-	A SISO loop-shaping controller ($H_{\infty}$) \citep{skogestad2007multivariable} was projected to stabilizes the rotor at it operational point  in order to have a good margin between the nominal (linearized) plant and the real one (non linear). The controller was project to model the system frequency response to act as a first order low pass filter with cut-off-frequency of $100$ rad/s and a zero DC gain.
+	A SISO loop-shaping controller ($H_{\infty}$) \citep{skogestad2007multivariable} was designed to stabilize the rotor at it operational point  in order to have a good margin between the nominal (linearized) plant and the real one (non linear). The controller model the system frequency response to a first order low pass filter with cut-off-frequency of $100$ rad/s and a zero DC gain.
 	
-	Projected controller was simulated with the non linear plant model and the result is show on Fig. \ref{fig:controlled}. On this simulation the controller is initially disabled and a no zero initial condition takes the rotor from the equilibrium position to at it maximum excursion ($dy = 0.35 mm and dx = 0.18 mm$). The controller is activated at 0.1 second and takes 0.3 seconds to recover the rotor from the worst case to its nominal position. A disturbance of 0.01 mm is applied to dx position at 0.5 seconds. Max current peak occurs when controlled is activated and wont exceeds 0.5 A.	
+	Fig. \ref{fig:controlled} is a simulation of the controlled system. This simulation the controller is initially disabled and initial condition takes the rotor from the equilibrium position to the shock with external stator (dy = 0.35 mm and dx = 0.18 mm). The controller is activated at 0.1 second and takes 0.3 seconds to recover the rotor from the worst case to its nominal position with 0.5 A of current peak. A disturbance of 0.01 mm is applied to dx position at 0.5 seconds. 
 	
 	\begin{figure}[ht]
 	\centering
@@ -273,9 +273,9 @@
 	\label{fig:controlled}
 	\end{figure}	
 	
-	\section{CONCLUSION}
+	\section{CONCLUSION AND FUTURE WORKS}
 	
-	In this paper a new topology of magnetic bearing system aiming the application on satellite reaction wheel is proposed, the suggested bearing respects all imposed restrictions (dimensions, mass, power consumption) and can be controlled to have low position oscillation and good performance against perturbation.	Future work are in line to have a more complete electromagnetic model aiming the execution of more optimizations on the proposed topology. A first functional prototype with position sensors and drive electronics will help to push the development of others subsystems of the reaction wheel.
+	In this paper a new topology of magnetic bearing system aiming the application on satellite reaction wheel is develop, suggested bearing respects restrictions dimensions, mass and power consumption restrictions. A control with low position oscillation and good performance against perturbation is proposed.	Future work are in line to have a more complete electromagnetic model aiming optimizations on the proposed topology. A first functional prototype with position sensors and drive electronics is under construction and will help to push the development of others subsystems of the reaction wheel.
 		
 	\section{ACKNOWLEDGEMENTS}
 	
