@@ -16,7 +16,7 @@ parametros_magneticos;
 % Deslocamentos relativos
 dx = 0;
 dy = 0;
-I  = [0 0 10 0 0 0 0 0 0 0];
+I  = [10 0 0 0 0 0 0 0 0 0];
 
 % Forcas eletromotriz
 F = I*m.nnb;
@@ -30,43 +30,52 @@ ufn0 = 4E4;
 uff0 = 4E4;
 
 %      AB    BC   CD   DE   EF   FG   GH   HA
-ufr = [ufr0 ufr0 ufr0 ufr0 ufr0 ufr0 ufr0 ufr0]'; 
+ufr = [ufr0 ufr0 ufr0 ufr0 ufr0 ufr0 ufr0 ufr0]';
 ufn = [ufn0 ufn0 ufn0 ufn0 ufn0 ufn0 ufn0 ufn0]';
 uff = [uff0 uff0 uff0 uff0 uff0 uff0 uff0 uff0]';
 % Relutancais
 
 % calcula gap com base no deslocamento x e y do rotor
 lg =lgap(m);
+lr = m.prr/8;
+lf = m.peie/8;
+ln = m.wnb;
 
 % calcula relutancia gaps
 Rg = Rm(lg,m.Snbe,mag.u0);
 
 %% inicio interação
+ufn0 = ufn;
+ufr0 = ufr;
+uff0 = uff;
 
 % loop para convergencia
 % método de Newton
 for i=1:300
-            
+    
+    if(i>1)
+        Hn0 = Hn;
+        Hr0 = Hr;
+        Hf0 = Hf;
+    end;
+    
     % calcula relutancais rotor
-    lr = m.prr/8;
     Rr = Rm(lr,m.Srr, ufr);
-       
+    
     % calcula relutancais nucleo
-    ln = m.wnb;
     Rn = Rm(ln, m.Snbe, ufn);
     
     % calcula retorno estator
-    lf = m.peie/8;
     Rf = Rm(lf, m.Sei, uff);
-     
+    
     % resolve malhas
     malhas;
     
-    % calcula campos nos componentes
+    % Vetor campo mag. calcula campos nos componentes
     Bg = abs(phi/m.Sgi/1.1);
     Bn = abs(phi/m.Snbe);
-    Br = abs(phi/m.Srrr);
-    Bf = abs(phi/m.Sei);
+    Br = abs(I/m.Srrr);
+    Bf = abs(I/m.Sei);
     
     Hg = Bg/mag.u0;
     Hn = Bn'/diag(ufn);
@@ -74,27 +83,28 @@ for i=1:300
     Hf = Bf'/diag(uff);
     
     % Atualiza permeabilidades
-    % via método de newton
-    ufn = iron.MuH(Hn)/2 + ufn/2;
-    ufr = iron.MuH(Hr)/2 + ufr/2;
-    uff = iron.MuH(Hf)/2 + uff/2;
-    
+    % via método de newton-rapson
+    if i==1
+        ufn = iron.MuH(Hn)/2 + ufn/2;
+        ufr = iron.MuH(Hr)/2 + ufr/2;
+        uff = iron.MuH(Hf)/2 + uff/2;
+    else
+        ufn = ufn + (Hn-Hn0)'./(ufn-ufn0);
+        ufr = ufr + (Hr-Hr0)'./(ufr-ufr0);
+        uff = uff + (Hf-Hf0)'./(uff-uff0);
+    end;
+
     auxHr(i) = Hr(1);
     auxHn(i) = Hn(1);
     auxHf(i) = Hf(1);
     
-    if( ufn(2)-ufn(8) ~= 0)
-       i 
-       ufn(2)-ufn(8)
-    end
-       
 end;
 
 %% Força
 
 projecao = diag([1 0.7071 1 0.7071 1 0.7071 1 0.7071]);
 
-Fmag = F(Bg,m.Sgi,mag)'*projecao;
+Fmag = ((Bg.^2*m.Sgi)/(2*mag.u0))'*projecao;
 
 Fx = Fmag(1) + Fmag(2) - Fmag(4) - Fmag(5) -Fmag(6) + Fmag(8)
 
