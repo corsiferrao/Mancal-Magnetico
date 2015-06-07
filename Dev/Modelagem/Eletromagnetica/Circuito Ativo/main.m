@@ -42,7 +42,7 @@ lf = m.peie/8;
 ln = m.wnb;
 
 % calcula relutancia gaps
-Rg = Rm(lg,m.Snbe,mag.u0);
+Rg = Rmm(lg,m.Snbe,mag.u0);
 
 %% inicio interação
 ufn0 = ufn;
@@ -60,13 +60,13 @@ for i=1:300
     end;
     
     % calcula relutancais rotor
-    Rr = Rm(lr,m.Srr, ufr);
+    Rr = Rmm(lr,m.Srr, ufr);
     
     % calcula relutancais nucleo
-    Rn = Rm(ln, m.Snbe, ufn);
+    Rn = Rmm(ln, m.Snbe, ufn);
     
     % calcula retorno estator
-    Rf = Rm(lf, m.Sei, uff);
+    Rf = Rmm(lf, m.Sei, uff);
     
     % resolve malhas
     malhas;
