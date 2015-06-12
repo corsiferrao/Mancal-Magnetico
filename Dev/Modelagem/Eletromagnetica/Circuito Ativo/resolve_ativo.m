@@ -27,7 +27,7 @@ uff = [uff0 uff0 uff0 uff0 uff0 uff0 uff0 uff0]';
 % Relutancais
 
 % calcula gap com base no deslocamento x e y do rotor
-lg =lgap(m);
+lg = lgap(m);
 lr = m.prr/8;
 lf = m.peie/8;
 ln = m.wnb;
@@ -63,7 +63,7 @@ for i=1:20
     malhas;
     
     % Vetor campo mag. calcula campos nos componentes
-    Bg = abs(phi/m.Sgi/1.1);
+    Bg = abs(phi/m.Sgi);
     Bn = abs(phi/m.Snbe);
     Br = abs(I/m.Srrr);
     Bf = abs(I/m.Sei);
@@ -75,16 +75,26 @@ for i=1:20
     
     % Atualiza permeabilidades
     % via método de newton-rapson
-    if i==1
-        ufn = iron.MuH(Hn)/2 + ufn/2;
-        ufr = iron.MuH(Hr)/2 + ufr/2;
-        uff = iron.MuH(Hf)/2 + uff/2;
-    else
-        ufn = ufn + (Hn-Hn0)'./(ufn-ufn0);
-        ufr = ufr + (Hr-Hr0)'./(ufr-ufr0);
-        uff = uff + (Hf-Hf0)'./(uff-uff0);
-    end;
-
+%     if i==1
+%         ufn = iron.MuH(Hn)/2 + ufn/2;
+%         ufr = iron.MuH(Hr)/2 + ufr/2;
+%         uff = iron.MuH(Hf)/2 + uff/2;
+%     else
+%         ufn = ufn + (Hn-Hn0)'./(ufn-ufn0);
+%         ufr = ufr + (Hr-Hr0)'./(ufr-ufr0);
+%         uff = uff + (Hf-Hf0)'./(uff-uff0);
+%     end;
+    
+    Hn = Bn./ufn/2 + Hn'/2;  % - H->B
+    Hf = Bf./uff/2 + Hf'/2;
+    Hr = Br./ufr/2 + Hr'/2;
+    
+    ufn = iron.MuH(Hn);
+    ufr = iron.MuH(Hr);
+    uff = iron.MuH(Hf);  
+    
+    auxBn(i) = Bn(2); 
+    
     auxHr{i} = Hr;
     auxHn{i} = Hn;
     auxHf{i} = Hf;
