@@ -22,7 +22,7 @@ dy = 0;
 for i=1:j 
     rdx.dx(i)  = fem_validacao_v0_dx.dx(i);
     m = derivados_geometricos(m, rdx.dx(i)*1E-3, dy);
-    r = resolve(m, mag, rdx.dx(i)*1E-3, dy);
+    r = resolve_passivo(m, mag, rdx.dx(i)*1E-3, dy);
     rdx.Fx(i) = r.Fx;
 end;
 
@@ -61,7 +61,7 @@ dx = 0;
 for i=1:j 
     rdy.dy(i)  = fem_validacao_v0_dy.dy(i);
     m = derivados_geometricos(m, dx, rdy.dy(i)*1E-3);
-    r = resolve(m, mag, dx, rdy.dy(i)*1E-3);
+    r = resolve_passivo(m, mag, dx, rdy.dy(i)*1E-3);
     rdy.Fy(i) = r.Fy;
 end;
 
@@ -93,7 +93,7 @@ for hm=4:2:10
         m.hm  = hm*1E-3;
         m.wge = wge*1E-3;
         m   = derivados_geometricos(m, 0, 0);
-        r = resolve(m, mag, 0, 0);
+        r = resolve_passivo(m, mag, 0, 0);
         rpa(i, :) = [hm 9 wge r.Fx];
         i = i+1;
     end;

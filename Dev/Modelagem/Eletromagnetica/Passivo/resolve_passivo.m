@@ -1,4 +1,4 @@
-function ret = resolve(m, mag, dx, dy)
+function ret = resolve_passivo(m, mag, dx, dy)
 %%
 
 load iron;

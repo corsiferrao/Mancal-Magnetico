@@ -66,16 +66,18 @@ h1 = subplot(2,1,1);
 
 subplot(2,2,1); 
     plot(1:in-1, Fx,'o'); 
-    title('Fx');
+    title('F_x');
 subplot(2,2,2); 
     plot(1:in-1, Fy,'o');
-    title('Fy');
+    title('F_y');
 subplot(2,2,3); 
     plot(1:in-1, V,'o');
     title('Volume');
 subplot(2,2,4); 
-    plot(1:in-1, dBef,'o');
-    title('Bef');
+    plot(1:in-1, dBef, 'o ');
+    title('$$\Delta B_{ef}$$', 'Interpreter','latex');
+    
+export_pdf('Resultados/otimizacao_passivo_parametros',1);
     
 %% pesos funcionais
 

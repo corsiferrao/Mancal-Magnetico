@@ -37,8 +37,8 @@ dx = dxx/2; dy=0;
     % calcula derivados geométricos
     m = derivados_geometricos(m, dx, dy);
 
-    % resolve
-    r1 = resolve(m, mag, dx, dy);
+    % resolve_passivo
+    r1 = resolve_passivo(m, mag, dx, dy);
 
 % % interação 2:
  dx = 0; dy=dyy;
@@ -46,8 +46,8 @@ dx = dxx/2; dy=0;
      % calcula derivados geométricos
      m = derivados_geometricos(m, dx, dy);
  
-     % resolve
-     r2 = resolve(m, mag, dx, dy);
+     % resolve_passivo
+     r2 = resolve_passivo(m, mag, dx, dy);
     
 % interação 3:
 dx = 0; dy=0;
@@ -55,8 +55,8 @@ dx = 0; dy=0;
     % calcula derivados geométricos
     m = derivados_geometricos(m, dx, dy);
 
-    % resolve
-    r3 = resolve(m, mag, dx, dy);
+    % resolve_passivo
+    r3 = resolve_passivo(m, mag, dx, dy);
   
 %% Calcula valor do Funcional
 
