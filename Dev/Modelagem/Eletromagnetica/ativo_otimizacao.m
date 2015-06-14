@@ -19,11 +19,13 @@
 
 clear all;
 clc; 
-
+%%
 % variáveis globais para armazenamento dos valores intermediaários
 global Fx;
 global L;
 global V;
+global Im;
+global in;
 
 % versao da funcao merito a ser utilizada
 global version;
@@ -35,6 +37,9 @@ parametros_geometricos;
 V0=[0.6E-3  300     10E-3   22E-3  6E-3     12E-3];
 LO=[0.4E-3  50      5E-3    10E-3  3E-3     6E-3];
 UB=[1.2E-3  600     20E-3   30E-3  10E-3    22E-3];
+
+Im = 4;
+
 po = V0;
 
 % configura otimizacao
@@ -45,13 +50,13 @@ options = optimset( 'Display', 'iter',  ...
 % contador para armazenameto dos resultados
 in = 1;
 
-%% Executa otimização
+%% Executa otimizaçãocl
 
 %define funcao merito
-version = 4;        
+version = 1;        
 
 % executa otmizacao
-[x,fval] = fminsearchbnd('funcional', po, LO, UB, options);
+[x,fval] = fminsearchbnd('funcional_ativo', po, LO, UB, options);
 
 
 %% Resultados

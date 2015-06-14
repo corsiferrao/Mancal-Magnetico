@@ -9,6 +9,7 @@ global Fx;
 global Lmain;
 global V;
 global Im;
+global in;
 
 global version;
 
@@ -27,25 +28,23 @@ m.rnb = po(6);
 dx = m.wgi;
 dy = 0;
 
-    % calcula derivados geométricos
-    m = derivados_geometricos(m, dx, dy);
+% calcula derivados geométricos
+m = derivados_geometricos(m, dx, dy);
 
-    % resolve_passivo
-    I  = [Im Im/2 0 0 0 0 0 Im/2];
-    r1 = resolve_ativo(I, mag, dx, dy);
+% resolve_passivo
+I  = [Im Im/2 0 0 0 0 0 Im/2];
+[r.Fx, r.Fy,  r.Lmain] = resolve_ativo(dx, dy,I);
 
   
 %% Calcula valor do Funcional
 
-dbeftemp = abs(r1.Bef-r3.Bef); %diferencial
-F = merito( r1.Fx, r2.Fy, m.Vm, dbeftemp, m, version );
+F = merito_ativo(r.Fx, r.Lmain, m, version );
 
 %% global
 
-Fx(in)      = r3.Fx;
-Fy(in)      = r2.Fy*m.NFRAC;
+Fx(in)      = r.Fx;
 V(in)       = m.Vm;
-dBef(in)    = dbeftemp;
+Lmain(in)   = r.Lmain;
 
 in = in+1;
 

@@ -1,4 +1,4 @@
-function [ phi I ] = malhas_ativo(F, Rg, Rn, Rf, Rr)
+function [ phi, I ] = malhas_ativo(F, Rg, Rn, Rf, Rr)
 
 %% Resolucao da malha para o circuito ativo
 % Rafael Corsi
@@ -39,6 +39,7 @@ Fm = [F(1) + F(2);
      -F(6) - F(7);
       F(7) + F(8);
      -F(8) - F(1)];
+
 
 %% Resistencias individual malhas
 R1 = Rg(1)+Rn(1)+Rr(1)+Rf(1)+Rg(2)+Rn(2);
