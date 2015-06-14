@@ -36,7 +36,7 @@ hold off
 %title('Validação deslocamento em x')
 legend('FEM', 'Analitica')
 belezura
-export_pdf('validacao_passivo_dx_offset', 1); 
+export_pdf('Resultados/validacao_passivo_dx_offset', 1); 
 
 % calibracao
 cal_Fx = sum(fem_validacao_v0_dx.Fx + rdx.Fx')/j
@@ -51,7 +51,7 @@ hold off
 %title('Validação deslocamento em x')
 legend('FEM', 'Analitica')
 belezura
-export_pdf('validacao_passivo_dx_calibrado', 1); 
+export_pdf('Resultados/validacao_passivo_dx_calibrado', 1); 
 
 
 %% dy
@@ -77,7 +77,7 @@ hold off
 %title('Validação deslocamento em y')
 legend('FEM', 'Analitica', 'Location','NorthWest')
 belezura
-export_pdf('validacao_passivo_dy', 1); 
+export_pdf('Resultados/validacao_passivo_dy', 1); 
 
 %% Parametros
 
