@@ -5,7 +5,8 @@
 clc
 clear all
 
-%% load comsol 
+%% load dados
+addpath('./Parametros');
 load Comsol;
 
 %%
@@ -78,6 +79,7 @@ title('Force (N) x current (A) x displacment (mm)')
 %%
 
 figure
-plot(Comsol(:,3), 'x');
+plot(Comsol(:,3));
 hold
-plot(Fx(7:end)*1.2, 'o');
+plot(Fx(7:end)*1.2, 'r');
+legend('Comsol', 'Corsi');  
