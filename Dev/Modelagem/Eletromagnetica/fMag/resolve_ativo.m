@@ -60,7 +60,7 @@ for i=1:20
     Rf = Rmm(lf, m.Sei, uff);
     
     % resolve malhas
-    malhas;
+    malhas_ativo;
     
     % Vetor campo mag. calcula campos nos componentes
     Bg = abs(phi/m.Sgi);

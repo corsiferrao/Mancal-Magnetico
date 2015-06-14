@@ -6,8 +6,7 @@ clc
 clear all
 
 %% load dados
-addpath('./Parametros');
-load Comsol;
+load Bobinas-eq-10A;
 
 %%
 parametros_geometricos;
