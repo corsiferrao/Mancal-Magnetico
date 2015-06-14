@@ -13,7 +13,7 @@ parametros_magneticos;
 m = derivados_geometricos(m,dx,dy);
 
 % Forcas eletromotriz
-F = I*m.nnb;
+FM = I*m.nnb;
 
 % Permeabilidade inicial do rotor
 ufr0 = 4E4;
@@ -60,7 +60,7 @@ for i=1:20
     Rf = Rmm(lf, m.Sei, uff);
     
     % resolve malhas
-    malhas_ativo;
+    [phi I] = malhas_ativo(FM, Rg, Rn, Rf, Rr);
     
     % Vetor campo mag. calcula campos nos componentes
     Bg = abs(phi/m.Sgi);

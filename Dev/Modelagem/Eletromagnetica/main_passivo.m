@@ -4,8 +4,8 @@ clear;
 close all;
 
 %% Carrega dados EEM
-load comsol_varredura;
-load comsol_Fy;
+%load comsol_varredura;
+load fem_validacao_v0_dy;
 
 %% Parametros iniciais
 

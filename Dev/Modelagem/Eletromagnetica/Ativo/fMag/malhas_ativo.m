@@ -1,3 +1,5 @@
+function [ phi I ] = malhas_ativo(F, Rg, Rn, Rf, Rr)
+
 %% Resolucao da malha para o circuito ativo
 % Rafael Corsi
 % 7/3/15
@@ -8,14 +10,14 @@
 %% Inicializacao
 
 % Principais resistencias
-%syms RgA RrAB RfAB RnA; 
-%syms RgB RrBC RfBC RnB; 
-%syms RgC RrCD RfCD RnC; 
-%syms RgD RrDE RfDE RnD; 
-%syms RgE RrEF RfEF RnE; 
-%syms RgF RrFG RfFG RnF; 
-%syms RgG RrGH RfGH RnG; 
-%syms RgH RrHA RfHA RnH; 
+%syms RgA RrAB RfAB RnA;
+%syms RgB RrBC RfBC RnB;
+%syms RgC RrCD RfCD RnC;
+%syms RgD RrDE RfDE RnD;
+%syms RgE RrEF RfEF RnE;
+%syms RgF RrFG RfFG RnF;
+%syms RgG RrGH RfGH RnG;
+%syms RgH RrHA RfHA RnH;
 
 % Forcas contra eletromotriz
 %syms FA FB FC FD FE FF FG FH;
@@ -50,7 +52,7 @@ R8 = Rg(8)+Rn(8)+Rr(8)+Rf(8)+Rg(1)+Rn(1);
 
 % Matriz resistencia malhas
 Rm = diag([R1,R2,R3,R4,R5,R6,R7,R8]);
-      
+
 %% Resistencias adjacentes
 Ra1 = [0 Rg(2)+Rn(2) 0 0 0 0 0 Rg(8)+Rn(8)];
 Ra2 = [Rg(1)+Rn(1) 0 Rg(3)+Rn(3) 0 0 0 0 0];
@@ -73,15 +75,16 @@ R = Rm-Ra;
 
 I = R\Fm;
 
-phi =  [ I(1) - I(8); % A
-         I(1) - I(2); % B
-         I(3) - I(2); % C
-         I(3) - I(4); % D
-         I(5) - I(4); % E 
-         I(5) - I(6); % F 
-         I(7) - I(6); % G 
-         I(7) - I(8)]; % H
+phi = [ I(1) - I(8); % A
+        I(1) - I(2); % B
+        I(3) - I(2); % C
+        I(3) - I(4); % D
+        I(5) - I(4); % E
+        I(5) - I(6); % F
+        I(7) - I(6); % G
+        I(7) - I(8)]; % H
 
+end
 
 
 
