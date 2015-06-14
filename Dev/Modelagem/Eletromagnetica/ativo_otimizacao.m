@@ -21,11 +21,9 @@ clear all;
 clc; 
 
 % variáveis globais para armazenamento dos valores intermediaários
-global in;
 global Fx;
-global Fy;
+global L;
 global V;
-global dBef;
 
 % versao da funcao merito a ser utilizada
 global version;
@@ -33,10 +31,10 @@ global version;
 % carrega valore iniciais
 parametros_geometricos;
 
-%  [m.hef   m.wef   m.wm    m.hm    m.wge   m.wrf   m.wrr   m.ree  ];
-V0=[6E-3    14E-3   8E-3    10E-3   1.2E-3  10E-3   6E-3    75E-3];
-LO=[2E-3    7E-3    4E-3    5E-3    1.0E-3  5E-3    3E-3    50E-3];
-UB=[10E-3   21E-3   12E-3   15E-3   3.0E-3  15E-3   9E-3    80E-3];
+%  [wgi     nnb     hnb     lnb    wei      rnb
+V0=[0.6E-3  300     10E-3   22E-3  6E-3     12E-3];
+LO=[0.4E-3  50      5E-3    10E-3  3E-3     6E-3];
+UB=[1.2E-3  600     20E-3   30E-3  10E-3    22E-3];
 po = V0;
 
 % configura otimizacao

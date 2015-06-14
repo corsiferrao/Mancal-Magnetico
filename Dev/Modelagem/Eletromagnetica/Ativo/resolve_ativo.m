@@ -1,4 +1,4 @@
-function [ Fx, Fy ] = resolve_ativo(dx,dy,I)
+function [ Fx, Fy, Lmain ] = resolve_ativo(dx,dy,Ib)
 
 %% Parametros
 
@@ -13,7 +13,7 @@ parametros_magneticos;
 m = derivados_geometricos(m,dx,dy);
 
 % Forcas eletromotriz
-FM = I*m.nnb;
+FM = Ib*m.nnb;
 
 % Permeabilidade inicial do rotor
 ufr0 = 4E4;
@@ -74,17 +74,7 @@ for i=1:20
     Hf = Bf'/diag(uff);
     
     % Atualiza permeabilidades
-    % via método de newton-rapson
-%     if i==1
-%         ufn = iron.MuH(Hn)/2 + ufn/2;
-%         ufr = iron.MuH(Hr)/2 + ufr/2;
-%         uff = iron.MuH(Hf)/2 + uff/2;
-%     else
-%         ufn = ufn + (Hn-Hn0)'./(ufn-ufn0);
-%         ufr = ufr + (Hr-Hr0)'./(ufr-ufr0);
-%         uff = uff + (Hf-Hf0)'./(uff-uff0);
-%     end;
-    
+    % via método de newton-rapson    
     Hn = Bn./ufn/2 + Hn'/2;  % - H->B
     Hf = Bf./uff/2 + Hf'/2;
     Hr = Br./ufr/2 + Hr'/2;
@@ -111,6 +101,8 @@ Fx = Fmag(1) + Fmag(2) - Fmag(4) - Fmag(5) -Fmag(6) + Fmag(8);
 
 Fy = -Fmag(2)-Fmag(3)-Fmag(4)+Fmag(6)+Fmag(7)+Fmag(8);
 
+% vezes 2 pois tem as indutancias adjacentes 
+Lmain = phi(1)/Ib(1);
 
 % figure;
 % plot(cellfun(@(x) x(1), auxHr), '.')

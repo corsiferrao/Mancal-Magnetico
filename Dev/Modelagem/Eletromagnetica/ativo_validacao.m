@@ -19,7 +19,7 @@ x=1;
 for Im=0:0.5:4
     I  = [Im Im/2 0 0 0 0 0 Im/2];
     for dx=-0.3E-3:0.1E-3:0.3E-3
-        [Fx(x) Fy(x)] = resolve_ativo(dx,dy,I);
+        [Fx(x) Fy(x) L(x)] = resolve_ativo(dx,dy,I);
         x = x+1;
     end;
 end;

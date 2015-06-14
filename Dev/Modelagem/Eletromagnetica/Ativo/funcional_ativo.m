@@ -5,58 +5,35 @@ function F = funcional_ativo(po)
 %  2. Deslocamento em dx, dy= nominal
 %  3. Deslocamento nominal 
 
-global in;
 global Fx;
-global Fy;
+global Lmain;
 global V;
-global dBef;
+global Im;
 
 global version;
-
 
 parametros_magneticos;
 parametros_geometricos;
 
 % atualiza valores
-m.hef = po(1);
-m.wef = po(2);
-m.wm  = po(3);
-m.hm  = po(4);
-m.wge = po(5);
-m.wrf = po(6);
-m.wrr = po(7);
-m.ree = po(8);
-
-
-% valores do deslocamento
-dxx = m.wge; dyy = 0.2E-3;
+m.wgi = po(1);
+m.nnb = po(2);
+m.hnb = po(3);
+m.lnb = po(4);
+m.wei = po(5);
+m.rnb = po(6);
 
 % % interação 1:
-dx = dxx/2; dy=0;
+dx = m.wgi;
+dy = 0;
 
     % calcula derivados geométricos
     m = derivados_geometricos(m, dx, dy);
 
     % resolve_passivo
-    r1 = resolve_passivo(m, mag, dx, dy);
+    I  = [Im Im/2 0 0 0 0 0 Im/2];
+    r1 = resolve_ativo(I, mag, dx, dy);
 
-% % interação 2:
- dx = 0; dy=dyy;
- 
-     % calcula derivados geométricos
-     m = derivados_geometricos(m, dx, dy);
- 
-     % resolve_passivo
-     r2 = resolve_passivo(m, mag, dx, dy);
-    
-% interação 3:
-dx = 0; dy=0;
-
-    % calcula derivados geométricos
-    m = derivados_geometricos(m, dx, dy);
-
-    % resolve_passivo
-    r3 = resolve_passivo(m, mag, dx, dy);
   
 %% Calcula valor do Funcional
 
