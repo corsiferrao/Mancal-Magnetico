@@ -7,11 +7,11 @@
 % usando o método Simplex (sem derivadas) para otimizar
 %
 % a. Funcional 
-%   - Fy > Fx 
-%               Previlegiamos a forca em Y do que em X
+%   - Fx >>
+%               Queremos uma força de atração Fx na maior excursão
 %
-%   - Bfe(gap=x) = Bfe(gap=x+0.6)
-%               Queremos que a força em dx seja + linear
+%   - L  <<
+%               Queremos uma indutancia pequena
 %
 %   - Volume_m  <<
 %               Queremos um volume menor -> menor peso
@@ -20,7 +20,7 @@
 clear all;
 clc; 
 
-% variáveis globais para armazenamento dos vlaores intermediaários
+% variáveis globais para armazenamento dos valores intermediaários
 global in;
 global Fx;
 global Fy;
