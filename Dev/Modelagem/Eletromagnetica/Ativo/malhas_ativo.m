@@ -31,14 +31,14 @@ function [ phi, I ] = malhas_ativo(F, Rg, Rn, Rf, Rr)
 %% FEM
 % adotando o sentido horario/ anti-horario de rotacao correto
 % (referencial)
-Fm = [F(1) + F(2);
-     -F(2) - F(3);
-      F(3) + F(4);
-     -F(4) - F(5);
-      F(5) + F(6);
-     -F(6) - F(7);
-      F(7) + F(8);
-     -F(8) - F(1)];
+Fm = [F(1) - F(2);
+      F(2) - F(3);
+      F(3) - F(4);
+      F(4) - F(5);
+      F(5) - F(6);
+      F(6) - F(7);
+      F(7) - F(8);
+      F(8) - F(1)];
 
 
 %% Resistencias individual malhas
