@@ -82,5 +82,5 @@ zlabel('F [N]');
 figure
 plot(Comsol(:,3));
 hold
-plot(Fx(7:end)*1.2, 'r');
+plot(Fx(7:end), 'r');
 legend('Comsol', 'Corsi');  
