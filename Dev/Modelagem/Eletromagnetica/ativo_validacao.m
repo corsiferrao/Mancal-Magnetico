@@ -65,22 +65,51 @@ end
 %% Plota 
 
 [X Y] = meshgrid(0:0.5:4,-0.3:0.1:0.3);
-subplot(1,2,1)
+    subplot(1,2,1)
+    surf(X,Y,Corsif*1.1);
+    title('Analitico');
+    ylabel('dx [mm]');
+    xlabel('I [A]');
+    zlabel('F [N]');
+    belezura;
+subplot(1,2,2)
+    surf(X,Y,Comsolf);
+    title('FEM');
+    colormap(jet)    % change color map
+    ylabel('dx [mm]');
+    xlabel('I [A]');
+    zlabel('F [N]');
+    belezura;
+    
+export_pdf('Resultados/validacao_ativo_map.pdf',1); 
+
+%title('Force (N) x current (A) x displacment (mm)')
+
+%%
+[X Y] = meshgrid(0:0.5:4,-0.3:0.1:0.3);
+figure
 surf(X,Y,Corsif*1.1);
 title('Analitico');
-subplot(1,2,2)
+ylabel('dx [mm]');
+xlabel('I [A]');
+zlabel('F [N]');
+export_pdf('Resultados/validacao_ativo_map_analitico.pdf',1); 
+
+figure
 surf(X,Y,Comsolf);
 title('FEM');
 colormap(jet)    % change color map
 ylabel('dx [mm]');
 xlabel('I [A]');
 zlabel('F [N]');
-%title('Force (N) x current (A) x displacment (mm)')
+export_pdf('Resultados/validacao_ativo_map_fem.pdf',1); 
 
+    
 %%
-
 figure
 plot(Comsol(:,3));
 hold
 plot(Fx(7:end), 'r');
-legend('Comsol', 'Corsi');  
+legend('FEM', 'Analitico', 'Location','NorthWest');  
+belezura
+export_pdf('Resultados/validacao_ativo_2d.pdf',1); 
