@@ -17,14 +17,14 @@ parametros_magneticos;
 dy = 0;
 x=1;
 for Im=0:0.5:4
-    I  = [Im Im/2 0 0 0 0 0 Im/2];
+    I  = [Im -Im/2 0 0 0 0 0 -Im/2];
     for dx=-0.3E-3:0.1E-3:0.3E-3
         [Fx(x) Fy(x) L(x)] = resolve_ativo(dx,dy,I);
         x = x+1;
     end;
 end;
 
-%%
+%% Gera vetor comsol
 c = 1;
 xx =1;
 yy =1;
@@ -43,7 +43,7 @@ for y=0:0.5:4
     xx = 1;
 end
 
-%%
+%% Gera vetor analitico
 c = 1;
 xx =1;
 yy =1;
@@ -62,18 +62,20 @@ for y=0:0.5:4
     xx = 1;
 end
 
-%%
+%% Plota 
 
 [X Y] = meshgrid(0:0.5:4,-0.3:0.1:0.3);
 subplot(1,2,1)
 surf(X,Y,Corsif*1.1);
+title('Analitico');
 subplot(1,2,2)
 surf(X,Y,Comsolf);
+title('FEM');
 colormap(jet)    % change color map
 ylabel('dx [mm]');
 xlabel('I [A]');
 zlabel('F [N]');
-title('Force (N) x current (A) x displacment (mm)')
+%title('Force (N) x current (A) x displacment (mm)')
 
 %%
 

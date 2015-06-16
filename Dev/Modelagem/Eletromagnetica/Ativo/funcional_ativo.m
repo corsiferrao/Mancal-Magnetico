@@ -32,7 +32,7 @@ dy = 0;
 m = derivados_geometricos(m, dx, dy);
 
 % resolve_passivo
-I  = [Im Im/2 0 0 0 0 0 Im/2];
+I  = [Im -Im/2 0 0 0 0 0 -Im/2];
 [r.Fx, r.Fy,  r.Lmain] = resolve_ativo(dx, dy,I);
 
   
