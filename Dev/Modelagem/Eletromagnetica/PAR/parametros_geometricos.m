@@ -5,7 +5,7 @@ m.NFRAC = 36;     % Fraçoes de m (partes para o calculo)
                 
 m.ree  = 75E-3;   % Raio externo estator                  I
 
-m.hef  = 4E-3;    % Altura ferro estator externo          I
+m.hef  = 6E-3;    % Altura ferro estator externo          I
 m.wef  = 14E-3;   % Largura do ferro estator externo      I
 
 m.wm   = 8E-3;    % Largura imã                           I

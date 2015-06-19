@@ -101,8 +101,8 @@ end;
 
 figure
 hold on;
-    plot(1:12, -fem_validacao_v0_rpa(:,4)-cal_Fx, 'o')
-    plot(1:12, rpa(:, 4), 'x')
+    plot(1:12, -fem_validacao_v0_rpa(:,4), 'o')
+    plot(1:12, rpa(:, 4)-cal_Fx, 'x')
     legend('FEM','Analitica');
     belezura
 hold off;
