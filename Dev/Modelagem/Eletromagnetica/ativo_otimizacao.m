@@ -41,11 +41,11 @@ UB=[1.2E-3  600     20E-3   30E-3  10E-3    22E-3];
 % corrente aplicada a bobina
 Im = 4;
 
-po = V0;
+po = LO*2;
 
 % configura otimizacao
 options = optimset( 'Display', 'iter',  ...
-                   'TolX',0.1,'TolFun',0.1, ...
+                   'TolX',0.1,'TolFun',0.05, ...
                    'MaxIter', inf);
 
 % contador para armazenameto dos resultados
@@ -72,26 +72,25 @@ subplot(3,1,2);
     plot(1:in-1, Lmain,'o');
     title('L');
     belezura;
-subplot(3,1,3); 
-    plot(1:in-1, V,'o');
-    title('Volume');
-    belezura;
+% subplot(3,1,3); 
+%     plot(1:in-1, V,'o');
+%     title('Volume');
+%     belezura;
     
 export_pdf('Resultados/otimizacao_ativo_parametros',1);
     
 %% pesos funcionais
 % 
-[F, P1, P2, P3, P4 ] = merito( Fx, L, V, dBef, m, version );
+[F, P1, P2, P3 ] = merito_ativo( Fx, Lmain, m, version );
 
 figure
     plot(P1)
 hold on
     plot(P2, 'r')
-    plot(P3, 'g')
-    plot(P4, 'c')
+    %plot(P3, 'g')
     plot(F,  'm')
 title('pesos');
-legend('P1', 'P2', 'P3', 'P4', 'F'); 
+legend('N', 'L',  'F'); 
 belezura
 
 export_pdf('Resultados/otimizacao_passivo_pesos',1);

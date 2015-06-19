@@ -25,7 +25,7 @@ m.wei = po(5);
 m.rnb = po(6);
 
 % % interação 1:
-dx = m.wgi;
+dx = -m.wgi;
 dy = 0;
 
 % calcula derivados geométricos
@@ -33,7 +33,7 @@ m = derivados_geometricos(m, dx, dy);
 
 % resolve_passivo
 I  = [Im -Im/2 0 0 0 0 0 -Im/2];
-[r.Fx, r.Fy,  r.Lmain] = resolve_ativo(dx, dy,I);
+[r.Fx, r.Fy, r.Lmain] = resolve_ativo(dx, dy,I);
 
   
 %% Calcula valor do Funcional
