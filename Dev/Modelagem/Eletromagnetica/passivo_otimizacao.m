@@ -53,7 +53,7 @@ in = 1;
 version = 4;        
 
 % executa otmizacao
-[x,fval] = fminsearchbnd('funcional', po, LO, UB, options);
+[x,fval] = fminsearchbnd('funcional_passivo', po, LO, UB, options);
 
 
 %% Resultados

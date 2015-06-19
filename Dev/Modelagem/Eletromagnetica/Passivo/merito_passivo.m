@@ -1,4 +1,4 @@
-function [ F, P1, P2, P3, P4 ] = merito( Fx, Fy, Vm, dBef, m, versao )
+function [ F, P1, P2, P3, P4 ] = merito_passivo( Fx, Fy, Vm, dBef, m, versao )
 %computa a funcao merito e retorna o valor do funcional
 
 switch versao

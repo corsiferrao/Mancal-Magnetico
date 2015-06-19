@@ -1,4 +1,4 @@
-function F = funcional(po)
+function F = funcional_passivo(po)
 %% Funcional
 % Toda interação devemos fazer 2 testes
 %  1. Deslocamento em dy, dx= nominal
@@ -61,7 +61,7 @@ dx = 0; dy=0;
 %% Calcula valor do Funcional
 
 dbeftemp = abs(r1.Bef-r3.Bef); %diferencial
-F = merito( r1.Fx, r2.Fy, m.Vm, dbeftemp, m, version );
+F = merito_passivo( r1.Fx, r2.Fy, m.Vm, dbeftemp, m, version );
 
 %% global
 
