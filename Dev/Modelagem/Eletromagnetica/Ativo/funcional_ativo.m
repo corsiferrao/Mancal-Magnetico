@@ -16,7 +16,17 @@ global version;
 parametros_magneticos;
 parametros_geometricos;
 
-% atualiza valores
+%% carrega valores da otimização do passivo
+m.hef = hef;
+m.wef = wef;
+m.wm  = wm;
+m.hm  = hm;
+m.wge = wge;
+m.wrf = wrf;
+m.wrr = wrr;
+m.ree = ree;
+
+%% atualiza valores
 m.wgi = po(1);
 m.nnb = po(2);
 m.hnb = po(3);

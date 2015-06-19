@@ -99,7 +99,7 @@ export_pdf('Resultados/otimizacao_passivo_pesos',1);
 %% Salva resultados encontrados
 
 hef = po(1);
-hef = po(2);
+wef = po(2);
 wm  = po(3);
 hm  = po(4);
 wge = po(5);
@@ -108,6 +108,6 @@ wrr = po(7);
 ree = po(8);
 
 
-save('resultados_otimizacao_passivo','hef','hef','wm','hm','wge','wrf','wrr','ree');
+save('resultados_otimizacao_passivo','hef','wef','wm','hm','wge','wrf','wrr','ree');
 
 
