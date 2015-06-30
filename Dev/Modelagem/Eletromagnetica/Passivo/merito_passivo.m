@@ -28,8 +28,8 @@ switch versao
         P4 = Vm*1E6/10;          % pondera volume
         P5=0; P6 = 0;
     case 5
-        P1 = Fx./7;             % pondera Fx
-        P2 = 180./(Fy);          % pondera Fy
+        P1 = Fx./3;             % pondera Fx
+        P2 = 150./(Fy);          % pondera Fy
         P3 = 10*abs(dBef);       % pondera Delta Bef
         P4 = Vm*1E6/15;          % pondera volume
         P5 = Raio*1E3./80;       % pondera raio externo

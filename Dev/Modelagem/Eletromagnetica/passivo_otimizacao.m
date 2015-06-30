@@ -35,10 +35,10 @@ global version;
 % carrega valore iniciais
 parametros_geometricos;
 
-%  [m.hef   m.wef   m.wm    m.hm    m.wge   m.wrf   m.wrr   m.ree ];
-V0=[6E-3    4E-3    8E-3    10E-3   2.0E-3  10E-3   6E-3    75E-3 ];
-LO=[2E-3    2E-3    4E-3    5E-3    1.0E-3  5E-3    3E-3    50E-3 ];
-UB=[10E-3   6E-3    12E-3   15E-3   3.0E-3  15E-3   9E-3    80E-3 ];
+%  [m.hef   Dwef    m.wm    m.hm    m.wge   Dwrf   m.wrr   m.ree ];
+V0=[6E-3    4E-3    8E-3    10E-3   2.0E-3  4E-3   6E-3    75E-3 ];
+LO=[2E-3    2E-3    4E-3    5E-3    1.0E-3  2E-3   3E-3    50E-3 ];
+UB=[10E-3   6E-3    12E-3   15E-3   3.0E-3  8E-3   9E-3    80E-3 ];
 po = V0;
 
 % configura otimizacao
@@ -116,8 +116,9 @@ wm  = x(3);
 wef = wm+wef_delta;
 hm  = x(4);
 wge = x(5);
-wrf = x(6);
 wrr = x(7);
+wrf_delta = x(6);
+wrf = wrr + wrf_delta;
 ree = x(8);
 
 save('resultados_otimizacao_passivo','hef','wef','wm','hm','wge','wrf','wrr','ree');

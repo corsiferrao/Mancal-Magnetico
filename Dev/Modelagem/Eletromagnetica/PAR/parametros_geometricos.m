@@ -9,6 +9,7 @@ m.wm   = 8E-3;    % Largura imã                           I
 m.hm   = 10E-3;   % Altura do ima                         I
 
 m.hef  = 4E-3;    % Altura ferro estator externo          I
+
 % incremento no tamanho do ferro estaro externo com ref.
 % a largura do ima
 m.wef_delta = 4E-3; %                                     I  

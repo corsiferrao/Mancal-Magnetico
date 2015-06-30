@@ -20,15 +20,17 @@ parametros_magneticos;
 parametros_geometricos;
 
 % atualiza valores
-m.hef = po(1);
-m.wef_delta = po(2);
-m.wm  = po(3);
-m.hm  = po(4);
-m.wge = po(5);
-m.wrf = po(6);
-m.wrr = po(7);
-m.ree = po(8);
+m.hef       = po(1);
+wef_delta   = po(2);
+m.wm        = po(3);
+m.hm        = po(4);
+m.wge       = po(5);
+wrf_delta   = po(6);
+m.wrr       = po(7);
+m.ree       = po(8);
 
+m.wef  = m.hm +wef_delta;
+m.wrf  = m.wrr+wrf_delta;
 
 % valores do deslocamento
 dxx = m.wge; dyy = 0.2E-3;
