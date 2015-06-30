@@ -10,6 +10,8 @@ global Fx;
 global Fy;
 global V;
 global dBef;
+global Raio;
+global Gap;
 
 global version;
 
@@ -19,7 +21,7 @@ parametros_geometricos;
 
 % atualiza valores
 m.hef = po(1);
-m.wef = po(2);
+m.wef_delta = po(2);
 m.wm  = po(3);
 m.hm  = po(4);
 m.wge = po(5);
@@ -61,7 +63,7 @@ dx = 0; dy=0;
 %% Calcula valor do Funcional
 
 dbeftemp = abs(r1.Bef-r3.Bef); %diferencial
-F = merito_passivo( r1.Fx, r2.Fy, m.Vm, dbeftemp, m, version );
+F = merito_passivo( r1.Fx, r2.Fy*m.NFRAC, m.Vm, dbeftemp, m, m.wge, m.ree, version );
 
 %% global
 
@@ -69,6 +71,8 @@ Fx(in)      = r3.Fx;
 Fy(in)      = r2.Fy*m.NFRAC;
 V(in)       = m.Vm;
 dBef(in)    = dbeftemp;
+Gap(in)     = m.wge;
+Raio(in)    = m.ree;
 
 in = in+1;
 

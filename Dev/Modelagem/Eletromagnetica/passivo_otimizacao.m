@@ -25,6 +25,8 @@ global in;
 global Fx;
 global Fy;
 global V;
+global Gap;
+global Raio;
 global dBef;
 
 % versao da funcao merito a ser utilizada
@@ -33,10 +35,10 @@ global version;
 % carrega valore iniciais
 parametros_geometricos;
 
-%  [m.hef   m.wef   m.wm    m.hm    m.wge   m.wrf   m.wrr   m.ree  ];
-V0=[6E-3    14E-3   8E-3    10E-3   1.2E-3  10E-3   6E-3    75E-3];
-LO=[2E-3    7E-3    4E-3    5E-3    1.0E-3  5E-3    3E-3    50E-3];
-UB=[10E-3   21E-3   12E-3   15E-3   3.0E-3  15E-3   9E-3    80E-3];
+%  [m.hef   m.wef   m.wm    m.hm    m.wge   m.wrf   m.wrr   m.ree ];
+V0=[6E-3    4E-3    8E-3    10E-3   2.0E-3  10E-3   6E-3    75E-3 ];
+LO=[2E-3    2E-3    4E-3    5E-3    1.0E-3  5E-3    3E-3    50E-3 ];
+UB=[10E-3   6E-3    12E-3   15E-3   3.0E-3  15E-3   9E-3    80E-3 ];
 po = V0;
 
 % configura otimizacao
@@ -50,7 +52,7 @@ in = 1;
 %% Executa otimização
 
 %define funcao merito
-version = 4;        
+version = 5;        
 
 % executa otmizacao
 [x,fval] = fminsearchbnd('funcional_passivo', po, LO, UB, options);
@@ -58,56 +60,69 @@ version = 4;
 
 %% Resultados
 figure
-h1 = subplot(2,1,1); 
+h1 = subplot(3,2,1); 
 
-subplot(2,2,1); 
+subplot(3,2,1); 
     plot(1:in-1, Fx,'o'); 
     title('F_x');
     belezura;
-subplot(2,2,2); 
+subplot(3,2,2); 
     plot(1:in-1, Fy,'o');
     title('F_y');
     belezura;
-subplot(2,2,3); 
+subplot(3,2,3); 
     plot(1:in-1, V,'o');
     title('Volume');
     belezura;
-subplot(2,2,4); 
+subplot(3,2,4); 
     plot(1:in-1, dBef, 'o ');
     title('$$\Delta B_{ef}$$', 'Interpreter','latex');
+    belezura;
+subplot(3,2,5); 
+    plot(1:in-1, Raio, 'o ');
+    title('Raio');
+    belezura;
+subplot(3,2,6); 
+    plot(1:in-1, Gap, 'o ');
+    title('Gap');
     belezura;
     
 export_pdf('Resultados/otimizacao_passivo_parametros',1);
     
 %% pesos funcionais
 
-[F, P1, P2, P3, P4 ] = merito( Fx, Fy, V, dBef, m, version );
+[F, P1, P2, P3, P4, P5, P6 ] = merito_passivo( Fx, Fy, V, dBef, m, Gap, Raio, version );
 
 figure
     plot(P1)
 hold on
     plot(P2, 'r')
     plot(P3, 'g')
-    plot(P4, 'c')
-    plot(F,  'm')
+    plot(P4, 'y')
+    plot(P5, 'c')
+    plot(P6, 'k')
+    plot(F,  'p')
 title('pesos');
-legend('P1', 'P2', 'P3', 'P4', 'F'); 
+legend('P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'F'); 
 belezura
 
 export_pdf('Resultados/otimizacao_passivo_pesos',1);
 
 %% Salva resultados encontrados
 
-hef = po(1);
-wef = po(2);
-wm  = po(3);
-hm  = po(4);
-wge = po(5);
-wrf = po(6);
-wrr = po(7);
-ree = po(8);
-
+hef = x(1);
+wef_delta = x(2);
+wm  = x(3);
+wef = wm+wef_delta;
+hm  = x(4);
+wge = x(5);
+wrf = x(6);
+wrr = x(7);
+ree = x(8);
 
 save('resultados_otimizacao_passivo','hef','wef','wm','hm','wge','wrf','wrr','ree');
+
+%% comsol 
+
 
 
