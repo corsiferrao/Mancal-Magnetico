@@ -12,8 +12,7 @@ m.hef  = 4E-3;    % Altura ferro estator externo          I
 
 % incremento no tamanho do ferro estaro externo com ref.
 % a largura do ima
-m.wef_delta = 4E-3; %                                     I  
-m.wef  = m.hm+m.wef_delta;   % Largura do ferro estator externo      
+m.wef  = 10E-3;   % Largura do ferro estator externo      
 
 m.wge  = 1.2E-3;  % Gap nominal externo                   I
 m.hge  = m.hef;   % Algura do gap

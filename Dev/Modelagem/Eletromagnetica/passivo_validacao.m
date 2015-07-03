@@ -50,6 +50,8 @@ hold on
 hold off
 %title('Validação deslocamento em x')
 legend('FEM', 'Analitica')
+xlabel('Dx [mm]');
+ylabel('F [N]'); 
 belezura
 export_pdf('Resultados/validacao_passivo_dx_calibrado', 1); 
 
@@ -76,6 +78,8 @@ hold on
 hold off
 %title('Validação deslocamento em y')
 legend('FEM', 'Analitica', 'Location','NorthWest')
+xlabel('Dy [mm]');
+ylabel('F [N]');
 belezura
 export_pdf('Resultados/validacao_passivo_dy', 1); 
 
@@ -104,6 +108,9 @@ hold on;
     plot(1:12, -fem_validacao_v0_rpa(:,4), 'o')
     plot(1:12, rpa(:, 4)-cal_Fx, 'x')
     legend('FEM','Analitica');
+    xlabel('Modelo'); 
+    ylabel('F [N]');
     belezura
 hold off;
+export_pdf('Resultados/validacao_passivo_parametros', 1); 
 

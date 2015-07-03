@@ -36,7 +36,7 @@ global version;
 parametros_geometricos;
 
 %  [m.hef   Dwef    m.wm    m.hm    m.wge   Dwrf   m.wrr   m.ree ];
-V0=[6E-3    4E-3    8E-3    10E-3   2.0E-3  4E-3   6E-3    75E-3 ];
+V0=[6E-3    4E-3    8E-3    10E-3   3.0E-3  4E-3   6E-3    75E-3 ];
 LO=[2E-3    2E-3    4E-3    5E-3    1.0E-3  2E-3   3E-3    50E-3 ];
 UB=[10E-3   6E-3    12E-3   15E-3   3.0E-3  8E-3   9E-3    80E-3 ];
 po = V0;
@@ -64,15 +64,15 @@ h1 = subplot(3,2,1);
 
 subplot(3,2,1); 
     plot(1:in-1, Fx,'o'); 
-    title('F_x');
+    title('$$F_x$$', 'Interpreter','latex');
     belezura;
 subplot(3,2,2); 
     plot(1:in-1, Fy,'o');
-    title('F_y');
+    title('$$F_y$$', 'Interpreter','latex');
     belezura;
 subplot(3,2,3); 
     plot(1:in-1, V,'o');
-    title('Volume');
+    title('$$V_m$$', 'Interpreter','latex');
     belezura;
 subplot(3,2,4); 
     plot(1:in-1, dBef, 'o ');
@@ -80,11 +80,11 @@ subplot(3,2,4);
     belezura;
 subplot(3,2,5); 
     plot(1:in-1, Raio, 'o ');
-    title('Raio');
+    title('$$r_{eei}$$', 'Interpreter','latex');
     belezura;
 subplot(3,2,6); 
     plot(1:in-1, Gap, 'o ');
-    title('Gap');
+    title('$$w_g$$', 'Interpreter','latex');
     belezura;
     
 export_pdf('Resultados/otimizacao_passivo_parametros',1);
@@ -103,7 +103,7 @@ hold on
     plot(P6, 'k')
     plot(F,  'p')
 title('pesos');
-legend('P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'F'); 
+legend('P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'F', 'Location','EastOutside'); 
 belezura
 
 export_pdf('Resultados/otimizacao_passivo_pesos',1);

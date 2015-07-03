@@ -49,7 +49,7 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,0.28808602)%
-    \put(0,0){\includegraphics[width=\unitlength]{mancal:passivo:circuito.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength]{mancal_passivo_circuito.pdf}}%
     \put(0.1300422,0.11471752){\makebox(0,0)[lb]{\smash{+}}}%
     \put(0.13347551,0.09343344){\makebox(0,0)[lb]{\smash{-}}}%
     \put(0.20418714,0.27320403){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{ft}$}}}%

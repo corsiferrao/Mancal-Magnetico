@@ -28,17 +28,16 @@ switch versao
         P4 = Vm*1E6/10;          % pondera volume
         P5=0; P6 = 0;
     case 5
-        P1 = Fx./3;             % pondera Fx
-        P2 = 150./(Fy);          % pondera Fy
-        P3 = 10*abs(dBef);       % pondera Delta Bef
+        P1 = Fx./2;              % pondera Fx
+        P2 = 125./(Fy);          % pondera Fy
+        P3 = 25*abs(dBef);       % pondera Delta Bef
         P4 = Vm*1E6/15;          % pondera volume
-        P5 = Raio*1E3./80;       % pondera raio externo
-        P6 = 10./(Gap*1E3);      % pondera gap externo
+        P5 = Raio*1E3./55;       % pondera raio externo
+        P6 = 30./(Gap*1E3);      % pondera gap externo
         ...
     otherwise
     P1=0;P2=0;P3=0;P4=0; P5=0; P6 = 0;
 end
-
 
 
 F  = P1 + P2 + P3 + P4 + P5 + P6;     % calcula funcional
