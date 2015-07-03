@@ -298,21 +298,26 @@ Busca-se nessa otimização uma menor força de atração axial ($P_1$) e uma ma
   F &= P_1 + P_2 + P_3 + P_4 + P_5 + P_6   \label{eq:passivo:merito}
 \end{align}
 
-A Fig.
+A Fig. \ref{fig:otimizacao_passivo_parametros} mostra a evolução dos parâmetros ao longo da otimização. Verificamos que a força de atração $F_y$ é maximizada ao longo das interações, porém verificamos que é acompanhada pela força $F_x$ que deveria ser minimizada. Isso ocorre devido a correlação entre as duas forças, sendo que ambas depende do vetor campo magnético acumulado no entreferro ($B_{ge}$). Outra relação direta que é possível ser notada é a do tamanho do entreferro ($g_e$), quanto menor o entreferro menor a relutância do circuito magnético e maior o campo magnético acumulado no entreferro.
+
 
 \begin{figure}[th!]
 	\centering
 	\includegraphics[width=1\linewidth]{Simulacoes/Passivo2/otimizacao_passivo_parametros.pdf}
-	\caption{Evolução dos pesos ao longo da otimização}
+	\caption{Evolução dos parâmetros ao longo da otimização}
 	\label{fig:otimizacao_passivo_parametros}
 \end{figure} 
+
+Os pesos da função mérito ao longo da otimização é ilustrado na Fig. \ref{fig:otimizacao_passivo_pesos}, verificamos que os pesos que mais contribuem para o valor do funcional são: P1, P2 que estão relacionados com a força de atração. Em seguida, com uma menor ponderação os demais pesos. 
 
 \begin{figure}[th!]
 	\centering
 	\includegraphics[width=1\linewidth]{Simulacoes/Passivo2/otimizacao_passivo_pesos.pdf}
-	\caption{Evolução dos parâmetros ao longo da otimização}
+	\caption{Evolução dos pesos ao longo da otimização}
 	\label{fig:otimizacao_passivo_pesos}
 \end{figure} 
+
+
 
 
 %\subsection{Escolha dos parâmetros}

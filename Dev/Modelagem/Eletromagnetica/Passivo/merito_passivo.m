@@ -1,4 +1,4 @@
-function [ F, P1, P2, P3, P4, P5, P6 ] = merito_passivo( Fx, Fy, Vm, dBef, m, Gap, Raio, versao )
+function [ F, P1, P2, P3, P4, P5, P6, P7 ] = merito_passivo( Fx, Fy, Vm, dBef, Brr, Gap, Raio, versao )
 %computa a funcao merito e retorna o valor do funcional
 
 switch versao
@@ -28,19 +28,20 @@ switch versao
         P4 = Vm*1E6/10;          % pondera volume
         P5=0; P6 = 0;
     case 5
-        P1 = Fx./2;              % pondera Fx
-        P2 = 125./(Fy);          % pondera Fy
-        P3 = 25*abs(dBef);       % pondera Delta Bef
+        P1 = Fx./3;              % pondera Fx
+        P2 = 200./(Fy);          % pondera Fy
+        P3 = 20*abs(dBef);       % pondera Delta Bef
         P4 = Vm*1E6/15;          % pondera volume
-        P5 = Raio*1E3./55;       % pondera raio externo
-        P6 = 30./(Gap*1E3);      % pondera gap externo
+        P5 = Raio*1E3./30;       % pondera raio externo
+        P6 = 4./(Gap*1E3);      % pondera gap externo
+        P7 = 2*Brr;              % pondera saturacao ferro rotor retrono
         ...
     otherwise
     P1=0;P2=0;P3=0;P4=0; P5=0; P6 = 0;
 end
 
 
-F  = P1 + P2 + P3 + P4 + P5 + P6;     % calcula funcional
+F  = P1 + P2 + P3 + P4 + P5 + P6 + P7;     % calcula funcional
 
 
 end

@@ -112,6 +112,7 @@ ret.Rrr = Rrr;
 ret.Rge = Rge;
 ret.Rgl = Rgl;
 ret.Rl  = Rl ;
+ret.Brr = Brr(end);
 
 %% Analise de Convergência 
 

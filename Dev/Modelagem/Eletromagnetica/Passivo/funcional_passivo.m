@@ -12,6 +12,7 @@ global V;
 global dBef;
 global Raio;
 global Gap;
+global Brr;
 
 global version;
 
@@ -33,7 +34,7 @@ m.wef  = m.hm +wef_delta;
 m.wrf  = m.wrr+wrf_delta;
 
 % valores do deslocamento
-dxx = m.wge/2; 
+dxx = 0.3E-3; 
 dyy = 0.2E-3;
 
 % % interação 1:
@@ -66,7 +67,7 @@ dx = 0; dy=0;
 %% Calcula valor do Funcional
 
 dbeftemp = abs(r1.Bef-r3.Bef); %diferencial
-F = merito_passivo( r1.Fx, r2.Fy*m.NFRAC, m.Vm, dbeftemp, m, m.wge, m.ree, version );
+F = merito_passivo( r1.Fx, r2.Fy*m.NFRAC, m.Vm, dbeftemp, r3.Brr, m.wge, m.ree, version );
 
 %% global
 
@@ -76,7 +77,7 @@ V(in)       = m.Vm;
 dBef(in)    = dbeftemp;
 Gap(in)     = m.wge;
 Raio(in)    = m.ree;
-
+Brr(in)     = r3.Brr;
 in = in+1;
 
 
