@@ -160,8 +160,10 @@ O campo magnético acumulado no entreferro pode ser decomposto em componentes $B
 A força magnética de atração do rotor pelo estator é gerada pela energia eletromagnética acumulada no entreferro (superior e inferior), essa força pode então ser calculada através do trabalho virtual \citep{Chiba}:
 
 \begin{align}
-	|\vec{F}(l_g)| &= 2 \, \frac{ \vec{B}_{g}^2 \; S_g}{2 \, \mu_0} \label{eq:passivo:Fx}
+	|\vec{F}(l_g)| &=  \frac{ \vec{B}_{g}^2 \; S_g}{2 \, \mu_0} \label{eq:passivo:Fx}
 \end{align}
+
+A força resultante de atração é composta pela força dos dois entreferros (superior e inferior) e que possuem mesmo módulo e intensidade já que os deslocamentos são simétricos. 
 
 \subsubsection{Força radial} \label{subsection:forca:x}
 
@@ -206,7 +208,7 @@ Onde $\boldsymbol{i}$ é a projeção da força no eixo x e $\boldsymbol{j}$ é 
 A força perpendicular ao plano de rotação é a composição de todos os oito segmentos onde não é levado em consideração o efeito de inclinação do rotor. Obtemos:
 
 \begin{equation}
-	  		F_z(l_g) = \frac{S_{g}}{2 \, \mu_0} 	\sum_{i=N}^{NO} B_{giz}^2
+	  		F_z(l_g) = \frac{S_{g}}{2 \, \mu_0} 	2 \,\sum_{i=N}^{NO} B_{giz}^2
 \end{equation}
 
 
@@ -317,58 +319,32 @@ Os pesos da função mérito ao longo da otimização é ilustrado na Fig. \ref{
 	\label{fig:otimizacao_passivo_pesos}
 \end{figure} 
 
+\subsection{Mancal passivo resultante da otimização}
 
+As dimensões alcançadas devido a otimização do mancal está listada na Tab. \ref{tab:passivo:dimensoes:otimizado}, com o resultado um modelo em elementos finitos foi criado e as forças resultantes levantadas de forma mais precisa.
 
+\begin{table}[ht!]
+	\centering
+	\begin{tabular}{c c c c c c c c c}
+		& $h_{fee}$ &$\Delta w_{fee}$ & $w_m$ & $h_m$  & $g_e$ & $\Delta w_{fr}$ & $w_{rn}$ & $r_{eei}$ \\ \hline \hline
+		$L_{n}$  	&  6 &   4 &    8 &    10 &   3 &  4 &   6 &    75 \\
+	\end{tabular} 
+	\caption{Dimensões obtidas devido a otimização, valores em milímetros.}
+	\label{tab:passivo:dimensoes:otimizado} 
+\end{table} \todo{atualizar}
 
-%\subsection{Escolha dos parâmetros}
-%
-%Buscou-se uma combinação de parâmetros que maximizasse a força de atração axial e que minimizasse a força longitudinal.  As áreas e comprimentos médios são obtidos da seguinte maneira (com uma zona de integração de $45^{\circ}$), com referência a Fig. \ref{Fig:Modelagem:Dimensoes} e a tabela em Anexo \ref{Tabela:Modelagem:Dimensoes}
-%
-%\begin{align}
-%	S_m &= w_m     	\frac{2 \pi (r_{eei} + w_{fee} - w_m)}{8} \\
-%	S_f &= h_{fee} 	\frac{2 \pi r_{eei}}{8} \\
-%	S_g(l_g) &= h_{fee}	\frac{2 \pi (r_{reei} - \nicefrac{l_g}{2})}{8} \alpha_g \\
-%	l_m &= h_m \\
-%	l_f &= w_{fee}
-%\end{align}
-%
-%%\todo[inline]{Explicar melhor o que é espraiamento e como encontrar-lo}
-%
-%O termo $ \alpha_g $ é o fator de espraiamento do campo magnético no entreferro do mancal  que é devido a dispersão do campo magnético, ou seja a área em que o entreferro acumula campo magnético é sempre maior ($\alpha_g > 1)$ do que a área calculada.  
-%
-%Podemos calcular o acréscimo de área devido ao  espraiamento  (\citet{Leupold1990}) como sendo dependente do tamanho do entreferro e da geometria, podemos assumir como aproximação que o espraiamento é regido pela seguinte equação:
-%
-%\begin{align}
-%	P = 0.318 ln \left( 1 + \frac{2 w}{g} \right)
-%	\label{eq:passivo:p}
-%\end{align}
-% 
-%\begin{figure}[th!]
-%\centering
-%\includegraphics[width=0.3\linewidth]{./Figs/modelo:passivo:espraiamento}
-%\caption{Cálculo do fator de espraiamento}
-%\label{fig:modelo:passivo:espraiamento}
-%\end{figure}
-%
-%O mancal deve possuir rigidez suficiente para suspender o conjunto inércia, rotor mancal, rotor motor. Estudos realizados estimam um momento de inércia total para o sistema de $6.9 \, 10^{-2} \, kg \, m^2$ com uma massa de 3.52 kg (para operar em ambiente com gravidade). 
-%
-%\subsection{Simulações}
-%
-%Simulações foram realizados com o intuito de classificar as forças atuantes no rotor devido ao circuito magnético do estator externo. As simulações foram realizadas utilizando os parâmetros construtivos em da Tabela em Anexo \cite{Anexo}.
-%
-% Verificamos na Fig. \ref{fig:forca:passivo:fx:modelagem:diff} a simulação da translação do rotor em apenas um dos eixos radiais, podemos verificar a linearidade da força quando o rotor trabalha em modo diferencial.  O máximo deslocamento é limitado em $0,35$mm pelo efeito do batente.
-%
-%\begin{figure}[!ht]
-%\centering
-%\caption*{Força (N) x $\Delta_x$ (mm) - Deslocamento Radial: y = 0, z = 0}
-%\includegraphics[width=0.6 \columnwidth,angle=0]{Figs/Simulacoes/Passivo/forca:fx:passivo:modelagem}
-%\caption{Força atuante no rotor dado uma translação radial}
-%\label{fig:forca:passivo:fx:modelagem:diff}
-%\end{figure}
-%
-%
-%Um mapa  do módulo da força radial no plano x,y é ilustrado na Fig. \ref{fig:forca:passivo:mod:fx:fy:3d}, notamos que em torno do ponto de operação a força é praticamente nula. Porém quando o rotor encontra-se em algum de seus extremos, a força de atração é da ordem de centenas de Newton o que vai influenciar na definição do circuito ativo que tem que ser capaz de vencer essa força.
-%
+Verificamos na Fig. \ref{fig:forca:passivo:fx:modelagem:diff} o resultante  da força devido a  translação do rotor em apenas um dos eixos radiais, podemos verificar a linearidade da força quando o rotor trabalha em modo diferencial.  
+
+\begin{figure}[!ht]
+\centering
+\caption*{Força (N) x $\Delta_x$ (mm) - Deslocamento Radial: y = 0, z = 0}
+\includegraphics[width=0.6 \columnwidth,angle=0]{Figs/Simulacoes/Passivo/forca_fx_passivo_modelagem}
+\caption{Força atuante no rotor dado uma translação radial}
+\label{fig:forca:passivo:fx:modelagem:diff}
+\end{figure} \todo{atualizar}
+
+Um mapa  do módulo da força radial no plano x,y é ilustrado na Fig. \ref{fig:forca:passivo:mod:fx:fy:3d}, notamos que em torno do ponto de operação a força é praticamente nula. Porém quando o rotor encontra-se em algum de seus extremos, a força de atração é da ordem de centenas de Newton o que vai influenciar na definição do circuito ativo que tem que ser capaz de vencer essa força.
+
 %\begin{figure}[!ht]
 %\centering
 %\caption*{Módulo Força (N) x Deslocamento (mm)}
@@ -376,20 +352,10 @@ Os pesos da função mérito ao longo da otimização é ilustrado na Fig. \ref{
 %\caption{}
 %\label{fig:forca:passivo:mod:fx:fy:3d}
 %\end{figure}
-%
-%A força devido a translação axial é ilustrado na Fig. {fig:forca:passivo:fz:centro}, essa força restaurativa torna a parte passiva do mancal estável e é a responsável pela rigidez nesse grau de liberdade. Notamos que a força necessária para deslocar 1mm axialmente quando o mancal está no ponto de operação é de aproximadamente 850N.
-%
-%%\begin{figure}[!ht]
-%%\centering
-%%\caption*{Força (N) x $\Delta_z$ (mm) - Deslocamento Axial: x = 0, y = 0}
-%%\includegraphics[width=0.6 \columnwidth,angle=0]{Figs/Simulacoes/Passivo/forca:passivo:fz:centro}
-%%\caption{Força atuante no rotor dado uma translação axial}
-%%\label{fig:forca:passivo:fz:centro}
-%%\end{figure}
-%
-%\subsection{Elementos Finitos}
-%
-% O módulo do campo magnético pode ser visualizado para dois casos distintos na Fig. \ref{Fig:Simulacao:Passivo:2D:B}. Nessa simulação, podemos verificar que o ferro está saturado (B=1.6T), que o modelo não possui uma quantidade significativa de linhas de campo magnético que não atravessam o entreferro e que a área do entreferro ($S_g$) possui um pequeno espraiamento aumento assim sua área resultando em uma ligeira diminuição no cálculo da força. Verificamos também que o ponto de operação do imã sofre uma pequena variação passando de 1.05T para 1.06T.
+
+A força devido a translação axial é ilustrado na Fig. {fig:forca:passivo:fz:centro}, essa força restaurativa torna a parte passiva do mancal estável e é a responsável pela rigidez nesse grau de liberdade. Notamos que a força necessária para deslocar 1mm axialmente quando o mancal está no ponto de operação é de aproximadamente 850N.
+
+ O módulo do campo magnético pode ser visualizado para dois casos distintos na Fig. \ref{Fig:Simulacao:Passivo:2D:B}. Nessa simulação, podemos verificar que o ferro está saturado (B=1.6T), que o modelo não possui uma quantidade significativa de linhas de campo magnético que não atravessam o entreferro e que a área do entreferro ($S_g$) possui um pequeno espraiamento aumento assim sua área resultando em uma ligeira diminuição no cálculo da força. Verificamos também que o ponto de operação do imã sofre uma pequena variação passando de 1.05T para 1.06T.
 %
 %	\begin{figure}[!ht]
 %		\centering
@@ -406,11 +372,11 @@ Os pesos da função mérito ao longo da otimização é ilustrado na Fig. \ref{
 %		\caption{Modulo do campo magnético do modelo no Comsol do circuito passivo}\label{Fig:Simulacao:Passivo:2D:B:dx=1.2}
 %		\label{Fig:Simulacao:Passivo:2D:B}
 %	\end{figure}
-%
-%A força magnética de atração do rotor é ilustrado na Fig. \ref{Fig:Modelagem:Curva:passivo:frxd}, 
-%% curva foi levantada implementado as Eq. \eqref{eq:p:F:resultante:x}
-%o rotor foi deslocado em apenas um eixo (x). Foram utilizado os valores nominais do protótipo. Verificamos que o modelo apresenta uma curva linear em termos de força de atração por deslocamento, o que era desejado, já que implica em uma simplicidade no modelo e por consequência na malha de controle.
-%
+
+A força magnética de atração do rotor é ilustrado na Fig. \ref{Fig:Modelagem:Curva:passivo:frxd}, 
+curva foi levantada implementado as Eq. \eqref{eq:p:F:resultante:x}
+o rotor foi deslocado em apenas um eixo (x). Foram utilizado os valores nominais do protótipo. Verificamos que o modelo apresenta uma curva linear em termos de força de atração por deslocamento, o que era desejado, já que implica em uma simplicidade no modelo e por consequência na malha de controle.
+
 %\begin{figure}[!ht]
 %	\centering
 %	\caption*{Força magnética (N) x Deslocamento em X (mm)}
@@ -418,9 +384,9 @@ Os pesos da função mérito ao longo da otimização é ilustrado na Fig. \ref{
 %		\caption{Força calculado por elementos finitos com deslocamento em apenas um eixo}
 %		\label{Fig:Modelagem:Curva:passivo:frxd}
 %\end{figure}
-%
-%A Fig. \ref{Fig:Modelagem:Curva:passivo:dy:linhas} ilustra o resultado da simulação através de elementos finitos onde o rotor é transladado verticalmente de 1.2mm. Verificamos que as linhas de campo apresentam uma grande deformação se comparamos as linhas de campo do rotor alinhado com o estator externo ($\Delta_z = 0$), essas deformações apresentam um erro numérico no calculo da força já que supusemos na Subsec. \ref{SubSec:CampoX/Y} que as linhas de campo podem ser decompostas em x e z e que essa decomposição é diretamente relacionada com o deslocamento do rotor ($\theta$). 
-%
+
+A Fig. \ref{Fig:Modelagem:Curva:passivo:dy:linhas} ilustra o resultado da simulação através de elementos finitos onde o rotor é transladado verticalmente de 1.2mm. Verificamos que as linhas de campo apresentam uma grande deformação se comparamos as linhas de campo do rotor alinhado com o estator externo ($\Delta_z = 0$), essas deformações apresentam um erro numérico no calculo da força já que supusemos na Subsec. \ref{SubSec:CampoX/Y} que as linhas de campo podem ser decompostas em x e z e que essa decomposição é diretamente relacionada com o deslocamento do rotor ($\theta$). 
+
 %\begin{figure}[!ht]
 %	\centering
 %	%\caption*{Força magnética (N) x Deslocamento x (mm)}
@@ -435,9 +401,9 @@ Os pesos da função mérito ao longo da otimização é ilustrado na Fig. \ref{
 %	\caption{Linhas de campo magnético para deslocamentos na vertical}
 %	\label{Fig:Modelagem:Curva:passivo:dy:linhas}
 %\end{figure}
-%
-%A Fig. \ref{Fig:Modelagem:Curva:passivo:fxd:dy} é o resultado das forças no rotor quando submetido a um deslocamento axial, verificamos que a força possui um componente diferente de zero quando o rotor está alinhado com o estator externo (z = 0), verificamos que esse resultado é diferente do encontrado no modelo analítico, explica-se esse fenômeno pelo comportamento do campo magnético quando os ferros do rotor e estator encontram-se afastados, notamos que as linhas de campo magnético não assumem a inclinação proporcional ao deslocamento  ($\theta = tg^{-1}(\frac{\Delta_z}{\Delta_x})$), o que causa o erro na força estimado.
-%
+
+A Fig. \ref{Fig:Modelagem:Curva:passivo:fxd:dy} é o resultado das forças no rotor quando submetido a um deslocamento axial, verificamos que a força possui um componente diferente de zero quando o rotor está alinhado com o estator externo (z = 0), verificamos que esse resultado é diferente do encontrado no modelo analítico, explica-se esse fenômeno pelo comportamento do campo magnético quando os ferros do rotor e estator encontram-se afastados, notamos que as linhas de campo magnético não assumem a inclinação proporcional ao deslocamento  ($\theta = tg^{-1}(\frac{\Delta_z}{\Delta_x})$), o que causa o erro na força estimado.
+
 %\begin{figure}[th!]
 %\centering
 %\caption*{Força magnética (N) x Deslocamento em Y (mm): Ponto de equilíbrio}
@@ -445,10 +411,10 @@ Os pesos da função mérito ao longo da otimização é ilustrado na Fig. \ref{
 %\caption{Força de atração para um deslocamento axial}
 %\label{Fig:Modelagem:Curva:passivo:fxd:dy}
 %\end{figure}
-%
-%
+
+
 %%--------------------------------------------
-%\section{Circuito Ativo}
+\section{Circuito Ativo}
 %
 %%Para o circuito ativo, utilizaremos dois diferentes modelos, um para o ferro não saturado e outro para valores de corrente que saturem o ferro do núcleo. Essa abordagem é tomada para minimizar erros numéricos.
 %

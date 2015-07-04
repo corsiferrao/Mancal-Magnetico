@@ -29,11 +29,11 @@ switch versao
         P5=0; P6 = 0;
     case 5
         P1 = Fx./3;              % pondera Fx
-        P2 = 200./(Fy);          % pondera Fy
+        P2 = 250./(Fy);          % pondera Fy
         P3 = 20*abs(dBef);       % pondera Delta Bef
         P4 = Vm*1E6/15;          % pondera volume
-        P5 = Raio*1E3./30;       % pondera raio externo
-        P6 = 4./(Gap*1E3);      % pondera gap externo
+        P5 = Raio*1E3./8;        % pondera raio externo
+        P6 = 8./(Gap*1E3);       % pondera gap externo
         P7 = 2*Brr;              % pondera saturacao ferro rotor retrono
         ...
     otherwise
