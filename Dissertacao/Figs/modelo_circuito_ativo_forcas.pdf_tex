@@ -49,7 +49,7 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,0.47758017)%
-    \put(0,0){\includegraphics[width=\unitlength]{modelo:circuito:ativo:forcas.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength]{modelo_circuito_ativo_forcas.pdf}}%
     \put(0.49046907,0.28879532){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{n}}}%
     \put(0.24849902,0.19029892){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{a}}}%
     \put(0.74289291,0.19029892){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{b}}}%

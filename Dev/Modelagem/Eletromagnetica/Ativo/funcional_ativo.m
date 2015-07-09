@@ -8,6 +8,7 @@ function F = funcional_ativo(po)
 global Fx;
 global Lmain;
 global V;
+global Gi;
 global Im;
 global in;
 
@@ -15,6 +16,7 @@ global version;
 
 parametros_magneticos;
 parametros_geometricos;
+load resultados_otimizacao_passivo;
 
 %% carrega valores da otimização do passivo
 m.hef = hef;
@@ -48,13 +50,14 @@ I  = [Im -Im/2 0 0 0 0 0 -Im/2];
   
 %% Calcula valor do Funcional
 
-F = merito_ativo(r.Fx, r.Lmain, m, version );
+F = merito_ativo(r.Fx, r.Lmain, m.Vma, m.wgi, version );
 
 %% global
 
 Fx(in)      = r.Fx;
-V(in)       = m.Vm;
+V(in)       = m.Vma;
 Lmain(in)   = r.Lmain;
+Gi(in) = m.wgi;
 
 in = in+1;
 

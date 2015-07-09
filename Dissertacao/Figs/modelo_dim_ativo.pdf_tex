@@ -1,6 +1,6 @@
-%% Creator: Inkscape inkscape 0.48.4, www.inkscape.org
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'modelo:dim:ativo.pdf' (pdf, eps, ps)
+%% Accompanies image file 'modelo_dim_ativo.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{261bp}%
+    \setlength{\unitlength}{260.95452155bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,15 +48,17 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.44931787)%
-    \put(0,0){\includegraphics[width=\unitlength]{modelo:dim:ativo.pdf}}%
-    \put(0.50732833,0.27012856){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$l_{fn}$}}}%
-    \put(0.24845574,0.18327867){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$l_{fa}$}}}%
-    \put(0.74947627,0.14885746){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$l_{fb}$}}}%
-    \put(0.49795502,0.1545943){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$l_{ra}$}}}%
-    \put(0.55155333,0.1545943){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$l_{rb}$}}}%
-    \put(0.50732833,0.34104272){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$l_{gn}$}}}%
-    \put(0.76378001,0.24255948){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$l_{gb}$}}}%
-    \put(0.20443485,0.23873507){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$l_{ga}$}}}%
+  \begin{picture}(1,0.45462679)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{modelo_dim_ativo.pdf}}%
+    \put(0.5073298,0.27014079){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$l_{n2}$}}}%
+    \put(0.24841209,0.18327576){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$l_{n1}$}}}%
+    \put(0.74951994,0.14884846){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$l_{f3}$}}}%
+    \put(0.39005293,0.15458648){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$l_{f1}$}}}%
+    \put(0.64625562,0.15458648){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$l_{f2}$}}}%
+    \put(0.5073298,0.3410673){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$l_{g2}$}}}%
+    \put(0.76382626,0.2425668){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$l_{g3}$}}}%
+    \put(0.20438353,0.23874182){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$l_{g1}$}}}%
+    \put(0.67542353,0.43133489){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$l_{r2}$}}}%
+    \put(0.32294643,0.43133489){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$l_{r1}$}}}%
   \end{picture}%
 \endgroup%

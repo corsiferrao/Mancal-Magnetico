@@ -1,0 +1,10 @@
+% Model,imas_otimizado.mph
+% Version,COMSOL 5.0.0.243
+% Date,"Jul 7 2015, 19:20"
+% Table,Table 1 - Global Evaluation 1 (mf.Forcex_0)
+% dy,"Electromagnetic force, y component (N)"
+0,6.643031840673496
+0.05,24.531328462481635
+0.1,-10.998613815369353
+0.15000000000000002,-14.864587225455411
+0.2,-15.173580550561024

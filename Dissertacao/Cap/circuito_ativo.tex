@@ -33,11 +33,11 @@ A parte ativa tem que ser capaz de vencer a força de atração gerada pelo circ
 	\label{Fig:modelagem:dim:ativo}
 \end{figure}
 
-\subsection{Premissas}
+\section{Premissas}
 
 Parte da premissa que todas as linhas de campo magnético estão contidas nos componentes listados anteriormente e que o rotor encontra-se em sua posição de equilíbrio axial ($d_y = 0$) sem inclinação. E que o mancal 
 
-\subsection{Campo magnético no entreferro}
+\section{Campo magnético no entreferro}
 
 A modelagem da parte ativa (atuadores) é realizada considerando o circuito magnético da Fig. \ref{Fig:modelagem:ativo:circuito2}, onde : $\mathcal{F}$ é a força contra eletromotriz gerada pela bobina; $R_n$ a relutância magnética associada ao núcleo da bobina; $R_g$ a relutância do entreferro; $R_r$ a relutância entre dois núcleos pelo ferro do rotor e $R_f$ a relutância de conexão entre dois núcleos pelo ferro de retorno do atuador.
 
@@ -154,7 +154,7 @@ R_{g} &= \frac{w_{gni}}{\mu_{0}\, S_{gni}}   \\
 R_{f} &= \frac{h_{fei}}{\mu_{f} \, S_{wfei}}    
 \end{align}
 
-\subsection{Forças}
+\section{Forças}
 
 A força resultante de atração referente  a cada bobina pode ser calculado pelo campo magnético acumulado no entreferro:
 
@@ -177,7 +177,7 @@ E a força resultante projeta puramente no eixo normal ao núcleo principal é c
 		\label{Fig:modelo:circuito:ativo:forcas}
 \end{figure} 
 
-\subsection{Indutância} \label{subsec:at:indutancia}
+\section{Indutância} \label{subsec:at:indutancia}
 
 O cálculo da indutância é importante pois atrela uma dinâmica ao atuador, a indutância está correlacionada a capacidade de geração de fluxo magnético de uma bobina e de sua corrente: $L = \frac {d\phi}{di}$. Das equações de densidade de campo magnético no entreferro de cada bobina: \eqref{eq:at:Bgb},  \eqref{eq:at:Bga} e  \eqref{eq:at:Bgn} podemos encontrar o fluxo magnético em cada núcleo ($\phi = B \, A$).
 
@@ -198,26 +198,120 @@ M_{ba} &= \frac{\Phi_{a \rightarrow b}}{Ib} = N B_{ga}\biggr\rvert_{(I_b = 0, I_
 M_{bn} &= \frac{\Phi_{a \rightarrow b}}{I} = N B_{ga}\biggr\rvert_{(I_b = 0, I_n = 0)} S_{ga} ,\ I_b^{-1} \\
 \end{align}
 
-\subsection{Convergência}
+\section{Convergência}
 
 Devido ao modelo apresentar componentes não lineares dado a curva de magnetização dos componentes ferro magnético do circuito, utilizamos o método de Newton-Rapson assim como no circuito passivo. Em cada nova interação, calcula-se as novas permeabilidades para os componentes compostos pelos: ferros do rotor, ferro do núcleo, ferro do estator interno e então resolve-se a equação de malha.
 
-\subsection{Validação do modelo analítico}
+\section{Validação do modelo analítico}
 
-O modelo analítico obtido é comparado com o modelo desenvolvido em elementos finitos de três dimensões, 
+O modelo analítico obtido é validado com o modelo desenvolvido em elementos finitos de três dimensões.
 
-\subsection{Otimização dos parâmetros}
+Dois tipos de analises foram realizadas nos modelos, a primeira, estipulando uma dimensão fixa a parte ativa do mancal e variando a corrente nas bobinas e a posição do rotor. A segunda, mantendo a mesma corrente e posição do rotor, variou-se algumas dimensões geométricas a fim de validar a robustez do modelo para diferentes geometrias.
 
-\subsection{Mancal ativo resultante da otimização}
+A comparação entre os modelos no caso da variação da corrente e do deslocamento do rotor para uma determinada geometria pode ser analisado na Fig. \ref{Fig:simulacoes:ativo:comparacao:dx:i}. As forças obtidas por ambos modelos apresentam perfil e grandeza similares, porém os modelos divergem ligeiramente quando a corrente é máxima.
+
+Isso acontece devido a saturação do ferro e o início da dispersão do campo magnético, influenciando tanto no fator de espraiamento quanto nas linhas de campo. 
+
+	\begin{figure}[!ht]
+		\subfloat[t][Modelo analítico]{
+			\includegraphics[width=0.5\linewidth]{Figs/Simulacoes/Ativo/validacao_ativo_map_analitico}
+		}
+		%
+		\subfloat[b][Modelo em elementos finitos]{
+		\includegraphics[width=0.5\linewidth]{Figs/Simulacoes/Ativo/validacao_ativo_map_fem}
+		}	
+		
+		\caption{Modulo da força resultante devido o deslocamento do rotor e variação na corrente aplicada nas bobinas}
+		\label{Fig:simulacoes:ativo:comparacao:dx:i}
+	\end{figure}
+
+A Fig. \ref{fig:validacao_ativo_2d} é um comparativo dos modelos quando submetidos a variação nos parâmetros construtivos, nesse caso variou-se a largura do núcleo da bobina ($w_n$), sua altura ($h_n$) e a largura do estator interno ($w_{fei}$). Nota-se a relação estreita entre os modelos quando as dimensões assumem valores maiores, a justificativa para tal fato é o desaparecimento de fluxos magnéticos não previstos no modelo analítico.
+
+\begin{figure}[th]
+	\centering
+	\caption{Força magnética (N) x Variação de parâmetros}
+	\includegraphics[width=0.7\linewidth]{Figs/Simulacoes/Ativo/validacao_ativo_2d}
+	\caption{Comparativo entre modelos quanto a variação da geometria}
+	\label{fig:validacao_ativo_2d}
+\end{figure}
+
+\section{Otimização dos parâmetros}
+
+Os parâmetros que devem ser otimizados são aqueles que não influenciam na topologia definida para a parte passiva do mancal, já que a mesma foi otimizada separadamente. Optou-se por não realizar uma otimização de ambas as partes simultaneamente evitando o problema da dimensionalidade.
+
+As variáveis a serem otimizadas nesse etapa do projeto são: o entreferro interno ($g_{gi}$), o comprimento ($w_n$) altura  e largura ($l_n$) do núcleo da bobina ($h_n$) e a quantidade de espiras da bobina ($n_n$). O atuador tem que ser capaz de vencer a força de atração de 160N gerada pelo circuito passivo quando o rotor encontra-se no maior deslocamento (0.3 mm, limitado pelo batente). 
+
+Uma ponto levado em consideração nessa etapa foi a da área útil para ser instalado as bobinas, esse espaço restrito é limitado pelo tamanho do ferro e pela largura do núcleo da bobina. A Fig. \ref{fig:modelo_ativo_bobina} ilustra a área em que a bobina é localizada. O cálculo essa área ($S_{bob}$) leva em consideração a secção do fio utilizado ($S_{fio}$), o fator de embobinamento ($K_b$) e a quantidade de voltas de espiras, podendo ser calculado como:
+
+\begin{align}
+	S_{bob} = 2 \, n_n \, \, S_{fio} \, K_b
+\end{align}
+
+Durante a otimização, verifica-se se a área útil para embobinamento é satisfeita, caso contrário, o modelo obtido é descartado e uma nova otimização é realizada.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.7\linewidth]{Figs/modelo_ativo_bobina}
+\caption{Área útil para embobinamento de cada núcleo}
+\label{fig:modelo_ativo_bobina}
+\end{figure}
+
+A otimização foi realizada via método de Nelder-Mead Simplex com restrições, limitando assim a dimensão máxima do mancal e evitando que a topologia proposta sofra alterações ao longo das interações. A condição inicial assim como as restrições são listas na Tab. \ref{tab:ativo:restrições}.
+
+\begin{table}[ht!]
+	\centering
+	\begin{tabular}{c c c c c c c}
+					 & $w_{gi}$ & $n_n$ & $h_n$ & $w_n$ &  $l_n$   \\ \hline \hline
+		$L_{0}$  &  0.6 & 300  &   10 &  22 & 6  &   12 \\
+		$L_{Min}$&  0.4 & 50   &   5  &  10 & 3  &   6	\\
+		$L_{Max}$ & 1.2 & 600  &   20 &  30 & 10 &   22
+	\end{tabular} 
+	\caption{Valores iniciais, máximos e mínimos utilizado na otimização, valores em milímetros.}
+	\label{tab:ativo:restrições} 
+\end{table}
+
+A função mérito utilizada no projeto do atuador engloba a força de atração $F_b$ resultante da aplicação de uma corrente de quatro Amperes no núcleo principal e de dois Amperes nos núcleos secundários, a indutância da bobina ($L_b$) e do volume dessa parte do mancal($V_{ma}$). Busca-se um modelo que possua maior força de atração, baixa indutância e menor volume. 
+
+\begin{align}
+	P_1 &= 3 \, 10^2/ F_b \\
+	P_2 &= 2 \, 10^5 \, L_b \\
+	P_3 &= 10^5 \, V_{ma} \\
+	P_4 &= 				\\
+	F   &= P_1 + P_2 + P_3
+\end{align}
+
+A evolução dos parâmetros ao longo da otimização é ilustrado na Fig. \ref{fig:otimizacao_ativo_parametros}. Durante a interação, verificamos o acréscimo da força de atração,  maior peso durante o processo de otimização.  A evolução do valor do entreferro assume um valor médio, já que seu valor influência diretamente na força de atração. A Fig. \ref{fig:otimizacao_ativo_pesos} demonstra a evolução dos pesos propostos para o funcional ao longo da otimização.  
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Figs/Simulacoes/Ativo/otimizacao_ativo_parametros}
+	\caption{Evolução dos parâmetros construtivos do mancal ao longo da otimização}
+	\label{fig:otimizacao_ativo_parametros}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.7\linewidth]{Figs/Simulacoes/Ativo/otimizacao_ativo_pesos}
+\caption{Evolução dos pesos propostos para o funcional ao longo da otimização}
+\label{fig:otimizacao_ativo_pesos}
+\end{figure}
 
 
+\section{Mancal ativo resultante da otimização}
+
+O mancal ativo resultante possui dimensões listadas na Tab. \ref{tab:ativo:resultado}, 
+
+\begin{table}[ht!]
+	\centering
+	\begin{tabular}{c c c c c c c}
+						& $w_{gi}$ & $n_n$ & $h_n$ & $w_n$ &  $l_n$   \\ \hline \hline
+		$L_n$  	&  0.614	 & 242  &   11.5 &  21. & 6  &   9 \\
+	\end{tabular} 
+	\caption{Mancal ativo obtido devido a otimização}
+	\label{tab:ativo:resultado} 
+\end{table}\todo{atualizar}
 
 
-%Portanto as indutâncias totais de cada núcleo são :
-%
-%\begin{eqnarray}
-%	L_a = 
-%\end{eqnarray}
 
 %\section{Escolha dos parâmetros}
 %

@@ -68,7 +68,8 @@ m.Sgi  = m.Snbe;
  
 %% Total
 
-m.Vm = m.Sm*m.hm+2*m.Sef*m.wef+2*m.Srf*m.wrf+m.Srr*m.wrr; % Volume estimado Total
+m.Vm = m.Sm*m.hm+2*m.Sef*m.wef+2*m.Srf*m.wrf+m.Srr*m.wrr; % Volume estimado Total passivo
+m.Vma = (m.Sei)*m.peie +m.Snbe*m.pene*parte*8;
 
 
 

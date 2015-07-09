@@ -140,7 +140,7 @@ wrf_delta = x(6);
 wrf = wrr + wrf_delta
 ree = x(8)
 
-save('resultados_otimizacao_passivo','hef','wef','wm','hm','wge','wrf','wrr','ree');
+%%save('resultados_otimizacao_passivo','hef','wef','wm','hm','wge','wrf','wrr','ree');
 
 %% comsol 
 

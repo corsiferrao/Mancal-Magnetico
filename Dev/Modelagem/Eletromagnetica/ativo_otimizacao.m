@@ -24,6 +24,7 @@ clc;
 global Fx;
 global Lmain;
 global V;
+global Gi;
 global Im;
 global in;
 
@@ -33,10 +34,12 @@ global version;
 % carrega valore iniciais
 parametros_geometricos;
 
+load resultados_otimizacao_passivo;
+
 %  [wgi     nnb     hnb     lnb    wei      rnb
-V0=[0.6E-3  300     10E-3   22E-3  6E-3     12E-3];
-LO=[0.4E-3  50      5E-3    10E-3  3E-3     6E-3];
-UB=[1.2E-3  600     20E-3   30E-3  10E-3    22E-3];
+V0=[0.6E-3  300     10E-3   10E-3  6E-3     12E-3];
+LO=[0.4E-3  50      5E-3    8E-3    3E-3     6E-3];
+UB=[1.2E-3  600     20E-3   15E-3  10E-3    22E-3];
 
 % corrente aplicada a bobina
 Im = 4;
@@ -45,7 +48,7 @@ po = LO*2;
 
 % configura otimizacao
 options = optimset( 'Display', 'iter',  ...
-                   'TolX',0.1,'TolFun',0.05, ...
+                   'TolX',0.1,'TolFun',0.1, ...
                    'MaxIter', inf);
 
 % contador para armazenameto dos resultados
@@ -62,36 +65,51 @@ version = 1;
 
 %% Resultados
 figure
-h1 = subplot(2,1,1); 
+h1 = subplot(2,2,1); 
 
-subplot(3,1,1); 
+subplot(2,2,1); 
     plot(1:in-1, Fx,'o'); 
     title('F_x');
     belezura;
-subplot(3,1,2); 
+subplot(2,2,2); 
     plot(1:in-1, Lmain,'o');
     title('L');
     belezura;
-% subplot(3,1,3); 
-%     plot(1:in-1, V,'o');
-%     title('Volume');
-%     belezura;
+  subplot(2,2,3); 
+     plot(1:in-1, Gi,'o');
+     title('Entreferro');
+     belezura;
+ subplot(2,2,4); 
+     plot(1:in-1, V,'o');
+     title('Volume');
+     belezura;
     
 export_pdf('Resultados/otimizacao_ativo_parametros',1);
     
 %% pesos funcionais
 % 
-[F, P1, P2, P3 ] = merito_ativo( Fx, Lmain, m, version );
+[F, P1, P2, P3, P4 ] = merito_ativo( Fx, Lmain, V, Gi, version );
 
 figure
-    plot(P1)
+    plot(P1, 'b')
 hold on
     plot(P2, 'r')
-    %plot(P3, 'g')
+    plot(P3, 'g')
+    plot(P4, 'c')
     plot(F,  'm')
-title('pesos');
-legend('N', 'L',  'F'); 
+%title('pesos');
+legend('P1', 'P2', 'P3', 'P4', 'F'); 
 belezura
 
-export_pdf('Resultados/otimizacao_passivo_pesos',1);
+export_pdf('Resultados/otimizacao_ativo_pesos',1);
+
+%%
+wgi = x(1)
+nnb = x(2)  
+hnb = x(3)     
+lnb = x(4)  
+wei = x(5)   
+rnb = x(6)
+
+save('Resultados/resultados_otimizacao_ativo','wgi','nnb','hnb','lnb','wei','rnb');
 
