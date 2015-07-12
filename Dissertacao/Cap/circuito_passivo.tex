@@ -3,16 +3,16 @@
 \pagestyle{fancy}
 
 
+\chapter{Circuito passivo}
+
+
 \begin{figure}
-\centering
-\includegraphics[width=0.8\linewidth]{Figs/modelo_dimensoes}
-\caption{}
-\label{fig:modelo_dimensoes}
+	\centering
+	\includegraphics[width=0.8\linewidth]{Figs/modelo_dimensoes}
+	\caption{}
+	\label{fig:modelo_dimensoes}
 \end{figure}
 
-
-
-\chapter{Circuito passivo}
 
 A parte passiva do mancal magnético pode ser descrita como o circuito da Fig. \ref{Fig:Modelagem:circuito:passivo:umlado}, onde um ímã permanente gera um fluxo magnético ($\mathcal{F}_c$) que estabiliza o eixo axial (passivo). O caminho principal desse fluxo é através do entreferro ($R_{ge}$) tanto pelos ferros do estator ($R_{ef}$) quanto pelos ferros do rotor ($R_{rf}$ e $R_{rr}$). Dois caminhos extras são considerados, um de vazamento de fluxo magnético no ímã ($R_{lm}$) e outro em cada entreferro ($R_{lg}$). 
 
@@ -298,30 +298,31 @@ As dimensões alcançadas devido a otimização do mancal está listada na Tab. 
 	\label{tab:passivo:dimensoes:otimizado} 
 \end{table} \todo{atualizar}
 
-Verificamos na Fig. \ref{fig:forca:passivo:fx:modelagem:diff} o resultante  da força devido a  translação do rotor em apenas um dos eixos radiais, podemos verificar a linearidade da força quando o rotor trabalha em modo diferencial.  
+Verificamos na Fig. \ref{fig:forca:passivo:otimizado:fem:dx} o resultante  da força devido a  translação do rotor em apenas um dos eixos radiais, podemos verificar a linearidade da força quando o rotor trabalha em modo diferencial.  
 
 \begin{figure}[!ht]
 \centering
 \caption*{Força (N) x $\Delta_x$ (mm) - Deslocamento Radial: y = 0, z = 0}
-\includegraphics[width=0.6 \columnwidth,angle=0]{Figs/Simulacoes/Passivo/forca_fx_passivo_modelagem}
+\includegraphics[width=0.6 \columnwidth,angle=0]{Figs/Simulacoes/Passivo2/fem/passivo_otimizado_fem_dx}
 \caption{Força atuante no rotor dado uma translação radial}
-\label{fig:forca:passivo:fx:modelagem:diff}
-\end{figure} \todo{atualizar}
+\label{fig:forca:passivo:otimizado:fem:dx}
+\end{figure} 
 
-Um mapa  do módulo da força radial no plano x,y é ilustrado na Fig. \ref{fig:forca:passivo:mod:fx:fy:3d}, notamos que em torno do ponto de operação a força é praticamente nula. Porém quando o rotor encontra-se em algum de seus extremos, a força de atração é da ordem de centenas de Newton o que vai influenciar na definição do circuito ativo que tem que ser capaz de vencer essa força.
+A força devido a translação axial é ilustrado na Fig. \ref{fig:forca:passivo:otimizado:fem:dy}, essa força restaurativa torna a parte passiva do mancal estável e é a responsável pela rigidez nesse grau de liberdade. Notamos que a força necessária para deslocar 1 mm axialmente quando o mancal está no ponto de operação é de aproximadamente 140N. Verificamos que a força possui um componente diferente de zero quando o rotor está alinhado com o estator externo (z = 0), diferente do encontrado via  modelo analítico, explica-se esse fenômeno pelo erro numérico causado pela malha de cálculo.
 
-%\begin{figure}[!ht]
-%\centering
-%\caption*{Módulo Força (N) x Deslocamento (mm)}
-%\includegraphics[width=0.8\linewidth]{./Figs/Simulacoes/Passivo/forca:passivo:mod:fx:fy:3d}
-%\caption{}
-%\label{fig:forca:passivo:mod:fx:fy:3d}
-%\end{figure}
 
-A força devido a translação axial é ilustrado na Fig. {fig:forca:passivo:fz:centro}, essa força restaurativa torna a parte passiva do mancal estável e é a responsável pela rigidez nesse grau de liberdade. Notamos que a força necessária para deslocar 1mm axialmente quando o mancal está no ponto de operação é de aproximadamente 850N.
+\begin{figure}[!ht]
+	\centering
+	\caption*{Força (N) x $\Delta_z$ (mm) - Deslocamento axial: x = 0, y = 0}
+	\includegraphics[width=0.6 \columnwidth,angle=0]{Figs/Simulacoes/Passivo2/fem/passivo_otimizado_fem_dy}
+	\caption{Força atuante no rotor dado uma translação axial}
+	\label{fig:forca:passivo:otimizado:fem:dy}
+\end{figure}
 
- O módulo do campo magnético pode ser visualizado para dois casos distintos na Fig. \ref{Fig:Simulacao:Passivo:2D:B}. Nessa simulação, podemos verificar que o ferro está saturado (B=1.6T), que o modelo não possui uma quantidade significativa de linhas de campo magnético que não atravessam o entreferro e que a área do entreferro ($S_g$) possui um pequeno espraiamento aumento assim sua área resultando em uma ligeira diminuição no cálculo da força. Verificamos também que o ponto de operação do imã sofre uma pequena variação passando de 1.05T para 1.06T.
-%
+Um mapa do módulo da força radial no plano x,y é ilustrado na Fig. \ref{}, notamos que em torno do ponto de operação a força é praticamente nula. Porém quando o rotor encontra-se em algum de seus extremos, a força de atração é da ordem de centenas de Newton o que vai influenciar na definição do circuito ativo que tem que ser capaz de vencer essa força.
+
+O módulo do campo magnético pode ser visualizado para dois casos distintos na Fig. \ref{Fig:Simulacao:Passivo:2D:B}. Nessa simulação, podemos verificar que o ferro está saturado (B=1.6T), que o modelo não possui uma quantidade significativa de linhas de campo magnético que não atravessam o entreferro e que a área do entreferro ($S_g$) possui um pequeno espraiamento aumento assim sua área resultando em uma ligeira diminuição no cálculo da força. Verificamos também que o ponto de operação do imã sofre uma pequena variação passando de 1.05T para 1.06T.
+
 %	\begin{figure}[!ht]
 %		\centering
 %		\caption*{Campo magnético (T)}
@@ -350,24 +351,48 @@ o rotor foi deslocado em apenas um eixo (x). Foram utilizado os valores nominais
 %		\label{Fig:Modelagem:Curva:passivo:frxd}
 %\end{figure}
 
-A Fig. \ref{Fig:Modelagem:Curva:passivo:dy:linhas} ilustra o resultado da simulação através de elementos finitos onde o rotor é transladado verticalmente de 1.2mm. Verificamos que as linhas de campo apresentam uma grande deformação se comparamos as linhas de campo do rotor alinhado com o estator externo ($\Delta_z = 0$), essas deformações apresentam um erro numérico no calculo da força já que supusemos na Subsec. \ref{SubSec:CampoX/Y} que as linhas de campo podem ser decompostas em x e z e que essa decomposição é diretamente relacionada com o deslocamento do rotor ($\theta$). 
+A Fig. \ref{Fig:Modelagem:Curva:passivo:dy:linhas} ilustra o resultado da simulação através de elementos finitos onde o rotor é transladado verticalmente de 0.8 mm. Verificamos que as linhas de campo não sofrem inclinação proporcional ao deslocamento do rotor, essas deformações apresentam um erro no modelo analítico já que supusemos na Subsec. \ref{SubSec:CampoX/Y} que as linhas de campo poderiam ser decompostas em x e z e que essa decomposição é diretamente relacionada com o deslocamento do rotor ($\theta$). 
 
-%\begin{figure}[!ht]
-%	\centering
-%	%\caption*{Força magnética (N) x Deslocamento x (mm)}
-%	\subfloat[t][$\Delta_x = 1.2mm$ e $\Delta_z = 0mm$]
-%	{
-%		\includegraphics[width=0.45 \columnwidth,angle=0]{Figs/Simulacoes/Passivo/2D:B:dy=0:linhas.png}	
-%	}	\label{Fig:Modelagem:Curva:passivo:dy:linhas:0}
-%	\subfloat[t][$\Delta_x = 1.2mm$ e $\Delta_z = 1.2$]
-%	{
-%		\includegraphics[width=0.45 \columnwidth,angle=0]{Figs/Simulacoes/Passivo/2D:B:dx=1,2:linhas.png}
-%	}	\label{Fig:Modelagem:Curva:passivo:dy:linhas:1,2}
-%	\caption{Linhas de campo magnético para deslocamentos na vertical}
-%	\label{Fig:Modelagem:Curva:passivo:dy:linhas}
-%\end{figure}
+\begin{figure}[!ht]
+	\centering
+	\subfloat[t][$\Delta_x = 0 mm$ e $\Delta_z = 0mm$]
+	{
+		\includegraphics[width=0.5\linewidth]{Figs/Simulacoes/Passivo2/fem/dy_00}
+	}	\label{Fig:Modelagem:Curva:passivo:dy:linhas:0}
+	\subfloat[t][$\Delta_x = 0 mm$ e $\Delta_z = 0.8$]
+	{
+		\includegraphics[width=0.5\linewidth]{Figs/Simulacoes/Passivo2/fem/dy_08}
+	}	\label{Fig:Modelagem:Curva:passivo:dy:linhas:1,2}
+	\caption{Campo magnético via simulação em elementos finitos para deslocamentos na vertical}
+	\label{Fig:Modelagem:Curva:passivo:dy:linhas}
+\end{figure}
 
-A Fig. \ref{Fig:Modelagem:Curva:passivo:fxd:dy} é o resultado das forças no rotor quando submetido a um deslocamento axial, verificamos que a força possui um componente diferente de zero quando o rotor está alinhado com o estator externo (z = 0), verificamos que esse resultado é diferente do encontrado no modelo analítico, explica-se esse fenômeno pelo comportamento do campo magnético quando os ferros do rotor e estator encontram-se afastados, notamos que as linhas de campo magnético não assumem a inclinação proporcional ao deslocamento  ($\theta = tg^{-1}(\frac{\Delta_z}{\Delta_x})$), o que causa o erro na força estimado.
+A Fig. \ref{Fig:Modelagem:Curva:passivo:dx:linhas} é o resultado da simulação FEM para o deslocamento radial do rotor. Notamos nessa simulação que o fluxo magnético é contido nos ferros e que ocorre pouca dispersão das linhas de campo. Notamos também a saturação dos ferro em todos os casos, essa saturação é necessária para forçar a linearidade da força de atração quando trabalhado em modo diferencial.
+
+\begin{figure}[!ht]
+\centering
+\subfloat[t][$\Delta_x = 0 mm$ e $\Delta_z = 0mm$]
+{
+	\includegraphics[width=1\linewidth]{Figs/Simulacoes/Passivo2/fem/dz00}
+}	\\
+\subfloat[t][$\Delta_x = 0.1 mm$ e $\Delta_z = 0mm$]
+{
+	\includegraphics[width=1\linewidth]{Figs/Simulacoes/Passivo2/fem/dz01}
+}	\\
+\subfloat[t][$\Delta_x = 0.2 mm$ e $\Delta_z = 0mm$]
+{
+	\includegraphics[width=1\linewidth]{Figs/Simulacoes/Passivo2/fem/dz02}
+}	\\
+\subfloat[t][$\Delta_x = 0.3 mm$ e $\Delta_z = 0mm$]
+{
+	\includegraphics[width=1\linewidth]{Figs/Simulacoes/Passivo2/fem/dz03}
+}	
+
+\caption{Campo magnético via simulação em elementos finitos para deslocamentos radial}
+\label{Fig:Modelagem:Curva:passivo:dx:linhas}
+\end{figure}
+
+
 
 %\begin{figure}[th!]
 %\centering
@@ -377,19 +402,4 @@ A Fig. \ref{Fig:Modelagem:Curva:passivo:fxd:dy} é o resultado das forças no ro
 %\label{Fig:Modelagem:Curva:passivo:fxd:dy}
 %\end{figure}
 
-
-\begin{figure}
-\centering
-\includegraphics[width=0.5\linewidth]{Figs/Simulacoes/Passivo2/fem/dy_00}
-\caption{}
-\label{fig:dy_00}
-\end{figure}
-
-
-\begin{figure}
-\centering
-\includegraphics[width=0.5\linewidth]{Figs/Simulacoes/Passivo2/fem/dy_08}
-\caption{}
-\label{fig:dy_08}
-\end{figure}
 

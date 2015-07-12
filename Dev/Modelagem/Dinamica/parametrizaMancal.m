@@ -13,8 +13,10 @@ L = [-57.6135 0.0908];  % indutancia = L(1).gap + L(2)
 Lm = L(1)*gi+L(2);      % indutancia media
 %L = [0 L(1)*gi + L(2)];
 
-Km = 540e3;             % rigidez radial passiva [N/m]
+Km = 60e3;              % rigidez radial passiva [N/m]
 Ke = [3.8e-9 2.86e-3];  % constantes magneticas dos enrolamentos
+
+Kb = 60e3;              % rigidez radial ativa [N/m]
 
 E = 3e9;                % elastificade do nylon
 Lb = 5.3e-3;            % profundidade (radial) do batente [m]
@@ -25,10 +27,8 @@ Kb = E*Hb*Ab/Lb;        % contante elastica a meia escursao [N/m]
 
 % modelos
 Gp = tf(1,[m 0 -Km]);   % planta
-Ga = tf(1,[Lm R]);      % atuador
+Ga = tf(Kb,[Lm R]);     % atuador
 G = ss(Ga*Gp);
-
 
 % parametros controlador
 Vmax = 30;              % tensao maxima de excitacao das bobinas [V]
-load 'controlador_v1'

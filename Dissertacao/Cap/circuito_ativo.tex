@@ -200,7 +200,7 @@ M_{bn} &= \frac{\Phi_{a \rightarrow b}}{I} = N B_{ga}\biggr\rvert_{(I_b = 0, I_n
 
 \section{Convergência}
 
-Devido ao modelo apresentar componentes não lineares dado a curva de magnetização dos componentes ferro magnético do circuito, utilizamos o método de Newton-Rapson assim como no circuito passivo. Em cada nova interação, calcula-se as novas permeabilidades para os componentes compostos pelos: ferros do rotor, ferro do núcleo, ferro do estator interno e então resolve-se a equação de malha.
+Devido ao modelo apresentar componentes não lineares dado a curva de magnetização dos componentes ferro magnético do circuito, utilizamos o método de Newton-Rapson assim como no circuito passivo. Em cada nova interação, calcula-se as novas permeabilidades para os componentes compostos pelos: ferros do rotor, ferro do núcleo, ferro do estator interno e então resolve-se a equação de malha obtendo um novo resultado.
 
 \section{Validação do modelo analítico}
 
@@ -256,6 +256,8 @@ Durante a otimização, verifica-se se a área útil para embobinamento é satis
 \label{fig:modelo_ativo_bobina}
 \end{figure}
 
+Os parâmetros geométricos iniciais ($L_0$) do estator interno foram levantados partindo da restrição de potência imposta pela especificação da Tab. \ref{tab:PMM:especificações}, com a potência (100W) e  tensão elétrica de alimentação (24V) obtemos a corrente máxima de trabalho (4A). Essa corrente elétrica deve ser suficiente para gerar uma força de atração que consiga compensar a força gerada pelo circuito passivo no maior entreferro, levantada no modelo em elementos finitos (160N). Da equação de força magnética ($\nicefrac{B^2.A}{(l/\mu +2g)^2}$ ) foi possível encontrar uma aproximação da área do polo necessária para gerar uma força capaz de vencer a força imposta pelo ímã. Com um valor inicial da área transversal do polo, definiu-se o número de voltas das bobinas necessária para gerar o fluxo magnético no entreferro. Com a área útil e a quantidade de voltas definiu-se a bitola do filamento com resistência elétrica capaz de gerar a corrente de 4A (AWG 33).
+
 A otimização foi realizada via método de Nelder-Mead Simplex com restrições, limitando assim a dimensão máxima do mancal e evitando que a topologia proposta sofra alterações ao longo das interações. A condição inicial assim como as restrições são listas na Tab. \ref{tab:ativo:restrições}.
 
 \begin{table}[ht!]
@@ -270,14 +272,14 @@ A otimização foi realizada via método de Nelder-Mead Simplex com restrições
 	\label{tab:ativo:restrições} 
 \end{table}
 
-A função mérito utilizada no projeto do atuador engloba a força de atração $F_b$ resultante da aplicação de uma corrente de quatro Amperes no núcleo principal e de dois Amperes nos núcleos secundários, a indutância da bobina ($L_b$) e do volume dessa parte do mancal($V_{ma}$). Busca-se um modelo que possua maior força de atração, baixa indutância e menor volume. 
+A função mérito utilizada no projeto do atuador engloba a força de atração $F_b$ resultante da aplicação de uma corrente de quatro Amperes no núcleo principal e de dois Amperes nos núcleos secundários, a indutância da bobina ($L_b$) e do volume do estator interno ($V_{ma}$). Busca-se um modelo que possua maior força de atração, baixa indutância e menor volume. Os pesos utilizados durante a otimização 
 
 \begin{align}
 	P_1 &= 3 \, 10^2/ F_b \\
-	P_2 &= 2 \, 10^5 \, L_b \\
-	P_3 &= 10^5 \, V_{ma} \\
-	P_4 &= 				\\
-	F   &= P_1 + P_2 + P_3
+	P_2 &= 15 \, 10^4 \, L_b \\
+	P_3 &= 10^6 \, V_{ma} \\
+	P_4 &= \frac{25 \, 10^{-4}}{w_{gi}}				\\
+	F   &= P_1 + P_2 + P_3 + P_4
 \end{align}
 
 A evolução dos parâmetros ao longo da otimização é ilustrado na Fig. \ref{fig:otimizacao_ativo_parametros}. Durante a interação, verificamos o acréscimo da força de atração,  maior peso durante o processo de otimização.  A evolução do valor do entreferro assume um valor médio, já que seu valor influência diretamente na força de atração. A Fig. \ref{fig:otimizacao_ativo_pesos} demonstra a evolução dos pesos propostos para o funcional ao longo da otimização.  
@@ -299,40 +301,24 @@ A evolução dos parâmetros ao longo da otimização é ilustrado na Fig. \ref{
 
 \section{Mancal ativo resultante da otimização}
 
-O mancal ativo resultante possui dimensões listadas na Tab. \ref{tab:ativo:resultado}, 
+O mancal ativo resultante possui dimensões listadas na Tab. \ref{tab:ativo:resultado}. A força de atração resultante da excitação das bobinas com uma corrente principal de quatro Amperes com o rotor no seu deslocamento máximo e sob o efeito da atração oposto do circuito passivo é de 23 N , ou seja, o atuador proposto é capaz de retirar o rotor de sua posição de máximo deslocamento e o mover para seu ponto de operação.
 
 \begin{table}[ht!]
 	\centering
-	\begin{tabular}{c c c c c c c}
-						& $w_{gi}$ & $n_n$ & $h_n$ & $w_n$ &  $l_n$   \\ \hline \hline
-		$L_n$  	&  0.614	 & 242  &   11.5 &  21. & 6  &   9 \\
+	\begin{tabular}{c c c c c}
+		 $w_{gi}$ 	& $n_n$ & $h_n$ & $w_n$ & $w_{fei}$  \\ \hline \hline
+		 0.7		& 300  	& 10.8 	& 14.9	& 6
 	\end{tabular} 
-	\caption{Mancal ativo obtido devido a otimização}
+	\caption{Mancal ativo obtido devido a otimização, valores em milímetros}
 	\label{tab:ativo:resultado} 
-\end{table}\todo{atualizar}
+\end{table}
 
+A curva de força ($F_b$) por deslocamento é ilustrado na Fig. \ref{}
 
 
 %\section{Escolha dos parâmetros}
 %
-%Os parâmetros geométricos do estator interno foram levantados partindo da restrição de potência imposta pela especificação da Tab. \ref{tab:PMM:especificações}, com a potência (100W) e a tensão elétrica de alimentação (24V) obtemos a corrente máxima de trabalho (4A). Essa corrente elétrica deve ser suficiente para gerar uma força de atração que consiga compensar a força gerada pelo circuito passivo no maior entreferro, levantada no modelo em elementos finitos (160N). 
-%
-%Da equação de força magnética \eqref{eq:ativo:F:resultante:x} é possível tirar uma aproximação da área necessária para atingir um valor de força capaz de mover o rotor, para o valor da densidade de fluxo magnético utilizamos o valor de saturação do aço 1020 (1.5T). Com um valor inicial da área transversal do polo, definiu-se o número de voltas das bobinas necessária para gerar o fluxo magnético no entreferro. Com a área útil e a quantidade de voltas definiu-se a bitola do filamento coim resistência elétrica capaz de gerar a corrente de 4A.
-%
-%
-%%\begin{enumerate}[a.]
-%%	\item potencia máxima (especificada): P = 100W
-%%	\item tensão de trabalho (decisão de projeto): V = 24V
-%%	\item corrente máxima: I = P/V = 4A
-%%	\item forca exigida da bobina: F = 140N ( = forca dos ímãs na direção contraria com o rotor no batente, levantado na simulação em elementos finitos)
-%%	\item entreferro: g=0.001m (na condição de rotor no batente do lado oposto) densidade de campo máxima: B=1.5T (valor de saturação pro material - Aço 1020, vem da curva BxH)
-%%	\item área transversal do polo do estator: sai da equação $\nicefrac{B^2.A}{(l/\mu +2g)^2}$    \todo{citar, verificar com modelagem} 
-%%	\item N=numero de voltas necessárias pra saturar o material com I = 4A
-%%	\item area longitudinal do polo: espaço necessário pra dar N voltas
-%%	\item tamanho do fio: definido pelo numero de voltas N e área transversal do polo
-%%	\item bitola do fio: bitola tal que co mo tamanho acima tenha a resistência R=V/I
-%%	\item altura do estator: definido para caber N voltas com a bitola acima
-%%\end{enumerate}
+
 %
 %
 %\subsection{Simulações}

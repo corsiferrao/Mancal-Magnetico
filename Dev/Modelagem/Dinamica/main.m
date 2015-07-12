@@ -2,21 +2,10 @@
 global exportar;
 exportar = 0;
 
-%%
-gb = 0.4e-3;            % gap para o batente [m]
-gi = 0.6e-3;            % gap para o estator interno [m]
-m = 4.7e-5*7.86e3;      % massa do rotor [kg]
-N = 300;                % numero de voltas por enrolamento
-R = 4;                  % resistencia de cada enrolamento [ohms]
-L = [-57.6135 0.0908];  % indutancia = L(1).gap + L(2) <= Comsol
-Lm = L(1)*gi+L(2);      % indutancia media 
-Kb = 46.53E3;             % Força bobinas em [N/m]
-Kp = 547.8E3;             % rigidez passivo [N/m]
 
-% Funcao de transf em torno do ponto de operacao
-Ga = tf(Kb,[Lm R]);      % Atuador
-Gp = tf(1,[m 0 -Kp]);    % planta
-G = ss(Ga*Gp);           % Sistema
+%% parametriza mancal
+
+parametrizaMancal
 
 %% Analise
 pole(G)
