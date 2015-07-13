@@ -118,23 +118,18 @@ O modelo linear ($G_{ma}$) de malha aberta para um dos eixos de movimentação n
 	G_a &= \frac{K_b}{s\, L + R}
 \end{align}
 
-O modelo encontrado é utilizado para o projeto do controlador ($C(s)$), esse otimizado para operar em torno do ponto de operação. A função transferência do modelo obtido é demonstrado na Eq. \eqref{eq:dinamica:tfunc:gen}, o sistema possui três polos e nenhum integrador puro (tipo 0). 
+O modelo encontrado é utilizado para o projeto do controlador ($C(s)$), esse otimizado para operar em torno do ponto de operação. A função transferência do modelo obtido é demonstrado na Eq. \eqref{eq:dinamica:tfunc:gen}, o sistema possui três polos sendo eles nenhum integrador puro (tipo 0). 
 
 \begin{align}
-	G_{ma} = \frac{K_b}{(s^2 \, m - K_p) \, (s\, L + R)}
+	G_{ma}(s) = \frac{K_b}{(s^2 \, m - K_p) \, (s\, L + R)}
 	\label{eq:dinamica:tfunc:gen}
 \end{align}
  
-
-
-\begin{equation}
-G(s) = \frac{46530}{ 0.02077 \, s^3 + 1.478 \, s^2 - 3.08e04 \,s - 2.191e06}
-\label{eq:dinamica:tfunc}
-\end{equation}
-
-
-
-
+ 
+ \begin{equation}
+ G(s) = \frac{46530}{ 0.02077 \, s^3 + 1.478 \, s^2 - 3.08e04 \,s - 2.191e06}
+ \label{eq:dinamica:tfunc}
+ \end{equation}
 
 
 
@@ -142,11 +137,19 @@ O sistema obtido pode ser interpretado como de tipo 0 possuindo três polos loca
 
 Verificamos através da analise em frequência (Fig. \ref{fig:bode:rlocus:pnt:operacao}) que o sistema é instável em malha aberta e um controlador deve ser projetado para instabilizar o sistema. 
 
-\begin{figure}[th!]
-\centering
-\includegraphics[width=0.7\linewidth]{./Figs/Modelagem/bode_rlocus_pnt_operacao}
-\caption{Característica do sistema para um dos eixos em malha aberta}
-\label{fig:bode:rlocus:pnt:operacao}
+
+\begin{figure}[!ht]
+	\centering
+	\subfloat[t][Lugar das raizes]{
+	\includegraphics[width=0.5\linewidth]{Figs/Simulacoes/Dinamica/rlocus:pnt:operacao}
+	}\\
+	%
+	\subfloat[b][Diagrama de Bode]{
+	\includegraphics[width=0.5\linewidth]{Figs/Simulacoes/Dinamica/bode:pnt:operacao}
+	}	
+	
+	\caption{Analise em frequência do sistema obtido}
+	\label{fig:bode:rlocus:pnt:operacao}
 \end{figure}
 
 \subsection{Modelo dinâmico não linear}

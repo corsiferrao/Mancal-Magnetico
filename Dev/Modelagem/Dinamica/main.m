@@ -5,7 +5,15 @@ exportar = 0;
 
 %% parametriza mancal
 
-parametrizaMancal
+parametros_geometricos;
+parametros_magneticos;
+
+m_g=derivados_geometricos(m,0,0);
+
+
+parametrizaMancal;
+
+
 
 %% Analise
 pole(G)
@@ -13,11 +21,16 @@ pole(G)
 %% Bode
 % analise frequencia
 figure
-subplot(1,2,1)
 rlocus(G)
-subplot(1,2,2)
+title('');
+belezura
+export_pdf('Dinamica/Resultados/rlocus:pnt:operacao',1);
+
+%%
+figure
 bode(G)
-export_pdf('bode:rlocus:pnt:operacao');
+title('')
+export_pdf('Dinamica/Resultados/bode:pnt:operacao',1);
 
 %% simulaçao impacto
 load('simualcao:saturacao:mancal.mat')

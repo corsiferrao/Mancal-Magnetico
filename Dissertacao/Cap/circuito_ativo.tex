@@ -258,7 +258,7 @@ Durante a otimização, verifica-se se a área útil para embobinamento é satis
 
 Os parâmetros geométricos iniciais ($L_0$) do estator interno foram levantados partindo da restrição de potência imposta pela especificação da Tab. \ref{tab:PMM:especificações}, com a potência (100W) e  tensão elétrica de alimentação (24V) obtemos a corrente máxima de trabalho (4A). Essa corrente elétrica deve ser suficiente para gerar uma força de atração que consiga compensar a força gerada pelo circuito passivo no maior entreferro, levantada no modelo em elementos finitos (160N). Da equação de força magnética ($\nicefrac{B^2.A}{(l/\mu +2g)^2}$ ) foi possível encontrar uma aproximação da área do polo necessária para gerar uma força capaz de vencer a força imposta pelo ímã. Com um valor inicial da área transversal do polo, definiu-se o número de voltas das bobinas necessária para gerar o fluxo magnético no entreferro. Com a área útil e a quantidade de voltas definiu-se a bitola do filamento com resistência elétrica capaz de gerar a corrente de 4A (AWG 33).
 
-A otimização foi realizada via método de Nelder-Mead Simplex com restrições, limitando assim a dimensão máxima do mancal e evitando que a topologia proposta sofra alterações ao longo das interações. A condição inicial assim como as restrições são listas na Tab. \ref{tab:ativo:restrições}.
+A otimização foi realizada via método de Nelder-Mead Simplex com restrições, limitando assim a dimensão máxima do mancal e evitando que a topologia proposta sofra alterações ao longo das interações e que dimensões que ferem as especificações sejam obtidas. A condição inicial obtida do método lista anteriormente assim como as restrições são listas na Tab. \ref{tab:ativo:restrições}.
 
 \begin{table}[ht!]
 	\centering
@@ -314,6 +314,34 @@ O mancal ativo resultante possui dimensões listadas na Tab. \ref{tab:ativo:resu
 \end{table}
 
 A curva de força ($F_b$) por deslocamento é ilustrado na Fig. \ref{}
+
+\subsection{FEM}
+
+\begin{figure}[!ht]
+	\centering
+	\subfloat[a][I = 1 A]{
+	\includegraphics[width=0.4\linewidth]{Figs/Simulacoes/Ativo/dx=03_I=1}
+	}
+	\subfloat[b][I = 2 A]{
+	\includegraphics[width=0.4\linewidth]{Figs/Simulacoes/Ativo/dx=03_I=2}
+	}	\\
+	\subfloat[c][I = 3 A]{
+	\includegraphics[width=0.4\linewidth]{Figs/Simulacoes/Ativo/dx=03_I=3}
+	}
+	\subfloat[d][I = 4 A]{
+	\includegraphics[width=0.4\linewidth]{Figs/Simulacoes/Ativo/dx=03_I=4}
+	}	
+	\caption{Vetor campo magnético no polo principal quando variado a corrente, rotor com deslocamento de 0.3mm de sua posição.}
+	\label{fig:ativo:fem:b:polos}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\linewidth]{Figs/Simulacoes/Ativo/Cima_dx=03_I=4}
+\caption{Vetor campo magnético de uma secção radial do mancal quando aplicado uma corrente de 4A no polo principal}
+\label{fig:ativo:fem:b:radial}
+\end{figure}
+
 
 
 %\section{Escolha dos parâmetros}

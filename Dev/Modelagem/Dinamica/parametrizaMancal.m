@@ -1,3 +1,4 @@
+
 % parametros modelo
 Rr = 0.1116/2;          % raio externo do ferro central do rotor [m]
 Rb = 0.1124/2;          % raio interno do batente [m]
