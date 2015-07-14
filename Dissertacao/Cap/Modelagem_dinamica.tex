@@ -20,7 +20,7 @@ A dinâmica do rotor é influenciada basicamente pela sua velocidade de rotaçã
 
  \begin{figure}[th]
  	\centering
- 	\includegraphics[width=0.5\linewidth]{../Figs/Modelagem/forcas}
+ 	\includegraphics[width=0.7\linewidth]{../Figs/Modelagem/forcas}
  	\caption{Forças atuantes rotor}
  	\label{fig:modelo:forcas}
  \end{figure}
@@ -58,7 +58,7 @@ A dinâmica do rotor é influenciada basicamente pela sua velocidade de rotaçã
  
  Exceto pela dependência das posições nas forças, verificamos pelas equações o desacoplamento entre os diferentes graus de liberdade. 
 
-\subsection{$K_p$}
+\subsection{Rigidez Passiva : $K_p$}
 
 A força exercida no rotor devido aos imãs permanentes do estator externo podem ser aproximadas por uma equação linear, como visto em \ref{subsection:forca:x}. Assumisse que a força de atração no roto para pequenos deslocamento dependa somente da posição no eixo, podendo ser representada pela decomposição:
 
@@ -69,7 +69,7 @@ A força exercida no rotor devido aos imãs permanentes do estator externo podem
 
 Onde $K_p$ é a constante de proporção entre a força e a posição, x e y são os deslocamento em torno do ponto de equilibro do rotor com relação ao estator externo. Obtemos via a simulação em elementos finitos um relação força por deslocamento de: $ K_p(d) = 625 N/mm $  para ambos os eixos (devido a simetria do mancal). 
 
-\section{$F_b$}
+\section{Rigidez Ativa : $F_b$}
 
 A força de atração do rotor devido ao campo magnético gerado pelas bobinas é não linear com a posição do rotor (comprimento do entreferro) e depende da corrente de excitação aplicada as bobinas. Além desses fatores, uma dinâmica do atuador ($G_a(s)$) atrelada a indutância deve ser considerada. A bobina é modelada como um circuito RL, com a dinâmica descrita na Eq. \eqref{eq:dinamica:bobina}.
 
@@ -85,11 +85,7 @@ As tensões nas bobinas são distribuídas conforme Fig. \ref{fig:blocos:tensao:
 
 \begin{figure}[th]
 \centering
-\includegraphics[width=0.5\linewidth]{./Figs/Modelagem/ativo-atuadores-conexao}
-%
-%\subfloat[Ganho das tensões nas bobinas]{
-%\includegraphics[height=0.8\textheight]{./Figs/Modelagem/tensao:bobinas:x:y}}
-%%
+\includegraphics[width=0.7\linewidth]{./Figs/Modelagem/ativo-atuadores-conexao}
 \caption{Distribuição das tensões nas bobinas}
 \label{fig:blocos:tensao:bobinas:x:y}
 \end{figure}
@@ -110,7 +106,9 @@ O batente atua como uma saturação na posição do rotor (x,y, z), atrelou-se u
 
 Sendo : \textbf{E }a constante de Yong para o material; \textbf{A} área de contato; \textbf{$l_o$ } o comprimento inicial do material e \textbf{F} a força resultante do impacto. 
 
-\subsection{Modelo linear}
+\todo[inline]{Inderir resposta do batente}
+
+\subsection{Modelo Linear}
 O modelo linear ($G_{ma}$) de malha aberta para um dos eixos de movimentação no plano x,y (radial) é levantado em torno do equilíbrio do rotor considera as dinâmicas do rotor ($G_r$) e do atuador ($G_a$) deduzido das equações  \eqref{eq:dinamica:rotor:radial} e \eqref{eq:dinamica:bobina}
 
 \begin{align}
@@ -131,8 +129,6 @@ O modelo encontrado é utilizado para o projeto do controlador ($C(s)$), esse ot
  \label{eq:dinamica:tfunc}
  \end{equation}
 
-
-
 O sistema obtido pode ser interpretado como de tipo 0 possuindo três polos localizados em:  $[1.21 -1.21 -0.07] \, 10^ 3$, onde a função de transferência é descrita na Eq. \eqref{eq:dinamica:tfunc}. \todo{atualizar}
 
 Verificamos através da analise em frequência (Fig. \ref{fig:bode:rlocus:pnt:operacao}) que o sistema é instável em malha aberta e um controlador deve ser projetado para instabilizar o sistema. 
@@ -141,21 +137,20 @@ Verificamos através da analise em frequência (Fig. \ref{fig:bode:rlocus:pnt:op
 \begin{figure}[!ht]
 	\centering
 	\subfloat[t][Lugar das raizes]{
-	\includegraphics[width=0.5\linewidth]{Figs/Simulacoes/Dinamica/rlocus:pnt:operacao}
+	\includegraphics[width=0.6\linewidth]{Figs/Simulacoes/Dinamica/rlocus:pnt:operacao}
 	}\\
 	%
 	\subfloat[b][Diagrama de Bode]{
-	\includegraphics[width=0.5\linewidth]{Figs/Simulacoes/Dinamica/bode:pnt:operacao}
+	\includegraphics[width=0.6\linewidth]{Figs/Simulacoes/Dinamica/bode:pnt:operacao}
 	}	
 	
 	\caption{Analise em frequência do sistema obtido}
 	\label{fig:bode:rlocus:pnt:operacao}
 \end{figure}
 
-\subsection{Modelo dinâmico não linear}
+\subsection{Modelo Dinâmico Não Linear}
 
 Um modelo dinâmico não linear foi projetado em ambiente Matlab Simulink para a validação do controlador, esse modelo, leva em consideração as modelagens eletromagnéticas realizadas para a otimização do mancal.
-
 
 \begin{figure}[th!]
 	\centering
@@ -163,6 +158,9 @@ Um modelo dinâmico não linear foi projetado em ambiente Matlab Simulink para a
 	\caption{Diagrama de blocos do modelo linearizado para descolamentos em x e y}
 	\label{fig:diagrama:blocos:modelo:linear}
 \end{figure}
+
+\todo[inline]{Inderir resposta ao degrau}
+
 
 \section{Controlador}
 
@@ -184,9 +182,9 @@ I = \sqrt{\frac{2 \, F_b \, \mu_0}{S_n(l_g)}} \, \frac{\mu_0 \, S_n(l_g)^2}{n_n}
 \label{eq:estimator:i}
 \end{equation}
 	
-\begin{figure}[ht]
+\begin{figure}[ht!]
 	\centering
-	\includegraphics[width=0.4\linewidth]{Figs/Modelagem/controlador_estimador}
+	\includegraphics[width=0.5\linewidth]{Figs/Modelagem/controlador_estimador}
 	\caption{Diagrama de blocos do controlador e estimador}
 	\label{fig:diagrama_controlador_estimador}
 \end{figure}

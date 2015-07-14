@@ -42,6 +42,14 @@ for x=0:0.5:4
 end
 
 [X Y] = meshgrid(0:0.5:4,0:0.5:4);
-surf(X,Y,f);
 
-export_pdf('Resultados/passivo_otimizado_fem_palno',1);
+figure1 = figure('PaperType','<custom>','PaperSize',[5 5]);
+
+axes1 = axes('Parent',figure1);
+view(axes1,[-67.5 16]);
+hold(axes1,'all');
+surf(X,Y,f,'Parent',axes1);
+
+
+
+export_pdf('Eletromagnetica/Resultados/passivo_otimizado_fem_plano',1);
