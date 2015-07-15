@@ -134,7 +134,11 @@ Podemos identificar nesse circuito, seis principais relutâncias, sendo elas :
 
 Além das relutâncias, temos como fonte geradora de campo magnético o ímã localizado entre os ferros : $F_{ima}$. Devido ao fluxo magnético permanente o rotor sofre atração em ambos os lados, se no ponto de equilíbrio, ou seja, com um entreferro simétrico em ambos os lados, a força resultante tenderia ser nula e o rotor permaneceria em equilíbrio no ponto de operação (criticamente estável). 
 
-Esse modo de operação é chamado diferencial e possibilita que a força resultante no rotor devido aos ímãs permanentes torne-se linear. Para tanto projetamos o estator externo do mancal para trabalhar em sempre com o ferro saturado, na saturação a relação densidade fluxo magnético e campo magnético torna-se praticamente constante para pequenas variações de campo magnético. Com isso a componente da força que é proporcional ao quadrado do campo magnético torna-se praticamente constante. Além da linearização obtêm-se um aumento na rigidez axial sem um grande aumento na rigidez radial, o que exigiria uma maior energia da parte ativa para a estabilização.
+Esse modo de operação é chamado diferencial e possibilita que a força resultante no rotor devido aos ímãs permanentes torne-se linear. Para tanto projetamos o estator externo do mancal para trabalhar sempre com o ferro saturado, na saturação o valor do campo magnético torna-se praticamente constante para pequenas variações no comprimento do entreferro.
+
+Com isso a componente da força que é proporcional ao quadrado do campo magnético torna-se praticamente constante, obtendo um força de atração radial no rotor linear com o deslocamento.
+
+Além da linearização obtêm-se um aumento na rigidez axial sem um grande aumento na rigidez radial, o que exigiria uma maior energia da parte ativa para estabilizar o rotor em seu ponto de operação. \todo{melhorar em geral, colocar Eq. ?}
 
 No caso de um deslocamento axial ocorre um aumento no comprimento do entreferro e por consequência em sua relutância ($R_{g}$), essa condição foge da zona de menor energia gerando uma força restaurativa no rotor para restabelecer um circuito com menor relutância magnética.
 
@@ -163,9 +167,11 @@ O circuito passivo deve possuir rigidez axial suficiente para manter o rotor ali
 
 O Rotor foi projetado com perfil em C e sofre tanto força de atração do estator externo quanto do estator interno, porém com campos em diferentes orientações. O rotor é projetado para que seu ferro trabalhe na zona de não saturação, a saturação nesse caso é indesejada pois limitaria o fluxo total que flui através dos circuitos magnéticos e também resultaria quando em rotação em uma região de possível aquecimento.
 
+\todo[inline]{maximizar a inércia, fixação da inércia}
+
 \section{Estator interno}
 
-O estator interno é formado de oito polos distribuídos homogeneamente a cada 45 graus e interligados por um anel de circulação interno. Os polos funcionam como atuadores (eletroímãs) para a estabilização do roto no eixo radial (x, z),  cada polo é formado por um núcleo. Uma revolução de meio mancal é ilustrado na Fig. \ref{fig:modelo:mancal:estator:interno}. 
+O estator interno é formado de oito polos distribuídos homogeneamente a cada 45 graus e interligados por um anel de circulação interno. Os polos funcionam como atuadores (eletroímãs) para a estabilização do rotor no eixo radial (x, z),  cada polo é formado por um núcleo. Uma revolução de meio mancal é ilustrado na Fig. \ref{fig:modelo:mancal:estator:interno}. 
 
 \begin{figure}[ht!]
 	\centering
@@ -191,7 +197,7 @@ As forças geradas $F_A$ e $F_C$ possuem componentes em x e y, as componentes y 
 \end{align}
 
 
-Nesse modo de operação pode-se gerar uma força y e x, para isso pasta induzir da mesma maneira um novo campo em (H) e (G). 
+Nesse modo de operação pode-se gerar uma força y e x, para isso basta induzir da mesma maneira um novo campo em (H) e (G). 
 
 O circuito magnético entre o estator interno e o rotor pode ser visto na Fig. \ref{fig:modelo:circuito:ativo:explicativo}, verificamos que o circuito é formado de quatro principais elementos : A bobina, fonte geradora de campo magnético (c), a relutância do entreferro que depende da distância entre os polos e o rotor (b), as relutâncias do ferro do rotor (a) e do ferro do anel de retorno (d).
 
@@ -204,9 +210,9 @@ O circuito magnético entre o estator interno e o rotor pode ser visto na Fig. \
 
 \section{Batente}
 
- O batente é necessário por duas razões principais: Evitar que partes metálicas colidam dado uma falha na estabilização do rotor; saturar  o tamanho do entreferro, limitando por consequência a força de atração máxima que é exercida sobre o rotor.  Essa limitação é necessária para a situação em que o rotor encontra-se mais afastado do ponto de operação, sem o limite do batente o entreferro se tornaria grande o que necessitaria de uma potência maior por partes das bobinas para estabilizar-lo no ponto de operação.  Além de limitar a máxima translação radial, o batente é responsável por limitar também a translação axial e sua inclinação (\textit{tilt}).
+ O batente é necessário por duas razões principais: Evitar que partes metálicas colidam dado uma falha na estabilização do rotor; limitar o tamanho máximo do entreferro, limitando por consequência a força de atração máxima que é exercida sobre o rotor.  Essa limitação é necessária para a situação em que o rotor encontra-se mais afastado do ponto de operação, sem o limite do batente o entreferro se tornaria grande o que necessitaria de uma potência maior por partes das bobinas para estabilizar-lo no ponto de operação.  Além de limitar a máxima translação radial, o batente é responsável por limitar também a translação axial e sua inclinação (\textit{tilt}).
  
- A Fig. \ref{fig:mancal:batente:corte} é uma ilustração do batente proposto para o mancal magnético, é composto de duas partes: (a) responsável por limitar o entreferro máximo entre o rotor e o estator externo; (b) frange para limitar a inclinação do rotor. Encontra-se na literatura projetos de macais magnéticos com rolamentos. Essa escolha seria inadequada para o projeto já que a proposta é a aproximação de um projeto espacializável, a incorporação do rolamento demandaria um projeto específico.
+ A Fig. \ref{fig:mancal:batente:corte} é uma ilustração do batente proposto para o mancal magnético, é composto de duas partes: (a) responsável por limitar o entreferro máximo entre o rotor e o estator externo; (b) flange para \todo{remover citação flange} limitar a inclinação do rotor. Encontra-se na literatura projetos de macais magnéticos com rolamentos. Essa escolha seria inadequada para o projeto já que a proposta é a aproximação de um projeto espacializável, a incorporação do rolamento demandaria um projeto específico.
  
 Optou-se por instalar o batente no estator externo por duas razões distintas: facilidade na montagem pois  é o local onde possui maior entreferro (portanto espaço) e também para servir de fixação para unir os ímãs e os ferros do estator externo. 
 
@@ -323,13 +329,13 @@ A localização e os tipos de parafuso (magnético, não magnético) foi uma dec
  \end{table} 
 
  
-A não utilização de materiais laminados propicia  a aparição de correntes induzidas  no circuito magnético quando exposto a correntes variantes no tempo. Essas correntes induzidas (Eddy) causam uma redução na força eletromagnética e aquecem o material, alterando a relação corrente/força utilizada como parâmetro para o projeto da lei de controle. Minimizar as correntes induzidas tornam o sistema mais eficiente porém a construção de um protótipo laminado é mecanicamente difícil. Outra solução é a utilização de "ferro leve" (\textit{soft iron}), que possui propriedades que limitam a criação de corrente induzida, em contrapartida esses materiais normalmente apresentam menor permeabilidade magnética e menor valor do campo magnético para atingir a saturação \citep{Han2013a}. O material escolhido para os circuitos magnéticos foi o Aço 1020 e para as partes não magnéticos utilizou-se alumínio.
+A não utilização de materiais laminados propicia  a aparição de correntes parasitas de Foucault no circuito magnético quando exposto a correntes variantes no tempo. Essas correntes induzidas  causam uma redução na força eletromagnética e aquecem o material, alterando a relação corrente/força utilizada como parâmetro para o projeto da lei de controle. Minimizar as correntes induzidas tornam o sistema mais eficiente porém a construção de um protótipo laminado é mecanicamente difícil. Outra solução é a utilização de "ferro leve" (\textit{soft iron}), que possui propriedades que limitam a criação de corrente induzida, em contrapartida esses materiais normalmente apresentam menor permeabilidade magnética e menor valor do campo magnético para atingir a saturação \citep{Han2013a}. O material escolhido para os circuitos magnéticos foi o Aço 1020 e para as partes não magnéticos utilizou-se alumínio.
   
 \begin{figure}[th!]
 \centering
 \includegraphics[width=1\linewidth]{./mancais/montgem_corte}
 \caption{Partes do mancal}
 \label{fig:montgem:corte}
-\end{figure}
+\end{figure} \todo{referencia ao ima}
 
 

@@ -18,10 +18,10 @@ export_pdf('Resultados/passivo_otimizado_fem_dx',1);
 load fem_otimizado_dy;
 fem_otimizado_dy.Fy(5)=-30;
 plot(fem_otimizado_dy.dy, fem_otimizado_dy.Fy,'Marker','+');
-xlabel('d_y [mm]');
-ylabel('F_y [N]')
+xlabel('d_z [mm]');
+ylabel('F_z [N]')
 belezura
-export_pdf('Resultados/passivo_otimizado_fem_dy',1);
+export_pdf('Eletromagnetica/Resultados/passivo_otimizado_fem_dy',1);
 
 
 %% load dx e dy
