@@ -19,7 +19,7 @@ Rodas de reação são dificilmente substituíveis pois apresentam larga faixa d
 
 Uma roda de reação pode ser descrita como um atuador inercial com funcionamento baseado no princípio de conservação do momento angular. A atuação da roda de reação sobre o satélite se realiza por intercâmbio de momento angular, limitado ao eixo de rotação da roda. Devido a grande diferença entre a inercia do satélite e o da roda de reação, um controle de atitude com muita precisão é possível com esse sistema.
 
-Rodas de reação são tipicamente constituídas de um motor elétrico, geralmente um motor sem escovas, um mancal e um elemento de inércia.  O elemento de inércia e o motor são montados sobre o mancal que deve garantir a  precisa rotação em torno de um eixo. A velocidade de rotação do sistema é controlado por uma eletrônica de acionamento do motor. Rodas de reação podem ser comandada de duas maneiras distinta: por rotação ou por torque. Quando comandada por torque, a roda de reação deve ser capaz de estimar o torque útil gerado por ela (o torque efetivo menos as perdas). 
+Rodas de reação são tipicamente constituídas de um motor elétrico, geralmente um motor sem escovas, um mancal e um elemento de inércia.  O elemento de inércia e o motor são montados sobre o mancal que deve garantir a  precisa rotação em torno de um eixo. A velocidade de rotação do sistema é controlado por uma eletrônica de acionamento do motor. Rodas de reação podem ser comandadas de duas maneiras distintas: por rotação ou por torque. Quando comandada por torque, a roda de reação deve ser capaz de estimar o torque útil gerado por ela (o torque efetivo menos as perdas). 
 
 O controle de atitude  com rodas de reação demanda que esse tipo de  atuador opere em toda sua escala de velocidade, inclusive na inversão de seu sentido de rotação (passagem pelo zero) de uma forma estável e controlada. Essa zona morta é efeito do atrito estático do mancal, minimizar esse efeito é essencial para o bom funcionamento da roda de reação. A zona morta pode ser compensada (no caso de mancal por rolamento) pela implementação de leis de controle com malhas de velocidade e corrente, além de um estimador de atrito.
 
@@ -28,7 +28,7 @@ O projeto de uma roda de reação começa pelo estudo do momento angular necess�
 
 \section{Objetivo}
 
-Essa dissertação vem ao encontro de projetar um mancal magnético para uma roda de reação que está sendo desenvolvido no Núcleo de Sistemas Eletrônicos Embarcados (NSEE) do Instituto Mauá De Tecnologia (IMT) com apoio do Instituto Nacional De Pesquisas Espaciais (INPE).
+Essa dissertação vem ao encontro de projetar um mancal magnético para uma roda de reação que está sendo desenvolvida no Núcleo de Sistemas Eletrônicos Embarcados (NSEE) do Instituto Mauá De Tecnologia (IMT) com apoio do Instituto Nacional De Pesquisas Espaciais (INPE).
 
 O projeto envolve o desenvolvimento de um conjunto eletromecânico capaz de ser utilizado em uma roda de reação para satélites de médio porte mais especificamente para a plataforma multi missão.
 
@@ -125,7 +125,7 @@ A topologia proposta por \citet{Scharfe2001}, difere por ter somente um estator 
 	\label{Fig:modelo:alemao}
 \end{figure} 
 
-Com essa arquitetura é possível utilizar as bobinas tanto para exercer uma força atrativa no rotor quanto para torna a sua rigidez mas branda, facilitando a atração do rotor. É possível também aumentar a rigidez axial por inserir um fluxo positivo em ambas as bobinas, esse fluxo soma-se com o fluxo do gerado pelos ímãs permanentes.
+Com essa arquitetura é possível utilizar as bobinas tanto para exercer uma força atrativa no rotor quanto para tornar a sua rigidez mas branda, facilitando a atração do rotor. É possível também aumentar a rigidez axial por inserir um fluxo positivo em ambas as bobinas, esse fluxo soma-se com o fluxo gerado pelos ímãs permanentes.
 
 Mais recentemente uma nova arquitetura foi proposta por \citet{Bangcheng2012} para ser utilizado em uma roda de reação de um satélite ágil.  O rotor é composto de duas partes, uma externa utilizada para estabilizar o mancal na direção axial e outra interna para controle de posição na direção radial. Diferente das outras propostas, essa não utiliza um perfil em C para estabilização dos graus de liberdade passivos, mas sim, faz uso de um perfil plano com ímãs permanentes tanto no rotor quanto no estator.  Ímãs permanentes também usados nos polos do mancal criando um fluxo (\textit{bias}) constante diminuindo a corrente necessária para controlar o rotor.
  
@@ -154,6 +154,11 @@ O controle de mancais magnéticos é uma área fértil da engenharia de controle
 
 Técnicas de controle clássico são utilizados com bastante frequência em mancais magnéticos, controle do tipo PID  \citep{Tezuka2013} possuem boa robustez. O controle  do tipo \textit{feedforward} é utilizado em casos em que existe o acoplamento entre os graus de liberdade, podendo ser utilizado para o desacoplamento dos graus de liberdade. Outras técnicas propostas na literatura vão de encontro ao controle multivariável como controle robusto \citep{Jimenez-Lizafrraga2007}, controle ótimo (\citep{Schuhmann2012}) e controle não linear (\citep{Rundell1996}).
 
+
+%\section{Contribuições}
+
+%As contribuições do projeto se estendem para 
+
 \section{Metodologia}
 
 A metodologia utilizada no projeto envolve a utilização de simulações em elementos finitos para o projeto das partes magnéticas do mancal, uma modelagem fenomenológica é realizada para a realização da otimização dos parâmetros físicos do sistema. 
@@ -162,7 +167,7 @@ O desenvolvimento do projeto foi executado como ilustrado na Fig. \ref{fig:metod
 
 Com o modelo dinâmico, um controlador capaz de estabilizar o rotor em seu ponto de operação é proposto, com ele, prova-se a controlabilidade do mancal nas restrições de potência propostas. Um protótipo foi construído a fim de dar continuidade ao projeto.
 
-Na etapa de otimização, dividiu-se o projeto em duas partes, na primeiramente considerou-se somente a parte passiva (estator externo e rotor) até atingirmos um conjunto com rigidez suficiente na direção axial e com menor força de atração na direção radial. Com esses valores buscou-se um estator interno capaz de exercer força de atração suficiente no rotor para estabilizar em seu ponto de operação.
+Na etapa de otimização, dividiu-se o projeto em duas partes: na primeira considerou-se somente a parte passiva (estator externo e rotor) até atingirmos um conjunto com rigidez suficiente na direção axial e com menor força de atração na direção radial. Com esses valores buscou-se um estator interno capaz de exercer força de atração suficiente no rotor para estabilizar em seu ponto de operação.
  
 \begin{figure}[th!]
 	\centering
@@ -171,26 +176,16 @@ Na etapa de otimização, dividiu-se o projeto em duas partes, na primeiramente 
 	\label{fig:metodologia:fluxo:dev}
 \end{figure}
  
- \section{Sumário Estruturado}
+\section{Sumário Estruturado}
  
-% \subsection{Modelagem Elementos Finitos}
-% 
-%  Foi utilizado como ferramenta de modelagem o Software de elementos finitos e multi física \textit{Comsol}. Nas simulações foram utilizados a curva de histerese do Aço 1020 , as simulações foram realizadas com uma solido tridimensional.  A Fig. \ref{Fig:Simulacao:Passivo:Mesh} ilustra a malha utilizada na execução das simulações com um número aproximado de 19000 elementos.
-     
-%  	\begin{figure}[!ht]
-%  		\centering
-%  		\includegraphics[width=0.5 \columnwidth,angle=0]{Figs/Simulacoes/Passivo/3D:Mesh=1,2.png}
-%  			\caption{Modelo Comsol do circuito passivo Malha utilizada nos cálculos}
-%  			\label{Fig:Simulacao:Passivo:Mesh}
-%  	\end{figure}
+No segundo capítulo o mancal magnético proposto é descrito, e suas propriedades construtivas é apresentado. Nele verificaremos conceitualmente todos os componentes que constituem o sistema proposto.
+
+O capítulo três apresenta um modelo não linear para representar a interação entre o estator externo e o rotor, esse conjunto é responsável pela estabilização do rotor nos graus de liberdades passivamente estáveis. Com o modelo analítico é aplicado uma otimização nos parâmetros construtivos do mancal visando encontrar um mancal compacto e com boa rigidez passiva. A partir de um modelo em elementos finitos obtém-se as relações de força por deslocamento.
+
+Na quarta parte dessa dissertação, um modelo fenomenológico que modela a interação entre o estator interno e o rotor é apresentado. Similarmente ao capítulo anterior, é aplicado uma otimização visando a obtenção dos parâmetros construtivos do estator interno. Com um modelo em elementos finitos, apresenta-se as equações de força resultante da otimização do mancal.  
+
+No quinta capítulo, a partir das dimensões definidas e das equações de forças definidas anteriormente, um modelo dinâmico para o rotor é apresentado. Esse modelo é então utilizado para o projeto de uma malha de controle capaz de estabilizar o rotor em seu ponto de operação.
+
+\todo[inline]{descrever outros capítulos}
 
 
-
-%\section{Contribuições}
-
-%As contribuições do projeto se estendem para 
-
-%\section{Descrição do conteúdo}
-
-
-%\todo[inline]{Descrição do documento em geral}

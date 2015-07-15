@@ -57,7 +57,7 @@ O mancal magnético proposto deve satisfazer as especificações da Tabela \ref{
  		& 100 & [W] 	\\	
  		Tensão de alimentação  & 20 à 40 & [V]  \\
     \end{tabular}
-    \caption{Especificações de requisito do sistema}
+    \caption{Especificações de requisito da roda de reação}
     \label{tab:PMM:especificações}
 \end{table}
 
@@ -70,9 +70,9 @@ A roda de reação deve ter dimensões limitadas em 250mm de diâmetro por 100mm
 % [Scharfe2001]
 % Magnetic bearings can be realised by using attractive or repulsive forces. A better mass vs. stiffness ratio can be achieved by using the attractive force mode. Preference was given to the 2 DOF option where the wheel is actively controlled along two orthogonal radial directions where axial movements and all other degrees of rotor freedom are passively controlled by means of permanent magnets, except for the rotor spin. The two radial axes are independently controlled by their control loops. This design principle generally results in a flatter geometry, using less volume and being suitable for panel mounting. Moreover, the two DOF actively controlled bearing allows a high momentum-to-mass ratio of the wheel as parts of the bearing contribute to the momentum storage capacity. For position detection, magnetic field displacement type inductive sensors are mounted with 90 degrees angular spacing around the flywheel, facing the rim surface.
 
-O mancal magnético proposto nesse trabalho é em partes uma junção das topologias propostas por \citet{Bernus1998} e \citet{Scharfe2001}. O mancal possui quatro graus de liberdade passivamente estáveis: \textit{tilt, row, pitch} e sua direção axial, os outros dois graus de liberdade (as translações radias) são estabilizados ativamente. O torque imposto para a rotação do rotor não é abordada nesse trabalho mas será desenvolvida por um motor elétrico de corrente contínua sem escovas (BLDC), instalado no interior do mancal.
+O mancal magnético proposto nesse trabalho é em partes uma junção das topologias propostas por \citet{Bernus1998} e \citet{Scharfe2001}. O mancal possui quatro graus de liberdade passivamente estáveis: \textit{tilt, row, pitch} e sua direção axial, os outros dois graus de liberdade (as translações radias) são estabilizados ativamente. O torque imposto para a rotação do rotor não é abordado nesse trabalho mas será desenvolvido por um motor elétrico de corrente contínua sem escovas (BLDC), instalado no interior do mancal.
 
-O circuito magnético do mancal é composto por dois estatores: um interno ao rotor, outro externo e um rotor. O estator externo é responsável pela estabilização dos graus de liberdade passivos já o interno por possibilitar o controle das posições radiais. Optou-se por instalar os ímãs no estator externos visando um maior fluxo magnético nos modos passivamente estáveis do mancal, além de visar o melhor balanceamento do roto (se compararmos com a instalação do ímãs no rotor. A Fig. \ref{fig:mancal:topo} ilustra o mancal proposto. O rotor é a parte móvel do mancal e onde é fixado a parte móvel do motor. Adotou-se uma geometria plana visando uma melhor rigidez nos modos instáveis do mancal, possibilitando também a montagem em modo painel. Optou-se por um mancal externo ao motor  para conseguir uma rigidez dentro dos limites de massa e dimensões e que atingisse as especificações  da roda de reação. 
+O circuito magnético do mancal é composto por dois estatores: um interno ao rotor, outro externo e um rotor. O estator externo é responsável pela estabilização dos graus de liberdade passivos já o interno por possibilitar o controle das posições radiais. Optou-se por instalar os ímãs no estator externo visando um maior fluxo magnético nos modos passivamente estáveis do mancal, além de visar o melhor balanceamento do rotor (se compararmos com a instalação do ímãs no rotor. A Fig. \ref{fig:mancal:topo} ilustra o mancal proposto. O rotor é a parte móvel do mancal e onde é fixado a parte móvel do motor. Adotou-se uma geometria plana visando uma melhor rigidez nos modos instáveis do mancal, possibilitando também a montagem em modo painel. Optou-se por um mancal externo ao motor  para conseguir uma rigidez dentro dos limites de massa e dimensões e que atingisse as especificações  da roda de reação. 
 
 \begin{figure}[ht!]
 \centering
@@ -82,7 +82,7 @@ O circuito magnético do mancal é composto por dois estatores: um interno ao ro
 \label{fig:mancal:topo}
 \end{figure}
 
-A Fig. \ref{fig:mancal:corte} ilustra um corte no radial no mancal proposto, verificamos que os ímãs permanentes estão localizados no estator externo, criando um fluxo magnético que circula pelo rotor e estabiliza o eixo axial.
+A Fig. \ref{fig:mancal:corte} ilustra um corte radial no mancal proposto, verificamos que os ímãs permanentes estão localizados no estator externo, criando um fluxo magnético que circula pelo rotor e estabiliza o eixo axial.
 
 Mancais magnéticos podem ser projetados para usar forças magnéticas atrativas ou repulsivas. Uma melhor relação massa/ rigidez pode ser alcançada pela utilização de forças magnéticas atrativas, e esse é o papel das bobinas localizadas no estator interno. Oito núcleos são utilizados para exercer força de atração suficiente no rotor para mover da posição de equilíbrio (rotor batido) e estabilizar no ponto de operação. 
 
@@ -229,39 +229,101 @@ O batente deve ser rígido suficiente para aguentar possíveis impactos do rotor
 
 \section{Base}
 
-As partes não móveis do mancal são fixas em uma base de propriedade não magnéticas (alumínio), a base serve para alinhar as partes do mancal e ao mesmo tempo possibilita a oscilação do rotor na direção axial (dentro das especificações de oscilação). 
+As partes não móveis do mancal são fixas em uma base de propriedade não magnéticas (alumínio), a base serve para alinhar as partes do mancal e ao mesmo tempo possibilita a movimentação do rotor na direção axial e radial (dentro das especificações de oscilação). 
 
-\section{Eletrônica}
-
-A eletrônica proposta é composta de sistemas de potência para o acionamento das bobinas (polos), eletrônica de sensoriamento para medição das posições do rotor e uma eletrônica de controle (digital) onde é implementando o controle do sistema. 
+%\section{Eletrônica}
+%
+%A eletrônica proposta é composta de sistemas de potência para o acionamento das bobinas (polos), eletrônica de sensoriamento para medição das posições do rotor e uma eletrônica de controle (digital) onde é implementando o controle do sistema. 
 
 %Um sistema microconrolado (ou FPGA) é proposto para implementação das leis de controle, o acionamento das bobinas será realizado através da modulação da largura de pulso (PWM).
+
+\section{Dimensões}
+
+Ao longo do desenvolvimento da dissertação, utilizou-se as nomenclaturas a seguir para descrever as dimensões que geram o mancal proposto. As nomenclaturas são esclarecidas na Fig. \ref{fig:modelo_dimensoes} e na Tabela \ref{tab:modelo:dimensoes:nomenclatura}.
+
+\begin{table}[ht!]
+	\centering
+	\begin{tabular}{c l}
+		Nomenclatura & Descritivo \\
+		$h_{fee}$	& Altura do ferro estator externo \\
+		$w_{fee}$	& Largura do ferro estator externo\\
+		
+		$h_m$		& Altura do ímã \\
+		$w_m$		& Largura do ímã \\
+
+		$g_{ne}$	& Entreferro nominal externo \\
+		
+		$w_{fr}$	& Largura do ferro rotor \\
+		
+		$g_{ni}$	& Entreferro nominal interno \\
+		
+		$h_n$		& Altura do polo da bobina \\
+		$w_n$		& Largura do polo da bobina \\
+		
+		$w_{fei}$	& Largura do ferro estator interno \\
+		$h_{fei}$	& Altura do ferro estator interno \\
+
+		$r_{eei}$	& Raio do polo estator externo \\				
+		$r_{re}$	& Raio do polo do ferro rotor \\		
+		$r_{n}$		& Raio do polo da bobina \\		
+		$r_{ei}$	& Raio do ferro estator interno \\		
+		
+	\end{tabular} 
+	\caption{Valores iniciais, máximos e mínimos utilizado na otimização, valores em milímetros.}
+	\label{tab:modelo:dimensoes:nomenclatura}
+\end{table}
+
+
+\begin{figure}[th!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{Figs/modelo_dimensoes}
+	\caption{}
+	\label{fig:modelo_dimensoes}
+\end{figure}
+
+ \subsection{Modelo em Elementos Finitos}
+ 
+ Foi utilizado como ferramenta de modelagem o Software de elementos finitos e multi física \textit{Comsol}. Nas simulações foram utilizados a curva de histerese do Aço 1020 , as simulações foram realizadas com uma solido tridimensional e a análise realizada foi a estacionária.  A Fig. \ref{Fig:Simulacao:Passivo:Mesh} ilustra a malha utilizada na execução das simulações com um número aproximado de 19000 elementos.
+ 
+ \begin{figure}[!ht]
+ 	\centering
+ 	\includegraphics[width=0.5 \columnwidth,angle=0]{Figs/Simulacoes/Passivo/3D_Mesh=1,2.png}
+ 	\caption{Modelo Comsol do circuito passivo Malha utilizada nos cálculos}
+ 	\label{Fig:Simulacao:Passivo:Mesh}
+ \end{figure}
+ 
+Nas simulações em elementos finitos, o modelo criado possui físicas distintas para os diversos elementos do mancal. No caso dos ferros, aplicou-se a lei de Ampère com a relação construtiva \textbf{BH} interpolada de uma tabela. Nos componentes compostos por ar, a relação utilizada foi a linear $B=\mu_0 H$. 
+
+Na simulação do ímã, utilizou-se a relação de magnetização : $B = \mu_0 (H + M)$ onde M é a magnetização do meio em A/m. Para as bobinas, o material utilizado foi o cobre e a equação para a densidade de corrente (J) aplicada foi: $ J = \frac{N I}{A}$, onde: $N$ é o número de espiras; $I$ a corrente total aplicada na bobina e $A$ a área da secção da bobina.
+
+
 
 \section{Prototipagem}
 
 Para prototipagem do mancal foi necessário a criação de nove diferentes peças para possibilitar a montagem do sistema. A proposta de montagem visa minimizar a influência no circuito magnético que alteraria o comportamento das forças no rotor mas ao mesmo tempo buscou-se um sistema simétrico e robusto.  A Fig. \ref{fig:montgem:corte} é um corte da estrutura proposta, verificamos que o estator interno (RW-M-EI) é formado por uma única peça, enquanto o rotor e o estator externo são fragmentados em mais de uma parte.
 
- A localização e os tipos de parafuso (magnético, não magnético) foi uma decisão de projeto, optou-se por uma localização que minimiza-se a influência no circuito magnético. A Tab. \ref{Tab:nomenclatura:mancal} possui a descrição e nomenclatura das partes propostas para a prototipagem do mancal magnético.
+A localização e os tipos de parafuso (magnético, não magnético) foi uma decisão de projeto, optou-se por uma localização que minimiza-se a influência no circuito magnético. A Tab. \ref{Tab:nomenclatura:mancal} possui a descrição e nomenclatura das partes propostas para a prototipagem do mancal magnético.
+
+ \begin{table}[ht!]
+ 	\centering
+ 	\begin{tabular}{l l}
+ 		Nomenclatura & Descrição  \\ \hline
+ 		RW-M-BA 		&	Base do mancal \\
+ 		RW-M-C   		 &	Casca externa\\
+ 		RW-M-EEB	  & Estator externo base\\
+ 		RW-M-EET & 	Estator externo topo\\
+ 		RW-M-BT & 	Batente\\
+ 		RW-M-RFB & 	Rotor ferro base\\
+ 		RW-M-RFT	&  Rotor ferro topo\\
+ 		RW-M-RN & 	Rotor núcleo\\
+ 		RW-M-EI	&  Estator interno\\
+ 	\end{tabular} 
+ 	\caption{Nomenclatura partes mancal}
+ 	\label{Tab:nomenclatura:mancal} 
+ \end{table} 
+
  
- \begin{table}
- \centering
-	  \begin{tabular}{l l}
-	  	 Nomenclatura & Descrição  \\ \hline
-		  RW-M-BA 		&	Base do mancal \\
-		  RW-M-C   		 &	Casca externa\\
-		  RW-M-EEB	  & Estator externo base\\
-		  RW-M-EET & 	Estator externo topo\\
-		  RW-M-BT & 	Batente\\
-		  RW-M-RFB & 	Rotor ferro base\\
-		  RW-M-RFT	&  Rotor ferro topo\\
-		  RW-M-RN & 	Rotor núcleo\\
-		  RW-M-EI	&  Estator interno\\
-	  \end{tabular} 
-	  \caption{Nomenclatura partes mancal}
-	  \label{Tab:nomenclatura:mancal} 
- \end{table}
- 
- A não utilização de materiais laminados propicia  a aparição de correntes induzidas  no circuito magnético quando exposto a correntes variantes no tempo. Essas correntes induzidas (Eddy) causam uma redução na força eletromagnética e aquecem o material, alterando a relação corrente/força utilizada como parâmetro para o projeto da lei de controle. Minimizar as correntes induzidas tornam o sistema mais eficiente porém a construção de um protótipo laminado é mecanicamente difícil. Outra solução é a utilização de "ferro leve" (\textit{soft iron}), que possui propriedades que limitam a criação de corrente induzida, em contrapartida esses materiais normalmente apresentam menor permeabilidade magnética e menor valor do campo magnético para atingir a saturação \citep{Han2013a}. O material escolhido para os circuitos magnéticos foi o Aço 1020 e para as partes não magnéticos utilizou-se alumínio.
+A não utilização de materiais laminados propicia  a aparição de correntes induzidas  no circuito magnético quando exposto a correntes variantes no tempo. Essas correntes induzidas (Eddy) causam uma redução na força eletromagnética e aquecem o material, alterando a relação corrente/força utilizada como parâmetro para o projeto da lei de controle. Minimizar as correntes induzidas tornam o sistema mais eficiente porém a construção de um protótipo laminado é mecanicamente difícil. Outra solução é a utilização de "ferro leve" (\textit{soft iron}), que possui propriedades que limitam a criação de corrente induzida, em contrapartida esses materiais normalmente apresentam menor permeabilidade magnética e menor valor do campo magnético para atingir a saturação \citep{Han2013a}. O material escolhido para os circuitos magnéticos foi o Aço 1020 e para as partes não magnéticos utilizou-se alumínio.
   
 \begin{figure}[th!]
 \centering
@@ -270,13 +332,4 @@ Para prototipagem do mancal foi necessário a criação de nove diferentes peça
 \label{fig:montgem:corte}
 \end{figure}
 
-Ao longo do desenvolvimento da dissertação, utilizou-se as nomenclaturas a seguir para descrever as dimensões que geram o mancal proposto. As nomenclaturas são esclarecidas na Fig. \ref{fig:modelo_dimensoes}.
 
-\todo[inline]{falar das medidas}
-
-\begin{figure}[th!]
-	\centering
-	\includegraphics[width=0.8\linewidth]{Figs/modelo_dimensoes}
-	\caption{}
-	\label{fig:modelo_dimensoes}
-\end{figure}

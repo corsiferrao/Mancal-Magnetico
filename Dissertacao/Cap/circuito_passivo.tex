@@ -38,7 +38,7 @@ B_m = B_r + \frac{B_r}{H_c} H_m
 
 A relação $\frac{B_r}{H_c}$ pode ser interpretada como a permeabilidade do meio (ímã) e possui tipicamente um valor próximo da permeabilidade do vácuo, $\mu_0$. O ponto de operação do ímã depende da curva de carga do circuíto magnético em que ele está inserido, para isso é necessário primeiramente calcular o valor da permeabilidade total e então identificar o ponto de operação do ímã e o seu fluxo produzido.
 
-Considera-se nesse modelo para os materiais ferros magnéticos a curva de magnetização do ferro 1020 (\ref{} \todo{ref. tab}), a curva não linear é apresentada na Fig. \ref{Fig:Modelagem:BH}, nota-se que a saturação ocorre por volta de 1.3T. Essa relação pode ser descrita como :
+Considera-se nesse modelo para os materiais ferros magnéticos a curva de magnetização do ferro 1020 (Tab. Anexo \ref{tab:apendices:ferro1020}), a curva não linear é apresentada na Fig. \ref{Fig:Modelagem:BH}, nota-se que a saturação ocorre por volta de 1.3T. Essa relação pode ser descrita como :
 
 \begin{align}
 B(H) = \mu(H) \, H
@@ -267,7 +267,7 @@ As dimensões alcançadas devido a otimização do mancal está listada na Tab. 
 	\centering
 	\begin{tabular}{c c c c c c c c c}
 		& $h_{fee}$ &$\Delta w_{fee}$ & $w_m$ & $h_m$  & $g_e$ & $\Delta w_{fr}$ & $w_{rn}$ & $r_{eei}$ \\ \hline \hline
-		$L_{n}$  	&  6 &   4 &    8 &    10 &   3 &  4 &   6 &    75 \\
+		$L_{n}$  	&  4.2 &   10 &   10 &    12 &   1.4 &  7 &   6 &    70 \\
 	\end{tabular} 
 	\caption{Dimensões obtidas devido a otimização, valores em milímetros.}
 	\label{tab:passivo:dimensoes:otimizado} 
@@ -346,4 +346,18 @@ Na Fig. \ref{Fig:Modelagem:Curva:passivo:dx:linhas} o resultado da simulação F
 
 \subsection{Estabilidade em Tilt}
 
-Verificado a estabilidade no deslocamento axial, o 
+Verificado a estabilidade na inclinação axial, podemos projetar  em dois movimentos distintos: deslocamento radial e axial. Dado a propriedade plana do mancal proposto, obtemos um grande deslocamento axial comparado com o radial, gerando assim a estabilidade do rotor.
+
+Para a inclinação máxima do rotor (limitada pelo batente) de um grau o deslocamento radial para o raio proposto ($70$ mm) é de $0.0107$ mm e de $1.2$ mm axial. Essa topologia plana proposta, valoriza a força de atração restaurativa no eixo axial a força atrativa que tornaria o rotor instável para inclinações.
+
+Em simulação de elementos finitos, calculamos que o torque restaurativo para uma inclinação de um grau em torno de um dos eixos é de $3 N.m$, ou seja, o resultante da força em z devido a inclinação é de 42N.
+
+O gráfico da Fig. \ref{fig:passivo:torque:tilt} demonstra a força restaurativa gerada devido a aplicação de uma série de inclinações.
+
+\begin{figure}[!ht]
+\centering
+\caption*{Torque (N.m) por inclinação (grau) }
+\includegraphics[width=0.7\linewidth]{Figs/Simulacoes/Passivo2/fem/passivo_otimizado_fem_tilt}
+\caption{Torque resultante da inclinação do rotor}
+\label{fig:passivo:torque:tilt} 
+\end{figure}

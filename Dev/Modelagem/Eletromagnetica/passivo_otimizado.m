@@ -49,7 +49,16 @@ axes1 = axes('Parent',figure1);
 view(axes1,[-67.5 16]);
 hold(axes1,'all');
 surf(X,Y,f,'Parent',axes1);
-
-
-
 export_pdf('Eletromagnetica/Resultados/passivo_otimizado_fem_plano',1);
+
+%%
+load fem_otimizado_tilt;
+passivo_otimizado_tilt.T(1) = 0;
+plot(passivo_otimizado_tilt.tz, passivo_otimizado_tilt.T, 'Marker','+')
+xlabel('Tilt em graus');
+ylabel('Torque [N.m]'); 
+belezura
+export_pdf('Eletromagnetica/Resultados/passivo_otimizado_fem_tilt',1);
+
+
+
