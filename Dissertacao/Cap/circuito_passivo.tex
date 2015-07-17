@@ -156,7 +156,7 @@ Como a permeabilidade de materiais ferros magnéticos variam com o campo magnét
 Nesse caso atribui-se um valor inicial para a permeabilidade nos três componentes do circuíto (ferro estator, ferro rotor e ferro retorno), aplicando esses valores para o cálculo do campo magnético no entreferro obtém-se novos valores do campo magnético nesses mesmos componentes, é então derivado os valores para a permeabilidade através de uma interpolação linear. Calcula-se então os novos valores da próxima interação pelo método de Newton-Raphson \ref{}, a Eq. \ref{eq:newton:method} demonstra o método utilizado.
 
 \begin{align}
-	\mu_{n+1} &= \mu_n - \frac{H(\mu_n)}{H'}(\mu_n)}
+	\mu_{n+1} &= \mu_n - \frac{H(\mu_n)}{H'}(\mu_n)
 	label{eq:newton:method}
 \end{align} 
 
@@ -325,6 +325,12 @@ A Fig. \ref{Fig:Modelagem:Curva:passivo:dy:linhas} ilustra o resultado da simula
 
 Na Fig. \ref{Fig:Modelagem:Curva:passivo:dx:linhas} o resultado da simulação FEM para o deslocamento radial do rotor. Notamos nessa simulação que o fluxo magnético é contido nos ferros e que ocorre pouca dispersão das linhas de campo. Notamos também a saturação dos ferro em todos os casos, essa saturação é necessária para forçar a linearidade da força de atração quando trabalhado em modo diferencial Verificamos também que a área do entreferro ($S_g$) possui um pequeno espraiamento, aumentado assim o volume em que o campo magnético está acumulado. 
 
+A massa do rotor (m) é calculada pelo volume obtido das otimizações, sendo o volume 47940 $mm^6$ e a densidade do material utilizado como $7.8$ [g/$mm^3$], a massa do sistema é :
+
+\begin{align}
+	m = 0.375 \; [Kg]
+	\label{eq:massa}
+\end{align}
 
 
 \subsection{Estabilidade em Tilt}

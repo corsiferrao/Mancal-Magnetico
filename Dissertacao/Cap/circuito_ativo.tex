@@ -316,8 +316,15 @@ O mancal ativo resultante possui dimensões listadas na Tab. \ref{tab:ativo:resu
 	\label{tab:ativo:resultado} 
 \end{table}
 
-A curva de força ($F_b$) por deslocamento é ilustrado na Fig. \ref{}
+A curva de força ($F_b$) por deslocamento é ilustrado na Fig. \ref{ativo_otimizado_fem_I_dx03}, nessa simulação o rotor está deslocado de 0.3 milímetros de sua posição nominal, as bobinas exitadas são aquelas do mesmo sentido do deslocamento do rotor, gerando assim, uma força de atração oposta a do estator externo.  
 
+\begin{figure}
+\centering
+Força de atração (N) x Corrente (A)
+\includegraphics[width=0.8\linewidth]{Figs/Simulacoes/Ativo/ativo_otimizado_fem_I_dx03}
+\caption{Força resultante da aplicação de uma corrente quando o rotor está deslocado de 0.3 mm (máxima distância)}
+\label{ativo_otimizado_fem_I_dx03}
+\end{figure}
 
 O campo magnético no polo principal devido a variação na corrente elétrica é ilustrado na Fig. \ref{fig:ativo:fem:b:polos}, notasse os diferentes pontos de operação do componente magnético quando o rotor é mantido na mesma posição. Pela simulação é possível notar que o espraiamento da área sofre aumento com a corrente, dinâmica não levada em consideração na modelagem analítica. 
 

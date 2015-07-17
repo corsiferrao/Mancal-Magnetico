@@ -67,19 +67,15 @@ A força exercida no rotor devido aos imãs permanentes do estator externo podem
 	F_p(y) &= K_p \, y 
 \end{align}
 
-Onde $K_p$ é a constante de proporção entre a força e a posição, x e y são os deslocamento em torno do ponto de equilibro do rotor com relação ao estator externo. Obtemos via a simulação em elementos finitos um relação força por deslocamento de: $ K_p(d) = 625 N/mm $  para ambos os eixos (devido a simetria do mancal). 
+Onde $K_p$ é a constante de proporção entre a força e a posição, x e y são os deslocamento em torno do ponto de equilibro do rotor com relação ao estator externo. Obtemos via a simulação em elementos finitos um relação força por deslocamento para ambos os eixos (devido a simetria do mancal). 
 
-\section{Rigidez Ativa : $F_b$}
+\begin{equation}
+ K_p(d) = 625 N/mm 
+\end{equation}
 
-A força de atração do rotor devido ao campo magnético gerado pelas bobinas é não linear com a posição do rotor (comprimento do entreferro) e depende da corrente de excitação aplicada as bobinas. Além desses fatores, uma dinâmica do atuador ($G_a(s)$) atrelada a indutância deve ser considerada. A bobina é modelada como um circuito RL, com a dinâmica descrita na Eq. \eqref{eq:dinamica:bobina}.
+\subsection{Rigidez Ativa : $F_b$}
 
-
-\begin{align}
-	I(s) &= \frac{V(s)}{R + L \, s} 
-	\label{eq:dinamica:bobina}
-\end{align}
-
-Os valores das indutâncias são calculadas como demonstrada na SubSec. \ref{subsec:at:indutancia}. Os valores nominais no ponto de operação de cada bobina é de 56mH \todo{atualizar} e a sua resistência elétrica de 4 $\Omega$ \todo{atualizar} causando uma frequência de corte de 11 Hz. A força exercida por cada bobina é calculada pela forma analisada em: \eqref{eq:ativo:F:resultante:y}. 
+A força de atração do rotor devido ao campo magnético gerado pelas bobinas é não linear com a posição do rotor (comprimento do entreferro) e depende da corrente de excitação aplicada as bobinas.  
 
 As tensões nas bobinas são distribuídas conforme Fig. \ref{fig:blocos:tensao:bobinas:x:y} (a), onde existe sobreposição de bobinas para atuação em diferentes eixos (X e Y). É aplicado nas bobinas que possuem sobreposição a metade da tensão, limitando assim o valor da tensão total nas bobinas para o valor máximo (I/2 + I/2 = I). A Fig. \ref{fig:blocos:tensao:bobinas:x:y} ilustra a configuração proposta. Verificamos que a tensão é aplicada em metade para as bobinas com sobreposição (a,g,e,c) e com ganho unitário nas bobinas principais (h,f,c,b). 
 
@@ -90,11 +86,23 @@ As tensões nas bobinas são distribuídas conforme Fig. \ref{fig:blocos:tensao:
 \label{fig:blocos:tensao:bobinas:x:y}
 \end{figure}
 
-Via modelo em elementos finitos as forças magnéticas dado uma variação de posição (a partir do ponto de operação) de até 0.3 mm e uma variação de corrente de 0A até 4A, um polinômio de primeiro grau foi encontrado com os resultados das forças. Optou-se trabalhar no ponto de operação da corrente perto do zero pois é a região natural de operação dos polos, e com o rotor em situado no ponto de operação. O ganho para o sistema nessas condições é : \todo{melhorar}
+Via modelo em elementos finitos as forças magnéticas dado uma variação de posição (a partir do ponto de operação) de até 0.3 mm e uma variação de corrente de 0A até 4A, um polinômio de primeiro grau foi encontrado com os resultados das forças. Optou-se trabalhar no ponto de operação da corrente perto do zero pois é a região natural de operação dos polos, e com o rotor em torno do ponto de operação. O ganho para o sistema nessas condições é : \todo{melhorar}
 
 \begin{equation}
      F_b(i) = 46.5 \, i
 \end{equation}
+
+\subsection{Dinâmica Atuador}
+
+Devido as bobinas dos polos do estator interno, uma dinâmica do atuador ($G_a(s)$) atrelada a indutância deve ser considerada. A bobina é modelada como um circuito RL, com a dinâmica descrita na Eq. \eqref{eq:dinamica:bobina}.
+
+
+\begin{align}
+	I(s) &= \frac{V(s)}{R + L \, s} 
+	\label{eq:dinamica:bobina}
+\end{align}
+
+Os valores das indutâncias são calculadas como demonstrada na SubSec. \ref{subsec:at:indutancia}. Os valores nominais no ponto de operação de cada bobina é de $56$ mH \todo{atualizar} e a sua resistência elétrica de 4 $\Omega$ \todo{atualizar} gerando uma frequência de corte de 11 Hz. 
 
 \subsection{Batente}
 
@@ -106,9 +114,9 @@ O batente atua como uma saturação na posição do rotor (x,y, z), atrelou-se u
 
 Sendo : \textbf{E }a constante de Yomg para o material; \textbf{A} área de contato; \textbf{$l_o$ } o comprimento inicial do material e \textbf{F} a força resultante do impacto. 
 
-\todo[inline]{Inderir resposta do batente}
 
 \subsection{Modelo Linear}
+
 O modelo linear ($G_{ma}$) de malha aberta para um dos eixos de movimentação no plano x,y (radial) é levantado em torno do equilíbrio do rotor considera as dinâmicas do rotor ($G_r$) e do atuador ($G_a$) deduzido das equações  \eqref{eq:dinamica:rotor:radial} e \eqref{eq:dinamica:bobina}
 
 \begin{align}
@@ -118,21 +126,20 @@ O modelo linear ($G_{ma}$) de malha aberta para um dos eixos de movimentação n
 
 O modelo encontrado é utilizado para o projeto do controlador ($C(s)$), esse otimizado para operar em torno do ponto de operação. A função transferência do modelo obtido é demonstrado na Eq. \eqref{eq:dinamica:tfunc:gen}, o sistema possui três polos sendo eles nenhum integrador puro (tipo 0). 
 
-\begin{align}
-	G_{ma}(s) = \frac{K_b}{(s^2 \, m - K_p) \, (s\, L + R)}
-	\label{eq:dinamica:tfunc:gen}
-\end{align}
- 
- 
- \begin{equation}
- G(s) = \frac{46530}{ 0.02077 \, s^3 + 1.478 \, s^2 - 3.08e04 \,s - 2.191e06}
- \label{eq:dinamica:tfunc}
- \end{equation}
 
-O sistema obtido pode ser interpretado como de tipo 0 possuindo três polos localizados em:  $[1.21 -1.21 -0.07] \, 10^ 3$, onde a função de transferência é descrita na Eq. \eqref{eq:dinamica:tfunc}. \todo{atualizar}
+
+\begin{align}
+	G_{ma}(s) &= \frac{K_b}{(s^2 \, m - K_p) \, (s\, L + R)}	\label{eq:dinamica:tfunc:gen} \\
+	&= \frac{K_b}{(s^2 \, m - 625) \, (s\, L + R)}
+	 \label{eq:dinamica:tfunc}
+\end{align}
+
+
+O sistema obtido pode ser interpretado como de tipo 0 possuindo três polos localizados em:  $[1.21 -1.21 -0.07] \, 10^ 3$ \todo{atualizar}, onde a função de transferência é descrita na Eq. \eqref{eq:dinamica:tfunc}, os parâmetros utilizados foram encontrados nas secções anteriores. 
 
 Verificamos através da analise em frequência (Fig. \ref{fig:bode:rlocus:pnt:operacao}) que o sistema é instável em malha aberta e um controlador deve ser projetado para estabilizar o sistema. 
 
+Para fins de análise e comparação, 
 
 \begin{figure}[!ht]
 	\centering
@@ -162,7 +169,7 @@ Um modelo dinâmico não linear foi projetado em ambiente Matlab Simulink para a
 \todo[inline]{Inderir resposta ao degrau}
 
 
-\section{Controlador}
+\section{Projeto do Controlador}
 
 Um controlador é projetado a fim de demonstrar a controlabilidade do sistema proposto dentro das especificações impostas ao mancal. O projeto do controlador é feito via modelo linear e validado utilizando o modelo não linear. 
 
@@ -188,6 +195,10 @@ I = \sqrt{\frac{2 \, F_b \, \mu_0}{S_n(l_g)}} \, \frac{\mu_0 \, S_n(l_g)^2}{n_n}
 	\caption{Diagrama de blocos do controlador e estimador}
 	\label{fig:diagrama_controlador_estimador}
 \end{figure}
+
+\subsubsection{Controlador}
+
+O controle projetado para o mancal magnético proposto utiliza a técnica de controle ótimo 
 
 %\section{Simulações}
 %

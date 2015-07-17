@@ -2,4 +2,10 @@
 % rafael Corsi
 
 % load otimziado dx
-load resultados_otimizacao_ativo
+load ativo_otimizado_I;
+
+plot(ativo_otimizado_I.I, ativo_otimizado_I.Fx-140,'Marker','+');
+xlabel('F [N]');
+ylabel('I [A]')
+belezura
+export_pdf('Eletromagnetica/Resultados/ativo_otimizado_fem_I_dx03',1);
