@@ -158,10 +158,11 @@ A Fig. \ref{fig:modelo:circuito:passivo:forcas} demonstra as forças atuantes no
 
 O circuito passivo deve possuir rigidez axial suficiente para manter o rotor alinhado em ambientes com gravidade (para validação na terra) e rigidez radial menor para um baixo gasto energético do circuito ativo na estabilização do rotor.
 
-%\todo[inline]{o campo no ferro do estator externo e’ saturado mesmo, estava confundindo com o campo no estrator interno.
-%no estator externo a saturação é necessária, pois maximiza o B absoluto e minimiza o efeito diferencial, o que aumenta a rigidez axial (passiva) sem aumentar muito a rigidez radial.}
+A estabilidade em tilt do rotor é garantida pela topologia plana, que prioriza o deslocamento axial ao radial para movimentos angulares. Com isso, uma pequena inclinação causa um grande deslocamento no eixo z e um pequeno deslocamento nos eixos x e y, gerando um torque restaurativo. 
 
-%\todo[inline]{falar do tilt}
+Caso o mancal não fosse projetado com esse ideal, uma inclinação causaria uma aproximação cruzada dos ferros (rotor e estator externo) tornando o mancal instável ao tilt.
+
+\todo[inline]{colocar figura do tilt}
 
 \section{Rotor}
 
@@ -180,7 +181,7 @@ O estator interno é formado de oito polos distribuídos homogeneamente a cada 4
 	\label{fig:modelo:mancal:estator:interno}
 \end{figure}
 
-O estator interno foi concebido para atuar sempre com três polos ativos, essa abordagem faz com que o fluxo do campo magnético que percorre o rotor seja maximizado no eixo onde deseja-se realizar a atração. A Fig. \ref{fig:modelo:mancal:estator:interno:fluxo} mostra o estator interno com três de seus polos ativos: (A),(B),(C) e o fluxo que flui pelo rotor. Os polos (A) e (C) nesse exemplo trabalham com polaridade inversa ao (B) para forçar que o fluxo feche por B e não por nenhum outro polo, maximizando assim a força de atração $F_B$. Uma parte do fluxo do campo magnético não atravessa por (B) e fecha por outros polos. A corrente induzida em (A) e (C) é a metade da corrente no polo principal (B) isso é feito para evitar que o polo B atinja a saturação, já que o campo que o atravessa é composto pela totalidade do induzido em sua bobina mais a parte dos campos de (A) e (C).
+O estator interno foi concebido para atuar sempre com três polos ativos por eixo de atuação, essa abordagem faz com que o fluxo do campo magnético que percorre o rotor seja maximizado no eixo onde deseja-se realizar a atração. A Fig. \ref{fig:modelo:mancal:estator:interno:fluxo} mostra o estator interno com três de seus polos ativos: (A),(B),(C) e o fluxo que flui pelo rotor. Os polos (A) e (C) nesse exemplo trabalham com polaridade inversa ao (B) para forçar que o fluxo feche por B e não por nenhum outro polo, maximizando assim a força de atração $F_B$. Uma parte do fluxo do campo magnético não atravessa por (B) e fecha por outros polos. A corrente induzida em (A) e (C) é a metade da corrente no polo principal (B) isso é feito para evitar que o polo B atinja a saturação, já que o campo que o atravessa é composto pela totalidade do induzido em sua bobina mais a parte dos campos de (A) e (C).
 
 \begin{figure}[ht!]
 	\centering
@@ -197,7 +198,14 @@ As forças geradas $F_A$ e $F_C$ possuem componentes em x e y, as componentes y 
 \end{align}
 
 
-Nesse modo de operação pode-se gerar uma força y e x, para isso basta induzir da mesma maneira um novo campo em (H) e (G). 
+Nesse modo de operação pode-se gerar forças exclusiva em apenas um dos eixos (x,y). É possível também, atuar simultaneamente nos dois eixos para isso basta induzir da mesma maneira um novo campo em (H) e (G). Desse modo, o campo total no núcleo da bobina (A) será equivalente ao dos polos primários, a Fig. \ref{fig:modelo:mancal:estator:interno:fluxo2} ilustra o campo magnético e as forças resultantes geradas no caso da atuação simultânea.
+
+ \begin{figure}[ht!]
+ 	\centering
+ 	\includegraphics[width=0.7\linewidth]{./Figs/modelo_mancal_estator_interno_fluxo2}
+ 	\caption{Fluxo magnético}
+ 	\label{fig:modelo:mancal:estator:interno:fluxo2}
+ \end{figure}
 
 O circuito magnético entre o estator interno e o rotor pode ser visto na Fig. \ref{fig:modelo:circuito:ativo:explicativo}, verificamos que o circuito é formado de quatro principais elementos : A bobina, fonte geradora de campo magnético (c), a relutância do entreferro que depende da distância entre os polos e o rotor (b), as relutâncias do ferro do rotor (a) e do ferro do anel de retorno (d).
 
@@ -212,7 +220,7 @@ O circuito magnético entre o estator interno e o rotor pode ser visto na Fig. \
 
  O batente é necessário por duas razões principais: Evitar que partes metálicas colidam dado uma falha na estabilização do rotor; limitar o tamanho máximo do entreferro, limitando por consequência a força de atração máxima que é exercida sobre o rotor.  Essa limitação é necessária para a situação em que o rotor encontra-se mais afastado do ponto de operação, sem o limite do batente o entreferro se tornaria grande o que necessitaria de uma potência maior por partes das bobinas para estabilizar-lo no ponto de operação.  Além de limitar a máxima translação radial, o batente é responsável por limitar também a translação axial e sua inclinação (\textit{tilt}).
  
- A Fig. \ref{fig:mancal:batente:corte} é uma ilustração do batente proposto para o mancal magnético, é composto de duas partes: (a) responsável por limitar o entreferro máximo entre o rotor e o estator externo; (b) flange para \todo{remover citação flange} limitar a inclinação do rotor. Encontra-se na literatura projetos de macais magnéticos com rolamentos. Essa escolha seria inadequada para o projeto já que a proposta é a aproximação de um projeto espacializável, a incorporação do rolamento demandaria um projeto específico.
+ A Fig. \ref{fig:mancal:batente:corte} é uma ilustração do batente proposto para o mancal magnético, é composto de duas partes: (a) responsável por limitar o entreferro máximo entre o rotor e o estator externo; (b) flange para limitar a inclinação do rotor. Encontra-se na literatura projetos de macais magnéticos com rolamentos. Essa escolha seria inadequada para o projeto já que a proposta é a aproximação de um projeto espacializável, a incorporação do rolamento demandaria um projeto específico.
  
 Optou-se por instalar o batente no estator externo por duas razões distintas: facilidade na montagem pois  é o local onde possui maior entreferro (portanto espaço) e também para servir de fixação para unir os ímãs e os ferros do estator externo. 
 

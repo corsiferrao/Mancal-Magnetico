@@ -153,9 +153,15 @@ F_z(l_g) = \frac{S_{g}}{2 \, \mu_0} 	2 \,\sum_{i=N}^{NO} B_{giz}^2
 
 Como a permeabilidade de materiais ferros magnéticos variam com o campo magnético, é preciso realizar uma série de interações para alcançar a convergência do valor do campo magnético nas partes do circuíto. 
 
-Nesse caso atribui-se um valor inicial para a permeabilidade nos três componentes do circuíto (ferro estator, ferro rotor e ferro retorno), aplicando esses valores para o cálculo do campo magnético no entreferro obtém-se novos valores do campo magnético nesses mesmos componentes, é então derivado os valores para a permeabilidade através de uma interpolação linear. Calcula-se então os novos valores da próxima interação pelo método de Newton-Raphson \ref{}: 
+Nesse caso atribui-se um valor inicial para a permeabilidade nos três componentes do circuíto (ferro estator, ferro rotor e ferro retorno), aplicando esses valores para o cálculo do campo magnético no entreferro obtém-se novos valores do campo magnético nesses mesmos componentes, é então derivado os valores para a permeabilidade através de uma interpolação linear. Calcula-se então os novos valores da próxima interação pelo método de Newton-Raphson \ref{}, a Eq. \ref{eq:newton:method} demonstra o método utilizado.
 
-\todo[inline]{colocar formula }
+\begin{align}
+	\mu_{n+1} &= \mu_n - \frac{H(\mu_n)}{H'}(\mu_n)}
+	label{eq:newton:method}
+\end{align} 
+
+A convergência é truncada quando encontrado uma diferença entre os campos magnéticos inferiores á 0.1 Tesla.
+
 
 \todo[inline]{colocar figura da convergência e analisar o tempo com o do FEM}
 
@@ -193,8 +199,6 @@ Os modelos também foram confrontados com a variação com a variação de parâ
 	\label{fig:validacao_passivo_parametros}
 \end{figure} 
 
-\todo[inline]{inserir a convergencia de alguns dados}
-
 \section{Otimização dos Parâmetros}
 
 Buscou-se uma combinação de parâmetros que maximizasse a força de atração axial e que minimizasse a força longitudinal. O mancal deve possuir rigidez suficiente para suspender o conjunto inércia, rotor mancal, rotor motor. Estudos realizados estimam um momento de inércia total para o sistema de $6.9 \, 10^{-2} \, kg \, m^2$ com uma massa de 3.52 kg (para operar em ambiente com gravidade). 
@@ -210,7 +214,7 @@ w_{fee}  &= \Delta w_{fee} + w_m \\
 w_{fr} &= \Delta w_{fr} + w_{rn}
 \end{align}	
 
-Restrições foram impostas para evitar a otimização do mancal para um caso em que a sua construção fosse inviável mecanicamente ou para evitar um mancal que se encontrasse fora das especificações da roda de reação \todo{ref}. A Tab. \ref{tab:passivo:restrições} demonstra os valores máximos ($L_{Max}$) e mínimos ($L_{Min}$) impostos para cada elemento do mancal, assim como o valor inicial ($L_0$) utilizado na otimização.
+Restrições foram impostas para evitar a otimização do mancal para um caso em que a sua construção fosse inviável mecanicamente ou para evitar um mancal que se encontrasse fora das especificações da roda de reação. A Tab. \ref{tab:passivo:restrições} demonstra os valores máximos ($L_{Max}$) e mínimos ($L_{Min}$) impostos para cada elemento do mancal, assim como o valor inicial ($L_0$) utilizado na otimização.
 
 
 \begin{table}[ht!]
@@ -271,7 +275,7 @@ As dimensões alcançadas devido a otimização do mancal está listada na Tab. 
 	\end{tabular} 
 	\caption{Dimensões obtidas devido a otimização, valores em milímetros.}
 	\label{tab:passivo:dimensoes:otimizado} 
-\end{table} \todo{atualizar}
+\end{table}
 
 Verificamos na Fig. \ref{fig:forca:passivo:otimizado:fem:dx} o resultante  da força devido a  translação do rotor em apenas um dos eixos radiais, podemos verificar a linearidade da força quando o rotor trabalha em modo diferencial.  
 
@@ -321,28 +325,7 @@ A Fig. \ref{Fig:Modelagem:Curva:passivo:dy:linhas} ilustra o resultado da simula
 
 Na Fig. \ref{Fig:Modelagem:Curva:passivo:dx:linhas} o resultado da simulação FEM para o deslocamento radial do rotor. Notamos nessa simulação que o fluxo magnético é contido nos ferros e que ocorre pouca dispersão das linhas de campo. Notamos também a saturação dos ferro em todos os casos, essa saturação é necessária para forçar a linearidade da força de atração quando trabalhado em modo diferencial Verificamos também que a área do entreferro ($S_g$) possui um pequeno espraiamento, aumentado assim o volume em que o campo magnético está acumulado. 
 
-\begin{figure}[!ht]
-\centering
-\subfloat[t][$\Delta_x = 0 mm$ e $\Delta_z = 0mm$]
-{
-	\includegraphics[width=1\linewidth]{Figs/Simulacoes/Passivo2/fem/dz00}
-}	\\
-\subfloat[t][$\Delta_x = 0.1 mm$ e $\Delta_z = 0mm$]
-{
-	\includegraphics[width=1\linewidth]{Figs/Simulacoes/Passivo2/fem/dz01}
-}	\\
-\subfloat[t][$\Delta_x = 0.2 mm$ e $\Delta_z = 0mm$]
-{
-	\includegraphics[width=1\linewidth]{Figs/Simulacoes/Passivo2/fem/dz02}
-}	\\
-\subfloat[t][$\Delta_x = 0.3 mm$ e $\Delta_z = 0mm$]
-{
-	\includegraphics[width=1\linewidth]{Figs/Simulacoes/Passivo2/fem/dz03}
-}	
 
-\caption{Campo magnético via simulação em elementos finitos para deslocamentos radial}
-\label{Fig:Modelagem:Curva:passivo:dx:linhas}
-\end{figure}
 
 \subsection{Estabilidade em Tilt}
 
@@ -350,9 +333,7 @@ Verificado a estabilidade na inclinação axial, podemos projetar  em dois movim
 
 Para a inclinação máxima do rotor (limitada pelo batente) de um grau o deslocamento radial para o raio proposto ($70$ mm) é de $0.0107$ mm e de $1.2$ mm axial. Essa topologia plana proposta, valoriza a força de atração restaurativa no eixo axial a força atrativa que tornaria o rotor instável para inclinações.
 
-Em simulação de elementos finitos, calculamos que o torque restaurativo para uma inclinação de um grau em torno de um dos eixos é de $3 N.m$, ou seja, o resultante da força em z devido a inclinação é de 42N.
-
-O gráfico da Fig. \ref{fig:passivo:torque:tilt} demonstra a força restaurativa gerada devido a aplicação de uma série de inclinações.
+Em simulação de elementos finitos, calculamos que o torque restaurativo para uma inclinação de um grau em torno de um dos eixos é de $3 N.m$, ou seja, o resultante da força em z devido a inclinação é de 42N. O gráfico da Fig. \ref{fig:passivo:torque:tilt} demonstra a força restaurativa gerada devido a aplicação de uma série de inclinações.
 
 \begin{figure}[!ht]
 \centering
@@ -361,3 +342,5 @@ O gráfico da Fig. \ref{fig:passivo:torque:tilt} demonstra a força restaurativa
 \caption{Torque resultante da inclinação do rotor}
 \label{fig:passivo:torque:tilt} 
 \end{figure}
+
+

@@ -9,7 +9,7 @@
 
 \chapter{Introdução}\label{intro}
 
-O sistema de controle de atitude e órbita é uma das tecnologias mais críticas de qualquer sistema espacial. O desenvolvimento de um sistema de controle de atitude em território nacional permanece incompleto \citep{Veloso2009} e a venda de componentes deste sistema ao nosso país é frequentemente recusada por países detentores dessa tecnologia.
+Sistema de controle de atitude e órbita é uma das tecnologias mais críticas de qualquer sistema espacial. O desenvolvimento de um sistema de controle de atitude em território nacional permanece incompleto \citep{Veloso2009} e a venda de componentes deste sistema ao nosso país é frequentemente recusada por países detentores dessa tecnologia.
 
 Basicamente, um sistema de controle de atitude é formado por sensores, atuadores e uma central responsável pelo processamento dos sinais dos sensores e comando dos atuadores, segundo uma lei de controle. Os sensores mais comuns são detectores de horizonte, sensores magnéticos, sensores solares, giroscópios e rastreadores estelares. 
 
@@ -30,9 +30,8 @@ O projeto de uma roda de reação começa pelo estudo do momento angular necess�
 
 Essa dissertação vem ao encontro de projetar um mancal magnético para uma roda de reação que está sendo desenvolvida no Núcleo de Sistemas Eletrônicos Embarcados (NSEE) do Instituto Mauá De Tecnologia (IMT) com apoio do Instituto Nacional De Pesquisas Espaciais (INPE).
 
-O projeto envolve o desenvolvimento de um conjunto eletromecânico capaz de ser utilizado em uma roda de reação para satélites de médio porte mais especificamente para a plataforma multi missão.
+O projeto envolve o desenvolvimento de uma topologia capaz de ser utilizado numa roda de reação para satélites de médio porte mais especificamente para a plataforma multi missão.
 
-%\todo[color=magenta]{Ref. Roda de Reacão - Mauá}
 
 \section{Justificativa}
 
@@ -42,45 +41,32 @@ Uma solução mecânica para a interface entre o rotor e o estator é o mancal p
 
 As dificuldades associadas ao uso de mancal de rolamento reside também em sua modelagem, consequência da variação de viscosidade do lubrificante em função da temperatura do mancal, o que torna o coeficiente de fricção dependente da velocidade de rotação e das condições térmicas em geral. O mancal por rolamento apresenta, por outro lado, grande vantagem construtiva devido a compactação do sistema e não necessidade de eletrônica extra para o seu controle. 
 
+Para contornar os problemas de lubrificação em baixa pressão, algumas rodas de reação  utilizam um sistema hermeticamente selado pressurizado com um gás inerte \citep{Krishnan2010}. Esta solução relaxa os requisitos de lubrificação porém impõe uma força de arrasto extra na roda, e mantendo ainda o problema da migração dos lubrificantes na ausência de gravidade. Uma pesquisa detalhada dos lubrificantes de classe espacial e estratégias de selamento e relubrificação deve ser realizada.
+
 Outra solução é a utilização de um mancal magnético \citep{Bangcheng2012},  que é uma alternativa sem contato mecânico entre o rotor e o estator, na qual o rotor é mantido suspenso magneticamente. O ganho em confiabilidade e vida útil da roda de reação é considerável \citep{Marble2006}, sendo a vida útil basicamente limitada  pela durabilidade da eletrônica. A operação sem contato elimina a necessidade de lubrificante e possibilita consequentemente a operação em vácuo, o que se traduz em simplificação nos requisitos da concepção mecânica. 
 
 A ausência de fricção elimina a zona morta de aplicação de torque em baixas velocidades, eliminando não-linearidades da lei de controle, além de possibilitar a eliminação de defeitos de balanceamento e vibrações mecânicas, com consequente ganho em simplicidade dos algoritmos e em desempenho do controle de atitude. A contrapartida é a adição de uma malha de controle para a suspensão eletromagnética. O ganho de eficiência trazido pela ausência de fricção também é contrabalanceado, ao menos parcialmente, pelo consumo de potência dos atuadores deste tipo de mancal.
 
 \section{Revisão bibliográfica}
 
-%\begin{footnotesize}
-%\textbf{Conteúdo:}
-%\begin{enumerate}
-%	\item Historia do Mancal Magnético
-%	\item Falar de que não pode existir uma mancal puramente passivo (Earnshaw's theorem)
-%	\item Tipos de MM (graus de liberdade)
-%	\item Utilização do MM.
-%	\item Detalhar uso em satélites (exaltar problemas)
-%	\item Técnicas de controle aplicadas em MM.
-%\end{enumerate}
-%\end{footnotesize}
 
-%Estudo iniciais sobre mancais magnéticos são datados do seculo XIX \citep{Weise1989} porem só recentemente começaram a ter grandes aplicados na sociedade, os primeiros mancais magnéticos alguns exemplos são : equipamentos médicos, corações artificiais, bombas de vácuo, motores de altas rotações. Mancais magnéticos fazem uso extensivo de campos magnéticos e tiveram uma grande evolução quando os imãs de terras raras tornaram-se cada vez mais comerciais, aumentando a capacidade de geração de campos permanentes.
+Estudo iniciais sobre mancais magnéticos são datados do seculo XIX \citep{Weise1989} porem só recentemente começaram a ter grandes aplicados na sociedade. Essas aplicações vão desde motores de alta eficiência até equipamentos médicos. Mancais magnéticos fazem uso extensivo de campos magnéticos e tiveram uma grande evolução quando os imãs de terras raras tornaram-se acessíveis, possibilitando o aumentando da geração de campos magnéticos permanentes \cite{Furlani2001}.
+
+Mancais magnéticos podem ser classificados em dois grandes grupos: os que utilizam da \textit{força de relutância} e os que utilizam da \textit{força de Loretz}. O primeiro grupo é o chamado de mancais magnéticos ativos (na literatura AMBs) e o segundo são os mancais magnéticos passivos (PMBs) \cite{Schweitzer2009}.
+
+Os AMBs funcionam com um controle ativo de algumas das forças atuante no mancal a fim de estabilizar o sistema (controle em malha fechada). Já os mancais puramente passivos geram as forças necessárias para estabilizar o rotor puramente via ímãs.
+Mancais magnéticos puramente passivos (seis graus de liberdade) são impossíveis de existirem quando somente utilizado ímãs dado que sempre um dos graus de liberdade torna-se instável (Teorema de Earnshaw's) .
+
+%Mancais híbridos, que operam com parte de seus graus de liberdade passivamente estáveis e parte de seus graus de liberdade ativamente estáveis possuem  
 
 
-%A suspensão do rotor com relação ao estator representa uma parte crítica em rodas de reação \citep{taniwaki2003experimental} devido as consequências de qualquer fricção no movimento relativo entre estes dois componentes. Com efeito, a fricção se traduz não apenas em um maior consumo de potência elétrica, como também na introdução de uma zona morta de atuação em torque, bem como na limitação da vida útil da roda de reação devido ao gradual desgaste do mancal. 
-%
-%Uma solução mecânica para a interface entre o rotor e o estator é o mancal por rolamento. Apesar de sua aparente simplicidade, apresenta desafios para a obtenção dos valores mínimos de fricção necessários, em vista das exigências de consumo, controlabilidade e vida útil da roda de reação \citep{Krishnan2010}. No caso de aplicações aerospaciais, a lubrificação do rolamento representa também considerável dificuldade devido à impossibilidade de utilização de lubrificantes tradicionais em condições de baixa ou nenhuma pressão atmosférica, que leva à perda dos componentes voláteis destes lubrificantes e sua consequente degradação. Outra dificuldade se deve à tendência de migração dos lubrificantes na ausência de gravidade, o que costuma ser abordado com estratégias de recaptura ou relubrificação. Sistemas de relubrificação, em particular, apresentam grande complexidade e seu comportamento orbital é de difícil validação em laboratório.
-
-
-
-Para contornar os problemas de lubrificação em baixa pressão, algumas rodas de reação  utilizam um sistema hermeticamente selado pressurizado com um gás inerte \citep{Krishnan2010}. Esta solução relaxa os requisitos de lubrificação porém impõe uma força de arrasto extra na roda, restando ainda o problema da migração dos lubrificantes na ausência de gravidade. Uma pesquisa detalhada dos lubrificantes de classe espacial e estratégias de selamento e relubrificação deve ser realizada.
-
-%A outra solução é a utilização de um mancal magnético \citep{Marble2006, Bangcheng2010} que é uma alternativa sem contato mecânico entre o rotor e o estator, na qual o rotor é mantido suspenso magneticamente. O ganho em confiabilidade e vida útil da roda de reação é considerável \citep{Ludner1995}, sendo a vida útil basicamente limitada  pela durabilidade da eletrônica. A operação sem contato elimina a necessidade de lubrificante e possibilita consequentemente a operação em vácuo, o que se traduz em simplificação nos requisitos da concepção mecânica. A ausência de fricção elimina a zona morta de aplicação de torque em baixas velocidades, eliminando não-linearidades da lei de controle, com consequente ganho em simplicidade dos algoritmos e em desempenho do controle de atitude. A contrapartida é a adição de uma malha de controle para a suspensão eletromagnética. O ganho de eficiência trazido pela ausência de fricção também é contrabalanceado, ao menos parcialmente, pelo consumo de potência dos atuadores deste tipo de mancal.
-	
-Devido as não linearidades do mancal magnético (por exemplo sua rigidez em função do deslocamento), a modelagem analítica é de difícil obtenção e uma análise por elementos finitos é recomendada \citep{pilat2007automatic}. Com este tipo de análise é possível verificar o acoplamento das forças e momentos envolvidos além das características térmicas do sistema. A modelagem e implementação é um terreno fértil para pesquisas em todo o mundo e  esta área ainda é pouco explorada no país. Com a presente pesquisa, pretende-se contribuir com o fechamento da lacuna existente na pesquisa de mancais magnéticos de pequenas dimensões.
 
 \subsection{Graus de liberdade}
 
-Mancais magnéticos puramente passivos são impossíveis de existirem dado que a parte móvel se torna instável quando submetida a campos magnéticos puramente passivos (Teorema de Earnshaw's), devido essa situação torna-se necessário um controle ativo do campo magnético atuante na parte móvel e por consequência das forças. Os mancais magnéticos podem ser classificados pelo número de graus de liberdade controlados ativamente \citep{Schweitzer2009}:
+Os mancais magnéticos podem ser classificados pelo número de graus de liberdade controlados ativamente \citep{Schweitzer2009}:
 
 \begin{enumerate}[a)]
-	\item  Mancal passivo:
+	\item  Mancal passivo puramente passivo
 	
 	Este mancal totalmente passivo é formado por um rotor contendo um conjunto de imãs permanentes em disposição de Halbach \citep{Detoni2012}, o que leva potencialização do campo magnético adjacente ao rotor. Um conjunto de enrolamentos passivos no estator é excitado por este campo magnético girante. Na eventualidade de qualquer deslocamento do rotor, este enrolamento reage com a criação de um campo magnético, com a consequente atração/repulsão do rotor de volta à posição de equilíbrio. O sistema é estável a partir de uma velocidade de rotação mínima do rotor (velocidade crítica). O fato desta topologia não funcionar em baixas velocidades angulares a torna pouco adaptada para aplicação em rodas de reação.
 	
@@ -97,7 +83,7 @@ Mancais magnéticos puramente passivos são impossíveis de existirem dado que a
 	Este mancal totalmente ativo é formado por atuadores eletromagnéticos nas duas direções radiais, na direção axial e nos dois modos de rotação radiais. A sua principal vantagem em aplicações em rodas de reação é a possibilidade de atuação em mais de um eixo de rotação, devido à capacidade de manobra do componente de inércia. Trata-se no entanto de um sistema de controle de grande complexidade, com consequente redução de confiabilidade. 
 \end{enumerate}
 
-\subsection{Topologias com aplicação em rodas de reação}
+\subsection{Topologias com Aplicação em Rodas de Reação}
 
 Encontramos na literatura três topologias distintas para utilização de mancais magnéticos em rodas de reação, os mancais propostos para esse tipo de aplicação possuem em sua maioria dois graus de liberdade ativos,  e fazem uso de ímãs permanentes para a geração de campos magnéticos para minimizar o consumo elétrico ativo do sistema. Em seguida analisamos os principais pontos desses mancais.
 
@@ -136,17 +122,25 @@ Mais recentemente uma nova arquitetura foi proposta por \citet{Bangcheng2012} pa
 	\label{Fig:modelo:chines}
 \end{figure}
 
+\subsection{Modelagem Eletromagnética}
+
+Devido as não linearidades do mancal magnético (por exemplo a sua rigidez em função do deslocamento), a modelagem analítica é de difícil obtenção e uma análise por elementos finitos é recomendada \citep{pilat2007automatic}. Com este tipo de análise é possível verificar o acoplamento das forças e momentos envolvidos além das características térmicas do sistema.
+
+Modelos analíticos \cite{Tezuka2013, Chiba} auxiliam no entendimento e na escolha dos parâmetros construtivos e magnéticos do mancal. A solução de um modelo analítico quando comparado com um em elementos finitos é computacionalmente mais rápida.
+
+Com o modelo analítico é possível a utilização de métodos de otimização \todo{citar} para a obtenção de um mancal com dimensões e propriedades magnéticas melhores. 
+
 \subsection{Sensoriamento}
 
- Devido ao controle da posição do rotor em mancais magnéticos, o sensoriamento de sua posição é essencial para o funcionamento do sistema. Duas linhas de sensoriamento são encontradas na literatura: Mancais auto sensoreados \citep{Vischer1993} e os que utilizam sensores de posição dedicados para esse fim.
+Devido ao controle da posição do rotor em mancais magnéticos, o sensoriamento de sua posição é essencial para o funcionamento do sistema. Duas linhas de sensoriamento são encontradas na literatura: Mancais auto sensoreados \citep{Vischer1993} e os que utilizam sensores de posição dedicados para esse fim.
 
- Os mancais magnéticos sem sensores (\textit{sensorless}) utilizam geralmente as bobinas de seus polos para sensorear a posição do rotor, diversas técnicas podem ser empregadas \citep{Hofer2009a, Mukhopadhyay2005} entre elas: medição da indutância dos polos pela injeção de um sinal com uma portadora de frequência mais elevada ou a medição da força contra-eletromotriz induzida nas bobinas.
+Os mancais magnéticos sem sensores (\textit{sensorless}) utilizam geralmente as bobinas de seus polos para sensorear a posição do rotor, diversas técnicas podem ser empregadas \citep{Hofer2009a, Mukhopadhyay2005} entre elas: medição da indutância dos polos pela injeção de um sinal com uma portadora de frequência mais elevada ou a medição da força contra-eletromotriz induzida nas bobinas.
  
- Já os mancais sensoreados utilizam sensores de deslocamentos exclusivos para a medição da posição do rotor e por consequência o tamanho do entreferro. Os sensores podem ser dos tipos capacitivos ou indutivos, dependendo do material construtivo do sistema. Opera-se geralmente com sensores na distribuição diferencial, visando minimizar os efeitos de suas não linearidades.
+Já os mancais sensoreados utilizam sensores de deslocamentos exclusivos para a medição da posição do rotor e por consequência o tamanho do entreferro \cite{boehm1993sensors}. Os sensores podem ser dos tipos capacitivos ou indutivos, dependendo do material construtivo do sistema. Opera-se geralmente com sensores na distribuição diferencial, visando minimizar os efeitos de suas não linearidades.
  
 \subsection{Mancais auxiliares}
 
- Mancais auxiliares são importantes em mancais magnéticos pois são eles que evitam colisões entre as partes fixas e as rotativas em caso de algum tipo de falha, mancais magnéticos projetados para operarem em altas rotações não possuem bom rendimento na inicialização  (baixa rotação) e utilizam dos mancais auxiliares nessa zona até atingirem sua velocidade de operação. Os mancais auxiliares podem ser compostos por rolamentos esféricos \citep{Sun2004a} ou por elementos sólidos auto lubrificante como Teflon.
+ Mancais auxiliares são importantes em mancais magnéticos pois são eles que evitam colisões entre as partes fixas e as rotativas em caso de algum tipo de falha, mancais magnéticos projetados para operarem em altas rotações não possuem bom rendimento na inicialização  (baixa rotação) e utilizam dos mancais auxiliares nessa zona até atingirem a sua velocidade de operação. Os mancais auxiliares podem ser compostos por rolamentos esféricos \citep{Sun2004a} ou por elementos sólidos auto lubrificante como Teflon.
  
 \subsection{Técnicas de controle}
 
@@ -154,10 +148,6 @@ O controle de mancais magnéticos é uma área fértil da engenharia de controle
 
 Técnicas de controle clássico são utilizados com bastante frequência em mancais magnéticos, controle do tipo PID  \citep{Tezuka2013} possuem boa robustez. O controle  do tipo \textit{feedforward} é utilizado em casos em que existe o acoplamento entre os graus de liberdade, podendo ser utilizado para o desacoplamento dos graus de liberdade. Outras técnicas propostas na literatura vão de encontro ao controle multivariável como controle robusto \citep{Jimenez-Lizafrraga2007}, controle ótimo (\citep{Schuhmann2012}) e controle não linear (\citep{Rundell1996}).
 
-
-%\section{Contribuições}
-
-%As contribuições do projeto se estendem para 
 
 \section{Metodologia}
 
