@@ -28,3 +28,10 @@ xlabel('I [A]');
 belezura
 export_pdf('Eletromagnetica/Resultados/ativo_otimizado_fem_I_dx00',1);
 
+%%
+fit(ativo_otimizado_I_dx_00.i, ativo_otimizado_I_dx_00.fx, 'poly2')
+fit(ativo_otimizado_I_dx_00.i(1:3), ativo_otimizado_I_dx_00.fx(1:3), 'poly1')
+
+%%
+fit(ativo_otimizado_I_dx_03.i, ativo_otimizado_I_dx_03.f, 'poly2')
+fit(ativo_otimizado_I_dx_03.i(1:3), ativo_otimizado_I_dx_03.f(1:3), 'poly1')

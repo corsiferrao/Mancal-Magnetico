@@ -138,7 +138,7 @@ Esse modo de operação é chamado diferencial e possibilita que a força result
 
 Com isso a componente da força que é proporcional ao quadrado do campo magnético torna-se praticamente constante, obtendo um força de atração radial no rotor linear com o deslocamento.
 
-Além da linearização obtêm-se um aumento na rigidez axial sem um grande aumento na rigidez radial, o que exigiria uma maior energia da parte ativa para estabilizar o rotor em seu ponto de operação. \todo{melhorar em geral, colocar Eq. ?}
+Além da linearização obtêm-se um aumento na rigidez axial sem um grande aumento na rigidez radial, o que exigiria uma maior energia da parte ativa para estabilizar o rotor em seu ponto de operação. 
 
 No caso de um deslocamento axial ocorre um aumento no comprimento do entreferro e por consequência em sua relutância ($R_{g}$), essa condição foge da zona de menor energia gerando uma força restaurativa no rotor para restabelecer um circuito com menor relutância magnética.
 
@@ -179,7 +179,7 @@ O estator interno é formado de oito polos distribuídos homogeneamente a cada 4
 	\includegraphics[width=1\linewidth]{./Figs/modelo_mancal_estator_interno}
 	\caption{Corte em perspectiva do estator interno}
 	\label{fig:modelo:mancal:estator:interno}
-\end{figure}
+\end{figure}\todo{corrigir imagem}
 
 O estator interno foi concebido para atuar sempre com três polos ativos por eixo de atuação, essa abordagem faz com que o fluxo do campo magnético que percorre o rotor seja maximizado no eixo onde deseja-se realizar a atração. A Fig. \ref{fig:modelo:mancal:estator:interno:fluxo} mostra o estator interno com três de seus polos ativos: (A),(B),(C) e o fluxo que flui pelo rotor. Os polos (A) e (C) nesse exemplo trabalham com polaridade inversa ao (B) para forçar que o fluxo feche por B e não por nenhum outro polo, maximizando assim a força de atração $F_B$. Uma parte do fluxo do campo magnético não atravessa por (B) e fecha por outros polos. A corrente induzida em (A) e (C) é a metade da corrente no polo principal (B) isso é feito para evitar que o polo B atinja a saturação, já que o campo que o atravessa é composto pela totalidade do induzido em sua bobina mais a parte dos campos de (A) e (C).
 
@@ -309,6 +309,9 @@ Ao longo do desenvolvimento da dissertação, utilizou-se as nomenclaturas a seg
 Nas simulações em elementos finitos, o modelo criado possui físicas distintas para os diversos elementos do mancal. No caso dos ferros, aplicou-se a lei de Ampère com a relação construtiva \textbf{BH} interpolada de uma tabela. Nos componentes compostos por ar, a relação utilizada foi a linear $B=\mu_0 H$. 
 
 Na simulação do ímã, utilizou-se a relação de magnetização : $B = \mu_0 (H + M)$ onde M é a magnetização do meio em A/m. Para as bobinas, o material utilizado foi o cobre e a equação para a densidade de corrente (J) aplicada foi: $ J = \frac{N I}{A}$, onde: $N$ é o número de espiras; $I$ a corrente total aplicada na bobina e $A$ a área da secção da bobina.
+
+
+\todo[inline]{colocar figura da convergência e analisar o tempo com o do FEM}
 
 
 

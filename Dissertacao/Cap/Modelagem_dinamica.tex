@@ -38,7 +38,6 @@ A dinâmica do rotor é influenciada basicamente pela sua velocidade de rotaçã
  	Q^{c}_x  &= K_p \, d_x \\
  	Q^{c}_y  &= K_p \, d_y 
  \end{align}
- 		
   
   Com a resolução da lagrangiana (Eq. \ref{eq:dinamica:lagrangiana}) obtemos as equações da dinâmica (Eq. \ref{eq:dinamica:modelo}) do sistema:
   
@@ -86,23 +85,45 @@ As tensões nas bobinas são distribuídas conforme Fig. \ref{fig:blocos:tensao:
 \label{fig:blocos:tensao:bobinas:x:y}
 \end{figure}
 
-Via modelo em elementos finitos as forças magnéticas dado uma variação de posição (a partir do ponto de operação) de até 0.3 mm e uma variação de corrente de 0A até 4A, um polinômio de primeiro grau foi encontrado com os resultados das forças. Optou-se trabalhar no ponto de operação da corrente perto do zero pois é a região natural de operação dos polos, e com o rotor em torno do ponto de operação. O ganho para o sistema nessas condições é : \todo{melhorar}
+A força aplicada no rotor é levantada via resultados da modelagem em elementos
+finitos, um polinômio de segundo grau com confidência de 95\% foi encontrado
+(Eq. \ref{eq:fb:segundo:grau}) via curva da Fig.
+\ref{ativo_otimizado_fem_I_dx00}.
 
 \begin{equation}
-     F_b(i) = 46.5 \, i
+     F_b(i) = -0.6777 \, i^2 + -55.5 \, i + 16.69
+     \label{eq:fb:segundo:grau}
+\end{equation}
+
+Para o polo operando com a corrente entre 0 e 2 Amperes, podemos descrever uma equação linear que representa a força de atração. 
+
+\begin{equation}
+     F_b(i) = -10.21 \, i 
+     \label{eq:fb:primeiro:grau}
 \end{equation}
 
 \subsection{Dinâmica Atuador}
 
 Devido as bobinas dos polos do estator interno, uma dinâmica do atuador ($G_a(s)$) atrelada a indutância deve ser considerada. A bobina é modelada como um circuito RL, com a dinâmica descrita na Eq. \eqref{eq:dinamica:bobina}.
 
-
 \begin{align}
 	I(s) &= \frac{V(s)}{R + L \, s} 
 	\label{eq:dinamica:bobina}
 \end{align}
 
-Os valores das indutâncias são calculadas como demonstrada na SubSec. \ref{subsec:at:indutancia}. Os valores nominais no ponto de operação de cada bobina é de $56$ mH \todo{atualizar} e a sua resistência elétrica de 4 $\Omega$ \todo{atualizar} gerando uma frequência de corte de 11 Hz. 
+Os valores das indutâncias são calculadas como demonstrada na SubSec. \ref{subsec:at:indutancia}. Os valores nominais no ponto de operação de cada bobina é de $0.194$ H e a sua resistência elétrica de 6.3 $\Omega$ gerando uma frequência de corte de 11 Hz. 
+
+\begin{table}[ht!]
+	\centering
+	\begin{tabular}{c c c}
+        L [H]  & $d_x$ [mm] & I [A] \\
+        \hline \hline
+        0.234   & 0    & 4 \\
+        0.224	& 0.3  & 4			
+	\end{tabular} 
+	\caption{Indutâncias calculadas para diversos pontos de operação via elementos finitos}
+	\label{tab:dinamica:indutancia} 
+\end{table} \todo{verificar calculo da indutancia}
 
 \subsection{Batente}
 
@@ -117,45 +138,47 @@ Sendo : \textbf{E }a constante de Yomg para o material; \textbf{A} área de cont
 
 \subsection{Modelo Linear}
 
-O modelo linear ($G_{ma}$) de malha aberta para um dos eixos de movimentação no plano x,y (radial) é levantado em torno do equilíbrio do rotor considera as dinâmicas do rotor ($G_r$) e do atuador ($G_a$) deduzido das equações  \eqref{eq:dinamica:rotor:radial} e \eqref{eq:dinamica:bobina}
+O modelo linear ($G_{ma}$) de malha aberta para um dos eixos de movimentação no plano x,y (radial) é levantado em torno do equilíbrio do rotor, considera-se as dinâmicas do rotor ($G_r$) e do atuador ($G_a$) deduzido das equações  \eqref{eq:dinamica:rotor:radial} e \eqref{eq:dinamica:bobina}.
 
 \begin{align}
 	G_r &= \frac{1}{s^2 \, m - K_p} \\
 	G_a &= \frac{K_b}{s\, L + R}
 \end{align}
 
-O modelo encontrado é utilizado para o projeto do controlador ($C(s)$), esse otimizado para operar em torno do ponto de operação. A função transferência do modelo obtido é demonstrado na Eq. \eqref{eq:dinamica:tfunc:gen}, o sistema possui três polos sendo eles nenhum integrador puro (sistema tipo 0). 
+O modelo encontrado é utilizado para o projeto do controlador ($C(s)$), esse otimizado para operar em torno do ponto de operação (rotor). A função transferência do modelo obtido é demonstrado na Eq. \eqref{eq:dinamica:tfunc:gen}, o sistema obtido possui três polos sendo eles nenhum integrador puro (sistema tipo 0).  
 
 \begin{align}
 	G_{ma}(s) &= \frac{K_b}{(s^2 \, m - K_p) \, (s\, L + R)}	\label{eq:dinamica:tfunc:gen} \\
-	&= \frac{K_b}{(s^2 \, 0.375 - 625) \, (s\, L + R)}
+	&= \frac{10}{(s^2 \, 0.375 - 625) \, (s\, 0.194 + 4)}
 	 \label{eq:dinamica:tfunc}
 \end{align}
+ 
 
+Os três polos estão localizado em: $[-40 -26 +40]$ , onde a função de transferência é descrita na Eq. \eqref{eq:dinamica:tfunc}, os parâmetros utilizados foram encontrados nas secções anteriores. 
 
-Os três polos estão localizado em:  $[1.21 -1.21 -0.07] \, 10^ 3$ \todo{atualizar}, onde a função de transferência é descrita na Eq. \eqref{eq:dinamica:tfunc}, os parâmetros utilizados foram encontrados nas secções anteriores. 
+%Verificamos através da analise em frequência (Fig. \ref{fig:bode:rlocus:pnt:operacao}) que o sistema é instável em malha aberta e um controlador deve ser projetado para estabilizar o sistema. 
 
-Verificamos através da analise em frequência (Fig. \ref{fig:bode:rlocus:pnt:operacao}) que o sistema é instável em malha aberta e um controlador deve ser projetado para estabilizar o sistema. 
+%Para fins de análise e comparação, os polos do sistema para o rotor em seu deslocamento máximo estão localizados em : $[-40 -20 +40]$
 
-Para fins de análise e comparação, 
-
-\begin{figure}[!ht]
-	\centering
-	\subfloat[t][Lugar das raizes]{
-	\includegraphics[width=0.6\linewidth]{Figs/Simulacoes/Dinamica/rlocus:pnt:operacao}
-	}\\
-	%
-	\subfloat[b][Diagrama de Bode]{
-	\includegraphics[width=0.6\linewidth]{Figs/Simulacoes/Dinamica/bode:pnt:operacao}
-	}	
-	
-	\caption{Analise em frequência do sistema obtido}
-	\label{fig:bode:rlocus:pnt:operacao}
-\end{figure}
+%\begin{figure}[!ht]
+%	\centering
+%	\subfloat[t][Lugar das raizes]{
+%	\includegraphics[width=0.6\linewidth]{Figs/Simulacoes/Dinamica/rlocus:pnt:operacao}
+%	}\\
+%	%
+%	\subfloat[b][Diagrama de Bode]{
+%	\includegraphics[width=0.6\linewidth]{Figs/Simulacoes/Dinamica/bode:pnt:operacao}
+%	}	
+%	
+%	\caption{Analise em frequência do sistema obtido}
+%	\label{fig:bode:rlocus:pnt:operacao}
+%\end{figure}
 
 \subsection{Modelo Dinâmico Não Linear}
 
 Um modelo dinâmico não linear foi projetado em ambiente Matlab Simulink para a validação do controlador, esse modelo, leva em consideração as modelagens eletromagnéticas realizadas para a otimização do mancal.
+
+A Fig. \ref{diagrama:blocos:modelo:linear} demonstra o diagrama de blocos propostos, sendo $C_s$ o controlador projetado. Nesse esquema, o controlador age diretamente nas bobinas aplicando a corrente necessária para estabilizar o rotor no ponto de operação. 
 
 \begin{figure}[th!]
 	\centering
@@ -164,8 +187,7 @@ Um modelo dinâmico não linear foi projetado em ambiente Matlab Simulink para a
 	\label{fig:diagrama:blocos:modelo:linear}
 \end{figure}
 
-\todo[inline]{Inderir resposta ao degrau}
-
+\todo[inline]{demosntrar como foi implementado cada bloco ?}
 
 \section{Projeto do Controlador}
 

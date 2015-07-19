@@ -153,17 +153,14 @@ F_z(l_g) = \frac{S_{g}}{2 \, \mu_0} 	2 \,\sum_{i=N}^{NO} B_{giz}^2
 
 Como a permeabilidade de materiais ferros magnéticos variam com o campo magnético, é preciso realizar uma série de interações para alcançar a convergência do valor do campo magnético nas partes do circuíto. 
 
-Nesse caso atribui-se um valor inicial para a permeabilidade nos três componentes do circuíto (ferro estator, ferro rotor e ferro retorno), aplicando esses valores para o cálculo do campo magnético no entreferro obtém-se novos valores do campo magnético nesses mesmos componentes, é então derivado os valores para a permeabilidade através de uma interpolação linear. Calcula-se então os novos valores da próxima interação pelo método de Newton-Raphson \ref{}, a Eq. \ref{eq:newton:method} demonstra o método utilizado.
+Nesse caso atribui-se um valor inicial para a permeabilidade nos três componentes do circuíto (ferro estator, ferro rotor e ferro retorno), aplicando esses valores para o cálculo do campo magnético no entreferro obtém-se novos valores do campo magnético nesses mesmos componentes, é então derivado os valores para a permeabilidade através de uma interpolação linear. Calcula-se então os novos valores da próxima interação pelo método de Newton-Raphson \ref{}, a Eq. \ref{eq:newton:method} demonstra o método utilizado. A convergência é truncada quando encontrado uma diferença entre os campos magnéticos inferiores á 0.1 Tesla. 
 
 \begin{align}
 	\mu_{n+1} &= \mu_n - \frac{H(\mu_n)}{H'}(\mu_n)
-	label{eq:newton:method}
+	\label{eq:newton:method}
 \end{align} 
 
-A convergência é truncada quando encontrado uma diferença entre os campos magnéticos inferiores á 0.1 Tesla.
 
-
-\todo[inline]{colocar figura da convergência e analisar o tempo com o do FEM}
 
 % A Fig. \ref{fig:passivo:convergencia} ilustra a analise da convergência dos resultados para uma determinada configuração de parâmetros construtivos.  
 %

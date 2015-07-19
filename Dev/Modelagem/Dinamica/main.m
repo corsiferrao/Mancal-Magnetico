@@ -10,7 +10,6 @@ parametros_magneticos;
 
 m_g=derivados_geometricos(m,0,0);
 
-
 parametrizaMancal;
 
 
