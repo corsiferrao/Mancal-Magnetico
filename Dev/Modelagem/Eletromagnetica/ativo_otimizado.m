@@ -2,10 +2,29 @@
 % rafael Corsi
 
 % load otimziado dx
-load ativo_otimizado_I;
+load ativo_otimizado_I_dx_03;
 
-plot(ativo_otimizado_I.I, ativo_otimizado_I.Fx-140,'Marker','+');
-xlabel('F [N]');
-ylabel('I [A]')
+i = find(ativo_otimizado_I_dx_03.f <= 0);
+plot(ativo_otimizado_I_dx_03.i(1:i), ativo_otimizado_I_dx_03.f(1:i),'Marker','+');
+hold on
+plot(ativo_otimizado_I_dx_03.i(i:end), ativo_otimizado_I_dx_03.f(i:end),'r','Marker','+');
+hold off
+ylabel('F [N]');
+xlabel('I [A]');
+
 belezura
 export_pdf('Eletromagnetica/Resultados/ativo_otimizado_fem_I_dx03',1);
+
+
+%% 
+load ativo_otimizado_I_dx_00;
+
+figure
+plot(ativo_otimizado_I_dx_00.i, ativo_otimizado_I_dx_00.fx,'Marker','+');
+
+ylabel('F [N]');
+xlabel('I [A]');
+
+belezura
+export_pdf('Eletromagnetica/Resultados/ativo_otimizado_fem_I_dx00',1);
+

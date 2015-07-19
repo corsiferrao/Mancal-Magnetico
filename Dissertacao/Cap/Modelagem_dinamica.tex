@@ -124,18 +124,16 @@ O modelo linear ($G_{ma}$) de malha aberta para um dos eixos de movimentação n
 	G_a &= \frac{K_b}{s\, L + R}
 \end{align}
 
-O modelo encontrado é utilizado para o projeto do controlador ($C(s)$), esse otimizado para operar em torno do ponto de operação. A função transferência do modelo obtido é demonstrado na Eq. \eqref{eq:dinamica:tfunc:gen}, o sistema possui três polos sendo eles nenhum integrador puro (tipo 0). 
-
-
+O modelo encontrado é utilizado para o projeto do controlador ($C(s)$), esse otimizado para operar em torno do ponto de operação. A função transferência do modelo obtido é demonstrado na Eq. \eqref{eq:dinamica:tfunc:gen}, o sistema possui três polos sendo eles nenhum integrador puro (sistema tipo 0). 
 
 \begin{align}
 	G_{ma}(s) &= \frac{K_b}{(s^2 \, m - K_p) \, (s\, L + R)}	\label{eq:dinamica:tfunc:gen} \\
-	&= \frac{K_b}{(s^2 \, m - 625) \, (s\, L + R)}
+	&= \frac{K_b}{(s^2 \, 0.375 - 625) \, (s\, L + R)}
 	 \label{eq:dinamica:tfunc}
 \end{align}
 
 
-O sistema obtido pode ser interpretado como de tipo 0 possuindo três polos localizados em:  $[1.21 -1.21 -0.07] \, 10^ 3$ \todo{atualizar}, onde a função de transferência é descrita na Eq. \eqref{eq:dinamica:tfunc}, os parâmetros utilizados foram encontrados nas secções anteriores. 
+Os três polos estão localizado em:  $[1.21 -1.21 -0.07] \, 10^ 3$ \todo{atualizar}, onde a função de transferência é descrita na Eq. \eqref{eq:dinamica:tfunc}, os parâmetros utilizados foram encontrados nas secções anteriores. 
 
 Verificamos através da analise em frequência (Fig. \ref{fig:bode:rlocus:pnt:operacao}) que o sistema é instável em malha aberta e um controlador deve ser projetado para estabilizar o sistema. 
 

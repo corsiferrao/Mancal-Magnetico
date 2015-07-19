@@ -12,7 +12,7 @@ hold off
 belezura
 xlabel('d_x [mm]');
 ylabel('F_x [N]')
-export_pdf('Resultados/passivo_otimizado_fem_dx',1);
+export_pdf('Resultados/passivo_otimizado_fem_dx',0);
 
 %% load dy
 load fem_otimizado_dy;

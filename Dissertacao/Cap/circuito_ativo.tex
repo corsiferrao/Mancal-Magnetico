@@ -318,12 +318,24 @@ O mancal ativo resultante possui dimensões listadas na Tab. \ref{tab:ativo:resu
 
 A curva de força ($F_b$) por deslocamento é ilustrado na Fig. \ref{ativo_otimizado_fem_I_dx03}, nessa simulação o rotor está deslocado de 0.3 milímetros de sua posição nominal, as bobinas exitadas são aquelas do mesmo sentido do deslocamento do rotor, gerando assim, uma força de atração oposta a do estator externo.  
 
-\begin{figure}
+\begin{figure}[ht!]
 \centering
 Força de atração (N) x Corrente (A)
 \includegraphics[width=0.8\linewidth]{Figs/Simulacoes/Ativo/ativo_otimizado_fem_I_dx03}
 \caption{Força resultante da aplicação de uma corrente quando o rotor está deslocado de 0.3 mm (máxima distância)}
 \label{ativo_otimizado_fem_I_dx03}
+\end{figure}
+
+Verifica-se que a força gerada pelas bobinas vence a força gerada pelo estator externo quando uma corrente superior á $3.5$ Ampères é aplicada no polo principal. A curva de força por corrente nesse ponto de operação é não linear, o que dificulta o projeto do controlador.
+
+No caso da operação em torno do ponto de equilíbrio, a força atuante no rotor possui a forma da Fig. \ref{ativo_otimizado_fem_I_dx00}. Nessa situação, as forças de tração devido ao estator externa possui resultante nula, e a única força atuante no rotor é a da gerada pela corrente nos polos. Verfica-se que o delta de força nesse caso é de $220$ N contra $180$ N do rotor na excursão máxima, isso se da devido ao menor entreferro entre o polo e o rotor.
+
+\begin{figure}[ht!]
+\centering
+Força de atração (N) x Corrente (A)
+\includegraphics[width=0.8\linewidth]{Figs/Simulacoes/Ativo/ativo_otimizado_fem_I_dx00}
+\caption{Força resultante da aplicação de uma corrente quando o rotor está em seu ponto de operação}
+\label{ativo_otimizado_fem_I_dx00}
 \end{figure}
 
 O campo magnético no polo principal devido a variação na corrente elétrica é ilustrado na Fig. \ref{fig:ativo:fem:b:polos}, notasse os diferentes pontos de operação do componente magnético quando o rotor é mantido na mesma posição. Pela simulação é possível notar que o espraiamento da área sofre aumento com a corrente, dinâmica não levada em consideração na modelagem analítica. 
@@ -357,54 +369,4 @@ Através de um corte axial verificamos que as linhas de campo magnético são co
 
 
 
-%\section{Escolha dos parâmetros}
-%
 
-%
-%
-%\subsection{Simulações}
-%
-% Verificamos a não linearidade da força de atração devido ao campo gerado pelos núcleos do estator interno, essa simulação (Fig. \ref{fig:Fx:ativo:modelagem:eq}) foi realizada com o rotor no ponto de equilíbrio .
-% 
-% Podemos aproximar a curva da força pela corrente no ponto de equilíbrio para um polinômio de segunda ordem com $R^2 = 1$ : $F_x(i) = 37.25 i^2$  
-%
-%\begin{figure}[ht!]
-%\centering
-%\caption*{Força (N) x $I$ (A) - Ponto de equilíbrio}
-%\includegraphics[width=0.5\linewidth]{./Figs/Simulacoes/Ativo/Fx:ativo:modelagem:eq}
-%\caption{Força atuante no rotor dado variação na corrente}
-%\label{fig:Fx:ativo:modelagem:eq}
-%\end{figure}
-%
-%Se verificarmos o gráfico do campo magnético no ferro do núcleo principal (n) - Fig.  \ref{fig:Bxfn:ativo:modelagem:eq}, verificamos que o campo magnético ultrapassa a zona de saturação para o ferro 1020 (aproximadamente 1.2T), porém esse modelo somente é valido para correntes inferiores a 2.5A.
-%
-%\begin{figure}[ht!]
-%\centering
-%\caption*{ Campo Magnético  (T) x Corrente elétrica (A) - Ponto de equilíbrio}
-%\includegraphics[width=0.5\linewidth]{./Figs/Simulacoes/Ativo/Bxfn:ativo:modelagem:eq}
-%\caption{Campo magnético no ferro principal}
-%\label{fig:Bxfn:ativo:modelagem:eq}
-%\end{figure}
-%
-%\subsection{Elementos Finitos}
-%
-%Um modelo em três dimensões do conjunto rotor mais estator interno foi criado e simulado em elementos finitos, a simulação realizada foi de campos magnéticos e do tipo estacionária. 
-%
-%Notamos que o gráfico da força pela corrente (Fig. \ref{fig:Fx:ativo:comparacao:nsaturado:eq}) é notavelmente diferente daquele encontrado pela modelagem fenomenológica.  Esse fenômeno é explicável por duas razões: a não linearidade  relação entre a densidade de fluxo e o campo magnético (histerese magnética) e a propagação das curvas de campo pelos oito núcleos o que não foi considerado na modelagem.
-%
-%\begin{figure}[ht!]
-%\centering
-%\caption*{Força (N) x $I$ (A) - Ponto de equilíbrio}
-%\includegraphics[width=0.5\linewidth]{Figs/Simulacoes/Ativo/Forca:ativo:comparacao:eq}
-%\caption{Comparativo FEM vs fenomenológica}
-%\label{fig:Fx:ativo:comparacao:nsaturado:eq}
-%\end{figure}
-%
-%A fig \ref{fig:comsol:topo:3mm:1A} mostra o fluxo magnético e o campo magnético no caso em que o rotor está deslocado em 0.3mm para a direção x- e é aplicado uma corrente de 1A na bobina principal e 0.5 A nas bobinas secundárias. Notamos que o principal fluxo magnético acontece entre essas três bobinas. Poucas linhas de campo magnético fecham por outros polos, confirmando o suposto na modelagem analítica. As simulações foram realizadas com correntes contínuas, o que desconsidera as perdas por corrente de efeito de campo. A razão para adortarmos esse tipo de simulação é devido ao recurso computacional necessário para executar simulações no domínio da frequência.
-%
-%\begin{figure}[th!]
-%\centering
-%\includegraphics[width=0.9\linewidth]{./Simulacoes/Ativo/comsol:topo:3mm:.png}
-%\caption{Campo magnético com rotor deslocado de 3mm do ponto de operação com 1A aplicado na bobina principal e 0.5 nas secundárias}
-%\label{fig:comsol:topo:3mm:1A}
-%\end{figure}
