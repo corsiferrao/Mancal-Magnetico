@@ -70,13 +70,13 @@ Onde $K_p$ é a constante de proporção entre a força e a posição, x e y sã
 
 \begin{equation}
  K_p(d) = 625 N/mm 
-\end{equation}
+\end{equation} \todo{isso tudo mesmo ?}
 
 \subsection{Rigidez Ativa : $F_b$}
 
 A força de atração do rotor devido ao campo magnético gerado pelas bobinas é não linear com a posição do rotor (comprimento do entreferro) e depende da corrente de excitação aplicada as bobinas.  
 
-As tensões nas bobinas são distribuídas conforme Fig. \ref{fig:blocos:tensao:bobinas:x:y} (a), onde existe sobreposição de bobinas para atuação em diferentes eixos (X e Y). É aplicado nas bobinas que possuem sobreposição a metade da tensão, limitando assim o valor da tensão total nas bobinas para o valor máximo (I/2 + I/2 = I). A Fig. \ref{fig:blocos:tensao:bobinas:x:y} ilustra a configuração proposta. Verificamos que a tensão é aplicada em metade para as bobinas com sobreposição (a,g,e,c) e com ganho unitário nas bobinas principais (h,f,c,b). 
+As tensões nas bobinas são distribuídas conforme Fig. \ref{fig:blocos:tensao:bobinas:x:y} (a), onde existe sobreposição de bobinas para atuação em diferentes eixos (X e Y). É aplicado nas bobinas que possuem sobreposição a metade da tensão, limitando assim o valor da tensão total nas bobinas para o valor máximo (I/2 + I/2 = $I_max$). A Fig. \ref{fig:blocos:tensao:bobinas:x:y} ilustra a configuração proposta. Verificamos que a tensão é aplicada em metade para as bobinas com sobreposição (a,g,e,c) e com ganho unitário nas bobinas principais (h,f,c,b). 
 
 \begin{figure}[th]
 \centering
@@ -111,7 +111,7 @@ Devido as bobinas dos polos do estator interno, uma dinâmica do atuador ($G_a(s
 	\label{eq:dinamica:bobina}
 \end{align}
 
-Os valores das indutâncias são calculadas como demonstrada na SubSec. \ref{subsec:at:indutancia}. Os valores nominais no ponto de operação de cada bobina é de $0.194$ H e a sua resistência elétrica de 6.3 $\Omega$ gerando uma frequência de corte de 11 Hz. 
+Os valores das indutâncias são calculadas como demonstrada na SubSec. \ref{subsec:at:indutancia}. Os valores nominais no ponto de operação de cada bobina é de $0.234$ H e a sua resistência elétrica de 6.3 $\Omega$ gerando uma frequência de corte de 30 Hz. 
 
 \begin{table}[ht!]
 	\centering
@@ -121,9 +121,11 @@ Os valores das indutâncias são calculadas como demonstrada na SubSec. \ref{sub
         0.234   & 0    & 4 \\
         0.224	& 0.3  & 4			
 	\end{tabular} 
-	\caption{Indutâncias calculadas para diversos pontos de operação via elementos finitos}
+	\caption{Indutâncias calculadas para um único polo em diversos pontos de operação via elementos finitos}
 	\label{tab:dinamica:indutancia} 
-\end{table} \todo{verificar calculo da indutancia}
+\end{table} 
+
+A maneira como a associação de 
 
 \subsection{Batente}
 
@@ -178,7 +180,7 @@ Os três polos estão localizado em: $[-40 -26 +40]$ , onde a função de transf
 
 Um modelo dinâmico não linear foi projetado em ambiente Matlab Simulink para a validação do controlador, esse modelo, leva em consideração as modelagens eletromagnéticas realizadas para a otimização do mancal.
 
-A Fig. \ref{diagrama:blocos:modelo:linear} demonstra o diagrama de blocos propostos, sendo $C_s$ o controlador projetado. Nesse esquema, o controlador age diretamente nas bobinas aplicando a corrente necessária para estabilizar o rotor no ponto de operação. 
+A Fig. \ref{fif:diagrama:blocos:modelo:linear} demonstra o diagrama de blocos propostos, sendo $C_s$ o controlador projetado. Nesse esquema, o controlador age diretamente nas bobinas aplicando a corrente necessária para estabilizar o rotor no ponto de operação. 
 
 \begin{figure}[th!]
 	\centering
@@ -187,7 +189,8 @@ A Fig. \ref{diagrama:blocos:modelo:linear} demonstra o diagrama de blocos propos
 	\label{fig:diagrama:blocos:modelo:linear}
 \end{figure}
 
-\todo[inline]{demosntrar como foi implementado cada bloco ?}
+
+Pode-se aproximar
 
 \section{Projeto do Controlador}
 

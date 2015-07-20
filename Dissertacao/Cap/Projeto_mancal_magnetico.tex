@@ -179,7 +179,7 @@ O estator interno é formado de oito polos distribuídos homogeneamente a cada 4
 	\includegraphics[width=1\linewidth]{./Figs/modelo_mancal_estator_interno}
 	\caption{Corte em perspectiva do estator interno}
 	\label{fig:modelo:mancal:estator:interno}
-\end{figure}\todo{corrigir imagem}
+\end{figure}
 
 O estator interno foi concebido para atuar sempre com três polos ativos por eixo de atuação, essa abordagem faz com que o fluxo do campo magnético que percorre o rotor seja maximizado no eixo onde deseja-se realizar a atração. A Fig. \ref{fig:modelo:mancal:estator:interno:fluxo} mostra o estator interno com três de seus polos ativos: (A),(B),(C) e o fluxo que flui pelo rotor. Os polos (A) e (C) nesse exemplo trabalham com polaridade inversa ao (B) para forçar que o fluxo feche por B e não por nenhum outro polo, maximizando assim a força de atração $F_B$. Uma parte do fluxo do campo magnético não atravessa por (B) e fecha por outros polos. A corrente induzida em (A) e (C) é a metade da corrente no polo principal (B) isso é feito para evitar que o polo B atinja a saturação, já que o campo que o atravessa é composto pela totalidade do induzido em sua bobina mais a parte dos campos de (A) e (C).
 
@@ -215,6 +215,14 @@ O circuito magnético entre o estator interno e o rotor pode ser visto na Fig. \
 \caption[Circuito eletromagnético estator interno e rotor]{Circuito eletromagnético estator interno e rotor: (a) relutâncias do rotor, (b) relutâncias do entreferro, (c) }
 \label{fig:modelo:circuito:ativo:explicativo}
 \end{figure}
+
+\subsection{Atuador}
+
+Dois tipos de acionamento e embobinamento podem ser realizados para a implementação do atuador, a primeira considera independência de cada polo, tendo uma eletrônica exclusiva para o seu acionamento. A segunda, envolve a criação de uma única bobina por atuador, similar ao polos de um motor elétrico, o mesmo filamento é compartilhado entre o polo primário e os polos secundários resultando em uma bobina de maior resistência e indutância. 
+
+A vantagem da escolha para o segundo método seria da simplificação da eletrônica já que seria necessário apenas quatro eletrônica de potência para a atuação porém implicaria em uma dinâmica mais lenta do atuador já que as indutâncias seriam associadas em série.
+
+Escolheu-se nesse projeto, por trabalhar com eletrônicas de acionamento independente para cada polo, privilegiando assim, um atuador com dinâmica mais rápida. Além da dinâmica, possibilita-se dessa maneira que futuros controladores atuem não só nos eixos principais (x,y). \todo{explicar melhor}
 
 \section{Batente}
 
