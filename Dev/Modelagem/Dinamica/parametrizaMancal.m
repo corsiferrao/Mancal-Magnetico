@@ -7,7 +7,6 @@ gb = 0.3e-3;            % gap para o batente [m]
 gi = 0.7e-3;            % gap para o estator interno [m]
 
 N = 300;                % numero de voltas por enrolamento
-A = 236e-6;             % area do polo do estator interno [m2]
 R = 6;                  % resistencia de cada enrolamento [ohms]
 L = [-57.6135 0.0908];  % indutancia = L(1).gap + L(2)
 Lm = L(1)*gi+L(2);      % indutancia media

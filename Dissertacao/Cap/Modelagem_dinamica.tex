@@ -125,7 +125,6 @@ Os valores das indutâncias são calculadas como demonstrada na SubSec. \ref{sub
 	\label{tab:dinamica:indutancia} 
 \end{table} 
 
-A maneira como a associação de 
 
 \subsection{Batente}
 
@@ -180,7 +179,7 @@ Os três polos estão localizado em: $[-40 -26 +40]$ , onde a função de transf
 
 Um modelo dinâmico não linear foi projetado em ambiente Matlab Simulink para a validação do controlador, esse modelo, leva em consideração as modelagens eletromagnéticas realizadas para a otimização do mancal.
 
-A Fig. \ref{fif:diagrama:blocos:modelo:linear} demonstra o diagrama de blocos propostos, sendo $C_s$ o controlador projetado. Nesse esquema, o controlador age diretamente nas bobinas aplicando a corrente necessária para estabilizar o rotor no ponto de operação. 
+A Fig. \ref{fig:diagrama:blocos:modelo:linear} demonstra o diagrama de blocos propostos, sendo $C_s$ o controlador projetado. Nesse esquema, o controlador age diretamente nas bobinas aplicando a corrente necessária para estabilizar o rotor no ponto de operação. 
 
 \begin{figure}[th!]
 	\centering
@@ -189,8 +188,6 @@ A Fig. \ref{fif:diagrama:blocos:modelo:linear} demonstra o diagrama de blocos pr
 	\label{fig:diagrama:blocos:modelo:linear}
 \end{figure}
 
-
-Pode-se aproximar
 
 \section{Projeto do Controlador}
 
@@ -219,7 +216,7 @@ I = \sqrt{\frac{2 \, F_b \, \mu_0}{S_n(l_g)}} \, \frac{\mu_0 \, S_n(l_g)^2}{n_n}
 	\label{fig:diagrama_controlador_estimador}
 \end{figure}
 
-\subsubsection{Controlador}
+\subsection{Controlador}
 
 O controle projetado para o mancal magnético proposto utiliza a técnica de controle ótimo 
 

@@ -330,15 +330,27 @@ Força de atração (N) x Corrente (A)
 
 Verifica-se que a força gerada pelas bobinas vence a força gerada pelo estator externo quando uma corrente superior á $3.5$ Ampères é aplicada no polo principal. A curva de força por corrente nesse ponto de operação é não linear, o que dificulta o projeto do controlador.
 
-No caso da operação em torno do ponto de equilíbrio, a força atuante no rotor possui a forma da Fig. \ref{ativo_otimizado_fem_I_dx00}. Nessa situação, as forças de tração devido ao estator externa possui resultante nula, e a única força atuante no rotor é a da gerada pela corrente nos polos. Verfica-se que o delta de força nesse caso é de $220$ N contra $180$ N do rotor na excursão máxima, isso se da devido ao menor entreferro entre o polo e o rotor.
+A força atuante no rotor possui a forma da Fig. \ref{ativo_otimizado_fem_I_dx00}. Nessa situação, as forças de tração devido ao estator externa possui resultante nula, e a única força atuante no rotor é a da gerada pela corrente nos polos. Verfica-se que o delta de força nesse caso é de $220$ N contra $180$ N do rotor na excursão máxima, isso se da devido ao menor entreferro entre o polo e o rotor.
 
-\begin{figure}[ht!]
+A Fig. \ref{ativo_otimizado_fem_I_dx_map} ilustra a força resultante no rotor devido a aplicação de uma corrente nas bobinas primárias e secundárias. Valores positivos de força indicam que a maia atração é devido aos ímãs permanentes (estator externo) e uma força negativa, indica que a força resultante é devido a atração dos polos.
+
+Verifica que o comportamento da força gerada é similar para os diferentes pontos de operação porém o ganho digital sofre alteração, inversamente proporcional ao tamanho do entreferro.
+
+\begin{figure}[t!]
 \centering
 Força de atração (N) x Corrente (A)
-\includegraphics[width=0.8\linewidth]{Figs/Simulacoes/Ativo/ativo_otimizado_fem_I_dx00}
-\caption{Força resultante da aplicação de uma corrente quando o rotor está em seu ponto de operação}
-\label{ativo_otimizado_fem_I_dx00}
+\includegraphics[width=0.8\linewidth]{Figs/Simulacoes/Ativo/ativo_otimizado_fem_I_dx_map.pdf}
+\caption{Força resultante da aplicação de uma corrente quando para diversos pontos de operação do rotor}
+\label{ativo_otimizado_fem_I_dx_map}
 \end{figure}
+
+%\begin{figure}[ht!]
+%\centering
+%Força de atração (N) x Corrente (A)
+%\includegraphics[width=0.8\linewidth]{Figs/Simulacoes/Ativo/ativo_otimizado_fem_I_dx00}
+%\caption{Força resultante da aplicação de uma corrente quando o rotor está em seu ponto de operação}
+%\label{ativo_otimizado_fem_I_dx00}
+%\end{figure}
 
 O campo magnético no polo principal devido a variação na corrente elétrica é ilustrado na Fig. \ref{fig:ativo:fem:b:polos}, notasse os diferentes pontos de operação do componente magnético quando o rotor é mantido na mesma posição. Pela simulação é possível notar que o espraiamento da área sofre aumento com a corrente, dinâmica não levada em consideração na modelagem analítica. 
 
@@ -368,7 +380,6 @@ Através de um corte axial verificamos que as linhas de campo magnético são co
 \caption{Vetor campo magnético de uma secção radial do mancal quando aplicado uma corrente de 4A no polo principal}
 \label{fig:ativo:fem:b:radial}
 \end{figure}
-
 
 
 
