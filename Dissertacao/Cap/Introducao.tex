@@ -21,6 +21,17 @@ Uma roda de reação pode ser descrita como um atuador inercial com funcionament
 
 Rodas de reação são tipicamente constituídas de um motor elétrico, geralmente um motor sem escovas, um mancal e um elemento de inércia.  O elemento de inércia e o motor são montados sobre o mancal que deve garantir a  precisa rotação em torno de um eixo. A velocidade de rotação do sistema é controlado por uma eletrônica de acionamento do motor. Rodas de reação podem ser comandadas de duas maneiras distintas: por rotação ou por torque. Quando comandada por torque, a roda de reação deve ser capaz de estimar o torque útil gerado por ela (o torque efetivo menos as perdas). 
 
+A Fig. \ref{fig:EsquemaRoda} ilustra um esquema genérico de uma roda de reação, no caso quatro são os subsistemas: eletrônica de acionamento, motor, mancal e inércia. A eletrônica é responsável pelo controle e acionamento do motor que possui por sua vez, possui um sensor de velocidade e um de corrente. 
+
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=1\linewidth]{./Figs/EsquemaRoda}
+\caption{Esquema geral de uma roda de reação}
+\label{fig:EsquemaRoda}
+\end{figure}
+
+
 O controle de atitude  com rodas de reação demanda que esse tipo de  atuador opere em toda sua escala de velocidade, inclusive na inversão de seu sentido de rotação (passagem pelo zero) de uma forma estável e controlada. Essa zona morta é efeito do atrito estático do mancal, minimizar esse efeito é essencial para o bom funcionamento da roda de reação. A zona morta pode ser compensada (no caso de mancal por rolamento) pela implementação de leis de controle com malhas de velocidade e corrente, além de um estimador de atrito.
 
 O projeto de uma roda de reação começa pelo estudo do momento angular necessário para movimentar o satélite, com o momento angular definido especifica-se a inércia e então o mancal, por último projeta-se um motor capaz de rotacionar o conjunto mancal mais inércia.
@@ -166,7 +177,7 @@ Na etapa de otimização, dividiu-se o projeto em duas partes: na primeira consi
 	\includegraphics[width=1\linewidth]{Figs/metodologia_fluxo_dev}
 	\caption{Fluxo de desenvolvimento}
 	\label{fig:metodologia:fluxo:dev}
-\end{figure} \todo{mudar de lugar prototipagem e colocar capitulos nos blocos}
+\end{figure} 
  
 \section{Sumário Estruturado}
  
