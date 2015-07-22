@@ -70,7 +70,7 @@ Onde $K_p$ é a constante de proporção entre a força e a posição, x e y sã
 
 \begin{equation}
  K_p(d) = 625 N/mm 
-\end{equation} \todo{isso tudo mesmo ?}
+\end{equation}
 
 \subsection{Rigidez Ativa : $F_b$}
 
@@ -88,14 +88,14 @@ As tensões nas bobinas são distribuídas conforme Fig. \ref{fig:blocos:tensao:
 A força aplicada no rotor é levantada via resultados da modelagem em elementos
 finitos, um polinômio de segundo grau com confidência de 95\% foi encontrado
 (Eq. \ref{eq:fb:segundo:grau}) via curva da Fig.
-\ref{ativo_otimizado_fem_I_dx00}.
+\ref{ativo_otimizado_fem_I_dx_map}.
 
 \begin{equation}
      F_b(i) = -0.6777 \, i^2 + -55.5 \, i + 16.69
      \label{eq:fb:segundo:grau}
 \end{equation}
 
-Para o polo operando com a corrente entre 0 e 2 Amperes, podemos descrever uma equação linear que representa a força de atração. 
+Para o polo operando com a corrente entre 0 e 2 A, podemos descrever uma equação linear que representa a força de atração em torno do ponto de operação. 
 
 \begin{equation}
      F_b(i) = -10.21 \, i 
@@ -111,20 +111,51 @@ Devido as bobinas dos polos do estator interno, uma dinâmica do atuador ($G_a(s
 	\label{eq:dinamica:bobina}
 \end{align}
 
-Os valores das indutâncias são calculadas como demonstrada na SubSec. \ref{subsec:at:indutancia}. Os valores nominais no ponto de operação de cada bobina é de $0.234$ H e a sua resistência elétrica de 6.3 $\Omega$ gerando uma frequência de corte de 30 Hz. 
+Os valores das indutâncias são calculadas como demonstrada na SubSec. \ref{subsec:at:indutancia}. Os valores nominais no ponto de operação de cada bobina é de aproximadamente $76 \, \mu H$ e a sua resistência elétrica de 6.3 $\Omega$ causando uma frequência de corte de $13$ kHz. 
+
+As tabelas \ref{tab:dinamica:indutancia} e \ref{tab:dinamica:indutancia:mutua} demonstram a evolução da indutância principal (L) e da mutua (M) quando uma corrente de 4 Ampères é aplicada no polo principal. 
 
 \begin{table}[ht!]
 	\centering
-	\begin{tabular}{c c c}
-        L [H]  & $d_x$ [mm] & I [A] \\
-        \hline \hline
-        0.234   & 0    & 4 \\
-        0.224	& 0.3  & 4			
+	\begin{tabular}{c c}
+        L [uH]  & $d_x$ [mm] \\
+        \hline \hline               
+        78.013 & 0.00 \\
+        77.450 & 0.05 \\
+        76.890 & 0.10 \\
+        76.333 & 0.15 \\
+        75.710 & 0.20 \\
+        75.048 & 0.25 \\
+        74.381 & 0.30       
 	\end{tabular} 
-	\caption{Indutâncias calculadas para um único polo em diversos pontos de operação via elementos finitos}
+	\caption{Indutância calculada para um único polo em diversos pontos de operação via elementos finitos. Corrente aplicada de 4 Ampères no polo principal}
 	\label{tab:dinamica:indutancia} 
 \end{table} 
 
+\begin{table}[ht!]
+	\centering
+	\begin{tabular}{c c}
+        M [uH]  & $d_x$ [mm] \\
+        \hline \hline               
+         18.693 & 0.00 \\
+         18.327 & 0.05 \\
+         17.979 & 0.10 \\
+         17.638 & 0.15 \\
+         17.303 & 0.20 \\
+         16.988 & 0.25 \\
+         16.662 & 0.30       
+	\end{tabular} 
+	\caption{Indutâncias mutua calculada para um único polo em diversos pontos de operação via elementos finitos. Corrente aplicada de 4 Ampères no polo principal}
+	\label{tab:dinamica:indutancia:mutua} 
+\end{table} 
+
+Uma aproximação linear das indutâncias é calculada (Eq. \ref{eq:indutancias:aprox}) para a utilização na modelagem não linear. Essas equações demonstram a sensibilidade que um sensor de indutância teria que ter, em uma futura implementação, para a leitura da posição relativa do rotor via a indutância dos polos.
+
+\begin{align}
+	L(x) &= -1.206 \,10^{-5} x + 2.807 \, 10^{-5} \\
+	M(x) &= -6.756 \,10^{-6} x + 1.867 \, 10^{-6} 
+	\label{eq:indutancias:aprox}
+\end{align} 
 
 \subsection{Batente}
 
@@ -150,12 +181,12 @@ O modelo encontrado é utilizado para o projeto do controlador ($C(s)$), esse ot
 
 \begin{align}
 	G_{ma}(s) &= \frac{K_b}{(s^2 \, m - K_p) \, (s\, L + R)}	\label{eq:dinamica:tfunc:gen} \\
-	&= \frac{10}{(s^2 \, 0.375 - 625) \, (s\, 0.194 + 4)}
+	&= \frac{10}{(s^2 \, 0.375 - 625) \, (s\, 76 \, 10^{-6} + 6.3)}
 	 \label{eq:dinamica:tfunc}
 \end{align}
  
 
-Os três polos estão localizado em: $[-40 -26 +40]$ , onde a função de transferência é descrita na Eq. \eqref{eq:dinamica:tfunc}, os parâmetros utilizados foram encontrados nas secções anteriores. 
+Os três polos estão localizado em: $[-82E3 -40 +40]$ , onde a função de transferência é descrita na Eq. \eqref{eq:dinamica:tfunc}, os parâmetros utilizados foram encontrados nas secções anteriores. 
 
 %Verificamos através da analise em frequência (Fig. \ref{fig:bode:rlocus:pnt:operacao}) que o sistema é instável em malha aberta e um controlador deve ser projetado para estabilizar o sistema. 
 

@@ -16,7 +16,7 @@ belezura
 export_pdf('Eletromagnetica/Resultados/ativo_otimizado_fem_I_dx03',1);
 
 
-%%
+%% 
 load ativo_otimizado_I_dx_00;
 
 figure
@@ -28,13 +28,47 @@ xlabel('I [A]');
 belezura
 export_pdf('Eletromagnetica/Resultados/ativo_otimizado_fem_I_dx00',1);
 
-%%
+%% Forca ativo segunda ordem 
 fit(ativo_otimizado_I_dx_00.i, ativo_otimizado_I_dx_00.fx, 'poly2')
 fit(ativo_otimizado_I_dx_00.i(1:3), ativo_otimizado_I_dx_00.fx(1:3), 'poly1')
 
-%%
+%% Forca ativo primeira ordem
 fit(ativo_otimizado_I_dx_03.i, ativo_otimizado_I_dx_03.f, 'poly2')
 fit(ativo_otimizado_I_dx_03.i(1:3), ativo_otimizado_I_dx_03.f(1:3), 'poly1')
+
+%% Indutânci
+load ativo_otimizado_B_polos;
+
+figure
+plot(ativo_otimizado_B_polos.dx, ativo_otimizado_B_polos.Bp, ...
+    'Marker', 'o');
+xlabel('Dx [mm]');
+ylabel('B [T]');
+belezura
+
+export_pdf('Eletromagnetica/Resultados/ativo_otimizado_fem_B_polos',1);
+
+figure
+plot(ativo_otimizado_B_polos.dx, ativo_otimizado_B_polos.Bs, ...
+    'Marker', '>');
+xlabel('Dx [mm]');
+ylabel('B [T]');
+belezura 
+
+export_pdf('Eletromagnetica/Resultados/ativo_otimizado_fem_B_polos',1);
+
+%% Calculo da indutância
+
+S = 196.7E-6; % [m2]
+I = ativo_otimizado_B_polos.i(1);
+L = ativo_otimizado_B_polos.Bp*S/I
+M = ativo_otimizado_B_polos.Bs*S/I
+
+
+[c g] = fit(ativo_otimizado_B_polos.dx, L,  'poly1')
+[c g] = fit(ativo_otimizado_B_polos.dx, M,  'poly1')
+
+
 
 %%
 load ativo_otimizado_I_dx_map;
@@ -52,8 +86,8 @@ for x = 0:0.05:0.3
     yy = yy + 1;
     xx = 1;
 end
-%%
 
+figure
 [X Y] = meshgrid(0:0.05:0.3, 0:0.5:4);
 surf(Y,X,f);
 colormap(jet)    % change color map
@@ -61,9 +95,13 @@ ylabel('dx [mm]');
 xlabel('I [A]');
 zlabel('F [N]');
 title('Force (N) x current (A) x displacment (mm)')
+belezura 
 
-hold off;
 %%
+
+Fp_model =  fit([ativo_otimizado_I_dx_map.dx,ativo_otimizado_I_dx_map.i],ativo_otimizado_I_dx_map.f, 'poly23' )
+
+%% Força por deslocamento
 figure
 
 plot(ativo_otimizado_I_dx_map.i(1:9),ativo_otimizado_I_dx_map.f(1:9), 'Marker', 'x')

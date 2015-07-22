@@ -19,8 +19,6 @@ sigma(T,ss(GAM),'r*',{.1,30});
 legend('Closed loop','GAM')
 grid
 
-
-
 %% Bode
 h1 = figure
 %belezura

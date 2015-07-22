@@ -158,9 +158,10 @@ A Fig. \ref{fig:modelo:circuito:passivo:forcas} demonstra as forças atuantes no
 
 O circuito passivo deve possuir rigidez axial suficiente para manter o rotor alinhado em ambientes com gravidade (para validação na terra) e rigidez radial menor para um baixo gasto energético do circuito ativo na estabilização do rotor.
 
-A estabilidade em tilt do rotor é garantida pela topologia plana, que prioriza o deslocamento axial ao radial para movimentos angulares. Com isso, uma pequena inclinação causa um grande deslocamento no eixo z e um pequeno deslocamento nos eixos x e y, gerando um torque restaurativo. 
+A estabilidade em tilt do rotor é garantida pela topologia plana, que prioriza o deslocamento axial ao radial para movimentos angulares.
+Com isso, uma pequena inclinação causa um grande deslocamento no eixo z e um pequeno deslocamento nos eixos x e y, gerando um torque restaurativo. 
 
-Caso o mancal não fosse projetado com esse ideal, uma inclinação causaria uma aproximação cruzada dos ferros (rotor e estator externo) tornando o mancal instável ao tilt.
+Caso o mancal não fosse projetado com esse ideal, uma inclinação causaria uma aproximação cruzada dos ferros (rotor e estator externo) tornando o mancal instável ao tilt. 
 
 \todo[inline]{colocar figura do tilt}
 
@@ -303,7 +304,7 @@ Ao longo do desenvolvimento da dissertação, utilizou-se as nomenclaturas a seg
 	\label{fig:modelo_dimensoes}
 \end{figure}
 
- \subsection{Modelo em Elementos Finitos}
+ \section{Modelo em Elementos Finitos}
  
  Foi utilizado como ferramenta de modelagem o Software de elementos finitos e multi física \textit{Comsol}. Nas simulações foram utilizados a curva de histerese do Aço 1020 , as simulações foram realizadas com uma solido tridimensional e a análise realizada foi a estacionária.  A Fig. \ref{Fig:Simulacao:Passivo:Mesh} ilustra a malha utilizada na execução das simulações com um número aproximado de 19000 elementos.
  
@@ -325,6 +326,8 @@ Na simulação do ímã, utilizou-se a relação de magnetização : $B = \mu_0 
 
 \section{Prototipagem}
 
+\todo[inline]{melhorar}
+ 
 Para prototipagem do mancal foi necessário a criação de nove diferentes peças para possibilitar a montagem do sistema. A proposta de montagem visa minimizar a influência no circuito magnético que alteraria o comportamento das forças no rotor mas ao mesmo tempo buscou-se um sistema simétrico e robusto.  A Fig. \ref{fig:montgem:corte} é um corte da estrutura proposta, verificamos que o estator interno (RW-M-EI) é formado por uma única peça, enquanto o rotor e o estator externo são fragmentados em mais de uma parte.
 
 A localização e os tipos de parafuso (magnético, não magnético) foi uma decisão de projeto, optou-se por uma localização que minimiza-se a influência no circuito magnético. A Tab. \ref{Tab:nomenclatura:mancal} possui a descrição e nomenclatura das partes propostas para a prototipagem do mancal magnético.
@@ -357,5 +360,23 @@ A não utilização de materiais laminados propicia  a aparição de correntes p
 \caption{Partes do mancal}
 \label{fig:montgem:corte}
 \end{figure} 
+
+A prototipagem foi realizada a fim de verificação da arquitetura proposta analisando as estabilidades passivas e as demais forças envolvidas. Esse protótipo foi construído a partir de um estudo inicial e não possui as dimensões otimizados encontradas nos capítulos seguintes, porém suas dimensões são da ordem de grandeza do resultado dessa dissertação.
+
+Dificuldades foram enfrentadas com esse modelo, dentre elas a do embobinamento dos polos, que não foi possível realizar de forma manual e falta de precisão na usinagem que causou desalinhamento das peças e diferença nos raios.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.7\linewidth]{Figs/img/completo}
+\caption{}
+\label{fig:completo}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.7\linewidth]{Figs/img/partes}
+\caption{}
+\label{fig:partes}
+\end{figure}
 
 

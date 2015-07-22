@@ -13,6 +13,12 @@
 \usepackage{subfig}
 \usepackage[section]{placeins}
 
+%The placeins package gives the command \FloatBarrier, which will make sure any floats will be put in before this point.
+\usepackage{placeins} % put this in your pre-amble
+
+%The flafter package ensures that floats don't appear until after they appear in the code.
+\usepackage{flafter}  % put this in your pre-amble
+
 
 \usepackage{tikz,xcolor}
 \usetikzlibrary{shapes,arrows}
@@ -68,7 +74,7 @@
 	\item do controle controlar um sistema do matlab no comsol
 \end{itemize}
 
-\chapter{Conclusões}
+\chapter{Considerações Finais}
 
 
 % Formato da bibliografia
