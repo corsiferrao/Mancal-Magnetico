@@ -58,7 +58,6 @@ Outra solução é a utilização de um mancal magnético \citep{Bangcheng2012},
 
 A ausência de fricção elimina a zona morta de aplicação de torque em baixas velocidades, eliminando não-linearidades da lei de controle, além de possibilitar a eliminação de defeitos de balanceamento e vibrações mecânicas, com consequente ganho em simplicidade dos algoritmos e em desempenho do controle de atitude. A contrapartida é a adição de uma malha de controle para a suspensão eletromagnética. O ganho de eficiência trazido pela ausência de fricção também é contrabalanceado, ao menos parcialmente, pelo consumo de potência dos atuadores deste tipo de mancal.
 
-\todo[inline]{inserir figura }
 
 \section{Revisão bibliográfica}
 
@@ -128,12 +127,12 @@ Com essa arquitetura é possível utilizar as bobinas tanto para exercer uma for
 
 Mais recentemente uma nova arquitetura foi proposta por \citet{Bangcheng2012} para ser utilizado em uma roda de reação de um satélite ágil.  O rotor é composto de duas partes, uma externa utilizada para estabilizar o mancal na direção axial e outra interna para controle de posição na direção radial. Diferente das outras propostas, essa não utiliza um perfil em C para estabilização dos graus de liberdade passivos, mas sim, faz uso de um perfil plano com ímãs permanentes tanto no rotor quanto no estator.  Ímãs permanentes também usados nos polos do mancal criando um fluxo (\textit{bias}) constante diminuindo a corrente necessária para controlar o rotor.
  
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=1\linewidth]{./Figs/mancais/chines}
-	\caption{Corte da topologia proposta por \cite{Bangcheng2012}}
-	\label{Fig:modelo:chines}
-\end{figure}
+%\begin{figure}[!ht]
+%	\centering
+%	\includegraphics[width=1\linewidth]{./Figs/mancais/chines}
+%	\caption{Corte da topologia proposta por \cite{Bangcheng2012}}
+%	\label{Fig:modelo:chines}
+%\end{figure}
 
 \subsection{Modelagem Eletromagnética}
 
@@ -141,7 +140,7 @@ Devido as não linearidades do mancal magnético (por exemplo a sua rigidez em f
 
 Modelos analíticos \cite{Tezuka2013, Chiba} auxiliam no entendimento e na escolha dos parâmetros construtivos e magnéticos do mancal. A solução de um modelo analítico quando comparado com um em elementos finitos é computacionalmente mais rápida.
 
-Com o modelo analítico é possível a utilização de métodos de otimização \todo{citar} para a obtenção de um mancal com dimensões e propriedades magnéticas melhores. 
+Com o modelo analítico é possível a utilização de métodos de otimização \citep{Wu2009, Fang2014} para a obtenção de um mancal com melhores propriedades, dentre elas, menor potência, maior rigidez e dimensões dentro das especificações. 
 
 \subsection{Sensoriamento}
 

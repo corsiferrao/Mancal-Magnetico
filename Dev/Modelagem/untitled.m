@@ -23,16 +23,41 @@ Kb = E*Hb*Ab/Lb;        % contante elastica a meia escursao [N/m]
 
 load Fp_model;
 
-load controlador_v1
+%% L
 
-%% L0
+L = tf(1,[L2 R])
+%bode(L);
 
-L = tf(1,[L2 R]);
-bode(L);
+%% Rotor
+Ro = tf([Kb],[m 0 -Kp]) 
 
 %% Sistema
+G = L*Ro;
 
-G = tf([Kb],conv([m 0 -Kp],[0 L2 R])) 
+rlocus(G)
+figure
+rlocus(L*Ro)
 
-bode(G)
-pole(G)
+%% Controlador H_inf
+
+s = zpk('s');
+w0 = 500;
+Gd = w0/(s^2+s+0.001);
+
+[K,CL,GAM] = loopsyn(G,Gd); % Design a loop-shaping controller K
+
+[A, B, C, D] = ssdata(K);
+[Num, Den] = ss2tf(A,B,C,D);
+c = tf(Num,Den);
+
+% Plot the results
+sigma(G*K,'r',Gd,'k-.',Gd/GAM,'k:',Gd*GAM,'k:',{.1,30})
+legend('Achieved Loop Shape','Target Loop Shape','Gd/GAM','Gd*GAM')
+
+
+T = feedback(G*K,eye(1));
+sigma(T,ss(GAM),'r*',{.1,30});
+legend('Closed loop','GAM')
+grid
+
+%% Controlador Alocaçao de polos
