@@ -33,10 +33,10 @@ A dinâmica do rotor é influenciada basicamente pela sua velocidade de rotaçã
  Duas forças distintas agem no rotor: a primeira, não conservativa ($Q^{nc}$) é causada pela força de atração ($F_b$) nos atuadores, é dependente da posição do rotor e da corrente aplicada ($i$); a segunda, conservativa ($Q^{c}$) é dependente somente da posição do rotor e é causada pela força de atração dos ímãs, podendo ser traduzida para uma rigidez ($K_p$). Ambas as forças $F_b$ e $K_p$ são levantadas via o modelo de elementos finitos. 
 	 	
  \begin{align}
- 	Q_y^{nc} &= F_{by}(d_x,i)  \\
- 	Q_x^{nc} &= F_{bx}(d_y,i)  \\
- 	Q^{c}_x  &= K_p \, d_x \\
- 	Q^{c}_y  &= K_p \, d_y 
+ 	Q_y^{nc} &= F_{by}(x,i)  \\
+ 	Q_x^{nc} &= F_{bx}(y,i)  \\
+ 	Q^{c}_x  &= K_p \, x \\
+ 	Q^{c}_y  &= K_p \, y 
  \end{align}
   
   Com a resolução da lagrangiana (Eq. \ref{eq:dinamica:lagrangiana}) obtemos as equações da dinâmica (Eq. \ref{eq:dinamica:modelo}) do sistema:
@@ -49,9 +49,9 @@ A dinâmica do rotor é influenciada basicamente pela sua velocidade de rotaçã
   
  	\begin{align}
  	I \ddot{\theta} &= 0 \\
- 	m \ddot{x}		&= K_p \, d_x  - F_{bx}(dx,i) \\
- 	m \ddot{y}		&= K_p \, d_y  - F_{by}(dy,i) \label{eq:dinamica:rotor:radial}\\	
- 	m \ddot{z}  	&= K_z \, d_z + m g 
+ 	m \ddot{x}		&= K_p \, x  - F_{bx}(x,i) \\
+ 	m \ddot{y}		&= K_p \, y  - F_{by}(y,i) \label{eq:dinamica:rotor:radial}\\	
+ 	m \ddot{z}  	&= K_z \, z + m g 
  	\label{eq:dinamica:modelo}
  	\end{align}	
  

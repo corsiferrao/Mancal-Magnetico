@@ -25,18 +25,35 @@ load Fp_model;
 
 %% L
 
-L = tf(1,[L2 R])
+L = tf(Kb,[L2 R])
 %bode(L);
 
 %% Rotor
-Ro = tf([Kb],[m 0 -Kp]) 
+Ro = tf(1,[m 0 -Kp]) 
 
 %% Sistema
 G = L*Ro;
+Gss = ss(G);
 
+figure;
 rlocus(G)
-figure
-rlocus(L*Ro)
+
+%% PID
+P = 2.58;
+I = 15.25;
+D = 0.044;
+N = 1616.33;
+
+PID = tf([P+D*N,P*N+I,I*N],[1 N 0])
+
+rlocus(PID)
+
+%%
+rlocus(G*PID)
+
+%% malha fechada
+mf = feedback(G*PID,1);
+rlocus(mf)
 
 %% Controlador H_inf
 

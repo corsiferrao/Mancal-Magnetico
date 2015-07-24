@@ -21,7 +21,7 @@ Uma roda de reação pode ser descrita como um atuador inercial com funcionament
 
 Rodas de reação são tipicamente constituídas de um motor elétrico, geralmente um motor sem escovas, um mancal e um elemento de inércia.  O elemento de inércia e o motor são montados sobre o mancal que deve garantir a  precisa rotação em torno de um eixo. A velocidade de rotação do sistema é controlado por uma eletrônica de acionamento do motor. Rodas de reação podem ser comandadas de duas maneiras distintas: por rotação ou por torque. Quando comandada por torque, a roda de reação deve ser capaz de estimar o torque útil gerado por ela (o torque efetivo menos as perdas). 
 
-A Fig. \ref{fig:EsquemaRoda} ilustra um esquema genérico de uma roda de reação, no caso quatro são os subsistemas: eletrônica de acionamento, motor, mancal e inércia. A eletrônica é responsável pelo controle e acionamento do motor que possui por sua vez, possui um sensor de velocidade e um de corrente. 
+Fig. \ref{fig:EsquemaRoda} ilustra um esquema genérico de uma roda de reação, no caso quatro são os subsistemas: eletrônica de acionamento, motor, mancal e inércia. A eletrônica é responsável pelo controle e acionamento do motor que possui por sua vez, possui um sensor de velocidade e um de corrente. 
 
 
 \begin{figure}[ht!]
@@ -158,18 +158,24 @@ Já os mancais sensoreados utilizam sensores de deslocamentos exclusivos para a 
 
 O controle de mancais magnéticos é uma área fértil da engenharia de controle devido as não linearidades do sistema o que torna o projeto do controle não trivial.  
 
-Técnicas de controle clássico são utilizados com bastante frequência em mancais magnéticos, controle do tipo PID  \citep{Tezuka2013} possuem boa robustez. O controle  do tipo \textit{feedforward} é utilizado em casos em que existe o acoplamento entre os graus de liberdade, podendo ser utilizado para o desacoplamento dos graus de liberdade. Outras técnicas propostas na literatura vão de encontro ao controle multivariável como controle robusto \citep{Jimenez-Lizafrraga2007}, controle ótimo (\citep{Schuhmann2012}) e controle não linear (\citep{Rundell1996}).
+Técnicas de controle clássico são utilizados com bastante frequência em mancais magnéticos, controle do tipo PID  \citep{Tezuka2013} possuem boa robustez. O controle  do tipo \textit{feedforward} é utilizado em casos em que existe o acoplamento entre os graus de liberdade, podendo ser utilizado para o desacoplamento dos graus de liberdade. Outras técnicas propostas na literatura vão de encontro ao controle multivariável como controle robusto \citep{Jimenez-Lizafrraga2007}, controle ótimo \citep{Schuhmann2012} e controle não linear \citep{Rundell1996}.
 
 
 \section{Metodologia}
 
 A metodologia utilizada no projeto envolve a utilização de simulações em elementos finitos para o projeto das partes magnéticas do mancal, uma modelagem fenomenológica é realizada para a realização da otimização dos parâmetros físicos do sistema. 
 
-O desenvolvimento do projeto foi executado como ilustrado na Fig. \ref{fig:metodologia:fluxo:dev}, onde primeiramente as especificações de projeto foram levantadas e uma topologia de mancal proposta com base nos levantamentos bibliográficos. Com um modelo em elementos finitos (FEM) calculou-se com exatidão os parâmetros magnéticos do mancal proposto a serem utilizados na modelagem dinâmica.
+O desenvolvimento do projeto foi executado como ilustrado na Fig. \ref{fig:metodologia:fluxo:dev}, onde primeiramente as especificações de projeto foram levantadas e uma topologia de mancal proposta com base no levantamento bibliográfico. 
 
-Com o modelo dinâmico, um controlador capaz de estabilizar o rotor em seu ponto de operação é proposto, com ele, prova-se a controlabilidade do mancal nas restrições de potência propostas. Um protótipo foi construído a fim de dar continuidade ao projeto.
+Um protótipo foi construído a fim de avaliar a topologia proposta, verificou-se com ele que as premissas de estabilidade e força foram alcançadas.
 
 Na etapa de otimização, dividiu-se o projeto em duas partes: na primeira considerou-se somente a parte passiva (estator externo e rotor) até atingirmos um conjunto com rigidez suficiente na direção axial e com menor força de atração na direção radial. Com esses valores buscou-se um estator interno capaz de exercer força de atração suficiente no rotor para estabilizar em seu ponto de operação.
+
+Com um modelo em elementos finitos (FEM) calculou-se com exatidão os parâmetros magnéticos do mancal proposto a serem utilizados na modelagem dinâmica do rotor.
+
+Com o modelo dinâmico, um controlador capaz de estabilizar o rotor em seu ponto de operação é proposto, com ele, prova-se a controlabilidade do mancal nas restrições de potência propostas. 
+
+
  
 \begin{figure}[th!]
 	\centering
