@@ -1,3 +1,4 @@
+%% indutancias
 L1 = -1.206e-05;
 L2 = 7.807e-05;
 
@@ -14,39 +15,40 @@ Vmax = 30;              % tensao maxima de excitacao das bobinas [V]
 Kp = 625;
 Kb = 10;
 
-E = 3e9;                % elastificade do nylon
-Lb = 5.3e-3;            % profundidade (radial) do batente [m]
-Hb = 8e-3;              % altura (axial) do batente [m]
-dA = [1.435e2 3.335e-2];% A = dA(1)*dL^2 + dA(2)*dL (area de penetracao no batente) [m2]
-Ab = dA * [1e-8 1e-4]'; % area de penetracao a meia excurcao [m2]
-Kb = E*Hb*Ab/Lb;        % contante elastica a meia escursao [N/m]
-
 load Fp_model;
 
-%% L
+% L
 
-L = tf(Kb,[L2 R])
+L = tf(Kb,[L2 R]);
 %bode(L);
 
-%% Rotor
-Ro = tf(1,[m 0 -Kp]) 
+% Rotor
+Ro = tf(1,[m 0 -Kp]);
 
-%% Sistema
+% Sistema
 G = L*Ro;
 Gss = ss(G);
 
 figure;
 rlocus(G)
 
-%% PID
-P = 2.58;
-I = 15.25;
-D = 0.044;
-N = 1616.33;
+%% Estimador
+u0 = 4*pi*1E-7;
+Sg = 
 
-PID = tf([P+D*N,P*N+I,I*N],[1 N 0])
+%% PID
+s = zpk('s');
+
+P = 2.62;
+I = 10.8;
+D = 0.061;
+N = 1134;
+
+PID = P*(1+I/s+D*N/(1+N/s))
 
 rlocus(PID)
+figure
+rlocus(PID*G)
 
 %%
 rlocus(G*PID)
@@ -54,6 +56,11 @@ rlocus(G*PID)
 %% malha fechada
 mf = feedback(G*PID,1);
 rlocus(mf)
+
+%% LQI
+lqi_Q = [1 1 1 1; 1 1 1 1; 1 1 1 1; 1 1 1 1];
+lqi_R = [1];
+[lqi_K lqi_S lqi_E] = lqi(Gss,lqi_Q,lqi_R)
 
 %% Controlador H_inf
 
@@ -68,10 +75,11 @@ Gd = w0/(s^2+s+0.001);
 c = tf(Num,Den);
 
 % Plot the results
+figure
 sigma(G*K,'r',Gd,'k-.',Gd/GAM,'k:',Gd*GAM,'k:',{.1,30})
 legend('Achieved Loop Shape','Target Loop Shape','Gd/GAM','Gd*GAM')
 
-
+figure
 T = feedback(G*K,eye(1));
 sigma(T,ss(GAM),'r*',{.1,30});
 legend('Closed loop','GAM')

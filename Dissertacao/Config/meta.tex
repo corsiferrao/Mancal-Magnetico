@@ -3,6 +3,21 @@
 %% Codificação e formatação básica do LaTeX
 % Suporte para português (hifenação e caracteres especiais)
 \usepackage[english,brazil]{babel}
+\addto\captionsbrazil{
+    %% ajusta nomes padroes do babel
+    \renewcommand{\bibname}{Refer\^encias}
+    \renewcommand{\indexname}{\'Indice}
+    \renewcommand{\listfigurename}{Lista de ilustra\c{c}\~{o}es}
+    \renewcommand{\listtablename}{Lista de tabelas}
+    %% ajusta nomes usados com a macro \autoref
+    \renewcommand{\pageautorefname}{p\'agina}
+    \renewcommand{\sectionautorefname}{se{\c c}\~ao}
+    \renewcommand{\subsectionautorefname}{subse{\c c}\~ao}
+    \renewcommand{\paragraphautorefname}{par\'agrafo}
+    \renewcommand{\subsubsectionautorefname}{subse{\c c}\~ao}
+    \renewcommand{\paragraphautorefname}{subse{\c c}\~ao}
+}  
+
 
 % Codificação do arquivo
 \usepackage[utf8]{inputenc}

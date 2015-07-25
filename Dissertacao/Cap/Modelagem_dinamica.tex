@@ -228,7 +228,7 @@ O controlador age diretamente sob a posição do rotor no plano x,y através de 
 
 \subsection{Estimador}
 	
-A fim de superar as não linearidades no ganho do atuador ($Kb(d,i)$, um controle de força é projetado no lugar do de corrente. A força calculada pelo controle é aplicada em um estimador que calcula a corrente necessária a ser aplicada na bobina com base na posição do rotor. Figura \ref{fig:diagrama_controlador_estimador} ilustra o estimador de corrente proposto, que é dependente da área do polo ($S_n$) do comprimento do entreferro ($l_g$), do número de espirar ($n_n$). O equacionamento (Eq. \eqref{eq:estimator:i}) é obtido através de um modelo simplificado da equação de força magnética considerando apenas um entreferro e um componente ferromagnético.
+A fim de superar as não linearidades no ganho do atuador ($Kb(d,i)$), um controle de força é projetado no lugar do de corrente. A força calculada pelo controle ($F_b$) é aplicada em um estimador que calcula a corrente necessária a ser aplicada na bobina com base na posição do rotor. Figura \ref{fig:diagrama_controlador_estimador} ilustra o estimador de corrente proposto, que é dependente da área do polo ($S_n$) do comprimento do entreferro ($l_g$), do número de espirar ($n_n$). O equacionamento (Eq. \eqref{eq:estimator:i}) é obtido através de um modelo simplificado da equação de força magnética considerando apenas um entreferro e um componente ferromagnético.
 
 %\begin{align}
 %F_b &= \frac{B_g^2 \m S_n}{2\, \mu_0} \\
@@ -236,7 +236,7 @@ A fim de superar as não linearidades no ganho do atuador ($Kb(d,i)$, um control
 %\end{align}
 	
 \begin{equation}
-I = \sqrt{\frac{2 \, F_b \, \mu_0}{S_n(l_g)}} \, \frac{\mu_0 \, S_n(l_g)^2}{n_n}
+I = \sqrt{\frac{2 \, F_b \, \mu_0}{S_n}} \, \frac{l_g \mu_0}{n_n}
 \label{eq:estimator:i}
 \end{equation}
 	
@@ -249,7 +249,20 @@ I = \sqrt{\frac{2 \, F_b \, \mu_0}{S_n(l_g)}} \, \frac{\mu_0 \, S_n(l_g)^2}{n_n}
 
 \subsection{Controlador}
 
-O controle projetado para o mancal magnético proposto utiliza a técnica de controle ótimo 
+O controle projetado para o mancal magnético proposto utiliza a técnica de controle robusto $H_\infty$  \textit{loop-shaping}. O controle robusto foi escolhido para compensar as variações na planta nominal. 
+
+A abordagem do controle \textit{loop-shaping} parte da especificação da resposta em frequência da função de transferência em malha fechada $W(s)$, do sistema composto pelo controlador $C(s)$ e pela planta $G(s)$. 
+
+\begin{align}
+	W(s) = \frac{C(s) G(s)}{1 + C(s) G(s)}
+\end{align}
+
+Deseja-se que o sistema possua um bom acompanhamento do sinal de referência (erro estacionário nulo) e rejeição a distúrbios em frequências mais elevadas. Sendo a função sensibilidade definida por $S(s)$, busca-se : $S(s) + T(s) = 1$.
+
+Escolheu-se para a função de sensibilidade complementar o comportamento de um sistema de segunda ordem, 
+
+
+
 
 %\section{Simulações}
 %

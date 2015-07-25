@@ -87,6 +87,7 @@ for x = 0:0.05:0.3
     xx = 1;
 end
 
+
 figure
 [X Y] = meshgrid(0:0.05:0.3, 0:0.5:4);
 surf(Y,X,f);
@@ -97,7 +98,9 @@ zlabel('F [N]');
 title('Force (N) x current (A) x displacment (mm)')
 belezura 
 
-%%
+%% fit
+
+fit([X,Y],f,'poly23')
 
 Fp_model =  fit([ativo_otimizado_I_dx_map.dx,ativo_otimizado_I_dx_map.i],ativo_otimizado_I_dx_map.f, 'poly23' )
 
