@@ -18,13 +18,15 @@ Em projetos aerospaciais muitas vezes especifica-se atuadores que não possuem e
 
 O processo de otimização proposto facilita a escolha dos parâmetros construtivos do mancal já que o problema é reduzido a especificação de desempenho e restrições, só possível devido ao modelo analítico dos campos magnéticos envolvidos.
 
-A utilização de simulações em elementos finitos tornam mais preciso o resultado final, sendo uma ferramenta importante tanto para validação do modelo e para o entendimento do mancal. Porém devido ao longo tempo de processamento e resolução do modelo, não deve ser o único meio de projeto.
+A utilização de simulações em elementos finitos tornam mais preciso o resultado final, sendo uma ferramenta importante tanto para validação do modelo quanto para o entendimento dos campos magnéticos atuantes no sistema. Porém devido ao longo esforço computacional por consequência um grande tempo de processamento para a resolução do modelo, não deve ser o único meio de projeto, sendo necessário os modelos analíticos.
 
-Quando na criação do protótipo esse não pode acontecer de maneira e verificações nas escolhas das fixações devem ser verificadas especialmente com o modelo em elementos finitos que possibilita uma forma gráfica de visualização dos campos magnéticos. 
+Quanto na criação do protótipo esse não pode acontecer de maneira e verificações nas escolhas das fixações devem ser verificadas especialmente com o modelo em elementos finitos que possibilita uma forma gráfica de visualização dos campos magnéticos.  \todo{melhorar}
 
 A utilização de materiais magnéticos com melhores propriedades magnéticas a que o do utilizado (Aço 1020) pode tornar o mancal resultante com menores dimensões e menos suscetível as correntes induzidas, quando submetido a um campo alternado. 
 
-O modelo dinâmico obtido é de fácil parametrização e depende das forças magnéticas envolvidas (ímã e polos) além da massa do rotor, sua característica de desacoplamento entre os eixos x e y possibilita a utilização de técnicas de controle do tipo SISO, de fácil implementação.
+O modelo dinâmico obtido é de fácil parametrização e depende das forças magnéticas envolvidas (ímã e polos) além da massa do rotor, sua característica de desacoplamento entre os eixos x e y possibilita a utilização de técnicas de controle do tipo SISO, de fácil implementação em sistemas digitais.
+
+
 
 \todo{continuar, falar do controlador}
 

@@ -123,3 +123,58 @@ legend('Location','eastoutside')
 belezura
 export_pdf('Eletromagnetica/Resultados/ativo_otimizado_fem_I_dx_map',1);
 
+%% Só corrente
+load  ativo_otimizado_I_mapa_corrente;
+
+c = 1;
+xx =1;
+yy =1;
+
+for x = 0:0.1:0.3
+    for y = 0:0.5:4
+        f(xx,yy) = -ativo_otimizado_I_mapa_corrente.f(c);
+        c = c+1;
+        xx = xx +1;
+    end
+    yy = yy + 1;
+    xx = 1;
+end
+
+
+figure
+[X Y] = meshgrid(0:0.1:0.3, 0:0.5:4);
+surf(Y,X,f);
+colormap(jet)    % change color map
+ylabel('dx [mm]');
+xlabel('I [A]');
+zlabel('F [N]');
+title('Force (N) x current (A) x displacment (mm)')
+belezura 
+
+%% fit ponto de operação
+fitt = fit(ativo_otimizado_I_mapa_corrente.f(1:9), ativo_otimizado_I_mapa_corrente.i(1:9),, 'poly1' )
+%% fit 3d
+
+% Set up fittype and options.
+ft = fittype( 'poly11' );
+opts = fitoptions( ft );
+opts.Lower = [-Inf -Inf -Inf];
+opts.Robust = 'Bisquare';
+opts.Upper = [Inf Inf Inf];
+
+[xData, yData, zData] = prepareSurfaceData(  X(1:5,:),  Y(1:5,:), f(1:5,:));
+
+
+% Fit model to data.
+[fitresult, gof] = fit( [xData, yData], zData, ft, opts );
+
+% Plot fit with data.
+figure( 'Name', 'untitled fit 1' );
+h = plot( fitresult, [xData, yData], zData );
+legend( h, 'untitled fit 1', 'f vs. X, Y', 'Location', 'NorthEast' );
+% Label axes
+xlabel( 'X' );
+ylabel( 'Y' );
+zlabel( 'f' );
+grid on
+view( -85.5, 54.0 );

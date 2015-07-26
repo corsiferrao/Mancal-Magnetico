@@ -102,6 +102,8 @@ Para o polo operando com a corrente entre 0 e 2 A, podemos descrever uma equaç�
      \label{eq:fb:primeiro:grau}
 \end{equation}
 
+\todo{melhorar}
+
 \subsection{Dinâmica Atuador}
 
 Devido as bobinas dos polos do estator interno, uma dinâmica do atuador ($G_a(s)$) atrelada a indutância deve ser considerada. A bobina é modelada como um circuito RL, com a dinâmica descrita na Eq. \eqref{eq:dinamica:bobina}.
@@ -186,7 +188,7 @@ O modelo encontrado é utilizado para o projeto do controlador ($C(s)$), esse ot
 \end{align}
  
 
-Os três polos estão localizado em: $[-82E3 -40 +40]$ , onde a função de transferência é descrita na Eq. \eqref{eq:dinamica:tfunc}, os parâmetros utilizados foram encontrados nas secções anteriores. 
+Os três polos estão localizado em: $[-82E3 -40 +40]$ , onde a função de transferência é descrita na Eq. \eqref{eq:dinamica:tfunc}, os parâmetros utilizados foram encontrados nas secções anteriores. \todo{atualizar}
 
 %Verificamos através da analise em frequência (Fig. \ref{fig:bode:rlocus:pnt:operacao}) que o sistema é instável em malha aberta e um controlador deve ser projetado para estabilizar o sistema. 
 
@@ -226,9 +228,11 @@ Um controlador é projetado a fim de demonstrar a controlabilidade do sistema pr
 
 O controlador age diretamente sob a posição do rotor no plano x,y através de duas forças ortogonais: $F_{bx}$ e $F_{by}$. A corrente necessária para gerar essas forças é calculada via um estimador de corrente, que traduz a força em uma corrente levando em consideração a posição do mancal.
 
+Um estimador de forças é proposto a fim de minimizar as variações do ganho do atuador, o controlador age não diretamente sobre a corrente mas sim sobre a força necessária para estabilizar o rotor. O estimador é responsável por traduzir a força imposta pelo controlador em uma corrente.
+
 \subsection{Estimador}
 	
-A fim de superar as não linearidades no ganho do atuador ($Kb(d,i)$), um controle de força é projetado no lugar do de corrente. A força calculada pelo controle ($F_b$) é aplicada em um estimador que calcula a corrente necessária a ser aplicada na bobina com base na posição do rotor. Figura \ref{fig:diagrama_controlador_estimador} ilustra o estimador de corrente proposto, que é dependente da área do polo ($S_n$) do comprimento do entreferro ($l_g$), do número de espirar ($n_n$). O equacionamento (Eq. \eqref{eq:estimator:i}) é obtido através de um modelo simplificado da equação de força magnética considerando apenas um entreferro e um componente ferromagnético.
+A fim de superar as não linearidades no ganho do atuador ($Kb(d,i)$), um controle de força é projetado no lugar do de corrente. A força calculada pelo controle ($F_b$) é aplicada em um estimador que calcula a corrente necessária a ser aplicada na bobina com base na posição do rotor. Fig. \ref{fig:diagrama_controlador_estimador} demonstra o estimador de corrente proposto. O mesmo é dependente da área do polo ($S_n$) do comprimento do entreferro ($l_g$) e do número de espirar ($n_n$). O equacionamento (Eq. \eqref{eq:estimator:i}) é obtido através de um modelo simplificado da equação de força magnética considerando apenas um entreferro e um componente ferromagnético.
 
 %\begin{align}
 %F_b &= \frac{B_g^2 \m S_n}{2\, \mu_0} \\
@@ -240,6 +244,8 @@ I = \sqrt{\frac{2 \, F_b \, \mu_0}{S_n}} \, \frac{l_g \mu_0}{n_n}
 \label{eq:estimator:i}
 \end{equation}
 	
+Um exemplo da variação do ganho do atuador ($K_b$) pode ser ilustrado em dois cenários distintos, o primeiro, quando o rotor está em seu ponto de operação a força de atração gerada pela aplicação de uma corrente de 4A é 209 Newton mas quando o rotor encontra-se em seu deslocamento máximo  ($d_x = 0.3 mm$) a força resultante é de apenas 120N.
+
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=0.5\linewidth]{Figs/Modelagem/controlador_estimador}
@@ -249,39 +255,50 @@ I = \sqrt{\frac{2 \, F_b \, \mu_0}{S_n}} \, \frac{l_g \mu_0}{n_n}
 
 \subsection{Controlador}
 
-O controle projetado para o mancal magnético proposto utiliza a técnica de controle robusto $H_\infty$  \textit{loop-shaping}. O controle robusto foi escolhido para compensar as variações na planta nominal. 
-
-A abordagem do controle \textit{loop-shaping} parte da especificação da resposta em frequência da função de transferência em malha fechada $W(s)$, do sistema composto pelo controlador $C(s)$ e pela planta $G(s)$. 
+O controlador proposto para o mancal magnético é um controle do tipo Proporcional (P) Integral (I) e Derivativo (D), com a estrutura da Eq. \eqref{eq:controle:pid}, um filtro (N) é aplicado ao fator derivativo a fim de evitar que ruídos provenientes do sensor sejam amplificados pelo controlador.
 
 \begin{align}
-	W(s) = \frac{C(s) G(s)}{1 + C(s) G(s)}
+	C(s) = P \, \left( 1 + \frac{I}{s} + \frac{N \, D}{ 1 + \frac{N}{s}} \right)
+	\label{eq:controle:pid}
 \end{align}
 
-Deseja-se que o sistema possua um bom acompanhamento do sinal de referência (erro estacionário nulo) e rejeição a distúrbios em frequências mais elevadas. Sendo a função sensibilidade definida por $S(s)$, busca-se : $S(s) + T(s) = 1$.
+O controlador é projetado considerando o ganho da bobina unitário ($K_b = 1$) isso é necessário para gerar um controlador que possua a força como esforço de controle e não corrente. A saída do controlador é aplicada ao estimador que traduz por sua vez a força em tensão a ser aplicada na bobina. 
 
-Escolheu-se para a função de sensibilidade complementar o comportamento de um sistema de segunda ordem, 
+Devido a não estabilidade do sistema em malha aberta e as alterações de ganho do atuador de forma não linear com a movimentação do rotor, optou-se por projetar um controlador com privilegiando a robustez a agressividade.
+
+O controlador obtido via especificação de possui os ganhos da  Tab. \ref{tab:controle:pid}.
+
+\begin{table}[ht!]
+\centering
+	\begin{tabular}{c c c c}
+	 kp  &  ki & kd &  N  \\
+	 \hline \hline
+		1926	 &	5.89	& 0.017	&1616
+	\end{tabular} 
+	\caption{Ganhos do controlador PID}
+	\label{tab:controle:pid}
+\end{table}
 
 
+	\begin{figure}[!ht]
+		\subfloat[t][Modelo analítico]{
+			\includegraphics[width=0.5\linewidth]{Figs/controle/bode_pid_g}
+		}
+		%
+		\subfloat[b][Modelo em elementos finitos]{
+			\includegraphics[width=0.5\linewidth]{Figs/controle/rlocus_pid_g}
+		}	
+		\caption{Analise do sistema controlado, diagrama de Bode e lugar das raizes}
+		\label{Fig:controle:analise}
+	\end{figure}
 
+O controle obtido impõem um estabilidade no mancal com 60 graus de margem de fase e 27.8 dB margem de ganho. O tempo de acomodação é de 123 ms com sobressinal de 12 \%. A resposta ao pode ser visto na Fig. \ref{fig:controle:degrau}.
 
-%\section{Simulações}
-%
-%Simulações foram realizadas em malha aberta com o modelo não linear das forças,  a Fig. \ref{fig:dinamica:choque:rotor} é o comportamento do rotor quando nenhuma corrente é aplicada nos polos, verificamos  o choque com o batente em torno do 5ms.
-%
-%\begin{figure}[th!]
-%\centering
-%\caption*{Posição x,y (mm) do rotor ao longo do tempo (s)}
-%\includegraphics[width=0.7\linewidth]{./Modelagem/dinamica_choque_rotor}
-%\caption{Dinâmica instável do rotor e choque no batente}
-%\label{fig:dinamica:choque:rotor}
-%\end{figure}
-%
-%A Fig. \ref{fig:dinamica:corrente:rotor} mostra o deslocamento do rotor dado a aplicação de 2.5 V nas bobinas x+,  verificamos a dinâmica da corrente dado a aplicação da corrente.
-%
-%\begin{figure}[th!]
-%\centering
-%\includegraphics[width=0.7\linewidth]{./Modelagem/dinamica_corrente_rotor.pdf}
-%\caption{Dinâmica do rotor dado a aplicação de tensão na bobina X+}
-%\label{fig:dinamica:corrente:rotor}
-%\end{figure}
-%
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.7\linewidth]{Figs/controle/step_pid_g}
+\caption{Resposta ao degrau do sistema em malha fechada com o controlador PID para o sistema linearizado}
+\label{fig:controle:degrau}
+\end{figure}
+
+O controle 
