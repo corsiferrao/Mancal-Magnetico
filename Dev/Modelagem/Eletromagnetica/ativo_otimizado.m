@@ -152,7 +152,7 @@ title('Force (N) x current (A) x displacment (mm)')
 belezura 
 
 %% fit ponto de operação
-fitt = fit(ativo_otimizado_I_mapa_corrente.f(1:9), ativo_otimizado_I_mapa_corrente.i(1:9),, 'poly1' )
+fitt = fit(ativo_otimizado_I_mapa_corrente.f(1:9), ativo_otimizado_I_mapa_corrente.i(1:9), 'poly1' )
 %% fit 3d
 
 % Set up fittype and options.

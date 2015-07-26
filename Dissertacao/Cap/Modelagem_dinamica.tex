@@ -183,30 +183,14 @@ O modelo encontrado é utilizado para o projeto do controlador ($C(s)$), esse ot
 
 \begin{align}
 	G_{ma}(s) &= \frac{K_b}{(s^2 \, m - K_p) \, (s\, L + R)}	\label{eq:dinamica:tfunc:gen} \\
-	&= \frac{10}{(s^2 \, 0.375 - 625) \, (s\, 76 \, 10^{-6} + 6.3)}
+	&= \frac{58}{(s^2 \, 0.375 - 625) \, (s\, 7.8 \, 10^{-5} + 6.3)}
 	 \label{eq:dinamica:tfunc}
 \end{align}
  
 
-Os três polos estão localizado em: $[-82E3 -40 +40]$ , onde a função de transferência é descrita na Eq. \eqref{eq:dinamica:tfunc}, os parâmetros utilizados foram encontrados nas secções anteriores. \todo{atualizar}
+Os três polos estão localizado em: $[-82E3 -41 +41]	$ , onde a função de transferência é descrita na Eq. \eqref{eq:dinamica:tfunc}, os parâmetros utilizados foram encontrados nas secções anteriores. 
 
-%Verificamos através da analise em frequência (Fig. \ref{fig:bode:rlocus:pnt:operacao}) que o sistema é instável em malha aberta e um controlador deve ser projetado para estabilizar o sistema. 
-
-%Para fins de análise e comparação, os polos do sistema para o rotor em seu deslocamento máximo estão localizados em : $[-40 -20 +40]$
-
-%\begin{figure}[!ht]
-%	\centering
-%	\subfloat[t][Lugar das raizes]{
-%	\includegraphics[width=0.6\linewidth]{Figs/Simulacoes/Dinamica/rlocus:pnt:operacao}
-%	}\\
-%	%
-%	\subfloat[b][Diagrama de Bode]{
-%	\includegraphics[width=0.6\linewidth]{Figs/Simulacoes/Dinamica/bode:pnt:operacao}
-%	}	
-%	
-%	\caption{Analise em frequência do sistema obtido}
-%	\label{fig:bode:rlocus:pnt:operacao}
-%\end{figure}
+Verifica-se que o sistema é instável em malha aberta e um controlador deve ser projetado para estabilizar o sistema. 
 
 \subsection{Modelo Dinâmico Não Linear}
 
@@ -221,14 +205,15 @@ A Fig. \ref{fig:diagrama:blocos:modelo:linear} demonstra o diagrama de blocos pr
 	\label{fig:diagrama:blocos:modelo:linear}
 \end{figure}
 
+Duas saturações devem ser consideradas, a primeira, referente a tensão da bobina deve ser limitada ao seu valor máximo (30V) e a segunda saturação é causada pelo batente do rotor, que limita sua excursão máxima.
 
 \section{Projeto do Controlador}
 
 Um controlador é projetado a fim de demonstrar a controlabilidade do sistema proposto dentro das especificações impostas ao mancal. O projeto do controlador é feito via modelo linear e validado utilizando o modelo não linear. 
 
-O controlador age diretamente sob a posição do rotor no plano x,y através de duas forças ortogonais: $F_{bx}$ e $F_{by}$. A corrente necessária para gerar essas forças é calculada via um estimador de corrente, que traduz a força em uma corrente levando em consideração a posição do mancal.
+O controlador age diretamente sob a posição do rotor no plano x,y através de duas forças ortogonais: $F_{bx}$ e $F_{by}$. A corrente necessária para gerar essas forças é calculada via um estimador de corrente, que traduz a força imposta pelo controlador na corrente necessária, levando em consideração a posição do rotor.
 
-Um estimador de forças é proposto a fim de minimizar as variações do ganho do atuador, o controlador age não diretamente sobre a corrente mas sim sobre a força necessária para estabilizar o rotor. O estimador é responsável por traduzir a força imposta pelo controlador em uma corrente.
+%Um estimador de forças é proposto a fim de minimizar as variações do ganho do atuador, o controlador age não diretamente sobre a corrente mas sim sobre a força necessária para estabilizar o rotor. O estimador é responsável por traduzir a força imposta pelo controlador em uma corrente.
 
 \subsection{Estimador}
 	
@@ -264,7 +249,7 @@ O controlador proposto para o mancal magnético é um controle do tipo Proporcio
 
 O controlador é projetado considerando o ganho da bobina unitário ($K_b = 1$) isso é necessário para gerar um controlador que possua a força como esforço de controle e não corrente. A saída do controlador é aplicada ao estimador que traduz por sua vez a força em tensão a ser aplicada na bobina. 
 
-Devido a não estabilidade do sistema em malha aberta e as alterações de ganho do atuador de forma não linear com a movimentação do rotor, optou-se por projetar um controlador com privilegiando a robustez a agressividade.
+Devido a instabilidade do sistema em malha aberta e as variações do ganho do atuador de forma não linear com a movimentação do rotor, optou-se por projetar um controlador com privilegiando a robustez a agressividade.
 
 O controlador obtido via especificação de possui os ganhos da  Tab. \ref{tab:controle:pid}.
 
@@ -292,12 +277,12 @@ O controlador obtido via especificação de possui os ganhos da  Tab. \ref{tab:c
 		\label{Fig:controle:analise}
 	\end{figure}
 
-O controle obtido impõem um estabilidade no mancal com 60 graus de margem de fase e 27.8 dB margem de ganho. O tempo de acomodação é de 123 ms com sobressinal de 12 \%. A resposta ao pode ser visto na Fig. \ref{fig:controle:degrau}.
+O controle obtido impõem uma estabilidade no mancal com 60 graus de margem de fase e 27.8 dB margem de ganho. O tempo de acomodação é de 123 ms com sobressinal de 12 \%. A resposta ao degrau é demonstrada na Fig. \ref{fig:controle:degrau}.
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=0.7\linewidth]{Figs/controle/step_pid_g}
-\caption{Resposta ao degrau do sistema em malha fechada com o controlador PID para o sistema linearizado}
+\caption{Resposta ao degrau do sistema em malha fechada com o controlador PID}
 \label{fig:controle:degrau}
 \end{figure}
 
