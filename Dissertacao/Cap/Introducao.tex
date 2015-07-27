@@ -11,17 +11,17 @@
 
 Os sistemas de controle de atitude e órbita são uma das tecnologias mais críticas de qualquer sistema espacial. O desenvolvimento de um sistema de controle de atitude em território nacional permanece incompleto \citep{Veloso2009} e a venda de seus componentes ao nosso país é, frequentemente, recusada por países detentores dessa tecnologia.
 
-Basicamente, um sistema de controle de atitude é formado por sensores, atuadores e uma central responsável pelo processamento dos sinais dos sensores e comando dos atuadores, segundo uma lei de controle. Os sensores mais comuns são detectores de horizonte, sensores magnéticos, sensores solares, giroscópios e rastreadores estelares. 
+Basicamente, um sistema de controle de atitude é formado por sensores, atuadores e uma central responsável pelo processamento dos sinais dos sensores e comando dos atuadores, segundo uma lei de controle \citep{Rycroft1992a}. Os sensores mais comuns são detectores de horizonte, sensores magnéticos, sensores solares, giroscópios e rastreadores estelares. 
 
 Os principais atuadores incluem: propulsores, torques magnéticos e rodas de reação. A quase totalidade destes componentes de controle possui atualmente alguma iniciativa de desenvolvimento no país, seja por instituições governamentais ou por grupos de pesquisa independentes \citep{PresidenciaRepublica}. A principal exceção são as rodas de reação que praticamente não tem projetos de desenvolvimento em andamento e, no entanto, representam um componente indispensável na realização de manobras, na estabilização e no controle de atitude em três eixos. 
 
-Rodas de reação são dificilmente substituíveis pois apresentam larga faixa de operação em torque (ao contrário de atuadores magnéticos) e são alimentadas pela energia renovável fornecida por painéis solares (ao contrário de propulsores baseados em um estoque finito de combustível). Por estes motivos, rodas de reação estão presentes em praticamente qualquer satélite que apresente requerimentos mínimos de desempenho em atitude.
+Rodas de reação são dificilmente substituíveis pois apresentam larga faixa de operação em torque (ao contrário de atuadores magnéticos) e são alimentadas pela energia renovável fornecida por painéis solares (ao contrário de propulsores baseados em um estoque finito de combustível) \cite{Ismail2010a}. Por estes motivos, rodas de reação estão presentes em praticamente qualquer satélite que apresente requerimentos mínimos de desempenho em atitude.
 
 Uma roda de reação pode ser descrita como um atuador inercial com funcionamento baseado no princípio de conservação do momento angular. A atuação da roda de reação sobre o satélite se realiza por intercâmbio do momento angular, limitado ao eixo de rotação da roda. Devido a grande diferença entre a inercia do satélite e o da roda de reação, um controle de atitude com muita precisão é possível com esse sistema.
 
 Rodas de reação são tipicamente constituídas de um motor elétrico, geralmente um motor sem escovas, um mancal e um elemento de inércia.  O elemento de inércia e o motor são montados sobre o mancal que deve garantir a  precisa rotação em torno de um eixo. A velocidade de rotação do sistema é controlada por uma eletrônica de acionamento do motor. Rodas de reação podem ser comandadas de duas maneiras distintas: por rotação ou por torque. Quando comandada por torque, a roda de reação deve ser capaz de estimar o torque útil gerado por ela (o torque efetivo menos as perdas). 
 
-Fig. \ref{fig:EsquemaRoda} ilustra um esquema genérico de uma roda de reação. No caso, quatro são os subsistemas: eletrônica de acionamento, motor, mancal e inércia. A eletrônica é responsável pelo controle e pelo acionamento do motor que, por sua vez, possui um sensor de velocidade e um de corrente. 
+Fig.\ref{fig:EsquemaRoda} ilustra um esquema genérico de uma roda de reação. No caso, quatro são os subsistemas: eletrônica de acionamento, motor, mancal e inércia. A eletrônica é responsável pelo controle e pelo acionamento do motor que, por sua vez, possui um sensor de velocidade e um de corrente. 
 
 
 \begin{figure}[ht!]
@@ -31,11 +31,9 @@ Fig. \ref{fig:EsquemaRoda} ilustra um esquema genérico de uma roda de reação.
 \label{fig:EsquemaRoda}
 \end{figure}
 
-
-O controle de atitude  com rodas de reação demanda que esse tipo de  atuador opere em toda sua escala de velocidade, inclusive na inversão de seu sentido de rotação (passagem pelo zero), de uma forma estável e controlada. Essa zona morta é efeito do atrito estático do mancal, minimizar esse efeito é essencial para o bom funcionamento da roda de reação. A zona morta pode ser compensada (no caso do mancal por rolamento) pela implementação de leis de controle com malhas de velocidade e corrente, além de um estimador de atrito.
+O controle de atitude  com rodas de reação demanda que esse tipo de  atuador opere em toda sua escala de velocidade, inclusive na inversão de seu sentido de rotação (passagem pelo zero), de uma forma estável e controlada. A zona morta, efeito do atrito estático do mancal deve ser minimizada a efeito de ser obter um bom funcionamento da roda de reação. A zona morta pode ser compensada (no caso do mancal por rolamento) pela implementação de leis de controle com malhas de velocidade e corrente, além de um estimador de atrito.
 
 O projeto de uma roda de reação começa pelo estudo do momento angular necessário para movimentar o satélite. Com o momento angular definido, especifica-se a inércia e então o mancal, por último projeta-se um motor capaz de rotacionar o conjunto mancal mais inércia.
-
 
 \section{Objetivo}
 
@@ -48,9 +46,9 @@ O projeto, envolve o desenvolvimento de uma topologia capaz de ser utilizada num
 
 A suspensão do rotor com relação ao estator representa uma parte crítica em rodas de reação \citep{taniwaki2003experimental} devido as consequências de qualquer fricção no movimento relativo entre estes dois componentes. Com efeito, a fricção se traduz não apenas em um maior consumo de potência elétrica como também na introdução de uma zona morta de atuação em torque, bem como na limitação da vida útil da roda de reação devido ao gradual desgaste do mancal.
 
-Uma solução mecânica para a interface entre o rotor e o estator é o mancal por rolamento. Apesar de sua aparente simplicidade, apresenta desafios para a obtenção dos valores mínimos de fricção necessários, em vista das exigências de consumo, controlabilidade e vida útil da roda de reação \citep{Krishnan2010}. No caso de aplicações aerospaciais, a lubrificação do rolamento representa também, considerável dificuldade devido à impossibilidade de utilização de lubrificantes tradicionais em condições de baixa ou nenhuma pressão atmosférica, que leva à perda dos componentes voláteis destes lubrificantes e sua consequente degradação. Outra dificuldade se deve à tendência de migração dos lubrificantes na ausência de gravidade, o que costuma ser abordado com estratégias de recaptura ou relubrificação. Sistemas de relubrificação, em particular, apresentam grande complexidade e seu comportamento orbital é de difícil validação em laboratório.
+Uma solução mecânica para a interface entre o rotor e o estator é o mancal por rolamento. Apesar de sua aparente simplicidade, apresenta desafios para a obtenção dos valores mínimos de fricção necessários, em vista das exigências de consumo, controlabilidade e vida útil da roda de reação \citep{Krishnan2010}. No caso de aplicações aerospaciais, a lubrificação do rolamento representa também, considerável dificuldade devido à impossibilidade de utilização de lubrificantes tradicionais em condições de baixa ou nenhuma pressão atmosférica, que leva à perda dos componentes voláteis destes lubrificantes e sua consequente degradação. Outra dificuldade se deve à tendência de migração dos lubrificantes na ausência de gravidade, o que costuma ser abordado com estratégias de recaptura ou relubrificação. Sistemas desse tipo, apresentam grande complexidade e seu comportamento orbital é de difícil validação em laboratório.
 
-As dificuldades associadas ao uso de mancal de rolamento residem também em sua modelagem, consequência da variação de viscosidade do lubrificante em função da temperatura do mancal, o que torna o coeficiente de fricção dependente da velocidade de rotação e das condições térmicas em geral. O mancal por rolamento apresenta, por outro lado, grande vantagem construtiva devido à compactação do sistema e a não necessidade de eletrônica extra para o seu controle. 
+As dificuldades associadas ao uso de mancal de rolamento residem também em sua modelagem, consequência da variação de viscosidade do lubrificante em função da temperatura do mancal, o que torna o coeficiente de fricção dependente da velocidade de rotação e das condições térmicas em geral \citep{Carrara2010}. O mancal por rolamento apresenta, por outro lado, grande vantagem construtiva devido à compactação do sistema e a não necessidade de eletrônica extra para o seu controle. 
 
 Para contornar os problemas de lubrificação em baixa pressão, algumas rodas de reação  utilizam um sistema hermeticamente selado pressurizado com um gás inerte \citep{Krishnan2010}. Esta solução relaxa os requisitos de lubrificação, porém impõe uma força de arrasto extra na roda e não resolve o problema da migração dos lubrificantes na ausência de gravidade. Uma pesquisa detalhada dos lubrificantes de classe espacial e estratégias de selamento e relubrificação deve ser realizada.
 
@@ -67,10 +65,7 @@ Estudo iniciais sobre mancais magnéticos são datados do século XIX \citep{Wei
 Mancais magnéticos podem ser classificados em dois grandes grupos: os que utilizam da \textit{força de relutância} e os que utilizam da \textit{força de Loretz}. O primeiro grupo é chamado de mancais magnéticos ativos (na literatura AMBs) e o segundo são os mancais magnéticos passivos (PMBs) \cite{Schweitzer2009}.
 
 Os AMBs funcionam com um controle ativo de algumas das forças atuantes no mancal a fim de estabilizar o sistema (controle em malha fechada). Já os mancais puramente passivos geram as forças necessárias para estabilizar o rotor apenas via ímãs.
-Mancais magnéticos puramente passivos (seis graus de liberdade) que utilizam somente ímãs são impossíveis, dado que sempre um dos graus de liberdade torna-se instável (Teorema de Earnshaw's). \todo{corrigir: JU}
-
-%Mancais híbridos, que operam com parte de seus graus de liberdade passivamente estáveis e parte de seus graus de liberdade ativamente estáveis possuem  
-
+Mancais magnéticos puramente passivos (seis graus de liberdade) que utilizam somente ímãs são impossíveis, dado que sempre um dos graus de liberdade torna-se instável (Teorema de Earnshaw's).
 
 
 \subsection{Graus de liberdade}
@@ -97,7 +92,7 @@ Os mancais magnéticos podem ser classificados pelo número de graus de liberdad
 
 \subsection{Topologias com Aplicação em Rodas de Reação}
 
-Encontramos na literatura três topologias distintas para utilização de mancais magnéticos em rodas de reação. Os mancais propostos para esse tipo de aplicação possuem, em sua maioria, dois graus de liberdade ativos e fazem uso de ímãs permanentes para a geração de campos magnéticos para minimizar o consumo elétrico ativo do sistema. Em seguida, analisamos os principais pontos desses mancais.
+Encontra-se na literatura três topologias distintas para utilização de mancais magnéticos em rodas de reação. Os mancais propostos para esse tipo de aplicação possuem, em sua maioria, dois graus de liberdade ativos e fazem uso de ímãs permanentes para a geração de campos magnéticos para minimizar o consumo elétrico ativo do sistema. Em seguida, analisamos os principais pontos desses mancais.
 
 A topologia proposta por \citet{Bernus1998} trabalha com dois graus de liberdades ativos, com ímãs permanentes no rotor e dois estatores: um interno com bobinas para o controlo do fluxo magnético no rotor (por consequência na direção radial) e outro externo para estabilização axial que também contribui com a rigidez axial. 
 
@@ -138,7 +133,7 @@ Mais recentemente, uma nova arquitetura foi proposta por \citet{Bangcheng2012} p
 
 Devido as não linearidades do mancal magnético (por exemplo a sua rigidez em função do deslocamento), a modelagem analítica é de difícil obtenção e uma análise por elementos finitos é recomendada \citep{pilat2007automatic}. Com esse tipo de análise é possível verificar o acoplamento das forças e momentos envolvidos além das características térmicas do sistema.
 
-Modelos analíticos \cite{Tezuka2013, Chiba} auxiliam no entendimento e na escolha dos parâmetros construtivos e magnéticos do mancal. A solução de um modelo analítico quando comparada a de um modelo com elementos finitos é computacionalmente mais rápida.
+Modelos analíticos \citep{Tezuka2013, Chiba} auxiliam no entendimento e na escolha dos parâmetros construtivos e magnéticos do mancal. A solução de um modelo analítico quando comparada a de um modelo com elementos finitos é computacionalmente mais rápida.
 
 Com o modelo analítico é possível a utilização de métodos de otimização \citep{Wu2009, Fang2014} para a obtenção de um mancal com melhores propriedades, dentre elas, menor potência, maior rigidez e dimensões dentro das especificações. 
 
@@ -158,7 +153,7 @@ Já os mancais sensoreados utilizam sensores de deslocamentos exclusivos para a 
 
 O controle de mancais magnéticos é uma área fértil da engenharia de controle, as não linearidades do sistema tornam os projetos nada triviais.  
 
-Técnicas de controle clássicas são utilizadas com bastante frequência em mancais magnéticos. Controle do tipo PID  \citep{Tezuka2013} possue boa robustez. O controle  do tipo \textit{feedforward} é utilizado em casos onde há o acoplamento entre os graus de liberdade, podendo ser utilizado para o desacoplamento dos graus de liberdade. Outras técnicas propostas na literatura vão de encontro ao controle multivariável como controle robusto \citep{Jimenez-Lizafrraga2007}, controle ótimo \citep{Schuhmann2012} e controle não linear \citep{Rundell1996}.
+Técnicas de controle clássicas são utilizadas com bastante frequência em mancais magnéticos. Controle do tipo PID \citep{Tezuka2013} possue boa robustez. O controle  do tipo \textit{feedforward} é utilizado em casos onde há o acoplamento entre os graus de liberdade, podendo ser utilizado para o desacoplamento dos graus de liberdade. Outras técnicas propostas na literatura vão de encontro ao controle multivariável como controle robusto \citep{Jimenez-Lizafrraga2007}, controle ótimo \citep{Schuhmann2012} e controle não linear \citep{Rundell1996}.
 
 
 \section{Metodologia}
