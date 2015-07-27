@@ -4,37 +4,35 @@
 
 \chapter{Considerações Finais} \label{Cap:Consideracoes:Finais}
 
-%\begin{itemize}
-%	\item Falar do mancal obtido
-%	\item controlador
-%	\item outros tipos de materiais (soft iron)
-%	\item falar do esforço computacional
-%	\item do controle controlar um sistema do matlab no comsol
-%\end{itemize}
-
 O mancal magnético obtido com o desenvolvimento dessa dissertação abre portas para a prototipagem de uma roda de reação nacional para controle de atitude de satélites. Com ela é possível vencer as barreiras impostas do uso de um mancal convencional (mecânico) em ambiente espacial.
 
 Em projetos aerospaciais muitas vezes especifica-se atuadores que não possuem equivalentes comerciais, em parte devido ao restrito mercado e em parte pela especificidade do problema. A metodologia aqui proposta pode ser aplicada para a especificação de um mancal com diferentes especificações, sendo facilmente adaptável ao projeto do atuador.
 
+O objetivo inicial dessa dissertação era o projeto e construção de um protótipo funcional de um mancal magnético, porém o problema mostrou-se ser de uma complexidade maior que a prevista e a ausência de recursos atrasou o desenvolvimento. Decidiu-se portanto, explorar os quesitos de projeto e com isso, encontrar  um mancal com dimensões ótimas. 
+
 O processo de otimização proposto facilita a escolha dos parâmetros construtivos do mancal já que o problema é reduzido a especificação de desempenho e restrições, só possível devido ao modelo analítico dos campos magnéticos envolvidos.
 
-A utilização de simulações em elementos finitos tornam mais preciso o resultado final, sendo uma ferramenta importante tanto para validação do modelo quanto para o entendimento dos campos magnéticos atuantes no sistema. Porém devido ao longo esforço computacional por consequência um grande tempo de processamento para a resolução do modelo, não deve ser o único meio de projeto, sendo necessário os modelos analíticos.
+A utilização de simulações em elementos finitos tornam mais preciso o resultado final, sendo uma ferramenta importante tanto para validação do modelo quanto para o entendimento das físicas atuantes no sistema, possibilitando uma forma visual de análise. 
 
-Quanto na criação do protótipo esse não pode acontecer de maneira e verificações nas escolhas das fixações devem ser verificadas especialmente com o modelo em elementos finitos que possibilita uma forma gráfica de visualização dos campos magnéticos.  \todo{melhorar}
+O esforço computacional atrelado a utilização do método de elementos finitos torna-o uma ferramenta lenta, já que uma simulação leva dezenas de minutos para convergir para uma solução.
 
-A utilização de materiais magnéticos com melhores propriedades magnéticas a que o do utilizado (Aço 1020) pode tornar o mancal resultante com menores dimensões e menos suscetível as correntes induzidas, quando submetido a um campo alternado. 
+A utilização de super computadores foi cogitada durante o desenvolvimento dessa dissertação porém não foi possível devido a complexidade de configuração do sistema, trabalhos futuros devem fazer uso desse método de computação.
 
-O modelo dinâmico obtido é de fácil parametrização e depende das forças magnéticas envolvidas (ímã e polos) além da massa do rotor, sua característica de desacoplamento entre os eixos x e y possibilita a utilização de técnicas de controle do tipo SISO, de fácil implementação em sistemas digitais.
+O modelo dinâmico obtido é de fácil parametrização e depende das forças magnéticas envolvidas (ímã e polos) além da massa do rotor, sua característica de desacoplamento entre os eixos x e y possibilita a utilização de técnicas de controle do tipo SISO, de fácil implementação em sistemas digitais ou analógicos.
 
+Essa dissertação não explorou o projeto do controlador, mas provou-se com o projeto de um que é possível garantir a estabilização e o controle do rotor.
 
+A margem de ganho obtida garante que oscilações do ganho do estimador não tornem o sistema instável, garantido assim a robustez do controle proposto, essencial nesse tipo de sistema. A utilização de técnicas modernas de controle é um ramo fértil para esse tipo de sistema, possibilitando melhores desempenho ao controlador e por consequência a roda de reação. 
 
+O desenvolvimento do protótipo auxiliou na prova da estabilidade dos graus de liberdade passivos do mancal porém demonstrou a necessidade de um estudo mais detalhado da topologia a ser escolhida para o mancal, desencadeando na otimização proposta.
 
-\todo{continuar, falar do controlador}
+A utilização de materiais com melhores propriedades magnéticas a que o do utilizado (Aço 1020) pode tornar o mancal resultante com menores dimensões e menos suscetível as correntes induzidas \citep{Ravaud2009}, quando submetido a um campo alternado.
 
+Um mecanismo para embobinamento e conformidade das bobinas é necessário para a construção de futuros protótipos, garantindo assim que a especificação do sistema seja alcançada na prática. O embobinamento manual mostrou-se ineficiente e impossibilitou a execução de maiores testes.
 
+A ausência de financiamento impossibilitou que um mancal com as dimensões encontradas ao longo do desenvolvimento dessa dissertação fosse construído com o rigor mecânico necessário a fim de dar continuidade a implementação.
 
+Três propostas de projeto de pesquisa para a construção de uma roda de reação foram submetidas aos órgãos de fomento (FAPESP, CNPq e Uniespaço) porém nenhum com sucesso. 
 
-
-
-
+Pretende-se com um projeto do tipo temático (FAPESP) em prospecção junto ao Instituto de Astronomia, Geofísica e Ciências Atmosféricas (IAG) o fomento da construção de uma roda de reação e por consequência a do mancal magnético.
 

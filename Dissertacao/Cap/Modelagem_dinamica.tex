@@ -88,21 +88,32 @@ As tensões nas bobinas são distribuídas conforme Fig. \ref{fig:blocos:tensao:
 A força aplicada no rotor é levantada via resultados da modelagem em elementos
 finitos, um polinômio de segundo grau com confidência de 95\% foi encontrado
 (Eq. \ref{eq:fb:segundo:grau}) via curva da Fig.
-\ref{ativo_otimizado_fem_I_dx_map}.
+\ref{ativo_otimizado_fem_I_dx_map}, os coeficientes estão descritos na Tab. \ref{tab:dinamico:ajuste:kb}.
 
-\begin{equation}
-     F_b(i) = -0.6777 \, i^2 + -55.5 \, i + 16.69
+\begin{align}
+     fit_Kb(dx,I) &= p00 + p10*dx + p01*I + p20*dx^2 +\\
+     & p11*dx*I + p02*I^2 + p30*dx^3 + p21*dx^2*I +\\
+     & p12*dx*I^2 + p03*I^3
      \label{eq:fb:segundo:grau}
-\end{equation}
+\end{align}
 
-Para o polo operando com a corrente entre 0 e 2 A, podemos descrever uma equação linear que representa a força de atração em torno do ponto de operação. 
-
-\begin{equation}
-     F_b(i) = -10.21 \, i 
-     \label{eq:fb:primeiro:grau}
-\end{equation}
-
-\todo{melhorar}
+\begin{table}[ht!]
+\centering
+\begin{tabular}{c l}
+	   p00 & -3.25\\
+	   p10 & -5.17\\
+	   p01 &  24.13\\
+	   p20 &   98.13\\
+	   p11 & -90.04\\
+	   p02 &  22.83\\
+	   p30 &   -146\\
+	   p21 &  22.29\\
+	   p12 &  9.44	\\
+	   p03 & -3.79
+\end{tabular} 
+\caption{Coeficientes do ajuste a curva de ganho Kb}
+\label{tab:dinamico:ajuste:kb}
+\end{table}
 
 \subsection{Dinâmica Atuador}
 
@@ -266,24 +277,35 @@ O controlador obtido via especificação de possui os ganhos da  Tab. \ref{tab:c
 
 
 	\begin{figure}[!ht]
-		\subfloat[t][Modelo analítico]{
+	\centering
+		\subfloat[t][Diagrama de bode]{
 			\includegraphics[width=0.5\linewidth]{Figs/controle/bode_pid_g}
 		}
 		%
-		\subfloat[b][Modelo em elementos finitos]{
+		\subfloat[b][Lugar das raizes]{
 			\includegraphics[width=0.5\linewidth]{Figs/controle/rlocus_pid_g}
-		}	
-		\caption{Analise do sistema controlado, diagrama de Bode e lugar das raizes}
+		}	\\
+		\subfloat[c][Resposta ao degrau do sistema em malha fechada com o controlador PID, sistema linearizado]{
+		\includegraphics[width=0.7\linewidth]{Figs/controle/step_pid_g}
+		}
+		\caption{Analise do sistema controlado, diagrama de bode e lugar das raizes}
 		\label{Fig:controle:analise}
 	\end{figure}
 
-O controle obtido impõem uma estabilidade no mancal com 60 graus de margem de fase e 27.8 dB margem de ganho. O tempo de acomodação é de 123 ms com sobressinal de 12 \%. A resposta ao degrau é demonstrada na Fig. \ref{fig:controle:degrau}.
+O controle obtido impõem uma estabilidade no mancal com 60 graus de margem de fase e 27.8 dB margem de ganho. O tempo de acomodação é de 123 ms com sobressinal de 12 \%. A resposta ao degrau é demonstrada na Fig. \ref{Fig:controle:analise}
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=0.7\linewidth]{Figs/controle/step_pid_g}
-\caption{Resposta ao degrau do sistema em malha fechada com o controlador PID}
+
 \label{fig:controle:degrau}
 \end{figure}
 
-O controle 
+A simulação do controle PID com o estimador no sistema com ganhos variáveis é demonstrada na Fig. \ref{fig:pid_nlinear_degrau}, notamos que a resposta do sistema sofre alterações quando comparada com a do modelo linear. Essas alterações são causadas basicamente pela variação da indutância com o decorrer da posição do rotor e principalmente pela variação do ganho do atuador.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{Figs/controle/pid_nlinear_degrau}
+\caption{Resposta ao degrau do sistema em malha fechada com o controlador PID, sistema não linearizado}
+\label{fig:pid_nlinear_degrau}
+\end{figure}
+
