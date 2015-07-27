@@ -34,7 +34,7 @@
 %\end{small}
 
 
-Rodas de reação são constituídas basicamente de um motor, mancal, elemento de inércia e eletrônica de controle. O motor e o mancal são considerados os sistemas mais críticos, influenciando diretamente a qualidade da roda de reação e o cumprimento dos requisitos. Nesse projeto de pesquisa, buscou projetar um mancal magnético que possa fazer parte de uma roda de reação para satélites de médio porte. Para tanto é necessário que o mancal satisfaça os requisitos impostos para uma roda de reação, tais como: desbalanceamento, consumo, velocidade e atrito.
+Rodas de reação são constituídas basicamente de um motor, um mancal, um elemento de inércia e uma eletrônica de controle. O motor e o mancal são considerados os sistemas mais críticos, influenciando diretamente a qualidade da roda de reação e o cumprimento dos requisitos. Este projeto de pesquisa, buscou projetar um mancal magnético que pudesse fazer parte de uma roda de reação para satélites de médio porte. Para tanto, é necessário que o mancal satisfaça os requisitos impostos para uma roda de reação, tais como: desbalanceamento, consumo, velocidade e atrito.
 
 O mancal magnético proposto deve satisfazer as especificações da Tabela \ref{tab:PMM:especificações}, onde deseja-se atingir os requisitos de uma roda de reação para um satélite de classe II, baseado nos dados da plataforma multimissão (PMM) do INPE \citep{Veloso2009}, possibilitando que o mesmo possa rejeitar pertubações orbitais e executar manobras de posicionamento. 
 %\cite{junior2005estudo}\todo{cite}. 
@@ -61,18 +61,18 @@ O mancal magnético proposto deve satisfazer as especificações da Tabela \ref{
     \label{tab:PMM:especificações}
 \end{table}
 
-O acionamento da roda de reação deve ser possível em ambos os sentidos de rotação e com a mesma eficiência. Requer também que o eixo de rotação tenha inclinação menor do que 0,1 grau com relação a superfície de fixação da roda. A precisão de alinhamento é necessária para a adequada atuação da roda de reação no eixo sob controle.
+O acionamento da roda de reação deve ser possível em ambos os sentidos de rotação e com a mesma eficiência. Requer também que o eixo de rotação tenha inclinação menor do que 0,1 grau com relação à superfície de fixação da roda. A precisão de alinhamento é necessária para a adequada atuação da roda de reação no eixo sob controle.
 
-A roda de reação deve ter dimensões limitadas em 250mm de diâmetro por 100mm de altura com massa total que não deve exceder 4kg. Na concepção das partes construtivas da roda de reação será considerada a necessidade de operação contínua por longos períodos de tempo (em torno de quatro anos).
+A roda de reação deve ter dimensões limitadas em 250mm de diâmetro por 100mm de altura com massa total que não deve exceder 4kg. Na concepção das partes construtivas da roda de reação foi considerada a necessidade de operação contínua por longos períodos de tempo (em torno de quatro anos).
 
 \section{Visão Geral}
 
 % [Scharfe2001]
 % Magnetic bearings can be realised by using attractive or repulsive forces. A better mass vs. stiffness ratio can be achieved by using the attractive force mode. Preference was given to the 2 DOF option where the wheel is actively controlled along two orthogonal radial directions where axial movements and all other degrees of rotor freedom are passively controlled by means of permanent magnets, except for the rotor spin. The two radial axes are independently controlled by their control loops. This design principle generally results in a flatter geometry, using less volume and being suitable for panel mounting. Moreover, the two DOF actively controlled bearing allows a high momentum-to-mass ratio of the wheel as parts of the bearing contribute to the momentum storage capacity. For position detection, magnetic field displacement type inductive sensors are mounted with 90 degrees angular spacing around the flywheel, facing the rim surface.
 
-O mancal magnético proposto nesse trabalho é em partes uma junção das topologias propostas por \citet{Bernus1998} e \citet{Scharfe2001}. O mancal possui quatro graus de liberdade passivamente estáveis: \textit{tilt, row, pitch} e sua direção axial, os outros dois graus de liberdade (as translações radias) são estabilizados ativamente. O torque imposto para a rotação do rotor não é abordado nesse trabalho mas será desenvolvido por um motor elétrico de corrente contínua sem escovas (BLDC), instalado no interior do mancal.
+O mancal magnético proposto nesse trabalho é, em parte, uma junção das topologias propostas por \citet{Bernus1998} e \citet{Scharfe2001}. O mancal possui quatro graus de liberdade passivamente estáveis: \textit{tilt, row, pitch} em sua direção axial, os outros dois graus de liberdade (as translações radias) são estabilizados ativamente. O torque imposto para a rotação do rotor não é abordado nesse trabalho mas será desenvolvido por um motor elétrico de corrente contínua sem escovas (BLDC), instalado no interior do mancal.
 
-O circuito magnético do mancal é composto por dois estatores: um interno ao rotor, outro externo e um rotor. O estator externo é responsável pela estabilização dos graus de liberdade passivos já o interno por possibilitar o controle das posições radiais. Optou-se por instalar os ímãs no estator externo visando um maior fluxo magnético nos modos passivamente estáveis do mancal, além de visar o melhor balanceamento do rotor (se compararmos com a instalação do ímãs no rotor. A Fig. \ref{fig:mancal:topo} ilustra o mancal proposto. O rotor é a parte móvel do mancal e onde é fixado a parte móvel do motor. Adotou-se uma geometria plana visando uma melhor rigidez nos modos instáveis do mancal, possibilitando também a montagem em modo painel. Optou-se por um mancal externo ao motor  para conseguir uma rigidez dentro dos limites de massa e dimensões e que atingisse as especificações  da roda de reação. 
+O circuito magnético do mancal é composto por dois estatores: um interno ao rotor, outro externo. O estator externo é responsável pela estabilização dos graus de liberdade passivos, já o interno por possibilitar o controle das posições radiais. Optou-se por instalar os ímãs no estator externo visando um maior fluxo magnético nos modos passivamente estáveis do mancal, além de visar o melhor balanceamento do rotor (se compararmos com a instalação do ímãs no rotor. A Fig. \ref{fig:mancal:topo} ilustra o mancal proposto. O rotor é a parte móvel do mancal e onde é fixado a parte móvel do motor. Adotou-se uma geometria plana visando uma melhor rigidez nos modos instáveis do mancal, possibilitando também a montagem em modo painel. Optou-se por um mancal externo ao motor para conseguir uma rigidez dentro dos limites de massa e dimensões e que atingisse as especificações  da roda de reação. 
 
 \begin{figure}[ht!]
 \centering
@@ -93,9 +93,9 @@ Mancais magnéticos podem ser projetados para usar forças magnéticas atrativas
 	\label{fig:mancal:corte}
 \end{figure}
 
-Um batente foi projetado para evitar que as partes magnéticas (metálicas) se choquem em caso de falha na malha de controle ou em situações em que o sistema encontra-se desligado. O batente limita a excursão máxima do rotor em seus graus de liberdade: axial, radial e \textit{tilt}. O Batente não interfere no circuito magnético do sistema e é localizado no estator externo. Toda parte fixa do sistema é fixa em uma base também não magnética.
+Um batente foi projetado para evitar que as partes magnéticas (metálicas) se choquem em caso de falha na malha de controle ou em situações em que o sistema encontra-se desligado. O batente limita a excursão máxima do rotor em seus graus de liberdade: axial, radial e \textit{tilt}. O Batente não interfere no circuito magnético do sistema e está localizado no estator externo. Toda parte fixa do sistema está fixa em uma base também não magnética.
 
-Uma eletrônica de acionamento, sensoriamento e processamento é alocada na parte inferior da base, tornando o sistema compacto. A eletrônica possui \textit{drivers} para controle das correntes nas bobinas e também um sistema de sensoriamento para medir a posição do rotor. Um sistema microprocessado é proposto para realizar o controle e gestão do sistema.
+Uma eletrônica de acionamento, sensoriamento e processamento foi alocada na parte inferior da base, tornando o sistema compacto. A eletrônica possui \textit{drivers} para controle das correntes nas bobinas e também um sistema de sensoriamento para medir a posição do rotor. Um sistema microprocessado foi proposto para realizar o controle e gestão do sistema.
 
 % O mancal é composto dos seguintes subsistemas:
 %
@@ -110,9 +110,9 @@ Uma eletrônica de acionamento, sensoriamento e processamento é alocada na part
 
 \section{Estator externo}\label{cap:mancal:estator:externo}
 
-O estator externo, responsável pela estabilização dos graus de liberdade passivamente estáveis e é formado de três partes : ferro topo, ímãs, ferro base. A combinação dessas partes faz com que o estator tenha uma secção em formato de C. Os ferros (topo e base) servem para guiar o campo magnético através do gap e pelo rotor. 
+O estator externo, responsável pela estabilização dos graus de liberdade passivamente estáveis, é formado por três partes : ferro topo, ímãs, ferro base. A combinação dessas partes faz com que o estator tenha uma secção em formato de C. Os ferros (topo e base) servem para guiar o campo magnético através do gap e pelo rotor. 
 
-O circuíto magnético de uma secção do estator externo é ilustrado na Fig. \ref{Fig:mancal:circuito:passivo}. Verificamos que o fluxo magnético gerado pelo ímã permanente busca o caminho com menor relutância para fechar o circuito magnético. Esse caminho ocorre pelos ferros do estator externo, passando então pelo entreferro e  pelo rotor.
+O circuíto magnético de uma secção do estator externo é ilustrado na Fig. \ref{Fig:mancal:circuito:passivo}. Verificamos que o fluxo magnético gerado pelo ímã permanente busca o caminho com menor relutância para fechar o circuito magnético. Esse caminho ocorre pelos ferros do estator externo, passando pelo entreferro e  pelo rotor.
 
 \begin{figure}[!ht]
 	\centering
@@ -122,7 +122,7 @@ O circuíto magnético de uma secção do estator externo é ilustrado na Fig. \
 	\label{Fig:mancal:circuito:passivo}
 \end{figure}
 
-Podemos identificar nesse circuito, seis principais relutâncias, sendo elas :
+Podemos identificar neste circuito, seis principais relutâncias, sendo elas :
 
 \begin{itemize}
 	\item $R_{ímã}$ : Relutância do ímã permanente
@@ -132,17 +132,17 @@ Podemos identificar nesse circuito, seis principais relutâncias, sendo elas :
 	\item $R_{gb}$ : Relutância do entreferro inferior	
 \end{itemize}
 
-Além das relutâncias, temos como fonte geradora de campo magnético o ímã localizado entre os ferros : $F_{ima}$. Devido ao fluxo magnético permanente o rotor sofre atração em ambos os lados, se no ponto de equilíbrio, ou seja, com um entreferro simétrico em ambos os lados, a força resultante tenderia ser nula e o rotor permaneceria em equilíbrio no ponto de operação (criticamente estável). 
+Além das relutâncias, temos como fonte geradora de campo magnético o ímã localizado entre os ferros: $F_{ima}$. Devido ao fluxo magnético permanente o rotor sofre atração em ambos os lados, no ponto de equilíbrio, ou seja, com um entreferro simétrico em ambos os lados, a força resultante tenderia a ser nula e o rotor permaneceria em equilíbrio no ponto de operação (criticamente estável). 
 
-Esse modo de operação é chamado diferencial e possibilita que a força resultante no rotor devido aos ímãs permanentes torne-se linear. Para tanto projetamos o estator externo do mancal para trabalhar sempre com o ferro saturado, na saturação o valor do campo magnético torna-se praticamente constante para pequenas variações no comprimento do entreferro.
+Esse modo de operação é chamado diferencial e possibilita que a força resultante no rotor devido aos ímãs permanentes torne-se linear. Para tanto, projetamos o estator externo do mancal para trabalhar sempre com o ferro saturado, na saturação o valor do campo magnético torna-se praticamente constante para pequenas variações no comprimento do entreferro.
 
-Com isso a componente da força que é proporcional ao quadrado do campo magnético torna-se praticamente constante, obtendo um força de atração radial no rotor linear com o deslocamento.
+Com isso, a componente da força que é proporcional ao quadrado do campo magnético torna-se praticamente constante, obtendo um força de atração radial no rotor linear com o deslocamento.
 
 Além da linearização obtêm-se um aumento na rigidez axial sem um grande aumento na rigidez radial, o que exigiria uma maior energia da parte ativa para estabilizar o rotor em seu ponto de operação. 
 
-No caso de um deslocamento axial ocorre um aumento no comprimento do entreferro e por consequência em sua relutância ($R_{g}$), essa condição foge da zona de menor energia gerando uma força restaurativa no rotor para restabelecer um circuito com menor relutância magnética.
+No caso de um deslocamento axial ocorre um aumento no comprimento do entreferro e, por consequência, em sua relutância ($R_{g}$), essa condição foge da zona de menor energia gerando uma força restaurativa no rotor para restabelecer um circuito com menor relutância magnética.
 
-A Fig. \ref{fig:modelo:circuito:passivo:forcas} demonstra as forças atuantes no rotor em dois cenários diferentes, na primeira (a) com o rotor no ponto de equilíbrio (com o mesmo entreferro ao longo de toda circunferência) e em (b) com o rotor deslocado axialmente, verificamos nesse caso que a resultante da força não é nula mas sim possui uma componente em y. Essa componente é a responsável pela estabilização dos graus de liberdade passivos.
+A Fig. \ref{fig:modelo:circuito:passivo:forcas} demonstra as forças atuantes no rotor em dois cenários diferentes, na primeira (a) com o rotor no ponto de equilíbrio (com o mesmo entreferro ao longo de toda circunferência) e em (b) com o rotor deslocado axialmente. Verificamos nesse caso que a resultante da força não é nula mas sim possui uma componente em y. Essa componente é a responsável pela estabilização dos graus de liberdade passivos.
 
 \begin{figure}[th!]
 \centering
@@ -165,13 +165,13 @@ Caso o mancal não fosse projetado com esse ideal, uma inclinação causaria uma
 
 \section{Rotor}
 
-O Rotor foi projetado com perfil em C e sofre tanto força de atração do estator externo quanto do interno, porém com campos em diferentes orientações. O rotor é projetado para que seu ferro trabalhe na zona de não saturação, a saturação nesse caso é indesejada pois limitaria o fluxo total que flui através dos circuitos magnéticos e também resultaria quando em rotação em uma região de possível aquecimento.
+O Rotor foi projetado com perfil em C e sofre tanto a força de atração do estator externo quanto a do interno, porém com campos em diferentes orientações. O rotor é projetado para que seu ferro trabalhe na zona de não saturação, a saturação nesse caso é indesejada pois limitaria o fluxo total que flui através dos circuitos magnéticos e também resultaria, quando em rotação, em uma região de possível aquecimento.
 
-O rotor do mancal magnético deve ser projetado para suportar a fixação do rotor do motor sem escovas assim como da inércia da roda de reação. 
+O rotor do mancal magnético deve ser projetado para suportar a fixação do rotor do motor sem escovas assim como a inércia da roda de reação. 
 
 \section{Estator interno}
 
-O estator interno é formado de oito polos distribuídos homogeneamente a cada 45 graus e interligados por um anel de circulação interno. Os polos funcionam como atuadores (eletroímãs) para a estabilização do rotor no eixo radial (x, z),  cada polo é formado por um núcleo. Uma revolução de meio mancal é ilustrado na Fig. \ref{fig:modelo:mancal:estator:interno}. 
+O estator interno é formado por oito polos distribuídos homogeneamente a cada 45 graus e interligados por um anel de circulação interno. Os polos funcionam como atuadores (eletroímãs) para a estabilização do rotor no eixo radial (x, z),  cada polo é formado por um núcleo. Uma revolução de meio mancal é ilustrado na Fig. \ref{fig:modelo:mancal:estator:interno}. 
 
 \begin{figure}[ht!]
 	\centering
@@ -180,7 +180,7 @@ O estator interno é formado de oito polos distribuídos homogeneamente a cada 4
 	\label{fig:modelo:mancal:estator:interno}
 \end{figure}
 
-O estator interno foi concebido para atuar sempre com três polos ativos por eixo de atuação, essa abordagem faz com que o fluxo do campo magnético que percorre o rotor seja maximizado no eixo onde deseja-se realizar a atração. A Fig. \ref{fig:modelo:mancal:estator:interno:fluxo} mostra o estator interno com três de seus polos ativos: (A),(B),(C) e o fluxo que flui pelo rotor. Os polos (A) e (C) nesse exemplo trabalham com polaridade inversa ao (B) para forçar que o fluxo feche por B e não por nenhum outro polo, maximizando assim a força de atração $F_B$. Uma parte do fluxo do campo magnético não atravessa por (B) e fecha por outros polos. A corrente induzida em (A) e (C) é a metade da corrente no polo principal (B) isso é feito para evitar que o polo B atinja a saturação, já que o campo que o atravessa é composto pela totalidade do induzido em sua bobina mais a parte dos campos de (A) e (C).
+O estator interno foi concebido para atuar sempre com três polos ativos por eixo de atuação, essa abordagem faz com que o fluxo do campo magnético que percorre o rotor seja maximizado no eixo onde deseja-se realizar a atração. A Fig. \ref{fig:modelo:mancal:estator:interno:fluxo} mostra o estator interno com três de seus polos ativos: (A),(B),(C) e o fluxo que flui pelo rotor. Os polos (A) e (C) nesse exemplo trabalham com polaridade inversa ao (B) para forçar que o fluxo feche por B e não por outro polo, maximizando assim a força de atração $F_B$.  \todo{parece contraditório, antes disse que forçava o fluxo a fechar em B e agora que nem todo ele fecha}Uma parte do fluxo do campo magnético não atravessa por (B) e fecha por outros polos. {primeiro fala que fez algo para forçar o fluxo a fechar em B e depois que ele não fecha}A corrente induzida em (A) e (C) é a metade da corrente no polo principal (B) isso é feito para evitar que o polo B atinja a saturação, já que o campo que o atravessa é composto pela totalidade do induzido em sua bobina mais a parte dos campos de (A) e (C).
 
 \begin{figure}[ht!]
 	\centering
@@ -189,7 +189,7 @@ O estator interno foi concebido para atuar sempre com três polos ativos por eix
 	\label{fig:modelo:mancal:estator:interno:fluxo}
 \end{figure}
 
-As forças geradas $F_A$ e $F_C$ possuem componentes em x e y, as componentes y são de mesma intensidade e se cancelam, restando uma componente aditiva em x. A força resultantes são portanto:
+As forças geradas $F_A$ e $F_C$ possuem componentes em x e y, as componentes y são de mesma intensidade e se cancelam, restando uma componente aditiva em x. As forças resultantes são portanto:
 
 \begin{align}
  	F_x &= F_B + F_{Ax} + F_{Cx} \\
@@ -197,7 +197,7 @@ As forças geradas $F_A$ e $F_C$ possuem componentes em x e y, as componentes y 
 \end{align}
 
 
-Nesse modo de operação pode-se gerar forças exclusiva em apenas um dos eixos (x,y). É possível também, atuar simultaneamente nos dois eixos para isso basta induzir da mesma maneira um novo campo em (H) e (G). Desse modo, o campo total no núcleo da bobina (A) será equivalente ao dos polos primários, a Fig. \ref{fig:modelo:mancal:estator:interno:fluxo2} ilustra o campo magnético e as forças resultantes geradas no caso da atuação simultânea.
+Nesse modo de operação pode-se gerar forças exclusiva em apenas um dos eixos (x,y). É possível também, atuar simultaneamente nos dois eixos, para isso basta induzir da mesma maneira um novo campo em (H) e (G). Desse modo, o campo total no núcleo da bobina (A) será equivalente ao dos polos primários, a Fig. \ref{fig:modelo:mancal:estator:interno:fluxo2} ilustra o campo magnético e as forças resultantes geradas no caso da atuação simultânea.
 
  \begin{figure}[ht!]
  	\centering
@@ -206,30 +206,30 @@ Nesse modo de operação pode-se gerar forças exclusiva em apenas um dos eixos 
  	\label{fig:modelo:mancal:estator:interno:fluxo2}
  \end{figure}
 
-O circuito magnético entre o estator interno e o rotor pode ser visto na Fig. \ref{fig:modelo:circuito:ativo:explicativo}, verificamos que o circuito é formado de quatro principais elementos : A bobina, fonte geradora de campo magnético (c), a relutância do entreferro que depende da distância entre os polos e o rotor (b), as relutâncias do ferro do rotor (a) e do ferro do anel de retorno (d).
+O circuito magnético entre o estator interno e o rotor pode ser visto na Fig. \ref{fig:modelo:circuito:ativo:explicativo}. Verificamos que o circuito é formado de quatro principais elementos: A bobina, fonte geradora de campo magnético (c), a relutância do entreferro, que depende da distância entre os polos e o rotor (b), as relutâncias do ferro do rotor (a) e do ferro do anel de retorno (d).
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=0.7\linewidth]{./Figs/modelo_circuito_ativo_explicativo}
-\caption[Circuito eletromagnético estator interno e rotor]{Circuito eletromagnético estator interno e rotor: (a) relutâncias do rotor, (b) relutâncias do entreferro, (c) }
+\caption[Circuito eletromagnético estator interno e rotor]{Circuito eletromagnético estator interno e rotor: (a) relutâncias do rotor, (b) relutâncias do entreferro, (c) } 
 \label{fig:modelo:circuito:ativo:explicativo}
 \end{figure}
 
 \subsection{Atuador}
 
-Dois tipos de acionamento e embobinamento podem ser realizados para a implementação do atuador, a primeira considera independência de cada polo, tendo uma eletrônica exclusiva para o seu acionamento. A segunda, envolve a criação de uma única bobina por atuador, similar ao polos de um motor elétrico, o mesmo filamento é compartilhado entre o polo primário e os polos secundários resultando em uma bobina de maior resistência e indutância. 
+Dois tipos de acionamento e embobinamento podem ser realizados para a implementação do atuador, o primeiro considera independência de cada polo, tendo uma eletrônica exclusiva para o seu acionamento. O segundo, envolve a criação de uma única bobina por atuador. Similar aos polos de um motor elétrico, o mesmo filamento é compartilhado entre  \todo{seria os polos primários?}o polo primário e os polos secundários resultando em uma bobina de maior resistência e indutância. 
 
-A vantagem da escolha para o segundo método seria da simplificação da eletrônica já que seria necessário apenas quatro eletrônica de potência para a atuação porém implicaria em uma dinâmica mais lenta do atuador já que as indutâncias seriam associadas em série.
+A vantagem da escolha do segundo método seria a simplificação da eletrônica já que seria necessário apenas quatro eletrônicas de potência para a atuação, porém implicaria em uma dinâmica mais lenta do atuador visto que as indutâncias seriam associadas em série.
 
-Escolheu-se nesse projeto, por trabalhar com eletrônicas de acionamento independente para cada polo, privilegiando assim, um atuador com dinâmica mais rápida. Além da dinâmica, possibilita-se dessa maneira que futuros controladores atuem não só nos eixos principais (x,y) (duas entradas) mas também podendo atuar na diagonal (quatro entradas). 
+Escolheu-se, nesse projeto, trabalhar com eletrônicas de acionamento independente para cada polo, privilegiando assim, um atuador com dinâmica mais rápida. Além da dinâmica, possibilita-se dessa maneira que futuros controladores atuem não só nos eixos principais (x,y) (duas entradas) mas também podendo atuar na diagonal (quatro entradas). 
 
 \section{Batente}
 
- O batente é necessário por duas razões principais: Evitar que partes metálicas colidam dado uma falha na estabilização do rotor; limitar o tamanho máximo do entreferro, limitando por consequência a força de atração máxima que é exercida sobre o rotor.  Essa limitação é necessária para a situação em que o rotor encontra-se mais afastado do ponto de operação, sem o limite do batente o entreferro se tornaria grande o que necessitaria de uma potência maior por partes das bobinas para estabilizar-lo no ponto de operação.  Além de limitar a máxima translação radial, o batente é responsável por limitar também a translação axial e sua inclinação (\textit{tilt}).
+ O batente é necessário por duas razões principais: evitar que, caso haja uma falha na estabilização do rotor, as partes metálicas colidam e limitar o tamanho máximo do entreferro, limitando por consequência a força de atração máxima que é exercida sobre o rotor.  Essa é necessária para a situação em que o rotor encontra-se mais afastado do ponto de operação, sem o limite do batente o entreferro se tornaria grande o que exigiria uma potência maior das bobinas para estabilizá-lo no ponto de operação.  Além de limitar a máxima translação radial, o batente é responsável por limitar também a translação axial e sua inclinação (\textit{tilt}).
  
- A Fig. \ref{fig:mancal:batente:corte} é uma ilustração do batente proposto para o mancal magnético, é composto de duas partes: (a) responsável por limitar o entreferro máximo entre o rotor e o estator externo; (b) flange para limitar a inclinação do rotor. Encontra-se na literatura projetos de macais magnéticos com rolamentos. Essa escolha seria inadequada para o projeto já que a proposta é a aproximação de um projeto espacializável, a incorporação do rolamento demandaria um projeto específico.
+ A Fig. \ref{fig:mancal:batente:corte} é uma ilustração do batente proposto para o mancal magnético, é composto de duas partes: (a) responsável por limitar o entreferro máximo entre o rotor e o estator externo; (b) flange para limitar a inclinação do rotor. Encontra-se na literatura projetos de macais magnéticos com rolamentos. Essa escolha seria inadequada para o projeto já que a proposta é a aproximação de um projeto espacializável e a incorporação do rolamento demandaria um projeto específico.
  
-Optou-se por instalar o batente no estator externo por duas razões distintas: facilidade na montagem pois  é o local onde possui maior entreferro (portanto espaço) e também para servir de fixação para unir os ímãs e os ferros do estator externo. 
+Optou-se por instalar o batente no estator externo por duas razões distintas: facilidade na montagem, pois  é o local onde possui maior entreferro (portanto espaço) e também para servir de fixação para unir os ímãs e os ferros do estator externo. 
 
 \begin{figure}[th!]
 \centering
@@ -246,7 +246,7 @@ Optou-se por instalar o batente no estator externo por duas razões distintas: f
 %\label{fig:mancal:batente:3d}
 %\end{figure}
 
-O batente deve ser rígido suficiente para aguentar possíveis impactos do rotor, veremos no Cap. \ref{Cap:Modelagem:Dinamica} que os essas forças são da ordem de centenas de Newtons. Propõem a utilização de Nylon ou Teflon \cite{Johnson2001a} na construção do batente devido a suas propriedades de lubrificação a seco. 
+O batente deve ser rígido suficiente para aguentar possíveis impactos do rotor, veremos no Cap. \ref{Cap:Modelagem:Dinamica} que essas forças são da ordem de centenas de Newtons.  \todo{Confuso e falta referẽncia}Propõem a utilização de Nylon ou Teflon \cite{Johnson2001a} na construção do batente devido as suas propriedades de lubrificação a seco. 
 
 \section{Base}
 
@@ -254,7 +254,7 @@ As partes não móveis do mancal são fixas em uma base de propriedade não magn
 
 %\section{Eletrônica}
 %
-%A eletrônica proposta é composta de sistemas de potência para o acionamento das bobinas (polos), eletrônica de sensoriamento para medição das posições do rotor e uma eletrônica de controle (digital) onde é implementando o controle do sistema. 
+%A eletrônica proposta é composta de sistemas de potência para o acionamento das bobinas (polos), eletrônica de sensoriamento para medição das posições do rotor e uma eletrônica de controle (digital) onde é implementado o controle do sistema. 
 
 %Um sistema microconrolado (ou FPGA) é proposto para implementação das leis de controle, o acionamento das bobinas será realizado através da modulação da largura de pulso (PWM).
 
@@ -290,7 +290,7 @@ Ao longo do desenvolvimento da dissertação, utilizou-se as nomenclaturas a seg
 		$r_{ei}$	& Raio do ferro estator interno \\		
 		
 	\end{tabular} 
-	\caption{Valores iniciais, máximos e mínimos utilizado na otimização, valores em milímetros.}
+	\caption{Valores iniciais, máximos e mínimos, utilizados na otimização. Valores em milímetros.}
 	\label{tab:modelo:dimensoes:nomenclatura}
 \end{table}
 
@@ -304,7 +304,7 @@ Ao longo do desenvolvimento da dissertação, utilizou-se as nomenclaturas a seg
 
  \section{Modelo em Elementos Finitos}
  
- Foi utilizado como ferramenta de modelagem o Software de elementos finitos e multi física \textit{Comsol}. Nas simulações foram utilizados a curva de histerese do Aço 1020 , as simulações foram realizadas com uma solido tridimensional e a análise realizada foi a estacionária.  A Fig. \ref{Fig:Simulacao:Passivo:Mesh} ilustra a malha utilizada na execução das simulações com um número aproximado de 19000 elementos.
+ Foi utilizado como ferramenta de modelagem o Software de elementos finitos e multi física \textit{Comsol}. Nas simulações, foram utilizados a curva de histerese do Aço 1020 , as simulações foram realizadas com um sólido tridimensional e a análise realizada foi a estacionária.  A Fig. \ref{Fig:Simulacao:Passivo:Mesh} ilustra a malha utilizada na execução das simulações com um número aproximado de 19000 elementos.
  
  \begin{figure}[!ht]
  	\centering
@@ -313,16 +313,16 @@ Ao longo do desenvolvimento da dissertação, utilizou-se as nomenclaturas a seg
  	\label{Fig:Simulacao:Passivo:Mesh}
  \end{figure}
  
-Nas simulações em elementos finitos, o modelo criado possui físicas distintas para os diversos elementos do mancal. No caso dos ferros, aplicou-se a lei de Ampère com a relação construtiva \textbf{BH} interpolada de uma tabela. Nos componentes compostos por ar, a relação utilizada foi a linear $B=\mu_0 H$. 
+Nas simulações em elementos finitos, o modelo criado possui físicas distintas para os diversos elementos do mancal. No caso dos ferros, aplicou-se a lei de Ampère com a relação construtiva \textbf{BH} interpolada a uma  \todo{não precisa dizer qual tabela?}tabela. Nos componentes compostos por ar, a relação utilizada foi a linear $B=\mu_0 H$. 
 
 Na simulação do ímã, utilizou-se a relação de magnetização : $B = \mu_0 (H + M)$ onde M é a magnetização do meio em A/m. Para as bobinas, o material utilizado foi o cobre e a equação para a densidade de corrente (J) aplicada foi: $ J = \frac{N I}{A}$, onde: $N$ é o número de espiras; $I$ a corrente total aplicada na bobina e $A$ a área da secção da bobina.
 
-Optou-se por trabalhar com o mancal em três dimensões para a obtenção de um modelo de forças e campos magnéticos mais preciso, porém em contra partida, o tempo para convergência dos resultados implicou em uma simulação relativamente demorada (10 minutos).
+Optou-se por trabalhar com o mancal em três dimensões para a obtenção de um modelo de forças e campos magnéticos mais preciso, porém, em contra partida, o tempo para convergência dos resultados implicou em uma simulação relativamente demorada (10 minutos).
 
 
 \section{Prototipagem}
  
-Para prototipagem do mancal foi necessário a criação de nove diferentes peças para possibilitar a montagem do sistema. A proposta de montagem visa minimizar a influência no circuito magnético que alteraria o comportamento das forças no rotor mas ao mesmo tempo buscou-se um sistema simétrico e robusto.  A Fig. \ref{fig:montgem:corte} é um corte da estrutura proposta, verificamos que o estator interno (RW-M-EI) é formado por uma única peça, enquanto o rotor e o estator externo são fragmentados em mais de uma parte.
+Para a prototipagem do mancal foi necessário a criação de nove diferentes peças que possibilitassem a montagem do sistema. A proposta de montagem visou minimizar a influência no circuito magnético que alteraria o comportamento das forças no rotor mas, ao mesmo tempo, buscou-se um sistema simétrico e robusto.  A Fig. \ref{fig:montgem:corte} é um corte da estrutura proposta, verificamos que o estator interno (RW-M-EI) é formado por uma única peça, enquanto o rotor e o estator externo são fragmentados em mais de uma parte.
 
 A Tab. \ref{Tab:nomenclatura:mancal} possui a descrição e nomenclatura das partes propostas para a prototipagem do mancal magnético.
 
@@ -346,7 +346,7 @@ A Tab. \ref{Tab:nomenclatura:mancal} possui a descrição e nomenclatura das par
  \end{table} 
 
  
-A não utilização de materiais laminados propicia  a aparição de correntes parasitas de Foucault no circuito magnético quando exposto a correntes variantes no tempo. Essas correntes induzidas  causam uma redução na força eletromagnética e aquecem o material, alterando a relação corrente/força utilizada como parâmetro para o projeto da lei de controle. Minimizar as correntes induzidas tornam o sistema mais eficiente porém a construção de um protótipo laminado é mecanicamente difícil. Outra solução é a utilização de \textit{soft iron} \citep{Boglietti2003}, que possui propriedades que limitam a criação de corrente induzida, em contrapartida esses materiais normalmente apresentam menor permeabilidade magnética e menor valor do campo magnético para atingir a saturação \citep{Han2013a}. O material escolhido para os circuitos magnéticos foi o Aço 1020 e para as partes não magnéticos utilizou-se alumínio.
+A não utilização de materiais laminados propicia a aparição de correntes parasitas de Foucault no circuito magnético, quando exposto a correntes variantes no tempo. Essas correntes induzidas  causam uma redução na força eletromagnética e aquecem o material, alterando a relação corrente/força utilizada como parâmetro para o projeto da lei de controle. Minimizar as correntes induzidas tornam o sistema mais eficiente porém a construção de um protótipo laminado é mecanicamente difícil. Outra solução é a utilização de \textit{soft iron} \citep{Boglietti2003}, que possui propriedades que limitam a criação de corrente induzida. Em contrapartida, esses materiais normalmente apresentam menor permeabilidade magnética e menor valor do campo magnético para atingir a saturação \citep{Han2013a}. O material escolhido para os circuitos magnéticos foi o Aço 1020 e para as partes não magnéticas utilizou-se o alumínio.
   
 \begin{figure}[th!]
 \centering
@@ -355,15 +355,15 @@ A não utilização de materiais laminados propicia  a aparição de correntes p
 \label{fig:montgem:corte}
 \end{figure} 
 
-A localização e os tipos de parafuso (magnético, não magnético) foi uma decisão de projeto, optou-se por uma localização que minimiza-se a influência no circuito magnético, no caso do estator interno, utilizou-se parafusos com materiais magnéticos alinhados com os polos. Verificou-se que essa região é a que menos impacta nos campos magnéticos (analisado via elementos finitos).
+A escolha da localização e dos tipos de parafuso (magnético, não magnético) foi uma decisão de projeto, optou-se por uma localização que minimizasse a influência no circuito magnético, no caso do estator interno e utilizou-se parafusos com materiais magnéticos alinhados com os polos. Verificou-se que essa região é a que menos impacta nos campos magnéticos (analisado via elementos finitos).
 
-No caso da fixação do estator externo, utilizou-se parafusos não magnéticos, caso contrário, seria um caminho não desejado para as linhas de campo. As partes do rotor foram montadas com parafusos magnéticos.
+No caso da fixação do estator externo, utilizou-se parafusos não magnéticos, caso contrário, seriam um caminho não desejado para as linhas de campo. As partes do rotor foram montadas com parafusos magnéticos.
 
-A prototipagem foi realizada a fim de verificação da arquitetura proposta analisando as estabilidades passivas e as demais forças envolvidas. Esse protótipo foi construído a partir de um estudo inicial e não possui as dimensões otimizados encontradas nos capítulos seguintes, porém suas dimensões são da ordem de grandeza do resultado dessa dissertação.
+A prototipagem foi realizada para a verificação da arquitetura proposta analisando as estabilidades passivas e as demais forças envolvidas. Esse protótipo foi construído a partir de um estudo inicial e não possui as dimensões otimizadas encontradas nos capítulos seguintes, porém suas dimensões são da ordem de grandeza do resultado dessa dissertação.
 
-Dificuldades foram enfrentadas com essa versão, dentre elas a do embobinamento dos polos, que não foi possível realizar de forma manual pois a área dedicada ao embobinamento possuía valores próximos ao teórico para acomodar a quantidade de voltas calculadas, o que impossibilitou o com correntes.
+Dificuldades foram enfrentadas com essa versão, dentre elas a do embobinamento dos polos, que não se podia realizar de forma manual pois a área dedicada ao embobinamento possuía valores próximos ao teórico  \todo{final confuso}para acomodar a quantidade de voltas calculadas, o que impossibilitou o com correntes.
 
-A falta de precisão na usinagem causou desalinhamento das peças e diferença nos raios, dificultando a montagem. Na concepção inicial do protótipo, uma casca eterna foi projetada (RM-M-C) para fixar os ímãs e impedir que eles fossem expelidos radialmente mas devido as imprecisões mecânica dos ímãs (que é causada pelo banho de níquel) não foi possível a utilização dessa peça. 
+A falta de precisão na usinagem causou desalinhamento das peças e diferença nos raios, dificultando a montagem. Na concepção inicial do protótipo, uma casca externa foi projetada (RM-M-C) para fixar os ímãs e impedir que eles fossem expelidos radialmente, mas devido as imprecisões mecânicas dos ímãs (causadas pelo banho de níquel) não foi possível a utilização dessa peça. 
 
 
 \begin{figure}[ht!]
