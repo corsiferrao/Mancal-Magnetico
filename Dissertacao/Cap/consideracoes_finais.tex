@@ -6,7 +6,7 @@
 
 O mancal magnético obtido com o desenvolvimento desta dissertação abre portas para a prototipagem de uma roda de reação nacional para controle de atitude de satélites. Com isso, é possível vencer as barreiras impostas do uso de um mancal convencional (mecânico) em ambiente espacial.
 
-Em projetos aerospaciais muitas vezes especifica-se atuadores que não possuem equivalentes comerciais, em parte devido ao restrito mercado e em parte pela especificidade do problema. \todo{parece redundante, não pode ser: "A metodologia aqui proposta pode ser aplicada para a especificação de mancais com diferentes características, sendo facilmente adaptável ao projeto (ou diferentes projetos) de atuadores}A metodologia aqui proposta pode ser aplicada para a especificação de um mancal com diferentes especificações, sendo facilmente adaptável ao projeto do atuador. 
+Em projetos aerospaciais muitas vezes especifica-se atuadores que não possuem equivalentes comerciais, em parte devido ao restrito mercado e em parte pela especificidade do problema. A metodologia aqui proposta pode ser aplicada para a especificação de mancais com diferentes características, sendo facilmente adaptável ao projeto (ou diferentes projetos) de atuadores
 
 O objetivo inicial dessa dissertação era o projeto e construção de um protótipo funcional de um mancal magnético, porém a proposta revelou uma complexidade maior que a prevista e a ausência de recursos atrasou o desenvolvimento. Optou-se então por explorar os quesitos de projeto e, com isso, encontrar um mancal com dimensões ótimas. 
 
@@ -20,21 +20,21 @@ A utilização de super computadores foi cogitada durante o desenvolvimento dess
 
 O modelo dinâmico obtido é de fácil parametrização e depende das forças magnéticas envolvidas (ímã e polos) além da massa do rotor. Sua característica de desacoplamento entre os eixos x e y possibilita a utilização de técnicas de controle do tipo SISO, de fácil implementação em sistemas digitais ou analógicos.
 
-\todo{melhoarar este parágrafo}Essa dissertação não explorou o projeto do controlador, mas provou-se com o projeto de um que é possível garantir a estabilização e o controle do rotor.
-
-A margem de ganho obtida garante que as oscilações do ganho do estimador não tornem o sistema instável, assegurando assim a robustez do controle proposto, essencial nesse \todo{consegue n~ao repetir "esse tipo de sistema"?}tipo de sistema. A utilização de técnicas modernas de controle é um ramo fértil para esse tipo de sistema, possibilitando melhores desempenho ao controlador e por consequência à roda de reação. 
+Essa dissertação não focou no projeto do controlador, mas provou-se com o projeto de um que é possível garantir critério de estabilização para uma boa operação do sistema. A margem de ganho obtida garante que as oscilações do ganho do estimador não tornem o sistema instável, assegurando assim a robustez do controle proposto, essencial em sistemas aerospaciais. A utilização de técnicas modernas de controle é um ramo fértil para esse tipo de sistema, possibilitando melhores desempenho ao controlador e por consequência à roda de reação. 
 
 O desenvolvimento do protótipo auxiliou na prova da estabilidade dos graus de liberdade passivos do mancal, porém demonstrou a necessidade de um estudo mais detalhado da topologia a ser escolhida para o mancal, desencadeando na otimização proposta.
 
 A utilização de materiais com melhores propriedades magnéticas que a do Aço 1020, deve ser considerada, por poer propiciar um mancal com menores dimensões e menos suscetível às correntes induzidas \citep{Ravaud2009} quando submetido a um campo alternado.
 
-Um mecanismo para embobinamento e conformidade das bobinas é necessário para a construção de futuros protótipos, garantindo assim que a especificação do sistema seja alcançada na prática. O embobinamento manual mostrou-se ineficiente e impossibilitou a execução de maiores testes.
+Um mecanismo para embobinamento e conformidade das bobinas é necessário para a construção de futuros protótipos, garantindo assim que a especificação do sistema seja alcançada na prática. O embobinamento manual mostrou-se ineficiente e impossibilitou a execução de maiores testes. 
 
-Infelizmente, a ausência de financiamento impossibilitou que um mancal com as dimensões encontradas ao longo do desenvolvimento desta dissertação fosse construído com o rigor mecânico necessário a fim de dar continuidade a implementação.
+Estudos devem ser realizados para o projeto de um mecanismo de travamento, utilizado durante o lançamento do satélite garante que as partes móveis não sofram com a aceleração do lançador.
 
-Três propostas de projeto de pesquisa para a construção de uma roda de reação foram submetidas aos órgãos de fomento (FAPESP, CNPq e Uniespaço) porém nenhuma obteve sucesso. 
+Infelizmente, a ausência de financiamento impossibilitou que um mancal com as dimensões encontradas ao longo do desenvolvimento desta dissertação fosse construído com o rigor mecânico necessário a fim de dar continuidade a implementação. Três propostas de projeto de pesquisa para a construção de uma roda de reação foram submetidas aos órgãos de fomento (FAPESP, CNPq e Uniespaço) porém nenhuma obteve sucesso. 
 
 Pretende-se viabilizar a construção de uma roda de reação e, por conseguinte de um mancal magnético pelo fomento de um projeto do tipo temático (FAPESP) que está em prospecção junto ao Instituto de Astronomia, Geofísica e Ciências Atmosféricas (IAG).
 
-\todo{coloca algo como: assim, os resultados obtidos durante o percursso da presente dissertação poderam ser aplicados e expandidos e blabla}
+%Os resultados obtidos durante o percurso dessa dissertação podem ser aplicados e expandidos em futuros projetos 
+
+
 

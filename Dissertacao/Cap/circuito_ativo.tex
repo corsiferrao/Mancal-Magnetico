@@ -192,7 +192,7 @@ Definindo o fluxo concentrado da bobina como o número de espiras N pelo fluxo q
 	L_{n} &= \frac{\Phi_{fa}}{In} = N B_{gn}\biggr\rvert_{(I_a = 0, I_b = 0)} S_{gn} \, I_n^{-1}
 \end{align}
 
-As indutâncias mútuas ($M$) são calculadas como sendo o fluxo que atravessa a bobina produzida por outras fontes: \todo{confuso}
+As indutâncias mútuas ($M$) são calculadas como sendo o fluxo que atravessa a bobina produzida por outras fontes:
 
 \begin{align}
 M_{ab} &= \frac{\Phi_{b \rightarrow a}}{Ib} = N B_{ga}\biggr\rvert_{(I_a = 0, I_n = 0)} S_{ga} \, I_b^{-1} \\
@@ -244,7 +244,7 @@ A Fig. \ref{fig:validacao_ativo_2d} é um comparativo dos modelos quando submeti
 
 Os parâmetros que devem ser otimizados são aqueles que não influenciam na topologia definida para a parte passiva do mancal, já que a mesma foi otimizada separadamente. Optou-se por não realizar uma otimização de ambas as partes simultaneamente evitando o problema da dimensionalidade.
 
-As variáveis otimizadas nesta etapa do projeto foram:  \todo{legendas confusas parece que falta alguma} o entreferro interno ($g_{gi}$), o comprimento ($w_n$), a altura  e largura ($l_n$) do núcleo da bobina ($h_n$) e a quantidade de espiras da bobina ($n_n$). O atuador tem que ser capaz de vencer a força de atração de 160N gerada pelo circuito passivo quando o rotor encontra-se no maior deslocamento (0.3 mm, limitado pelo batente). 
+As variáveis otimizadas nesta etapa do projeto foram:  o entreferro interno ($g_{gi}$), o comprimento ($w_n$), altura ($l_n$) e largura ($h_n$)  do núcleo da bobina e a quantidade de espiras da bobina ($n_n$). O atuador tem que ser capaz de vencer a força de atração de 160N gerada pelo circuito passivo quando o rotor encontra-se no maior deslocamento (0.3 mm, limitado pelo batente). 
 
 Uma ponto levado em consideração nessa etapa foi o da área útil a ser instalada as bobinas, esse espaço restrito é limitado pelo tamanho do ferro e pela largura do núcleo da bobina. A Fig. \ref{fig:modelo_ativo_bobina} ilustra a área em que a bobina está localizada. O cálculo dessa área ($S_{bob}$) levou em consideração a secção do fio utilizado ($S_{fio}$), o fator de embobinamento ($K_b$) e a quantidade de voltas de espiras, podendo ser calculado como:
 
@@ -330,11 +330,21 @@ Força de atração (N) x Corrente (A)
 
 Verifica-se que a força gerada pelas bobinas vence a força gerada pelo estator externo quando uma corrente superior a $3.5$ Ampères é aplicada no polo principal. A curva de força por corrente nesse ponto de operação é não linear, o que dificulta o projeto do controlador.
 
-A força atuante no rotor possui a forma da  \todo{sem número} Fig. \ref{ativo_otimizado_fem_I_dx00}.  \todo{parágrafo confuso} Nessa situação, as forças de tração devido ao estator externa possui resultante nula, e a única força atuante no rotor é a da gerada pela corrente nos polos. Verifica-se que o delta de força nesse caso é de $220$ N contra $180$ N do rotor na excursão máxima, isso se dá devido ao menor entreferro entre o polo e o rotor.
+%A força atuante no rotor quando o mesmo está em sua posição de a forma da Fig. \ref{ativo_otimizado_fem_I_dx00}. Nessa situação, as forças de tração devido ao estator externa possui resultante nula já que o rotor encontra-se em seu ponto de operação, a única força atuante no rotor é a da gerada pela corrente nos polos. Verifica-se que o delta de força nesse caso é de $220$ N contra $180$ N do rotor na excursão máxima, isso se dá devido ao menor entreferro entre o polo e o rotor.
 
-A Fig. \ref{ativo_otimizado_fem_I_dx_map} ilustra a força resultante no rotor devido a aplicação de uma corrente nas bobinas primárias e secundárias. Valores positivos de força indicam que a  \todo{seria maior??}maia atração é devida aos ímãs permanentes (estator externo) e uma força negativa, indica que a força resultante é devida a atração dos polos.
 
-Percebe-se que o comportamento da força gerada é similar para os diferentes pontos de operação, porém o ganho digital sofre alteração, inversamente proporcionais ao tamanho do entreferro.
+%\begin{figure}[ht!]
+%	\centering
+%	Força de atração (N) x Corrente (A)
+%	\includegraphics[width=0.8\linewidth]{Figs/Simulacoes/Ativo/ativo_otimizado_fem_I_dx00}
+%	\caption{Força resultante da aplicação de uma corrente quando o rotor está em seu ponto de operação}
+%	\label{ativo_otimizado_fem_I_dx00}
+%\end{figure}
+
+
+%A Fig. \ref{ativo_otimizado_fem_I_dx_map} ilustra a força resultante no rotor devido a aplicação de uma corrente nas bobinas primárias e secundárias. Valores positivos de força indicam que a força resultante é devida aos ímãs permanentes (estator externo) e uma força negativa, indica que a força resultante é devida a atração dos polos.
+
+Diversas simulações foram realizadas para caracterizar a força de atração quanto a variação da corrente e da posição, o resultado é demonstrado na Fig. \ref{ativo_otimizado_fem_I_dx_map}. Nele notamos o comportamento similar da força de atração com o diferencial do ganho do sistema.
 
 \begin{figure}[t!]
 \centering
@@ -352,7 +362,7 @@ Força de atração (N) x Corrente (A)
 %\label{ativo_otimizado_fem_I_dx00}
 %\end{figure}
 
-O campo magnético no polo principal  \todo{não entendi, o campo quando sofre variação da corrente está ilustrado na figura?}devido a variação na corrente elétrica é ilustrado na Fig. \ref{fig:ativo:fem:b:polos}. Nota-se os diferentes pontos de operação do componente magnético quando o rotor é mantido na mesma posição. Pela simulação é possível observar também que o espraiamento da área sofre aumento com a corrente, dinâmica não levada em consideração na modelagem analítica. 
+%O campo magnético no polo principal  \todo{não entendi, o campo quando sofre variação da corrente está ilustrado na figura?}devido a variação na corrente elétrica é ilustrado na Fig. \ref{fig:ativo:fem:b:polos}. Nota-se os diferentes pontos de operação do componente magnético quando o rotor é mantido na mesma posição. Pela simulação é possível observar também que o espraiamento da área sofre aumento com a corrente, dinâmica não levada em consideração na modelagem analítica. 
 
 \begin{figure}[!ht]
 	\centering

@@ -8,7 +8,7 @@
  
 \section{Modelagem}
 
-A dinâmica do rotor é influenciada basicamente pela sua velocidade de rotação ($\dot{\theta}$), sua inércia ($I$), sua massa ($m$) e posição relativa do rotor ($d_x,d_y,d_z$), compondo a energia cinética ($T$) do sistema. A parcela da energia potência ($V$) se dá pela sua translação axial ($d_z$), pela gravidade ($g$) e pela rigidez passiva do mancal ($K_z$) calculada na \todo{sem referencia} Sec. \ref{}. A Fig. \ref{fig:modelo:forcas} ilustra as forças atuantes no rotor, sendo:
+A dinâmica do rotor é influenciada basicamente pela sua velocidade de rotação ($\dot{\theta}$), sua inércia ($I$), sua massa ($m$) e posição relativa do rotor ($d_x,d_y,d_z$), compondo a energia cinética ($T$) do sistema. A parcela da energia potência ($V$) se dá pela sua translação axial ($d_z$), pela gravidade ($g$) e pela rigidez passiva do mancal ($K_z$) calculada. A Fig. \ref{fig:modelo:forcas} ilustra as forças atuantes no rotor, sendo:
 
  \begin{itemize}
  	\item $F_p$ : Força devido ao ímã permanente
@@ -59,7 +59,7 @@ A dinâmica do rotor é influenciada basicamente pela sua velocidade de rotaçã
 
 \subsection{Rigidez Passiva: $K_p$}
 
-A força exercida no rotor devido aos ímãs permanentes do estator externo pode ser aproximada por uma equação linear, como visto em \ref{subsection:forca:x}. Assumisse que a força de atração no roto para pequenos deslocamento dependa somente da posição no eixo, podendo ser representada pela decomposição:\todo{última frase confusa, tire esse assumisse}
+A força exercida no rotor devido aos ímãs permanentes do estator externo pode ser aproximada por uma equação linear, como visto na Sec. \ref{subsection:forca:x}. Para pequenos deslocamentos, podemos representar o ganho pela pela decomposição:
 
 \begin{align}
 	F_p(x) &= K_p \, x \\
@@ -190,7 +190,7 @@ O modelo linear ($G_{ma}$) de malha aberta para um dos eixos de movimentação n
 	G_a &= \frac{K_b}{s\, L + R}
 \end{align}
 
-O modelo encontrado foi utilizado para o projeto do controlador ($C(s)$), esse otimizado para operar em torno do ponto de operação (rotor). A função transferência do modelo obtido é demonstrada na Eq. \eqref{eq:dinamica:tfunc:gen}, o sistema obtido possui três polos sendo \todo{não seria: "...três polos nenhum deles seno integrador puro"?}eles nenhum integrador puro (sistema tipo 0).  
+O modelo encontrado foi utilizado para o projeto do controlador ($C(s)$), esse otimizado para operar em torno do ponto de operação (rotor). A função transferência do modelo obtido é demonstrada na Eq. \eqref{eq:dinamica:tfunc:gen}, o sistema obtido possui três polos sendo nenhum deles sendo integrador puro (sistema tipo 0).  
 
 \begin{align}
 	G_{ma}(s) &= \frac{K_b}{(s^2 \, m - K_p) \, (s\, L + R)}	\label{eq:dinamica:tfunc:gen} \\
@@ -199,7 +199,7 @@ O modelo encontrado foi utilizado para o projeto do controlador ($C(s)$), esse o
 \end{align}
  
 
-Os três polos estão localizado em: $[-82E3 -41 +41]	$, onde a função de transferência é descrita na Eq. \eqref{eq:dinamica:tfunc}, os parâmetros utilizados foram encontrados nas \todo{precisa de referência?}secções anteriores. 
+Os três polos estão localizado em: $[-82E3 -41 +41]	$, onde a função de transferência é descrita na Eq. \eqref{eq:dinamica:tfunc}, os parâmetros utilizados foram encontrados nas secções anteriores. 
 
 Verificou-se que o sistema é instável em malha aberta e um controlador deve ser projetado para estabilizá-lo. 
 
@@ -228,7 +228,7 @@ O controlador age diretamente sob a posição do rotor no plano x,y através de 
 
 \subsection{Estimador}
 	
-A fim de superar as não linearidades no ganho do atuador ($Kb(d,i)$), um controle de força foi projetado no lugar do de corrente. A força calculada pelo controle ($F_b$) foi aplicada em um estimador que calculou a corrente necessária a ser aplicada na bobina com base na posição do rotor. A Fig. \ref{fig:diagrama_controlador_estimador} demonstra o estimador de corrente proposto. O mesmo é dependente da área do polo ($S_n$), do comprimento do entreferro ($l_g$) e do número de \todo{chama espirar mesmo?}espirar ($n_n$). O equacionamento (Eq. \eqref{eq:estimator:i}) foi obtido através de um modelo simplificado da equação de força magnética considerando apenas um entreferro e um componente ferromagnético.
+A fim de superar as não linearidades no ganho do atuador ($Kb(d,i)$), um controle de força foi projetado no lugar do de corrente. A força calculada pelo controle ($F_b$) foi aplicada em um estimador que calculou a corrente necessária a ser aplicada na bobina com base na posição do rotor. A Fig. \ref{fig:diagrama_controlador_estimador} demonstra o estimador de corrente proposto. O mesmo é dependente da área do polo ($S_n$), do comprimento do entreferro ($l_g$) e do número de espirar ($n_n$). O equacionamento (Eq. \eqref{eq:estimator:i}) foi obtido através de um modelo simplificado da equação de força magnética considerando apenas um entreferro e um componente ferromagnético.
 
 %\begin{align}
 %F_b &= \frac{B_g^2 \m S_n}{2\, \mu_0} \\
