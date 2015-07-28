@@ -182,7 +182,9 @@ O estator interno é formado por oito polos distribuídos homogeneamente a cada 
 	\label{fig:modelo:mancal:estator:interno}
 \end{figure}
 
-O estator interno foi concebido para atuar sempre com três polos ativos por eixo de atuação, essa abordagem faz com que o fluxo do campo magnético que percorre o rotor seja maximizado no eixo onde deseja-se realizar a atração. A Fig. \ref{fig:modelo:mancal:estator:interno:fluxo} mostra o estator interno com três de seus polos ativos: (A),(B),(C) e o fluxo que flui pelo rotor. Os polos (A) e (C) nesse exemplo trabalham com polaridade inversa ao (B) para forçar que o fluxo feche por B e não por outro polo, maximizando assim a força de atração $F_B$.  \todo{parece contraditório, antes disse que forçava o fluxo a fechar em B e agora que nem todo ele fecha}Uma parte do fluxo do campo magnético não atravessa por (B) e fecha por outros polos. {primeiro fala que fez algo para forçar o fluxo a fechar em B e depois que ele não fecha}A corrente induzida em (A) e (C) é a metade da corrente no polo principal (B) isso é feito para evitar que o polo B atinja a saturação, já que o campo que o atravessa é composto pela totalidade do induzido em sua bobina mais a parte dos campos de (A) e (C).
+O estator interno foi concebido para atuar sempre com três polos ativos por eixo de atuação, essa abordagem faz com que o fluxo do campo magnético que percorre o rotor seja maximizado no eixo onde deseja-se realizar a atração. A Fig. \ref{fig:modelo:mancal:estator:interno:fluxo} mostra o caminho do fluxo que flui pelo rotor quando o estator interno opera com três de seus polos ativos: (A),(B),(C) . Os polos (A) e (C) nesse exemplo trabalham com polaridade inversa ao (B) para forçar que o fluxo feche na maior parte por (B) e não por outros polos, maximizando assim a força de atração $F_B$. 
+
+A corrente aplicada nos polos (A) e (C) é por definição de projeto a metade da corrente no polo principal (B). Isso é feito para evitar que o polo (B) opere com um valor elevado do modulo do campo magnético, já que o campo que o atravessa é composto pela totalidade do induzido em sua bobina mais a parte referente aos campos de (A) e (C).
 
 \begin{figure}[ht!]
 	\centering
@@ -219,7 +221,7 @@ O circuito magnético entre o estator interno e o rotor pode ser visto na Fig. \
 
 \subsection{Atuador}
 
-Dois tipos de acionamento e embobinamento podem ser realizados para a implementação do atuador, o primeiro considera independência de cada polo, tendo uma eletrônica exclusiva para o seu acionamento. O segundo, envolve a criação de uma única bobina por atuador. Similar aos polos de um motor elétrico, o mesmo filamento é compartilhado entre  \todo{seria os polos primários?}o polo primário e os polos secundários resultando em uma bobina de maior resistência e indutância. 
+Dois tipos de acionamento e embobinamento podem ser realizados para a implementação do atuador, o primeiro considera independência de cada polo, possuindo uma eletrônica exclusiva para o seu acionamento. O segundo, envolve a criação de uma única bobina por atuador, similar aos polos de um motor elétrico onde o mesmo filamento é compartilhado entre o polo primário e os polos secundários, resultando em uma bobina de maior resistência e indutância. 
 
 A vantagem da escolha do segundo método seria a simplificação da eletrônica já que seria necessário apenas quatro eletrônicas de potência para a atuação, porém implicaria em uma dinâmica mais lenta do atuador visto que as indutâncias seriam associadas em série.
 
@@ -241,14 +243,7 @@ Optou-se por instalar o batente no estator externo por duas razões distintas: f
 \end{figure}
 
 
-%\begin{figure}[th!]
-%\centering
-%\includegraphics[width=0.5\linewidth]{./Figs/mancais/mancal:batente:3d}
-%\caption{Perspectiva do batente proposto}
-%\label{fig:mancal:batente:3d}
-%\end{figure}
-
-O batente deve ser rígido suficiente para aguentar possíveis impactos do rotor, veremos no Cap. \ref{Cap:Modelagem:Dinamica} que essas forças são da ordem de centenas de Newtons.  \todo{Confuso e falta referencia} Propõem a utilização de Nylon ou Teflon \cite{Johnson2001a} na construção do batente devido as suas propriedades de lubrificação a seco. 
+O batente deve ser rígido suficiente para aguentar possíveis impactos do rotor, veremos no Cap. \ref{Cap:Modelagem:Dinamica} que essas forças são da ordem de centenas de Newtons. A utilização de Nylon ou Teflon na construção do batente é aconselhável \citep[Cap. 13]{Schweitzer2009} devido suas propriedades de lubrificação a seco e absorção a impacto.
 
 \section{Base}
 
@@ -315,7 +310,7 @@ Ao longo do desenvolvimento da dissertação, utilizou-se as nomenclaturas a seg
  	\label{Fig:Simulacao:Passivo:Mesh}
  \end{figure}
  
-Nas simulações em elementos finitos, o modelo criado possui físicas distintas para os diversos elementos do mancal. No caso dos ferros, aplicou-se a lei de Ampère com a relação construtiva \textbf{BH} interpolada a uma  \todo{não precisa dizer qual tabela?}tabela. Nos componentes compostos por ar, a relação utilizada foi a linear $B=\mu_0 H$. 
+Nas simulações em elementos finitos, o modelo criado possui físicas distintas para os diversos elementos do mancal. No caso dos ferros, aplicou-se a lei de Ampère com a relação construtiva \textbf{BH} interpolada de uma tabela \citep{MagWeb2015}. Nos componentes compostos por ar, a relação utilizada foi a linear $B=\mu_0 H$. 
 
 Na simulação do ímã, utilizou-se a relação de magnetização : $B = \mu_0 (H + M)$ onde M é a magnetização do meio em A/m. Para as bobinas, o material utilizado foi o cobre e a equação para a densidade de corrente (J) aplicada foi: $ J = \frac{N I}{A}$, onde: $N$ é o número de espiras; $I$ a corrente total aplicada na bobina e $A$ a área da secção da bobina.
 
@@ -363,7 +358,7 @@ No caso da fixação do estator externo, utilizou-se parafusos não magnéticos,
 
 A prototipagem foi realizada para a verificação da arquitetura proposta analisando as estabilidades passivas e as demais forças envolvidas. Esse protótipo foi construído a partir de um estudo inicial e não possui as dimensões otimizadas encontradas nos capítulos seguintes, porém suas dimensões são da ordem de grandeza do resultado dessa dissertação.
 
-Dificuldades foram enfrentadas com essa versão, dentre elas a do embobinamento dos polos, que não se podia realizar de forma manual pois a área dedicada ao embobinamento possuía valores próximos ao teórico  \todo{final confuso}para acomodar a quantidade de voltas calculadas, o que impossibilitou o com correntes.
+Dificuldades foram enfrentadas com essa versão, dentre elas a do embobinamento dos polos. Devido ao espaço restrito, não conseguiu via métodos manuais, alcançar a quantidade de bobinas prevista no projeto teórico. Impossibilitando o teste da força de atração do estator interno.
 
 A falta de precisão na usinagem causou desalinhamento das peças e diferença nos raios, dificultando a montagem. Na concepção inicial do protótipo, uma casca externa foi projetada (RM-M-C) para fixar os ímãs e impedir que eles fossem expelidos radialmente, mas devido as imprecisões mecânicas dos ímãs (causadas pelo banho de níquel) não foi possível a utilização dessa peça. 
 

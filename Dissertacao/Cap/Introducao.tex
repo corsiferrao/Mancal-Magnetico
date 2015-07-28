@@ -11,11 +11,11 @@
 
 Os sistemas de controle de atitude e órbita são uma das tecnologias mais críticas de qualquer sistema espacial. O desenvolvimento de um sistema de controle de atitude em território nacional permanece incompleto \citep{Veloso2009} e a venda de seus componentes ao nosso país é, frequentemente, recusada por países detentores dessa tecnologia.
 
-Basicamente, um sistema de controle de atitude é formado por sensores, atuadores e uma central responsável pelo processamento dos sinais dos sensores e comando dos atuadores, segundo uma lei de controle \citep{Rycroft1992a}. Os sensores mais comuns são detectores de horizonte, sensores magnéticos, sensores solares, giroscópios e rastreadores estelares. 
+Basicamente, um sistema de controle de atitude é formado por sensores, atuadores e uma central responsável pelo processamento dos sinais dos sensores e comando dos atuadores, segundo uma lei de controle \citep{Rycroft1992}. Os sensores mais comuns são detectores de horizonte, sensores magnéticos, sensores solares, giroscópios e rastreadores estelares. 
 
 Os principais atuadores incluem: propulsores, torques magnéticos e rodas de reação. A quase totalidade destes componentes de controle possui atualmente alguma iniciativa de desenvolvimento no país, seja por instituições governamentais ou por grupos de pesquisa independentes \citep{PresidenciaRepublica}. A principal exceção são as rodas de reação que praticamente não tem projetos de desenvolvimento em andamento e, no entanto, representam um componente indispensável na realização de manobras, na estabilização e no controle de atitude em três eixos. 
 
-Rodas de reação são dificilmente substituíveis pois apresentam larga faixa de operação em torque (ao contrário de atuadores magnéticos) e são alimentadas pela energia renovável fornecida por painéis solares (ao contrário de propulsores baseados em um estoque finito de combustível) \cite{Ismail2010a}. Por estes motivos, rodas de reação estão presentes em praticamente qualquer satélite que apresente requerimentos mínimos de desempenho em atitude.
+Rodas de reação são dificilmente substituíveis pois apresentam larga faixa de operação em torque (ao contrário de atuadores magnéticos) e são alimentadas pela energia renovável fornecida por painéis solares (ao contrário de propulsores baseados em um estoque finito de combustível) \citep{Ismail2010}. Por estes motivos, rodas de reação estão presentes em praticamente qualquer satélite que apresente requerimentos mínimos de desempenho em atitude.
 
 Uma roda de reação pode ser descrita como um atuador inercial com funcionamento baseado no princípio de conservação do momento angular. A atuação da roda de reação sobre o satélite se realiza por intercâmbio do momento angular, limitado ao eixo de rotação da roda. Devido a grande diferença entre a inercia do satélite e o da roda de reação, um controle de atitude com muita precisão é possível com esse sistema.
 
@@ -48,7 +48,7 @@ A suspensão do rotor com relação ao estator representa uma parte crítica em 
 
 Uma solução mecânica para a interface entre o rotor e o estator é o mancal por rolamento. Apesar de sua aparente simplicidade, apresenta desafios para a obtenção dos valores mínimos de fricção necessários, em vista das exigências de consumo, controlabilidade e vida útil da roda de reação \citep{Krishnan2010}. No caso de aplicações aerospaciais, a lubrificação do rolamento representa também, considerável dificuldade devido à impossibilidade de utilização de lubrificantes tradicionais em condições de baixa ou nenhuma pressão atmosférica, que leva à perda dos componentes voláteis destes lubrificantes e sua consequente degradação. Outra dificuldade se deve à tendência de migração dos lubrificantes na ausência de gravidade, o que costuma ser abordado com estratégias de recaptura ou relubrificação. Sistemas desse tipo, apresentam grande complexidade e seu comportamento orbital é de difícil validação em laboratório.
 
-As dificuldades associadas ao uso de mancal de rolamento residem também em sua modelagem, consequência da variação de viscosidade do lubrificante em função da temperatura do mancal, o que torna o coeficiente de fricção dependente da velocidade de rotação e das condições térmicas em geral \citep{Carrara2010}. O mancal por rolamento apresenta, por outro lado, grande vantagem construtiva devido à compactação do sistema e a não necessidade de eletrônica extra para o seu controle. 
+As dificuldades associadas ao uso de mancal de rolamento residem também em sua modelagem, consequência da variação de viscosidade do lubrificante em função da temperatura do mancal, o que torna o coeficiente de fricção dependente da velocidade de rotação e das condições térmicas em geral \citep{Carrara2007}. O mancal por rolamento apresenta, por outro lado, grande vantagem construtiva devido à compactação do sistema e a não necessidade de eletrônica extra para o seu controle. 
 
 Para contornar os problemas de lubrificação em baixa pressão, algumas rodas de reação  utilizam um sistema hermeticamente selado pressurizado com um gás inerte \citep{Krishnan2010}. Esta solução relaxa os requisitos de lubrificação, porém impõe uma força de arrasto extra na roda e não resolve o problema da migração dos lubrificantes na ausência de gravidade. Uma pesquisa detalhada dos lubrificantes de classe espacial e estratégias de selamento e relubrificação deve ser realizada.
 
@@ -60,7 +60,7 @@ A ausência de fricção elimina a zona morta de aplicação de torque em baixas
 \section{Revisão bibliográfica}
 
 
-Estudo iniciais sobre mancais magnéticos são datados do século XIX \citep{Weise1989}, porém só recentemente começaram a ter grandes aplicações na sociedade. Essas aplicações vão desde motores de alta eficiência até equipamentos médicos. Mancais magnéticos fazem uso extensivo de campos magnéticos e tiveram uma grande evolução quando os ímãs de terras raras tornaram-se acessíveis, possibilitando o aumento da geração de campos magnéticos permanentes \cite{Furlani2001}.
+Estudo iniciais sobre mancais magnéticos são datados do século XIX \citep{Weise1989}, porém só recentemente começaram a ter grandes aplicações na sociedade. Essas aplicações vão desde motores de alta eficiência até equipamentos médicos. Mancais magnéticos fazem uso extensivo de campos magnéticos e tiveram uma grande evolução quando os ímãs de terras raras tornaram-se acessíveis, possibilitando o aumento da geração de campos magnéticos permanentes \cite{Furlani2001d}.
 
 Mancais magnéticos podem ser classificados em dois grandes grupos: os que utilizam da \textit{força de relutância} e os que utilizam da \textit{força de Loretz}. O primeiro grupo é chamado de mancais magnéticos ativos (na literatura AMBs) e o segundo são os mancais magnéticos passivos (PMBs) \cite{Schweitzer2009}.
 
@@ -143,7 +143,7 @@ Devido ao controle da posição do rotor em mancais magnéticos, o sensoriamento
 
 Os mancais magnéticos sem sensores (\textit{sensorless}) utilizam geralmente as bobinas de seus polos para sensorear a posição do rotor. Diversas técnicas podem ser empregadas \citep{Hofer2009a, Mukhopadhyay2005} entre elas: medição da indutância dos polos pela injeção de um sinal com uma portadora de frequência mais elevada ou a medição da força contra-eletromotriz induzida nas bobinas.
  
-Já os mancais sensoreados utilizam sensores de deslocamentos exclusivos para a medição da posição do rotor e, por consequência, do tamanho do entreferro \cite{boehm1993sensors}. Os sensores podem ser de dois tipos, capacitivos ou indutivos, dependendo do material construtivo do sistema. Opera-se geralmente com sensores na distribuição diferencial, visando minimizar os efeitos de suas não linearidades.
+Já os mancais sensoreados utilizam sensores de deslocamentos exclusivos para a medição da posição do rotor e, por consequência, do tamanho do entreferro \citep{Sivadasan1996}. Os sensores podem ser de dois tipos, capacitivos ou indutivos, dependendo do material construtivo do sistema. Opera-se geralmente com sensores na distribuição diferencial, visando minimizar os efeitos de suas não linearidades.
  
 \subsection{Mancais auxiliares}
 
@@ -155,6 +155,9 @@ O controle de mancais magnéticos é uma área fértil da engenharia de controle
 
 Técnicas de controle clássicas são utilizadas com bastante frequência em mancais magnéticos. Controle do tipo PID \citep{Tezuka2013} possue boa robustez. O controle  do tipo \textit{feedforward} é utilizado em casos onde há o acoplamento entre os graus de liberdade, podendo ser utilizado para o desacoplamento dos graus de liberdade. Outras técnicas propostas na literatura vão de encontro ao controle multivariável como controle robusto \citep{Jimenez-Lizafrraga2007}, controle ótimo \citep{Schuhmann2012} e controle não linear \citep{Rundell1996}.
 
+\subsection{Eletrônica}
+
+A eletrônica em sistemas espaciais consiste normalmente de uma parte crucial do sistema, sendo bastante sensível aos efeitos da radiação \citep{Stassinopoulos1988}, falhas em sensores, por exemplo, representam um dos maiores problemas para o bom funcionamento de sistemas aeroespaciais em seu pleno potencial \citep{Balaban2009}, e estão muitas vezes relacionadas ao cancelamento de missões ou mau funcionamento de sistemas. Além dos sensores, memórias podem ter seus dados alterados devido ao impacto de uma partícula de alta energia, podendo causar falha crítica no sistema.
 
 \section{Metodologia}
 
