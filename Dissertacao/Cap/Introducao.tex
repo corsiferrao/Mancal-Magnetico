@@ -60,12 +60,12 @@ A ausência de fricção faz com que deixe de existir a zona morta de aplicaçã
 \section{Revisão bibliográfica}
 
 
-Estudo iniciais sobre mancais magnéticos são datados do século XIX \citep{Weise1989}, porém só recentemente começaram a ter grandes aplicações na sociedade. Essas aplicações vão desde motores de alta eficiência até equipamentos médicos. Mancais magnéticos fazem uso extensivo de campos magnéticos e tiveram uma grande evolução quando os ímãs de terras raras tornaram-se acessíveis, possibilitando o aumento da geração de campos magnéticos permanentes \cite{Furlani2001d}.
+Estudo iniciais sobre mancais magnéticos são datados do século XIX \citep{Weise1989}, porém só recentemente começaram a ter grandes aplicações na sociedade. Essas aplicações vão desde motores de alta eficiência até equipamentos médicos. Mancais magnéticos fazem uso extensivo de campos magnéticos e tiveram uma grande evolução quando os ímãs de terras raras tornaram-se acessíveis, possibilitando o aumento da geração de campos magnéticos permanentes \citep{Furlani2001}.
 
-Mancais magnéticos podem ser classificados em dois grandes grupos: os que utilizam da \textit{força de relutância} e os que utilizam da \textit{força de Loretz}. O primeiro grupo é chamado de mancais magnéticos ativos (na literatura AMBs) e o segundo são os mancais magnéticos passivos (PMBs) \cite{Schweitzer2009}.
+Mancais magnéticos podem ser classificados em dois grandes grupos: os que utilizam da \textit{força de relutância} e os que utilizam da \textit{força de Lorentz}. O primeiro grupo é chamado de mancais magnéticos ativos (em inglês, AMBs) e o segundo são os mancais magnéticos passivos (PMBs) \citep{Schweitzer2009}.
 
 Os AMBs funcionam com um controle ativo de algumas das forças atuantes no mancal a fim de estabilizar o sistema (controle em malha fechada). Já os mancais puramente passivos geram as forças necessárias para estabilizar o rotor apenas via ímãs.
-Mancais magnéticos puramente passivos (seis graus de liberdade) que utilizam somente ímãs são impossíveis, dado que sempre um dos graus de liberdade torna-se instável (Teorema de Earnshaw's).
+Mancais magnéticos puramente passivos (seis graus de liberdade) que utilizam somente ímãs são impossíveis, dado que sempre um dos graus de liberdade torna-se instável (Teorema de Earnshaw's) \citep[pg. 20]{Schweitzer2009}.
 
 
 \subsection{Graus de liberdade}
@@ -79,11 +79,11 @@ Os mancais magnéticos podem ser classificados pelo número de graus de liberdad
 	
 	\item  Mancal ativo num grau de liberdade
 	
-	Neste caso, o rotor e o estator são formados por ímãs permanentes em configuração repulsiva, tornando o sistema estável axialmente. O eixo radial é instável e necessita controle ativo, normalmente realizado por meio de eletro-ímãs. Trata-se de uma configuração que necessita de uma eletrônica de controle relativamente simples e de baixo consumo de potência. No entanto, a ausência de controle ativo radial tende a gerar oscilações mecânicas de difícil amortecimento.
+	Nesse caso, o rotor é levitado em apenas um de seus grau de liberdade, necessitando que os demais graus de liberdade sejam estabilizados externamente (com por exemplo o uso de mancais mecânicos). Trata-se de uma configuração que necessita de uma eletrônica de controle relativamente simples e de baixo consumo de potência.
 	
 	\item Mancal ativo em dois graus de liberdade
 	
-	Aqui, o rotor e o estator compõem um circuito magnético em configuração atrativa, em geral com ímãs permanentes no rotor acoplados a um circuito magnético de baixa relutância no estator. O sistema é estável axialmente mas necessita controle ativo nos dois eixos radiais. Essa configuração resulta num mancal de boa rigidez radial, com arquitetura simplificada e pequenas dimensões, principalmente na direção axial.
+	Aqui, o rotor e o estator compõem um circuito magnético em configuração atrativa, em geral com ímãs permanentes no rotor acoplados a um circuito magnético de baixa relutância no estator. O sistema é estável axialmente mas necessita controle ativo na direção radial. Essa configuração resulta num mancal de boa rigidez radial, com arquitetura simplificada e pequenas dimensões, principalmente na direção longitudinal.
 	
 	\item Mancal ativo em cinco graus de liberdade
 	
@@ -92,11 +92,11 @@ Os mancais magnéticos podem ser classificados pelo número de graus de liberdad
 
 \subsection{Topologias com Aplicação em Rodas de Reação}
 
-Encontra-se na literatura três topologias distintas para utilização de mancais magnéticos em rodas de reação. Os mancais propostos para esse tipo de aplicação possuem, em sua maioria, dois graus de liberdade ativos e fazem uso de ímãs permanentes para a geração de campos magnéticos para minimizar o consumo elétrico ativo do sistema. Em seguida, analisamos os principais pontos desses mancais.
+Encontram-se na literatura três topologias distintas para utilização de mancais magnéticos em rodas de reação. Os mancais propostos para esse tipo de aplicação possuem, em sua maioria, dois graus de liberdade ativos e fazem uso de ímãs permanentes para a geração de campos magnéticos para minimizar o consumo elétrico ativo do sistema. Em seguida, analisamos os principais pontos desses mancais.
 
-A topologia proposta por \citet{Bernus1998} trabalha com dois graus de liberdades ativos, com ímãs permanentes no rotor e dois estatores: um interno com bobinas para o controlo do fluxo magnético no rotor (por consequência na direção radial) e outro externo para estabilização axial que também contribui com a rigidez axial. 
+A topologia proposta por \citet{Bernus1998} trabalha com dois graus de liberdades ativos, com ímãs permanentes no rotor e dois estatores: um interno com bobinas para o controle do fluxo magnético no rotor (por consequência na direção radial) e outro externo para estabilização axial que também contribui com a rigidez axial. 
 
-Nessa topologia (Fig. \ref{Fig:modelo:frances}), um fluxo magnético contínuo é gerado no rotor por ímãs permanentes ali instalados, as bobinas instaladas no estator interno conseguem gerar campos aditivos e subtrativos no rotor (dependente do sentido da corrente). Se o campo for aditivo, pode-se aumentar a rigidez do eixo axial, caso o campo for subtrativo, consegue-se diminuir sua rigidez, tornando assim mais fácil o deslocamento radial do rotor.
+Nessa topologia (Fig. \ref{Fig:modelo:frances}), um fluxo magnético contínuo é gerado no rotor por ímãs permanentes ali instalados, as bobinas no estator interno conseguem gerar campos aditivos e subtrativos no rotor (dependente do sentido da corrente). Se o campo for aditivo, pode-se aumentar a rigidez do eixo longitudinal, caso o campo subtrativo, consegue-se diminuir sua rigidez, tornando assim mais fácil o deslocamento radial do rotor.
 
 \begin{figure}[!ht]
 	\centering
@@ -118,9 +118,9 @@ A topologia proposta por \citet{Scharfe2001} difere por ter somente um estator e
 	\label{Fig:modelo:alemao}
 \end{figure} 
 
-Com essa arquitetura é possível utilizar as bobinas tanto para exercer uma força atrativa no rotor quanto para tornar a sua rigidez mas branda, facilitando a atração do rotor. É possível também aumentar a rigidez axial por permitir a inserção um fluxo positivo em ambas as bobinas, esse fluxo soma-se com o fluxo gerado pelos ímãs permanentes.
+Com essa arquitetura é possível utilizar as bobinas tanto para exercer uma força atrativa no rotor quanto para tornar a sua rigidez mais branda, facilitando a atração do rotor. É possível também aumentar a rigidez axial por permitir a inserção um fluxo positivo em ambas as bobinas, esse fluxo soma-se com o fluxo gerado pelos ímãs permanentes.
 
-Mais recentemente, uma nova arquitetura foi proposta por \citet{Bangcheng2012} para ser utilizado em uma roda de reação de um satélite ágil.  O rotor é composto de duas partes, uma externa utilizada para estabilizar o mancal na direção axial e outra interna para controle de posição na direção radial. Diferente das outras propostas, essa não utiliza um perfil em "C" para estabilização dos graus de liberdade passivos, mas sim, faz uso de um perfil plano com ímãs permanentes tanto no rotor quanto no estator.  Ímãs permanentes também são usados nos polos do mancal, esses criam um fluxo (\textit{bias}) constante diminuindo a corrente necessária para controlar o rotor.
+Mais recentemente, uma nova arquitetura foi proposta por \citet{Bangcheng2012} para ser utilizada em uma roda de reação de um satélite ágil.  O rotor é composto de duas partes, uma externa utilizada para estabilizar o mancal na direção axial e outra interna para controle de posição na direção radial. Diferente das outras propostas, essa não utiliza um perfil em "C" para estabilização dos graus de liberdade passivos, mas sim, faz uso de um perfil plano com ímãs permanentes tanto no rotor quanto no estator.  Ímãs permanentes também são usados nos polos do mancal, esses criam um fluxo (\textit{bias}) constante diminuindo a corrente necessária para controlar o rotor.
  
 %\begin{figure}[!ht]
 %	\centering
@@ -131,33 +131,33 @@ Mais recentemente, uma nova arquitetura foi proposta por \citet{Bangcheng2012} p
 
 \subsection{Modelagem Eletromagnética}
 
-Devido as não linearidades do mancal magnético (por exemplo a sua rigidez em função do deslocamento), a modelagem analítica é de difícil obtenção e uma análise por elementos finitos é recomendada \citep{pilat2007automatic}. Com esse tipo de análise é possível verificar o acoplamento das forças e momentos envolvidos além das características térmicas do sistema.
+Devido às não linearidades do mancal magnético (por exemplo a sua rigidez em função do deslocamento), a modelagem analítica é de difícil obtenção e uma abordagem por elementos finitos é recomendada \citep{pilat2007automatic}. Com esse tipo de análise é possível verificar o acoplamento das forças e momentos envolvidos além das características térmicas do sistema.
 
-Modelos analíticos \citep{Tezuka2013, Chiba} auxiliam no entendimento e na escolha dos parâmetros construtivos e magnéticos do mancal. A solução de um modelo analítico quando comparada a de um modelo com elementos finitos é computacionalmente mais rápida.
+Modelos analíticos \citep{Tezuka2013, Chiba} auxiliam no entendimento e na escolha dos parâmetros construtivos e magnéticos do mancal. A solução de um modelo analítico quando comparada à de um modelo com elementos finitos é computacionalmente mais rápida.
 
 Com o modelo analítico é possível a utilização de métodos de otimização \citep{Wu2009, Fang2014} para a obtenção de um mancal com melhores propriedades, dentre elas, menor potência, maior rigidez e dimensões dentro das especificações. 
 
 \subsection{Sensoriamento}
 
-Devido ao controle da posição do rotor em mancais magnéticos, o sensoriamento de sua posição é essencial para o funcionamento do sistema. Duas linhas de sensoriamento são encontradas na literatura: Mancais auto sensoreados \citep{Vischer1993} e os que utilizam sensores de posição dedicados para esse fim.
+Devido ao controle da posição do rotor em mancais magnéticos, o sensoriamento de sua posição é essencial para o funcionamento do sistema. Duas linhas de sensoriamento são encontradas na literatura: mancais auto sensoriados \citep{Vischer1993} e os que utilizam sensores de posição dedicados para esse fim.
 
-Os mancais magnéticos sem sensores (\textit{sensorless}) utilizam geralmente as bobinas de seus polos para sensorear a posição do rotor. Diversas técnicas podem ser empregadas \citep{Hofer2009a, Mukhopadhyay2005} entre elas: medição da indutância dos polos pela injeção de um sinal com uma portadora de frequência mais elevada ou a medição da força contra-eletromotriz induzida nas bobinas.
+Os mancais magnéticos sem sensores (\textit{sensorless}) utilizam geralmente as bobinas de seus polos para sensoriar a posição do rotor. Diversas técnicas podem ser empregadas \citep{Hofer2009a, Mukhopadhyay2005} entre elas: medição da indutância dos polos pela injeção de um sinal com uma portadora de frequência mais elevada ou a medição da força contra-eletromotriz induzida nas bobinas.
  
-Já os mancais sensoreados utilizam sensores de deslocamentos exclusivos para a medição da posição do rotor e, por consequência, do tamanho do entreferro \citep{Sivadasan1996}. Os sensores podem ser de dois tipos, capacitivos ou indutivos, dependendo do material construtivo do sistema. Opera-se geralmente com sensores na distribuição diferencial, visando minimizar os efeitos de suas não linearidades.
+Já os mancais sensoriados utilizam sensores de deslocamentos exclusivos para a medição da posição do rotor e, por consequência, do tamanho do entreferro \citep{Sivadasan1996}. Os sensores podem ser de dois tipos: capacitivos ou indutivos, dependendo do material construtivo do sistema. Opera-se geralmente com sensores na distribuição diferencial, visando minimizar os efeitos de suas não linearidades.
  
 \subsection{Mancais auxiliares}
 
- Mancais auxiliares são importantes em mancais magnéticos, pois são eles que evitam colisões entre as partes fixas e as rotativas em caso de algum tipo de falha. Mancais magnéticos projetados para operar em altas rotações não possuem bom rendimento na inicialização  (baixa rotação) e se utilizam dos mancais auxiliares nessa zona até atingirem a sua velocidade de operação. Os mancais auxiliares podem ser compostos por rolamentos esféricos \citep{Sun2004a} ou por elementos sólidos auto lubrificante como Teflon.
+ Mancais auxiliares são importantes em mancais magnéticos, pois são eles que evitam colisões entre as partes fixas e as rotativas em caso de algum tipo de falha. Mancais magnéticos projetados para operar em altas rotações não possuem bom rendimento na inicialização  (baixa rotação) e se utilizam dos mancais auxiliares nessa zona até atingirem a sua velocidade de operação. Os mancais auxiliares podem ser compostos por rolamentos esféricos \citep{Sun2004a} ou por elementos sólidos auto-lubrificantes como Teflon.
  
 \subsection{Técnicas de controle}
 
 O controle de mancais magnéticos é uma área fértil da engenharia de controle, as não linearidades do sistema tornam os projetos nada triviais.  
 
-Técnicas de controle clássicas são utilizadas com bastante frequência em mancais magnéticos. Controle do tipo PID \citep{Tezuka2013} possue boa robustez. O controle  do tipo \textit{feedforward} é utilizado em casos onde há o acoplamento entre os graus de liberdade, podendo ser utilizado para o desacoplamento dos graus de liberdade. Outras técnicas propostas na literatura vão de encontro ao controle multivariável como controle robusto \citep{Jimenez-Lizafrraga2007}, controle ótimo \citep{Schuhmann2012} e controle não linear \citep{Rundell1996}.
+Técnicas de controle clássicas são utilizadas com bastante frequência em mancais magnéticos. Controle do tipo PID \citep{Tezuka2013} possui ampla utilização pela sua fácil implementação na forma analógica e consolidada técnica. O controle  do tipo \textit{feedforward} é utilizado em casos onde há o acoplamento entre os graus de liberdade, podendo ser utilizado para o desacoplamento dos mesmos. Outras técnicas propostas na literatura situam-se na área de controle multivariável, e fazem uso de controle robusto \citep{Jimenez-Lizafrraga2007}, controle ótimo \citep{Schuhmann2012} e controle não linear \citep{Rundell1996}.
 
 \subsection{Eletrônica}
 
-A eletrônica em sistemas espaciais consiste normalmente de uma parte crucial do sistema, sendo bastante sensível aos efeitos da radiação \citep{Stassinopoulos1988}, falhas em sensores, por exemplo, representam um dos maiores problemas para o bom funcionamento de sistemas aeroespaciais em seu pleno potencial \citep{Balaban2009}, e estão muitas vezes relacionadas ao cancelamento de missões ou mau funcionamento de sistemas. Além dos sensores, memórias podem ter seus dados alterados devido ao impacto de uma partícula de alta energia, podendo causar falha crítica no sistema.
+A eletrônica em sistemas espaciais consiste normalmente de uma parte crucial do sistema, sendo bastante sensível aos efeitos da radiação \citep{Stassinopoulos1988}. Falhas em sensores, por exemplo, representam um dos maiores problemas para o bom funcionamento de sistemas aeroespaciais em seu pleno potencial \citep{Balaban2009}, e estão muitas vezes relacionadas ao cancelamento de missões devido ao mau funcionamento de sistemas. Além dos sensores, memórias podem ter seus dados alterados devido ao impacto de uma partícula de alta energia, podendo causar falha crítica no sistema.
 
 \section{Metodologia}
 
@@ -173,8 +173,9 @@ Na etapa de otimização, dividiu-se o projeto em duas partes: na primeira consi
 
 Com um modelo em elementos finitos (FEM) calculou-se com exatidão os parâmetros magnéticos do mancal proposto a serem utilizados na modelagem dinâmica do rotor.
 
-Com o modelo dinâmico, um controlador capaz de estabilizar o rotor em seu ponto de operação foi proposto, com ele, provou-se a controlabilidade do mancal nas restrições de potência propostas. 
+Com o modelo dinâmico, um controlador capaz de estabilizar o rotor em seu ponto de operação foi proposto, com ele, mostrou-se a viabilidade de controlar o mancal dentro das restrições de potência propostas. 
 
+A Fig. \ref{fig:metodologia:fluxo:dev} mostra o fluo do desenvolvimento do mancal.
 
  
 \begin{figure}[th!]
@@ -188,12 +189,12 @@ Com o modelo dinâmico, um controlador capaz de estabilizar o rotor em seu ponto
  
 No segundo capítulo, o mancal magnético proposto foi descrito e suas propriedades construtivas apresentadas. Nele podemos verificar conceitualmente todos os componentes que constituem o sistema proposto.
 
-O capítulo três apresenta um modelo não linear para representar a interação entre o estator externo e o rotor. Esse conjunto é responsável pela estabilização do rotor nos graus de liberdades passivamente estáveis. No modelo analítico foi aplicada uma otimização nos parâmetros construtivos do mancal visando encontrar um mancal compacto e com boa rigidez passiva. A partir de um modelo em elementos finitos obteve-se as relações de força por deslocamento.
+O capítulo 3 apresenta um modelo não linear para representar a interação entre o estator externo e o rotor. Esse conjunto é responsável pela estabilização do rotor nos graus de liberdades passivamente estáveis. No modelo analítico foi aplicada uma otimização nos parâmetros construtivos do mancal visando encontrar um mancal compacto e com boa rigidez passiva. A partir de um modelo em elementos finitos obteve-se as relações de força por deslocamento.
 
-Na quarta parte desta dissertação, um modelo fenomenológico que modela a interação entre o estator interno e o rotor está apresentado. Similarmente ao capítulo anterior, foi aplicada uma otimização visando a obtenção dos parâmetros construtivos do estator interno. Com o modelo em elementos finitos, chega-se às equações de força resultante dessa otimização do mancal.  
+No capítulo 4 parte desta dissertação, um modelo fenomenológico que modela a interação entre o estator interno e o rotor está apresentado. Similarmente ao capítulo anterior, foi aplicada uma otimização visando a obtenção dos parâmetros construtivos do estator interno. Com o modelo em elementos finitos, chega-se às equações de força resultante dessa otimização do mancal.  
 
-No quinta capítulo, a partir das dimensões e das equações de forças definidas anteriormente, um modelo dinâmico para o rotor está apresentado. Esse modelo foi utilizado para o projeto de uma malha de controle capaz de estabilizar o rotor em seu ponto de operação.
+No quinto capítulo, a partir das dimensões e das equações de forças definidas anteriormente, um modelo dinâmico para o rotor está apresentado. Esse modelo foi utilizado para o projeto de uma malha de controle capaz de estabilizar o rotor em seu ponto de operação.
 
-O último capítulo constituí-se por uma revisão do desenvolvimento da dissertação e pela apresentação de considerações finais sobre o projeto.
+O último capítulo constitui-se de uma revisão do desenvolvimento da dissertação e apresentação de considerações finais sobre o projeto.
 
 
