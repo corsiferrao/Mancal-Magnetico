@@ -63,8 +63,9 @@ R_{p}  &= \frac{h_m}{\mu_m \, S_m}			\\
 R_{ef} &= \frac{w_{ef}}{\mu_{ef}\, S_{ef}}  \\     
 R_{rf} &= \frac{w_{rf}}{\mu_{rf}\, S_{rf}}   \\    
 R_{rr} &= \frac{h_m}{\mu_{rr} \, S_{rr}}     \\      
-R_{ge} &= \frac{l_g}{\mu_0  \, S_{ge}}        
+R_{ge} &= \frac{g_{ne}}{\mu_0  \, S_{ge}}        
 \end{align}
+
 
 A permeância gerada pelo vazamento pode ser calculada por \citep{Leupold1996a}: 
 
@@ -128,8 +129,8 @@ A força resultante de atração é composta pela força dos dois entreferros (s
 Visando obter as resultantes das forças projetadas nos eixos radiais (x e y), para alcançarmos um modelo mais preciso das forças, o mancal foi dividido em oito partes distintas sendo que cada parte possuía um componente de campo magnético diferente das outras partes. Para que obtivéssemos o valor das forças radiais, foi preciso calcular todas as forças e então decompô-las nos seus respectivos eixos (Fig. \ref{fig:Passivo:decomposicao}). Por inspeção:
 
 \begin{align}
-F_x &= F_{L} + F_{NL} \, \boldsymbol{x} + F_{SL} \, \boldsymbol{x} - F_{O} - F_{NO} \, \boldsymbol{i}  - F_{SO} \, \boldsymbol{x} \label{eq:p:F:resultante:x} \\
-F_y &= F_{N} + F_{NL} \, \boldsymbol{j} + F_{SL} \, \boldsymbol{y} - F_{S} - F_{NO} \, \boldsymbol{y}  - F_{SO} \, \boldsymbol{y}
+F_{ex} &= F_{L} + F_{NL} \, \boldsymbol{x} + F_{SL} \, \boldsymbol{x} - F_{O} - F_{NO} \, \boldsymbol{i}  - F_{SO} \, \boldsymbol{x} \label{eq:p:F:resultante:x} \\
+F_{ey} &= F_{N} + F_{NL} \, \boldsymbol{j} + F_{SL} \, \boldsymbol{y} - F_{S} - F_{NO} \, \boldsymbol{y}  - F_{SO} \, \boldsymbol{y}
 \label{eq:p:F:resultante:y} 
 \end{align}
 
@@ -147,7 +148,7 @@ Onde : L leste; NL noroeste; SL sudeste; O oeste; SO sudoeste; N norte. Para peq
 A força perpendicular ao plano de rotação é a composição de todos os oito componentes onde não é levado em consideração o efeito de inclinação do rotor. Assim, obtemos:
 
 \begin{equation}
-F_z(l_g) = \frac{S_{g}}{2 \, \mu_0} 	2 \,\sum_{i=N}^{NO} B_{giz}^2
+F_{ez}(l_g) = \frac{S_{g}}{2 \, \mu_0} 	2 \,\sum_{i=N}^{NO} B_{giz}^2
 \end{equation}
 
 \section{Convergência}
@@ -203,13 +204,13 @@ Buscou-se uma combinação de parâmetros que maximizasse a força de atração 
 
 O método de otimização utilizado para minimizar o funcional foi o de Nelder-Mead Simplex com restrição de fronteira. Nessa etapa, a otimização foi realizada com o modelo analítico levantado anteriormente, otimizando o tempo de processamento já que a resolução do modelo analítico leva segundos a ser realizado enquanto a do elementos finitos chega a dezenas de minutos.
 
-Os parâmetros escolhidos para a otimização foram todos os que definem construtivamente o circuito passivo do mancal, sendo eles: altura  ($h_{fee}$) e largura  ($w_{fee}$) do ferro estator externo; a altura ($h_m$) e largura ($w_m$) do ímã e largura ($w_{fr}$) do ferro rotor e largura do retorno rotor ($w_{rn}$). Além do comprimento do entreferro ($g_e$) e raio externo do mancal ($r_{eei}$).
+Os parâmetros escolhidos para a otimização foram todos os que definem construtivamente o circuito passivo do mancal, sendo eles: altura  ($h_{fee}$) e largura  ($w_{fee}$) do ferro estator externo; a altura ($h_m$) e largura ($w_m$) do ímã e largura ($w_{rf}$) do ferro rotor e largura do retorno rotor ($w_{rr}$). Além do comprimento do entreferro ($g_{ne}$) e raio externo do mancal ($r_{eei}$).
 
-Para respeitar a geometria proposta durante a otimização, os parâmetros $w_{fee}$ e $w_{fr}$ não foram manipulados diretamente na otimização, já que não podem assumir valores inferiores a $w_m$ e $w_{rn}$ respectivamente, caso contrário, o mancal encontrado durante a otimização possuiria propriedades distintas da proposta e o modelo analítico seria invalidado. Otimizamos nesse caso, duas componentes $\Delta w_{fee}$ e $\Delta w_{fr}$ que compõem em conjunto com seus pares os comprimentos dos ferros:
+Para respeitar a geometria proposta durante a otimização, os parâmetros $w_{fee}$ e $w_{rf}$ não foram manipulados diretamente na otimização, já que não podem assumir valores inferiores a $w_m$ e $w_{rr}$ respectivamente, caso contrário, o mancal encontrado durante a otimização possuiria propriedades distintas da proposta e o modelo analítico seria invalidado. Otimizamos nesse caso, duas componentes $\Delta w_{fee}$ e $\Delta w_{rf}$ que compõem em conjunto com seus pares os comprimentos dos ferros:
 
 \begin{align}
 w_{fee}  &= \Delta w_{fee} + w_m \\
-w_{fr} &= \Delta w_{fr} + w_{rn}
+w_{rf} &= \Delta w_{rf} + w_{rr}
 \end{align}	
 
 Restrições foram impostas para evitar a otimização do mancal para um caso em que a sua construção fosse inviável mecanicamente ou para evitar um mancal que se encontrasse fora das especificações da roda de reação. A Tab. \ref{tab:passivo:restrições} demonstra os valores máximos ($L_{Max}$) e mínimos ($L_{Min}$) impostos para cada elemento do mancal, assim como o valor inicial ($L_0$) utilizado na otimização.
@@ -218,7 +219,7 @@ Restrições foram impostas para evitar a otimização do mancal para um caso em
 \begin{table}[ht!]
 	\centering
 	\begin{tabular}{c c c c c c c c c}
-		& $h_{fee}$ &$\Delta w_{fee}$ & $w_m$ & $h_m$  & $g_e$ & $\Delta w_{fr}$ & $w_{rn}$ & $r_{eei}$ \\ \hline \hline
+		& $h_{fee}$ &$\Delta w_{fee}$ & $w_m$ & $h_m$  & $g_{ne}$ & $\Delta w_{rf}$ & $w_{rr}$ & $r_{eei}$ \\ \hline \hline
 		
 		$L_{0}$ 	&  6 &   4 &    8 &    10 &   3 &  4 &   6 &    75 \\
 		$L_{Min}$ &  2    &  2   &  4  &   5&    1  & 2  &  3&    50\\			
@@ -242,7 +243,7 @@ P_6 &= 25 \,  |{\Delta B_{g}}|\\
 F &= P_1 + P_2 + P_3 + P_4 + P_5 + P_6   \label{eq:passivo:merito}
 \end{align}
 
-A Fig. \ref{fig:otimizacao_passivo_parametros} mostra a evolução dos parâmetros ao longo da otimização. Verificamos que a força de atração $F_y$ é maximizada ao longo das interações, porém verificamos que é acompanhada pela força $F_x$ que deveria ser minimizada. Isso ocorre devido a correlação entre as duas forças, sendo que ambas depende do vetor campo magnético acumulado no entreferro ($B_{ge}$). Outra relação direta que é possível ser notada é a do tamanho do entreferro ($g_e$), quanto menor o entreferro menor a relutância do circuito magnético e maior o campo magnético acumulado no entreferro.
+A Fig. \ref{fig:otimizacao_passivo_parametros} mostra a evolução dos parâmetros ao longo da otimização. Verificamos que a força de atração $F_y$ é maximizada ao longo das interações, porém verificamos que é acompanhada pela força $F_x$ que deveria ser minimizada. Isso ocorre devido a correlação entre as duas forças, sendo que ambas depende do vetor campo magnético acumulado no entreferro ($B_{ge}$). Outra relação direta que é possível ser notada é a do tamanho do entreferro ($g_{ne}$), quanto menor o entreferro menor a relutância do circuito magnético e maior o campo magnético acumulado no entreferro.
 
 
 \begin{figure}[bh!]
@@ -268,7 +269,7 @@ As dimensões alcançadas devido a otimização do mancal estão listada na Tab.
 \begin{table}[ht!]
 	\centering
 	\begin{tabular}{c c c c c c c c c}
-		& $h_{fee}$ &$\Delta w_{fee}$ & $w_m$ & $h_m$  & $g_e$ & $\Delta w_{fr}$ & $w_{rn}$ & $r_{eei}$ \\ \hline \hline
+		& $h_{fee}$ &$\Delta w_{fee}$ & $w_m$ & $h_m$  & $g_{ne}$ & $\Delta w_{rf}$ & $w_{rr}$ & $r_{eei}$ \\ \hline \hline
 		$L_{n}$  	&  4.2 &   10 &   10 &    12 &   1.4 &  7 &   6 &    70 \\
 	\end{tabular} 
 	\caption{Dimensões obtidas pela otimização. Valores em milímetros.}
