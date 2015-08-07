@@ -15,22 +15,22 @@ A dinâmica do rotor é influenciada basicamente pela sua velocidade de rotaçã
  	\item $F_b$ : Força devido a bobina
  	\item $\tau$ : Torque de rotação devido ao motor
  	\item $\theta$ : O angulo do rotor
- 	\item $x,y,z$ : Deslocamento no plano cartesiano 
+ 	\item $x,y,z$ : Deslocamento no espaço tridimensional
  \end{itemize}
 
  \begin{figure}[th]
  	\centering
  	\includegraphics[width=0.7\linewidth]{../Figs/Modelagem/forcas}
- 	\caption{Forças atuantes rotor}
+ 	\caption{Forças atuantes no rotor}
  	\label{fig:modelo:forcas}
  \end{figure}
  
  \begin{align}
- 	T_{\theta, x, y, z} &= \frac{1}{2} I_z \, \dot{\theta}^2 + \frac{1}{2} \, m \, \left( \dot{x}^2 + \dot{y}^2 + \dot{z}^2 \right) \notag \\
- 	V_z &= m \, g \, z + \frac{1}{2} \, K_z \, z^2
+ 	T &= \frac{1}{2} I_z \, \dot{\theta}^2 + \frac{1}{2} \, m \, \left( \dot{x}^2 + \dot{y}^2 + \dot{z}^2 \right) \notag \\
+ 	V &= m \, g \, z + \frac{1}{2} \, K_z \, z^2
  \end{align}	
  	
- Duas forças distintas agem no rotor: a primeira, não conservativa ($Q^{nc}$) é causada pela força de atração ($F_b$) nos atuadores, é dependente da posição do rotor e da corrente aplicada ($i$); a segunda, conservativa ($Q^{c}$) é dependente somente da posição do rotor e é causada pela força de atração dos ímãs, podendo ser traduzida para uma rigidez ($K_p$). Ambas as forças $F_b$ e $K_p$ são levantadas via o modelo de elementos finitos. 
+ Duas forças distintas agem no rotor: a primeira, não conservativa ($Q^{nc}$) é causada pela força de atração ($F_b$) nos atuadores, é dependente da posição do rotor ($x,y,z$) e da corrente aplicada ($i$); a segunda, conservativa ($Q^{c}$) é dependente somente da posição do rotor e é causada pela força de atração dos ímãs, podendo ser traduzida para uma rigidez ($K_p$). Ambas as forças $F_b$ e $K_p$ são levantadas via o modelo de elementos finitos. 
 	 	
  \begin{align}
  	Q_y^{nc} &= F_{by}(x,i)  \\
@@ -38,8 +38,10 @@ A dinâmica do rotor é influenciada basicamente pela sua velocidade de rotaçã
  	Q^{c}_x  &= K_p \, x \\
  	Q^{c}_y  &= K_p \, y 
  \end{align}
+ 
+ Onde: $Q_x^{nc}$ e $Q_y^{nc}$ são as forças não conservativas projetadas no eixo x e y; $Q^{c}_x$ e $Q^{c}_y$ as forças conservativas atuantes nos eixos x e y;  $F_{by}$ e $F_{by}$ as forças resultante das bobinas respectivamente nos eixos x e y.
   
-  Com a resolução da lagrangiana (Eq. \ref{eq:dinamica:lagrangiana}) obtivemos as equações da dinâmica do sistema (Eq. \ref{eq:dinamica:modelo}):
+ Com a resolução da lagrangiana (Eq. \ref{eq:dinamica:lagrangiana}) obtivemos as equações da dinâmica do sistema (Eq. \ref{eq:dinamica:modelo}):
   
    \begin{align}
    		L = T - V \notag \\
@@ -55,15 +57,15 @@ A dinâmica do rotor é influenciada basicamente pela sua velocidade de rotaçã
  	\label{eq:dinamica:modelo}
  	\end{align}	
  
- Exceto pela dependência das posições nas forças, verificamos, pelas equações, o desacoplamento entre os diferentes graus de liberdade. 
+ Exceto pela dependência das posições nas forças, verificamos, pelas equações, o desacoplamento entre os diferentes eixos (x,y,z). 
 
 \subsection{Rigidez Passiva: $K_p$}
 
-A força exercida no rotor devido aos ímãs permanentes do estator externo pode ser aproximada por uma equação linear, como visto na Sec. \ref{subsection:forca:x}. Para pequenos deslocamentos, podemos representar o ganho pela pela decomposição:
+A força exercida no rotor devido aos ímãs permanentes do estator externo pode ser aproximada por uma equação linear, como visto na Sec. \ref{subsection:forca:x}. Para pequenos deslocamentos, podemos representar o ganho pela decomposição:
 
 \begin{align}
-	F_p(x) &= K_p \, x \\
-	F_p(y) &= K_p \, y 
+	F_{px} &= K_p \, x \\
+	F_{py} &= K_p \, y 
 \end{align}
 
 Onde $K_p$ é a constante de proporção entre a força e a posição e x e y são os deslocamento em torno do ponto de equilíbrio do rotor com relação ao estator externo. Obtivemos, via a simulação em elementos finitos, uma relação força por deslocamento para ambos os eixos (devido a simetria do mancal). 
@@ -76,17 +78,17 @@ Onde $K_p$ é a constante de proporção entre a força e a posição e x e y s�
 
 A força de atração do rotor devido ao campo magnético gerado pelas bobinas é não linear com a posição do rotor (comprimento do entreferro) e depende da corrente de excitação aplicada às bobinas.  
 
-As tensões nas bobinas são distribuídas conforme Fig. \ref{fig:blocos:tensao:bobinas:x:y} (a), onde existe sobreposição de bobinas para atuação em diferentes eixos (X e Y). É aplicada nas bobinas que possuem sobreposição a metade da tensão, limitando assim o valor da tensão total nas bobinas para o valor máximo (I/2 + I/2 = $I_max$). A Fig. \ref{fig:blocos:tensao:bobinas:x:y} ilustra a configuração proposta. Verificamos que a tensão é aplicada em metade para as bobinas com sobreposição (a,g,e,c) e com ganho unitário nas bobinas principais (h,f,c,b). 
+As tensões nas bobinas são distribuídas conforme Fig. \ref{fig:blocos:tensao:bobinas:x:y} (a), onde existe sobreposição de bobinas para atuação em diferentes eixos (X e Y). É aplicada nas bobinas que possuem sobreposição a metade da tensão, limitando assim o valor das correntes total nas bobinas para o valor máximo (I/2 + I/2 = $I_max$). A Fig. \ref{fig:blocos:tensao:bobinas:x:y} ilustra a configuração proposta. Verificamos que a tensão é aplicada em metade para as bobinas com sobreposição (a,g,e,c) e com ganho unitário nas bobinas principais (h,f,c,b). 
 
 \begin{figure}[th]
 \centering
 \includegraphics[width=0.7\linewidth]{./Figs/Modelagem/ativo-atuadores-conexao}
-\caption{Distribuição das tensões nas bobinas}
+\caption{Distribuição das correntes nas bobinas}
 \label{fig:blocos:tensao:bobinas:x:y}
 \end{figure}
 
-A força aplicada no rotor fi levantada via resultados da modelagem em elementos
-finitos, um polinômio de segundo grau com confidência de 95\% foi encontrado
+A força aplicada no rotor levantada via resultados da modelagem em elementos
+finitos, um polinômio de segundo grau com confiança de 95\% foi encontrado
 (Eq. \ref{eq:fb:segundo:grau}) via curva da Fig.
 \ref{ativo_otimizado_fem_I_dx_map}, os coeficientes estão descritos na Tab. \ref{tab:dinamico:ajuste:kb}.
 
@@ -124,9 +126,9 @@ Devido as bobinas dos polos do estator interno, uma dinâmica do atuador ($G_a(s
 	\label{eq:dinamica:bobina}
 \end{align}
 
-Os valores das indutâncias são calculados como demonstrada na SubSec. \ref{subsec:at:indutancia}. Os valores nominais no ponto de operação de cada bobina é de aproximadamente $76 \, \mu H$ e a sua resistência elétrica de 6.3 $\Omega$ causando uma frequência de corte de $13$ kHz. 
+Os valores das indutâncias são calculados como demonstrada na SubSec. \ref{subsec:at:indutancia}. O valor nominal no ponto de operação de cada bobina é de aproximadamente $76 \, \mu H$ e a sua resistência elétrica de 6.3 $\Omega$ causando uma frequência de corte de $13$ kHz. 
 
-As tabelas \ref{tab:dinamica:indutancia} e \ref{tab:dinamica:indutancia:mutua} demonstram a evolução da indutância principal (L) e da mutua (M) quando uma corrente de 4 Ampères é aplicada no polo principal. 
+As tabelas \ref{tab:dinamica:indutancia} e \ref{tab:dinamica:indutancia:mutua} mostram a evolução da indutância principal (L) e da mutua (M) quando uma corrente de 4 Ampères é aplicada no polo principal. 
 
 \begin{table}[ht!]
 	\centering
@@ -141,7 +143,7 @@ As tabelas \ref{tab:dinamica:indutancia} e \ref{tab:dinamica:indutancia:mutua} d
         75.048 & 0.25 \\
         74.381 & 0.30       
 	\end{tabular} 
-	\caption{Indutância calculada para um único polo em diversos pontos de operação via elementos finitos. Corrente aplicada de 4 Ampères no polo principal}
+	\caption{Indutância calculada para um único polo em diversos pontos de operação via elementos finitos. Corrente aplicada de 4A no polo principal}
 	\label{tab:dinamica:indutancia} 
 \end{table} 
 
@@ -158,7 +160,7 @@ As tabelas \ref{tab:dinamica:indutancia} e \ref{tab:dinamica:indutancia:mutua} d
          16.988 & 0.25 \\
          16.662 & 0.30       
 	\end{tabular} 
-	\caption{Indutâncias mutua calculada para um único polo em diversos pontos de operação via elementos finitos. Corrente aplicada de 4 Ampères no polo principal}
+	\caption{Indutância mutua calculada para um único polo em diversos pontos de operação via elementos finitos. Corrente aplicada de 4A no polo principal}
 	\label{tab:dinamica:indutancia:mutua} 
 \end{table} 
 
@@ -172,13 +174,13 @@ Uma aproximação linear das indutâncias foi calculada (Eq. \ref{eq:indutancias
 
 \subsection{Batente}
 
-O batente atua como uma saturação na posição do rotor (x,y, z), atrelou-se uma dinâmica ao batente para analisar as influências de choques mecânicos do rotor, possibilitando a análise de fadigas e a especificação de componentes de fixação (parafusos). Utilizou-se no  modelo o módulo de elasticidade de Young, onde a penetração ($\Delta l $) no material pode ser calculada por:
+O batente atua como uma saturação na posição do rotor (x,y, z), considerou-se uma dinâmica ao batente para analisar as influências de choques mecânicos do rotor, possibilitando a análise de fadiga e a especificação de componentes de fixação (parafusos). Utilizou-se no  modelo o módulo de elasticidade de Young, onde a penetração ($\Delta l $) no material pode ser calculada por:
 
 \begin{equation}
 	\Delta l =  \frac{F l_o}{E \, A}
 \end{equation}
 
-Sendo : \textbf{E }a constante de Yomg para o material; \textbf{A} área de contato; \textbf{$l_o$ } o comprimento inicial do material e \textbf{F} a força resultante do impacto. 
+Sendo : \textit{E} a constante de Yomg para o material; \textit{A} área de contato; \textbf{$l_o$ } o comprimento inicial do material e \textit{F} a força resultante do impacto. 
 
 
 \subsection{Modelo Linear}
@@ -190,10 +192,10 @@ O modelo linear ($G_{ma}$) de malha aberta para um dos eixos de movimentação n
 	G_a &= \frac{K_b}{s\, L + R}
 \end{align}
 
-O modelo encontrado foi utilizado para o projeto do controlador ($C(s)$), esse otimizado para operar em torno do ponto de operação (rotor). A função transferência do modelo obtido é demonstrada na Eq. \eqref{eq:dinamica:tfunc:gen}, o sistema obtido possui três polos sendo nenhum deles sendo integrador puro (sistema tipo 0).  
+O modelo encontrado (linearizado em torno do ponto de operação ) é utilizado para o projeto do controlador ($C(s)$). A função transferência do modelo obtido é mostrada na Eq. \eqref{eq:dinamica:tfunc:gen}, o sistema obtido possui três polos sendo nenhum deles sendo integrador puro (sistema tipo 0).   \todo{colocar os requisito do controlador}
 
 \begin{align}
-	G_{ma}(s) &= \frac{K_b}{(s^2 \, m - K_p) \, (s\, L + R)}	\label{eq:dinamica:tfunc:gen} \\
+	G_{ma}(s) = G_r(s) \, G_a(s) &= \frac{K_b}{(s^2 \, m - K_p) \, (s\, L + R)}	\label{eq:dinamica:tfunc:gen} \\
 	&= \frac{58}{(s^2 \, 0.375 - 625) \, (s\, 7.8 \, 10^{-5} + 6.3)}
 	 \label{eq:dinamica:tfunc}
 \end{align}
@@ -205,14 +207,14 @@ Verificou-se que o sistema é instável em malha aberta e um controlador deve se
 
 \subsection{Modelo Dinâmico Não Linear}
 
-Um modelo dinâmico não linear foi projetado em ambiente Matlab Simulink para a validação do controlador, esse modelo, leva em consideração as modelagens eletromagnéticas realizadas para a otimização do mancal.
+Um modelo dinâmico não linear foi implementado em ambiente Matlab Simulink para a validação do controlador, esse modelo, leva em consideração as modelagens eletromagnéticas realizadas para a otimização do mancal.
 
-A Fig. \ref{fig:diagrama:blocos:modelo:linear} demonstra o diagrama de blocos proposto, sendo $C_s$ o controlador projetado. Nesse esquema, o controlador age diretamente nas bobinas aplicando a corrente necessária para estabilizar o rotor no ponto de operação. 
+A Fig. \ref{fig:diagrama:blocos:modelo:linear} demonstra o diagrama de blocos proposto, sendo $C(s)$ o controlador projetado. Nesse esquema, o controlador age diretamente nas bobinas aplicando a corrente necessária para estabilizar o rotor no ponto de operação. 
 
 \begin{figure}[th!]
 	\centering
 	\includegraphics[width=1\linewidth]{../Figs/Modelagem/diagrama_blocos_modelo_linear}
-	\caption{Diagrama de blocos do modelo linearizado para descolamentos em x e y}
+	\caption{Diagrama de blocos do modelo linearizado para deslocamentos em x e y}
 	\label{fig:diagrama:blocos:modelo:linear}
 \end{figure}
 
@@ -222,13 +224,13 @@ Duas saturações devem ser consideradas, a primeira, referente a tensão da bob
 
 Um controlador foi projetado a fim de demonstrar a controlabilidade do sistema proposto dentro das especificações impostas ao mancal. O projeto do controlador foi feito via modelo linear e validado utilizando o modelo não linear. 
 
-O controlador age diretamente sob a posição do rotor no plano x,y através de duas forças ortogonais: $F_{bx}$ e $F_{by}$. A corrente necessária para gerar essas forças foi calculada via um estimador de corrente que traduziu a força imposta pelo controlador na corrente necessária levando em consideração a posição do rotor.
+O controlador age diretamente sobre a posição do rotor no plano x,y através de duas forças ortogonais: $F_{bx}$ e $F_{by}$. A corrente necessária para gerar essas forças foi calculada via um estimador de corrente que traduziu a força imposta pelo controlador na corrente necessária levando em consideração a posição do rotor.
 
 %Um estimador de forças é proposto a fim de minimizar as variações do ganho do atuador, o controlador age não diretamente sobre a corrente mas sim sobre a força necessária para estabilizar o rotor. O estimador é responsável por traduzir a força imposta pelo controlador em uma corrente.
 
 \subsection{Estimador}
 	
-A fim de superar as não linearidades no ganho do atuador ($Kb(d,i)$), um controle de força foi projetado no lugar do de corrente. A força calculada pelo controle ($F_b$) foi aplicada em um estimador que calculou a corrente necessária a ser aplicada na bobina com base na posição do rotor. A Fig. \ref{fig:diagrama_controlador_estimador} demonstra o estimador de corrente proposto. O mesmo é dependente da área do polo ($S_n$), do comprimento do entreferro ($l_g$) e do número de espirar ($n_n$). O equacionamento (Eq. \eqref{eq:estimator:i}) foi obtido através de um modelo simplificado da equação de força magnética considerando apenas um entreferro e um componente ferromagnético.
+A fim de superar as não linearidades no ganho do atuador ($Kb(d,i)$), um controle de força foi projetado no lugar do de corrente. A força calculada pelo controle ($F_b$) foi aplicada em um estimador que calculou a corrente necessária a ser aplicada na bobina com base na posição do rotor. A Fig. \ref{fig:diagrama_controlador_estimador} mostra o estimador de corrente proposto. O mesmo é dependente da área do polo ($S_n$), do comprimento do entreferro ($l_g$) e do número de espirar ($n_n$). O equacionamento (Eq. \eqref{eq:estimator:i}) foi obtido através de um modelo simplificado da equação de força magnética considerando apenas um entreferro e um componente ferromagnético.
 
 %\begin{align}
 %F_b &= \frac{B_g^2 \m S_n}{2\, \mu_0} \\
@@ -240,7 +242,7 @@ I = \sqrt{\frac{2 \, F_b \, \mu_0}{S_n}} \, \frac{l_g \mu_0}{n_n}
 \label{eq:estimator:i}
 \end{equation}
 	
-Um exemplo da variação do ganho do atuador ($K_b$) pode ser ilustrado em dois cenários distintos, o primeiro, quando o rotor está em seu ponto de operação, sua força de atração gerada pela aplicação de uma corrente de 4A é 209 Newton, segundo quando o rotor encontra-se em seu deslocamento máximo ($d_x = 0.3 mm$) e a força resultante é de apenas 120N.
+Um exemplo da variação do ganho do atuador ($K_b$) pode ser ilustrado em dois cenários distintos, o primeiro, quando o rotor está em seu ponto de operação, sua força de atração gerada pela aplicação de uma corrente de 4A é 209N, segundo quando o rotor encontra-se em seu deslocamento máximo ($d_x = 0.3 mm$) e a força resultante é de apenas 120N.
 
 \begin{figure}[ht!]
 	\centering
@@ -260,7 +262,7 @@ O controlador proposto para o mancal magnético é um controle do tipo Proporcio
 
 O controlador foi projetado considerando o ganho unitário da bobina ($K_b = 1$), isso foi necessário para gerar um controlador que possuísse a força como esforço de controle e não a corrente. A saída do controlador foi aplicada ao estimador que traduziu, por sua vez, a força em tensão necessária à bobina. 
 
-Devido a instabilidade do sistema em malha aberta e as variações do ganho do atuador de forma não linear com a movimentação do rotor, optou-se por projetar um controlador privilegiando a robustez ao invés da agressividade.
+Devido a instabilidade do sistema em malha aberta e as variações do ganho do atuador de forma não linear com a movimentação do rotor, optou-se por projetar um controlador privilegiando a robustez ao invés da agilidade.
 
 O controlador obtido via especificação possui os ganhos da Tab. \ref{tab:controle:pid}:
 
@@ -273,12 +275,11 @@ O controlador obtido via especificação possui os ganhos da Tab. \ref{tab:contr
 	\end{tabular} 
 	\caption{Ganhos do controlador PID}
 	\label{tab:controle:pid}
-\end{table}
-
+\end{table} \todo{quais são as especificações para o projeto do contolador???}
 
 	\begin{figure}[!ht]
 	\centering
-		\subfloat[t][Diagrama de bode]{
+		\subfloat[t][Diagrama de Bode]{
 			\includegraphics[width=0.5\linewidth]{Figs/controle/bode_pid_g}
 		}
 		%
@@ -292,7 +293,7 @@ O controlador obtido via especificação possui os ganhos da Tab. \ref{tab:contr
 		\label{Fig:controle:analise}
 	\end{figure}
 
-O controle obtido impôs uma estabilidade no mancal com 60 graus de margem de fase e 27.8 dB margem de ganho. O tempo de acomodação foi de 123 ms com sobressinal de 12 \%. A resposta ao degrau está demonstrada na Fig. \ref{Fig:controle:analise}
+O controle obtido impôs uma estabilidade no mancal com 60 graus de margem de fase e 27.8 dB margem de ganho \todo{colocar o calor de especificação proximo}. O tempo de acomodação foi de 123 ms com sobressinal de 12 \%. A resposta ao degrau está demonstrada na Fig. \ref{Fig:controle:analise}
 
 \begin{figure}[ht!]
 \centering
@@ -300,12 +301,13 @@ O controle obtido impôs uma estabilidade no mancal com 60 graus de margem de fa
 \label{fig:controle:degrau}
 \end{figure}
 
-A simulação do controle PID com o estimador no sistema com ganhos variáveis está demonstrada na Fig. \ref{fig:pid_nlinear_degrau}, notamos que a resposta do sistema sofreu alterações quando comparada com a do modelo linear. Essas alterações são causadas basicamente pela variação da indutância com o decorrer da posição do rotor e, principalmente, pela variação do ganho do atuador.
+A simulação (feita com o modelo não linear) do controlador PID  com o estimador no sistema com ganhos variáveis está mostrada na Fig. \ref{fig:pid_nlinear_degrau}, notamos que a resposta do sistema sofreu alterações quando comparada com a do modelo linear. Essas alterações são causadas basicamente pela variação da indutância com o decorrer da posição do rotor e, principalmente, pela variação do ganho do atuador.
 
-\begin{figure}
+\begin{figure}[ht]
 \centering
 \includegraphics[width=0.7\linewidth]{Figs/controle/pid_nlinear_degrau}
 \caption{Resposta ao degrau do sistema em malha fechada com o controlador PID, sistema não linearizado}
 \label{fig:pid_nlinear_degrau}
 \end{figure}
 
+\todo[inline]{variável de controle}

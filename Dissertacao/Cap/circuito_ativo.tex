@@ -39,7 +39,7 @@ Partindo da premissa que todas as linhas de campo magnético estão contidas nos
 
 %\subsection{Campo Magnético no Entreferro}
 
-A modelagem da parte ativa (atuadores) foi realizada considerando o circuito magnético da Fig. \ref{Fig:modelagem:ativo:circuito2}, onde: $\mathcal{F}$ é a força contra eletromotriz gerada pela bobina; $R_n$ a relutância magnética associada ao núcleo da bobina; $R_g$ a relutância do entreferro; $R_r$ a relutância entre dois núcleos pelo ferro do rotor e $R_f$ a relutância de conexão entre dois núcleos pelo ferro de retorno do atuador.
+A modelagem da parte ativa (atuadores) foi realizada considerando o circuito magnético da Fig. \ref{Fig:modelagem:ativo:circuito2}, onde: $\mathcal{F}$ é a força contra eletromotriz gerada pela bobina; $R_n$ a relutância magnética associada ao núcleo da bobina; $R_{gi}$ a relutância do entreferro; $R_{ri}$ a relutância entre dois núcleos pelo ferro do rotor e $R_{fi}$ a relutância de conexão entre dois núcleos pelo ferro de retorno do atuador.
 
 \begin{figure}[h!]
 	\input{Figs/modelo_circuito_ativo.tex}
@@ -78,10 +78,10 @@ Sendo $\sum R_m$ e $I_m$  respectivamente, a relutância e a corrente interna de
 Com:
  
  \begin{align}
-	 R_{m1} &= R_{f1} + R_{n1} + R_{g1} + R_{r1} + R_{g2} + R_{n2} \\
-	 R_{m2} &= R_{f2} + R_{n2} + R_{g2} + R_{r2} + R_{g3} + R_{n3}  \\
+	 R_{m1} &= R_{f1} + R_{n1} + R_{gi1} + R_{r1} + R_{gi2} + R_{n2} \\
+	 R_{m2} &= R_{f2} + R_{n2} + R_{gi2} + R_{r2} + R_{gi3} + R_{n3}  \\
 	 & \ldots \\
- 	 R_{m3} &= R_{f8} + R_{n8} + R_{g8} + R_{r8} + R_{g1} + R_{n1}  \\
+ 	 R_{m3} &= R_{f8} + R_{n8} + R_{gi8} + R_{r8} + R_{gi1} + R_{n1}  \\
  \end{align}
 
 E o componente devido a relutância adjacentes:
@@ -99,16 +99,16 @@ Sendo as relutâncias adjacentes calculadas como:
  \begin{align}
 	 R_{a1} =& 
 	 \begin{bmatrix}
-			0 & R_{g2} + R_{n2} & 0 & 0 & 0 & 0 & 0 & R_{g8}+R_{n8}
+			0 & R_{gi2} + R_{n2} & 0 & 0 & 0 & 0 & 0 & R_{gi8}+R_{n8}
 	 \end{bmatrix} \\
 	 R_{a2} =&
 	 \begin{bmatrix}
-		R{g1}+R{n1} & 0 & R{g3}+R_{n3} & 0 & 0 & 0 & 0 & 0
+		R{gi1}+R{n1} & 0 & R{gi3}+R_{n3} & 0 & 0 & 0 & 0 & 0
 	 \end{bmatrix} \\
 	 & \ldots \\
 	 R_{a8} =&
 	 \begin{bmatrix}
-		R_{g1}+R_{n1} & 0 & 0 & 0 & 0  &0 & R_{g7}+R_{n7} & 0 
+		R_{gi1}+R_{n1} & 0 & 0 & 0 & 0  &0 & R_{gi7}+R_{n7} & 0 
 	 \end{bmatrix} 
  \end{align}
 
@@ -128,7 +128,7 @@ F_m =
 \end{bmatrix}
 \end{align}
 
-Podemos resolver a equação do circuito com: $ \phi_m = (R_m - R_a) \, F_m^{-1}$, dado o resultado de cada fluxo eletromagnético nas malhas, foi possível calcular os fluxos individuais nos entreferro ($\phi_g$). Uma vez encontrado o fluxo magnético, pode-se obter o campo magnético através da simples relação que engloba o fluxo e a área em que ele está distribuído.
+Podemos resolver a equação do circuito com: $ \phi_m = (R_m - R_a) \, F_m^{-1}$, dado o resultado de cada fluxo eletromagnético nas malhas, foi possível calcular os fluxos individuais nos entreferro ($\phi_{g}$). Uma vez encontrado o fluxo magnético, pode-se obter o campo magnético através da simples relação que engloba o fluxo e a área em que ele está distribuído.
 
 \begin{align}
 	\phi_g = 
@@ -148,9 +148,9 @@ Podemos resolver a equação do circuito com: $ \phi_m = (R_m - R_a) \, F_m^{-1}
 As relutâncias foram calculadas utilizando as dimensões dos componentes do mancal com os comprimentos das linhas de campo ilustrados na Fig. \ref{Fig:modelagem:dim:ativo}. Resultando nas equações:
 
 \begin{align}
-R_{r}  &= \frac{l_r}{\mu_r \, S_r}			\\
+R_{ri}  &= \frac{l_{ri}}{\mu_{ri} \, S_{ri}}			\\
 R_{n} &= \frac{w_{n}}{\mu_{n}\, S_{n}}  \\     
-R_{g} &= \frac{w_{gni}}{\mu_{0}\, S_{gni}}   \\    
+R_{gi} &= \frac{w_{gni}}{\mu_{0}\, S_{gni}}   \\    
 R_{f} &= \frac{h_{fei}}{\mu_{f} \, S_{wfei}}    
 \end{align}
 

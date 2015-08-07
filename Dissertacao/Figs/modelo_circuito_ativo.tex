@@ -3,23 +3,23 @@
 			\draw (0,0)
 	    	to[V,v^=$\mathcal{F}_1$] (0,2) 
 			to[R=$R_{n1}$] (0,4) 
-			to[R=$R_{g1}$, i>^ =$\phi_1$] (0,6) 
-			to[R=$R_{r1}$] (2,6) 
-			to[R=$R_{g2}$,i=$\phi_2$] (2,4) 
+			to[R=$R_{gi1}$, i>^ =$\phi_1$] (0,6) 
+			to[R=$R_{ri1}$] (2,6) 
+			to[R=$R_{gi2}$,i=$\phi_2$] (2,4) 
 			to[R=$R_{n2}$] (2,2) 
-	    	to[V,v^=$\mathcal{F}_1$] (2,0) 
-			to[R=$R_{f1}$] (0,0); 			
+	    	to[V,v^=$\mathcal{F}_2$] (2,0) 
+			to[R=$R_{fi1}$] (0,0); 			
 			\foreach \i in {1,...,6}
 			{
 				\pgfmathtruncatemacro{\cur}{\i *2 + 2}
 			    \pgfmathtruncatemacro{\pre}{\i *2 }
-  			    \pgfmathtruncatemacro{\name}{\i+1}
+  			    \pgfmathtruncatemacro{\name}{\i+2}
 					\draw (\pre,6)
-					to[R=$R_{r\name}$] (\cur,6) 
-					to[R=$R_{g\name}$] (\cur,4) 
-					to[R=$R_{g\name}$] (\cur,2) 
+					to[R=$R_{ri\name}$] (\cur,6) 
+					to[R=$R_{gi\name}$] (\cur,4) 
+					to[R=$R_{gi\name}$] (\cur,2) 
 					to[V,v=$\mathcal{F}_\name$] (\cur,0)
-					to[R=$R_{f\name}$] (\pre,0); 			
+					to[R=$R_{fi\name}$] (\pre,0); 			
 			}
 			\draw (14,6)
 			to[short](14,8)
