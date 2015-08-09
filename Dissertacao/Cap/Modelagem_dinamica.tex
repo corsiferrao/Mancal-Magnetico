@@ -192,7 +192,7 @@ O modelo linear ($G_{ma}$) de malha aberta para um dos eixos de movimentação n
 	G_a &= \frac{K_b}{s\, L + R}
 \end{align}
 
-O modelo encontrado (linearizado em torno do ponto de operação ) é utilizado para o projeto do controlador ($C(s)$). A função transferência do modelo obtido é mostrada na Eq. \eqref{eq:dinamica:tfunc:gen}, o sistema obtido possui três polos sendo nenhum deles sendo integrador puro (sistema tipo 0).   \todo{colocar os requisito do controlador}
+O modelo encontrado (linearizado em torno do ponto de operação ) é utilizado para o projeto do controlador ($C(s)$). A função transferência do modelo obtido é mostrada na Eq. \eqref{eq:dinamica:tfunc:gen}, o sistema obtido possui três polos sendo nenhum deles sendo integrador puro (sistema tipo 0). 
 
 \begin{align}
 	G_{ma}(s) = G_r(s) \, G_a(s) &= \frac{K_b}{(s^2 \, m - K_p) \, (s\, L + R)}	\label{eq:dinamica:tfunc:gen} \\
@@ -264,6 +264,8 @@ O controlador foi projetado considerando o ganho unitário da bobina ($K_b = 1$)
 
 Devido a instabilidade do sistema em malha aberta e as variações do ganho do atuador de forma não linear com a movimentação do rotor, optou-se por projetar um controlador privilegiando a robustez ao invés da agilidade.
 
+Como especificação de projeto, definiu que o sistema em malha fechada deveria ter ao menos 50 graus de margem de fase e 20 dB em margem de ganho. Ambos os parâmetros foram escolhidos para suportar a adição de um sensor de posição ao sistema, que influenciara com uma nova dinâmica na malha de controle, impondo varições de ganho e fase na leitura da posição do rotor.
+
 O controlador obtido via especificação possui os ganhos da Tab. \ref{tab:controle:pid}:
 
 \begin{table}[ht!]
@@ -275,39 +277,34 @@ O controlador obtido via especificação possui os ganhos da Tab. \ref{tab:contr
 	\end{tabular} 
 	\caption{Ganhos do controlador PID}
 	\label{tab:controle:pid}
-\end{table} \todo{quais são as especificações para o projeto do contolador???}
+\end{table} 
 
-	\begin{figure}[!ht]
+\begin{figure}[!ht]
 	\centering
 		\subfloat[t][Diagrama de Bode]{
-			\includegraphics[width=0.5\linewidth]{Figs/controle/bode_pid_g}
-		}
+			\includegraphics[width=0.7\linewidth]{Figs/controle/bode_pid_g}
+		}\\
 		%
 		\subfloat[b][Lugar das raizes]{
-			\includegraphics[width=0.5\linewidth]{Figs/controle/rlocus_pid_g}
-		}	\\
-		\subfloat[c][Resposta ao degrau do sistema em malha fechada com o controlador PID, sistema linearizado]{
-		\includegraphics[width=0.7\linewidth]{Figs/controle/step_pid_g}
-		}
+			\includegraphics[width=0.7\linewidth]{Figs/controle/rlocus_pid_g}
+		}	
 		\caption{Análise do sistema controlado, diagrama de bode e lugar das raízes}
 		\label{Fig:controle:analise}
-	\end{figure}
-
-O controle obtido impôs uma estabilidade no mancal com 60 graus de margem de fase e 27.8 dB margem de ganho \todo{colocar o calor de especificação proximo}. O tempo de acomodação foi de 123 ms com sobressinal de 12 \%. A resposta ao degrau está demonstrada na Fig. \ref{Fig:controle:analise}
-
-\begin{figure}[ht!]
-\centering
-
-\label{fig:controle:degrau}
 \end{figure}
 
-A simulação (feita com o modelo não linear) do controlador PID  com o estimador no sistema com ganhos variáveis está mostrada na Fig. \ref{fig:pid_nlinear_degrau}, notamos que a resposta do sistema sofreu alterações quando comparada com a do modelo linear. Essas alterações são causadas basicamente pela variação da indutância com o decorrer da posição do rotor e, principalmente, pela variação do ganho do atuador.
+O controle obtido impôs uma estabilidade no mancal com 60 graus de margem de fase e 27.8 dB margem de ganho. O tempo de acomodação foi de 123 ms com sobressinal de 12 \%. 
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.7\linewidth]{Figs/controle/pid_nlinear_degrau}
-\caption{Resposta ao degrau do sistema em malha fechada com o controlador PID, sistema não linearizado}
-\label{fig:pid_nlinear_degrau}
+A simulação (feita com o modelo não linear) do controlador PID  com o estimador no sistema com ganhos variáveis está mostrada na Fig. \ref{fig:pid_nlinear_degrau}, nessa simulação, o rotor está com condições iniciais não nulas. Verifica-se que o controle é capaz de estabilizar o rotor em seu ponto de operação aplicando uma tensão dentro das especificações.
+
+\begin{figure}[!ht]
+	\centering
+		\subfloat[t][Posição rotor]{
+			\includegraphics[width=0.7\linewidth]{Figs/controle/pid_nlinear_condicao_inicial_posicao}
+		}\\
+		%
+		\subfloat[b][Esforço de controle]{
+			\includegraphics[width=0.7\linewidth]{Figs/controle/pid_nlinear_condicao_inicial_esforco}
+		}
+		\caption{Resposta temporal do sistema em malha fechada com condições iniciais não nulas}
+		\label{fig:pid_nlinear_degrau}
 \end{figure}
-
-\todo[inline]{variável de controle}
