@@ -18,7 +18,7 @@ export_pdf('Resultados/passivo_otimizado_fem_dx',0);
 load fem_otimizado_dy;
 fem_otimizado_dy.Fy(5)=-30;
 plot(fem_otimizado_dy.dy, fem_otimizado_dy.Fy,'Marker','+');
-xlabel('d_z [mm]');
+xlabel('$\Delta_z$ [mm]', 'Interpreter', 'Latex');
 ylabel('F_z [N]')
 belezura
 export_pdf('Eletromagnetica/Resultados/passivo_otimizado_fem_dy',1);
@@ -31,8 +31,8 @@ load fem_otimizado_plano;
 c = 1;
 xx =1;
 zz =1;
-for x=0:0.5:4
-    for z=0:0.5:4
+for x=0:0.5E-3:4E-3
+    for z=0:0.5E-3:4E-3
         f(xx,zz) = fem_otimizado_plano.Fx(c);  
         c = c+1;
         zz = zz +1;
@@ -41,7 +41,7 @@ for x=0:0.5:4
     xx = xx + 1;
 end
 
-[X Y] = meshgrid(0:0.5:4,0:0.5:4);
+[X Y] = meshgrid(0:0.5E-3:4E-3,0:0.5E-3:4E-3);
 
 figure1 = figure('PaperType','<custom>','PaperSize',[5 5]);
 
@@ -49,6 +49,10 @@ axes1 = axes('Parent',figure1);
 view(axes1,[-67.5 16]);
 hold(axes1,'all');
 surf(X,Y,f,'Parent',axes1);
+xlabel('$\Delta_x  (mm)$', 'Interpreter','Latex')
+ylabel('$\Delta_y  (mm)$', 'Interpreter','Latex')
+zlabel('$F (N)$', 'Interpreter','Latex')
+belezura
 export_pdf('Eletromagnetica/Resultados/passivo_otimizado_fem_plano',1);
 
 %%

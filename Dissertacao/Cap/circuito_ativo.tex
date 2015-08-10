@@ -232,7 +232,13 @@ Isso acontece devido a saturação do ferro e o início da dispersão do campo m
 		\label{Fig:simulacoes:ativo:comparacao:dx:i}
 	\end{figure}
 
-A Fig. \ref{fig:validacao_ativo_2d} é um comparativo dos modelos quando submetidos a variação nos parâmetros construtivos, nesse caso variou-se a largura do núcleo da bobina ($w_n$), sua altura ($h_n$) e a largura do estator interno ($w_{fei}$). Nota-se a relação estreita entre os modelos quando as dimensões assumem valores maiores, a justificativa para tal fato é o desaparecimento de fluxos magnéticos não previstos no modelo analítico.
+A Fig. \ref{fig:validacao_ativo_2d} é um comparativo dos modelos quando submetidos a variação nos parâmetros construtivos, nesse caso variou-se a largura do núcleo da bobina ($w_n$), sua altura ($h_n$) e a largura do estator interno ($w_{fei}$). Nota-se a relação estreita entre os modelos quando as dimensões assumem valores maiores, a justificativa para tal fato é o desaparecimento de fluxos magnéticos não previstos no modelo analítico. Quanto mais próxima uma curva da outra, melhor é o ajuste do modelo, nesta simulação, os modelos assuem os valores da lista a seguir :
+
+\begin{align}
+	h_n		&=	[1:2:8] \, 10^{-3} \\
+	w_n		&=	[10:2.5:20] \, 10^{-3} \\
+	w_{fei}	&= 	[1:0.5:2] \, 10^{-3}
+\end{align}
 
 \begin{figure}[th]
 	\centering
@@ -240,7 +246,9 @@ A Fig. \ref{fig:validacao_ativo_2d} é um comparativo dos modelos quando submeti
 	\includegraphics[width=0.7\linewidth]{Figs/Simulacoes/Ativo/validacao_ativo_2d}
 	\caption{Comparativo entre modelos quanto a variação da geometria}
 	\label{fig:validacao_ativo_2d}
-\end{figure} \todo{Legenda + dizer o que é cada modelo}
+\end{figure}
+
+
 
 \section{Otimização dos Parâmetros}
 
@@ -332,39 +340,16 @@ Força de atração (N) x Corrente (A)
 
 Verifica-se que a força gerada pelas bobinas vence a força gerada pelo estator externo quando uma corrente superior a $3.5$ Ampères é aplicada no polo principal. A curva de força por corrente nesse ponto de operação é não linear, o que dificulta o projeto do controlador.
 
-%A força atuante no rotor quando o mesmo está em sua posição de a forma da Fig. \ref{ativo_otimizado_fem_I_dx00}. Nessa situação, as forças de tração devido ao estator externa possui resultante nula já que o rotor encontra-se em seu ponto de operação, a única força atuante no rotor é a da gerada pela corrente nos polos. Verifica-se que o delta de força nesse caso é de $220$ N contra $180$ N do rotor na excursão máxima, isso se dá devido ao menor entreferro entre o polo e o rotor.
-
-
-%\begin{figure}[ht!]
-%	\centering
-%	Força de atração (N) x Corrente (A)
-%	\includegraphics[width=0.8\linewidth]{Figs/Simulacoes/Ativo/ativo_otimizado_fem_I_dx00}
-%	\caption{Força resultante da aplicação de uma corrente quando o rotor está em seu ponto de operação}
-%	\label{ativo_otimizado_fem_I_dx00}
-%\end{figure}
-
-
-%A Fig. \ref{ativo_otimizado_fem_I_dx_map} ilustra a força resultante no rotor devido a aplicação de uma corrente nas bobinas primárias e secundárias. Valores positivos de força indicam que a força resultante é devida aos ímãs permanentes (estator externo) e uma força negativa, indica que a força resultante é devida a atração dos polos.
 
 Diversas simulações foram realizadas para caracterizar a força de atração quanto a variação da corrente e da posição, o resultado é demonstrado na Fig. \ref{ativo_otimizado_fem_I_dx_map}. Nele notamos o comportamento similar da força de atração com o diferencial do ganho do sistema.
 
-\begin{figure}[t!]
+\begin{figure}[ht!]
 \centering
 Força de atração (N) x Corrente (A)
-\includegraphics[width=0.8\linewidth]{Figs/Simulacoes/Ativo/ativo_otimizado_fem_I_dx_map.pdf}
+\includegraphics[width=0.7\linewidth]{Figs/Simulacoes/Ativo/ativo_otimizado_fem_I_dx_map.pdf}
 \caption{Força resultante da aplicação de uma corrente  para diversos pontos de operação do rotor}
 \label{ativo_otimizado_fem_I_dx_map}
 \end{figure}
-
-%\begin{figure}[ht!]
-%\centering
-%Força de atração (N) x Corrente (A)
-%\includegraphics[width=0.8\linewidth]{Figs/Simulacoes/Ativo/ativo_otimizado_fem_I_dx00}
-%\caption{Força resultante da aplicação de uma corrente quando o rotor está em seu ponto de operação}
-%\label{ativo_otimizado_fem_I_dx00}
-%\end{figure}
-
-%O campo magnético no polo principal  \todo{não entendi, o campo quando sofre variação da corrente está ilustrado na figura?}devido a variação na corrente elétrica é ilustrado na Fig. \ref{fig:ativo:fem:b:polos}. Nota-se os diferentes pontos de operação do componente magnético quando o rotor é mantido na mesma posição. Pela simulação é possível observar também que o espraiamento da área sofre aumento com a corrente, dinâmica não levada em consideração na modelagem analítica. 
 
 \begin{figure}[!ht]
 	\centering
@@ -382,7 +367,7 @@ Força de atração (N) x Corrente (A)
 	}	
 	\caption{Vetor campo magnético no polo principal quando variada a corrente, rotor com deslocamento de 0.3mm de sua posição.}
 	\label{fig:ativo:fem:b:polos}
-\end{figure}\todo{mudar $d_x$ para $\delta_x$}
+\end{figure}
 
 Através de um corte axial verificamos que as linhas de campo magnético estão contidas nos polos ativos, isso ocorre devido a polarização das correntes nos polos secundários que força o fluxo por eles. Verificamos também que o componente magnético responsável pela maior contribuição na relutância é o núcleo da bobina principal (polo).
 

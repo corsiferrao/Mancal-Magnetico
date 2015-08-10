@@ -13,7 +13,7 @@ ylabel('F [N]');
 xlabel('I [A]');
 
 belezura
-export_pdf('Eletromagnetica/Resultados/ativo_otimizado_fem_I_dx03',1);
+export_pdf('Eletromagnetica/Resultados/ativo_otimizado_fem_I_dx03',0);
 
 
 %% 
@@ -26,7 +26,7 @@ ylabel('F [N]');
 xlabel('I [A]');
 
 belezura
-export_pdf('Eletromagnetica/Resultados/ativo_otimizado_fem_I_dx00',1);
+export_pdf('Eletromagnetica/Resultados/ativo_otimizado_fem_I_dx00',0);
 
 %% Forca ativo segunda ordem 
 fit(ativo_otimizado_I_dx_00.i, ativo_otimizado_I_dx_00.fx, 'poly2')
@@ -46,7 +46,7 @@ xlabel('Dx [mm]');
 ylabel('B [T]');
 belezura
 
-export_pdf('Eletromagnetica/Resultados/ativo_otimizado_fem_B_polos',1);
+export_pdf('Eletromagnetica/Resultados/ativo_otimizado_fem_B_polos',0);
 
 figure
 plot(ativo_otimizado_B_polos.dx, ativo_otimizado_B_polos.Bs, ...
@@ -55,7 +55,7 @@ xlabel('Dx [mm]');
 ylabel('B [T]');
 belezura 
 
-export_pdf('Eletromagnetica/Resultados/ativo_otimizado_fem_B_polos',1);
+export_pdf('Eletromagnetica/Resultados/ativo_otimizado_fem_B_polos',0);
 
 %% Calculo da indutância
 
@@ -121,7 +121,7 @@ ylabel('F [N]');
 legend('d_x=0', 'd_x=0.05', 'd_x=0.1', 'd_x=0.15', 'd_x=0.2', 'd_x=0.25','d_x=0.3')
 legend('Location','eastoutside')
 belezura
-export_pdf('Eletromagnetica/Resultados/ativo_otimizado_fem_I_dx_map',1);
+export_pdf('Eletromagnetica/Resultados/ativo_otimizado_fem_I_dx_map',0);
 
 %% Só corrente
 load  ativo_otimizado_I_mapa_corrente;

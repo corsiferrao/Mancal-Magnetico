@@ -81,7 +81,7 @@ subplot(1,2,2)
     zlabel('F [N]');
     belezura;
     
-export_pdf('Resultados/validacao_ativo_map.pdf',1); 
+export_pdf('Resultados/validacao_ativo_map.pdf',0); 
 
 %title('Force (N) x current (A) x displacment (mm)')
 
@@ -93,7 +93,7 @@ title('Analitico');
 ylabel('dx [mm]');
 xlabel('I [A]');
 zlabel('F [N]');
-export_pdf('Resultados/validacao_ativo_map_analitico.pdf',1); 
+export_pdf('Resultados/validacao_ativo_map_analitico.pdf',0); 
 
 figure
 surf(X,Y,Comsolf);
@@ -102,7 +102,7 @@ colormap(jet)    % change color map
 ylabel('dx [mm]');
 xlabel('I [A]');
 zlabel('F [N]');
-export_pdf('Resultados/validacao_ativo_map_fem.pdf',1); 
+export_pdf('Resultados/validacao_ativo_map_fem.pdf',0); 
 
     
 %%
@@ -111,5 +111,7 @@ plot(Comsol(:,3));
 hold
 plot(Fx(7:end), 'r');
 legend('FEM', 'Analitico', 'Location','NorthWest');  
+xlabel('Modelo'); 
+ylabel('F (N)')
 belezura
-export_pdf('Resultados/validacao_ativo_2d.pdf',1); 
+export_pdf('Eletromagnetica/Resultados/validacao_ativo_2d.pdf',1); 

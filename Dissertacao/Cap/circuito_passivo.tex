@@ -188,7 +188,16 @@ Os resultados obtidos por ambos os métodos são similares, podendo confirmar a 
 	\label{fig:validacao_passivo_dx_calibrado}
 \end{figure}
 
-Os modelos também foram confrontados com a variação de parâmetros, no caso, variou-se a largura do ímã e o comprimento do entreferro. A Fig. \ref{fig:validacao_passivo_parametros} compara os resultados em ambos os modelos. 12 situações distintas foram simuladas e o resultado comparado a fim de comprovar o modelo obtido, valores próximos indicam um modelo mais fiel. \todo{colocar o que cada modelo é} 
+Os modelos também foram confrontados com a variação de parâmetros, no caso, variou-se a largura do ímã e o comprimento do entreferro. A Fig. \ref{fig:validacao_passivo_parametros} compara os resultados em ambos os modelos. 12 situações distintas foram simuladas e o resultado comparado a fim de validar o modelo obtido em diferentes geometrias. Os modelos foram variados conforme a seguir :
+
+\begin{align}
+	w_m &= [4:2:10 ] \, 10^{-3} \\
+	g_{ne} & = [1:0.2:1.4] \, 10^{-3}
+\end{align}
+
+%Valores próximos entre o valor de força encontrado via FEM (o) e via modelo analítico (x) indicam um modelo mais fiel. 
+
+
 
 \begin{figure}[th!]
 	\centering
@@ -303,8 +312,7 @@ Um mapa do módulo da força radial no plano x,y é ilustrado na Fig. \ref{fig:p
 \includegraphics[width=0.7\linewidth]{Figs/Simulacoes/Passivo2/passivo_otimizado_fem_plano}
 \caption{Mapa de forças devido a movimentação no plano}
 \label{fig:passivo_otimizado_fem_plano}
-\end{figure} \todo{colocar legenda eixos}
-
+\end{figure} 
 
 A Fig. \ref{Fig:Modelagem:Curva:passivo:dy:linhas} ilustra o resultado da simulação através de elementos finitos onde o rotor é transladado verticalmente a 0.8 mm. Verificamos que as linhas de campo não sofrem inclinação proporcional ao deslocamento do rotor, essas deformações apresentam um erro no modelo analítico já que supusemos na Subsec. \ref{SubSec:CampoX/Y} que as linhas de campo poderiam ser decompostas em x e z e que essa decomposição é diretamente relacionada com o deslocamento do rotor ($\theta$). 
 
