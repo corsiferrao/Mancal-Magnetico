@@ -287,7 +287,7 @@ A otimização foi realizada via método de Nelder-Mead Simplex com restrições
 	\label{tab:ativo:restrições} 
 \end{table}
 
-A função de mérito utilizada no projeto do atuador engloba a força de atração $F_b$ resultante da aplicação de uma corrente de 4 Amperes no núcleo principal e de 2 Amperes nos núcleos secundários, a indutância da bobina ($L_b$) e do volume do estator interno ($V_{ma}$). Buscou-se um modelo que possuísse maior força de atração, baixa indutância e menor volume. As parcelas utilizadas durante a otimização são: 
+A função de mérito utilizada no projeto do atuador engloba a força de atração $F_b$ resultante da aplicação de uma corrente de 4A no núcleo principal e de 2A nos núcleos secundários, a indutância da bobina ($L_b$) e do volume do estator interno ($V_{ma}$). Buscou-se um modelo que possuísse maior força de atração, baixa indutância e menor volume. As parcelas utilizadas durante a otimização são: 
 
 \begin{align}
 	P_1 &= 3 \, 10^2/ F_b \\
@@ -338,7 +338,7 @@ Força de atração (N) x Corrente (A)
 \label{ativo_otimizado_fem_I_dx03}
 \end{figure}
 
-Verifica-se que a força gerada pelas bobinas vence a força gerada pelo estator externo quando uma corrente superior a $3.5$ Ampères é aplicada no polo principal. A curva de força por corrente nesse ponto de operação é não linear, o que dificulta o projeto do controlador.
+Verifica-se que a força gerada pelas bobinas vence a força gerada pelo estator externo quando uma corrente superior a $3.5$A é aplicada no polo principal. A curva de força por corrente nesse ponto de operação é não linear, o que dificulta o projeto do controlador.
 
 
 Diversas simulações foram realizadas para caracterizar a força de atração quanto a variação da corrente e da posição, o resultado é demonstrado na Fig. \ref{ativo_otimizado_fem_I_dx_map}. Nele notamos o comportamento similar da força de atração com o diferencial do ganho do sistema.
