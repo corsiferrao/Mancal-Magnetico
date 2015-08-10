@@ -44,7 +44,10 @@
 \end{center}
 \par
 \vspace{90pt}
-\hspace*{175pt}\parbox{7.6cm}{{\large  \textbf{Dissertação apresentda à Escola Politécnica da Universidade de São Paulo para o obtenção do título de Mestre em Engenharia de Sistemas}}}
+\hspace*{175pt}\parbox{7.6cm}{{\large  \textbf{Dissertação apresentda à Escola Politécnica da Universidade de São Paulo para o obtenção do título de Mestre em Engenharia. Área de Engenharia de Sistemas.}}}
+
+
+
 \par
 \vspace{1em}
 \hspace*{175pt}\parbox{7.6cm}{{\large Orientador: Prof. Dr. José Jaime da Cruz}}
@@ -58,22 +61,29 @@
 
 \newpage
 
+Autorizo a reprodução e divulgação total ou parcial deste trabalho, por
+qualquer meio convencional ou eletrônico, para fins de estudo e pesquisa, desde que
+citada a fonte.
+
+\vspace{3 cm}
+
 % Ficha Catalográfica
 \hspace{8em}\fbox{\begin{minipage}{10cm}
-Aluno, Nome C.
+Ferrão, Rafael Corsi.
 
-\hspace{2em}\titulo
+\hspace{2em}\titulo, R. C. Ferrão -- São Paulo, 2015
 
-\hspace{2em}\pageref{LastPage} páginas
+\hspace{2em}\pageref{LastPage} p.
 
-\hspace{2em}Dissertação (Mestrado) - Escola Politécnica da Universidade de São Paulo. Departamento de Controle e Automação.
+\hspace{2em}Dissertação (Mestrado) - Escola Politécnica da Universidade de São Paulo. Departamento de Engenharia de 
+Engenharia de Sistemas.
 
 \begin{enumerate}
 \item Mancal Magnético
 \item Roda de Reação
-\item Controle Multivariável
+\item Modelagem Eletromagnética
 \end{enumerate}
-I. Universidade de São Paulo. Escola Politécnica. Departamento de Eletrônica.
+I.Universidade de São Paulo. Escola Politécnica. Departamento de Engenharia de Sistemas II.t.
 
 \end{minipage}}
 %\par
@@ -130,8 +140,17 @@ José Jaime da Cruz
 
 \noindent{\LARGE\textbf{Agradecimentos}}
 
-%Agradeço ao meu orientador pela orientação 
+Agradeço ao meu orientador, José Jaime da Cruz, por seu apoio e dedicação no desenvolvimento dessa dissertação.
 
+Agradeço aos meus colegas do Instituto Mauá de Tecnologia (Sergio Ribeiro Augusto, Vanderlei Cunha Parro, Rodrigo Alvite Romano) por todo o incentivo e confiança que me foi dado.
+
+Agradeço o Dr. Leonardo Pinheiro pelas tardes gastas na discussão sobre o mancal magnético e pelo seu envolvimento no tema.
+
+Agradeço à minha família por sempre apoiar os meus estudos.
+
+E um agradecimento especial à Juliana por ser sempre companheira.
+
+ 
 \newpage
 
 \vspace*{10pt}
@@ -144,7 +163,7 @@ José Jaime da Cruz
 % Além disso, ajuda se você estiver comparando versões diferentes do mesmo texto.
 % Para separar parágrafos utilize uma linha em branco.
 \noindent
-\large{
+
 	Esta dissertação tem como objetivo o projeto de um mancal magnético para rodas de reação com aplicação na malha de controle de atitude de satélites. 
 	
 	Mancais magnéticos são alternativas aos mancais tradicionais tais como os de esferas ou de lubrificação seco pois trabalham sem contato mecânico entre o rotor e o estator minimizando assim a fricção entre ambas as partes. Além da minimização do atrito, o ganho em confiabilidade e vida útil da roda de reação é considerável por não apresentar desgastes mecânicos.
@@ -154,9 +173,6 @@ José Jaime da Cruz
 	O mancal proposto possui dois graus de liberdade axiais ativamente controlados e faz uso de ímãs para a estabilização passiva dos demais graus de liberdade. 
 	
 	Ao longo do desenvolvimento são apresentados modelos não lineares dos campos magnéticos e das forças atuantes no mancal são encontrados. Com esses modelos, uma otimização é realizada a fim de encontrar melhores características. Um modelo não linear da dinâmica do rotor é desenvolvido e um controle PID capaz de estabilizar o rotor em seu ponto de equilíbrio e com isso, demonstrar a viabilidade da topologia proposta.
-}
-
-
 	 
 \par
 \vspace{1em}
@@ -177,7 +193,6 @@ José Jaime da Cruz
 % Selecionar a linguagem acerta os padrões de hifenação diferentes entre inglês e português.
 \selectlanguage{english}
 \noindent
-\large{
 
 The main objective of this work is to project a magnetic bearing for reaction wheels with application in satellite attitude control.
 
@@ -190,8 +205,6 @@ The proposed bearing has two axial degrees of freedom actively controlled and ma
 
 Nonlinear models of magnetic fields and forces acting on the bearing are presented. With these models, an optimization is performed to find the best bearing characteristics. A nonlinear model rotor dynamics is developed and a PID control capable of stabilizing the active degrees of freedom presented.
 
-
-}
 
 \par
 \vspace{1em}
