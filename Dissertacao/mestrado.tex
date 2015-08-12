@@ -60,7 +60,25 @@
 % Desenvolvimento de mancal magnético para rodas de reação
 
 \include{Cap/pre}   			    	
-\include{Cap/lista_simbolos}			
+\include{Cap/lista_simbolos}	
+
+\fancyhead{}
+% Número da página do lado esquerdo [L] nas páginas ímpares [O] e do lado direito [R] nas páginas pares [E]
+\fancyhead[LO,RE]{\thepage}
+% Nome da seção do lado direito em páginas ímpares
+\fancyhead[RO]{\nouppercase{\rightmark}}
+% Nome do capítulo do lado esquerdo em páginas pares
+\fancyhead[LE]{\nouppercase{\leftmark}}
+% Limpar os campos do rodapé
+\fancyfoot{}
+% Omitir linha de separação entre cabeçalho e conteúdo
+\renewcommand{\headrulewidth}{0pt}
+% Omitir linha de separação entre rodapé e conteúdo
+\renewcommand{\footrulewidth}{0pt}
+% Altura do cabeçalho
+\headheight 13.6pt
+
+		
 \include{Cap/Introducao}				
 \include{Cap/Projeto_mancal_magnetico}	
 \include{Cap/circuito_passivo}	
