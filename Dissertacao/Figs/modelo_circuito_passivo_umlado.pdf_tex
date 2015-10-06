@@ -1,6 +1,6 @@
 %% Creator: Inkscape inkscape 0.91, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'modelo:circuito:passivo:umlado.pdf' (pdf, eps, ps)
+%% Accompanies image file 'modelo_circuito_passivo_umlado.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{374.87888184bp}%
+    \setlength{\unitlength}{374.87890625bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,22 +48,22 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.3843804)%
+  \begin{picture}(1,0.38438057)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{modelo_circuito_passivo_umlado.pdf}}%
-    \put(0.35347827,0.15682809){\makebox(0,0)[lb]{\smash{+}}}%
-    \put(0.36153017,0.13579549){\makebox(0,0)[lb]{\smash{-}}}%
+    \put(0.35347821,0.15682823){\makebox(0,0)[lb]{\smash{+}}}%
+    \put(0.36153009,0.13579551){\makebox(0,0)[lb]{\smash{-}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{modelo_circuito_passivo_umlado.pdf}}%
-    \put(0.34367571,0.22682391){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$\mathcal{R}_p$}}}%
-    \put(0.33356594,0.14705375){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$\mathcal{F}_c$}}}%
-    \put(0.44034535,0.32954589){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{ef}$}}}%
-    \put(0.56685138,0.26771759){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{ge}$}}}%
-    \put(0.44034535,0.04379553){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{ef}$}}}%
-    \put(0.56958032,0.09907249){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{ge}$}}}%
-    \put(0.6726263,0.32954589){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{rf}$}}}%
-    \put(0.67400617,0.04379553){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{rf}$}}}%
-    \put(0.78375307,0.1753087){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\mathcal{R}_{rr}$}}}%
-    \put(0.22576042,0.1854358){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$\mathcal{R}_{lm}$}}}%
-    \put(0.56709136,0.36816683){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{lg}$}}}%
-    \put(0.56827951,0.00503288){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{lg}$}}}%
+    \put(0.34367569,0.2268239){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$\mathcal{R}_p$}}}%
+    \put(0.33356592,0.14705387){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$\mathcal{F}_c$}}}%
+    \put(0.44034532,0.32954587){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{ef}$}}}%
+    \put(0.56685134,0.26771757){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{ge}$}}}%
+    \put(0.44034532,0.04379565){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{ef}$}}}%
+    \put(0.56958028,0.09907249){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{ge}$}}}%
+    \put(0.67262625,0.32954587){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{rf}$}}}%
+    \put(0.67400619,0.04379565){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{rf}$}}}%
+    \put(0.78375309,0.17530869){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\mathcal{R}_{rr}$}}}%
+    \put(0.2257604,0.18543592){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$\mathcal{R}_{lm}$}}}%
+    \put(0.56709133,0.368167){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{lg}$}}}%
+    \put(0.56827954,0.00503288){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\mathcal{R}_{lg}$}}}%
   \end{picture}%
 \endgroup%
