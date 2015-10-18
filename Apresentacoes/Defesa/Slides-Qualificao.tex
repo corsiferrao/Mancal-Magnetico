@@ -16,6 +16,12 @@
 \usepackage{adjustbox}
 \graphicspath{{../../Dissertacao/Figs/}}
 
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\epstopdfDeclareGraphicsRule{.gif}{png}{.png}{convert gif:#1 png:\OutputFile}
+\AppendGraphicsExtensions{.gif}
+\usepackage{movie15}
+
 \makeatletter
 \newbox\@backgroundblock
 \newenvironment{backgroundblock}[2]{%
@@ -28,10 +34,10 @@
 
 %==========================================================================
 \title{Desenvolvimento de Mancal Magnético  para Rodas de Reação}
-\subtitle{Qualificação Mestrado}
+\subtitle{Escola Politécnica - LAC}
 \author{Rafael Corsi Ferrão}
-\date{\today}
-\institute{\url{rafael.corsi@maua.br} \\\url{http://www.maua.br}}
+\date{Outubro de 2015}
+\institute{\url{corsiferrao@gmail.com} \\\url{http://www.maua.br}}
 %==========================================================================
 
 \newcommand{\executeiffilenewer}[3]{%
@@ -190,10 +196,10 @@
 
 \begin{frame}{Mancal magnético}
 	\begin{itemize}
-		\item dois graus de liberdade ativo (radial)
-		\item graus de liberdade passivo estabilizados por ímãs permanentes
+		\item dois graus de liberdade ativos (radial)
+		\item graus de liberdade passivos estabilizados por ímãs permanentes
 		\item geometria plana
-		\item mancal localizado externo ao motor
+		\item mancal localizado externamente ao motor
 		\item ímãs no estator
 		\item escalonável 
 	\end{itemize}	
@@ -213,44 +219,31 @@
 \includegraphics[width=1\linewidth]{../../Dissertacao/Figs/mancais/mancal_corte2}
 \caption*{Corte longitudinal do mancal magnético}
 \end{figure}
+\end{frame}
 
-%\pause
-%\begin{enumerate}[(a)]
-%\item Ferro estator externo
-%\item Rotor
-%\item Estator interno
-%\item Bobinas 
-%\item Ímãs
-%\end{enumerate}
-
+\begin{frame}{Protótipo}
+\includegraphics[width=1\linewidth]{prototipo/corte}
 \end{frame}
 
 
+\section{Estator externo e rotor}
 
-\section{Estator externo}
-
-\begin{frame}{Linhas de campo}{Estator externo}
+\begin{frame}{Linhas de campo}{Estator externo E Rotor}
 
 Objetivo :
 \begin{itemize}
-	\item Estabilizar passivamente o eixo radial
+	\item Estabilizar passivamente o eixo axial
 	\item Estabilizar passivamente em \textit{tilt}
 \end{itemize}
 \pause
 	\begin{center}
-		\includegraphics[width=0.7\linewidth]{../../Dissertacao/Figs/modelo_circuito_passivo_forcas_a} \\
-		\pause
-		\includegraphics[width=0.7\linewidth]{../../Dissertacao/Figs/modelo_circuito_passivo_forcas_b}
+		\includegraphics[width=0.7\linewidth]{../../Dissertacao/Figs/modelo_circuito_passivo_forcas_c}
 	\end{center}
 \end{frame}	
 
-%\begin{frame}
-%	TILT
-%\end{frame}
 
-
-\begin{frame}{Dimensões}{Estator externo}
-	Dado a definição da geometria, como escolher as dimensões ?
+\begin{frame}{Dimensões}{Estator externo E Rotor}
+	Dada	 a definição da geometria, como escolher as dimensões ?
 
 	\pause
 	\vspace{10px}
@@ -271,7 +264,7 @@ Objetivo :
 	
 \end{frame}
 
-\begin{frame}{Modelo magnético proposto}{Estar externo}
+\begin{frame}{Modelo magnético proposto}{Estator externo E Rotor}
 	\begin{itemize}
 	\item Modelo não linear : $B(H) = \mu(H) H$
 	\item Curva de magnetização do ímã : $B_m = B_r + \frac{B_r}{H_c} H_m$
@@ -282,7 +275,7 @@ Objetivo :
 	\input{../../Dissertacao/Figs/modelo_circuito_passivo_umlado.pdf_tex}}
 \end{frame}
 
-\begin{frame}{Validação modelo}{Estar externo}
+\begin{frame}{Validação modelo}{Estator externo E Rotor}
 
 Para combinações distintas de parâmetros:
 	
@@ -297,8 +290,7 @@ Para combinações distintas de parâmetros:
 %
 %\end{frame}
 
-\begin{frame}{Otimização}{Estar externo}
-
+\begin{frame}{Otimização}{Estator externo E Rotor}
 Método escolhido :
 \begin{itemize}
 	\item Nelder-Mead Simplex com restrição de fronteira
@@ -335,17 +327,19 @@ Funcional visa alcançar uma :
 %\end{align*}
 %\end{frame}
 
-\begin{frame}{Evolução dos parâmetros}{Estator externo}
+\begin{frame}{Evolução dos parâmetros}{Estator externo E Rotor}
 \centering
 	\includegraphics[width=0.8\linewidth]{Simulacoes/Passivo2/otimizacao_passivo_parametros.pdf}
 \end{frame}
 
 \begin{frame}{Mancal passivo obitido}{Estator externo}
 \centering
-	\begin{tabular}{c c c c c}
-		 $w_{gi}$ 	& $N$ & $h_n$ & $w_n$ & $w_{fei}$  \\ \hline \hline
-		 0.7		& 300  	& 10.8 	& 14.9	& 6
+
+	\begin{tabular}{c c c c c c c c c}
+		& $h_{fee}$ &$\Delta w_{fee}$ & $w_m$ & $h_m$  & $g_{ne}$ & $\Delta w_{rf}$ & $w_{rr}$ & $r_{eei}$ \\ \hline \hline
+		$L_{n}$  	&  4.2 &   10 &   10 &    12 &   1.4 &  7 &   6 &    70 \\
 	\end{tabular} 
+	
 \hfill [mm]
 \vspace{8px}
 	
@@ -357,7 +351,7 @@ Funcional visa alcançar uma :
 	
 \end{frame}
 
-\begin{frame}{Mancal passivo obitido}{Estator externo}
+\begin{frame}{Mancal passivo obitido}{Estator externo E Rotor}
 \begin{figure}
 \begin{subfigure}{.5\textwidth}
 	\includegraphics[width=1\linewidth]{Simulacoes/Passivo2/fem/passivo_otimizado_fem_dx}
@@ -371,23 +365,14 @@ Funcional visa alcançar uma :
 \end{figure}
 \end{frame}
 
-\begin{frame}{Tilt}{Estator externo}
+\begin{frame}{Tilt}{Estator externo E Rotor}
 \centering
 \includegraphics[width=0.7\linewidth]{Simulacoes/Passivo2/fem/passivo_otimizado_fem_tilt}
 \end{frame}
 
-\begin{frame}{FEM}{Estator externo}
+\begin{frame}{FEM}{Estator externo E Rotor}
 \begin{center}
-
-\only<1>{
-$d_y = 0.0 mm $ \\
-\includegraphics[width=0.9\linewidth]{../../Dissertacao/Figs/Simulacoes/Passivo2/fem/dy_00}}
-\only<2>{
-$d_y = 0.4 mm $ \\
-\includegraphics[width=0.9\linewidth]{../../Dissertacao/Figs/Simulacoes/Passivo2/fem/dy_04}}
-\only<3>{
-$d_y = 0.8 mm $ \\
-\includegraphics[width=0.9\linewidth]{../../Dissertacao/Figs/Simulacoes/Passivo2/fem/dy_08}}
+ \animategraphics[loop,autoplay,width=1\linewidth]{4}{Animacoes/interno/dy-}{1}{9}{}
 
 \end{center}
 
@@ -406,6 +391,11 @@ $d_y = 0.8 mm $ \\
 
 \begin{frame}{Fluxo}{Estator Interno}
 \centering
+ 	\includegraphics[width=0.7\linewidth]{/modelo_mancal_estator_interno_fluxo}
+\end{frame}
+
+\begin{frame}{Fluxo}{Estator Interno}
+\centering
  	\includegraphics[width=0.7\linewidth]{/modelo_mancal_estator_interno_fluxo2}
 \end{frame}
 
@@ -421,26 +411,23 @@ Da mesma maneira que na anterior, por otimização utilizando modelagem analíti
 
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Circuito Magnético}{Estator Interno}
 \begin{adjustbox}{scale=0.6} 
 	\input{/home/rafa/Documents/Mestrado/Tese/Dissertacao/Figs/modelo_circuito_ativo.tex}
 \end{adjustbox}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Validação}{Estator Interno}
 	\begin{figure}
 	    \begin{columns}
-	        \column{.6\linewidth}
-				\includegraphics[width=0.5\textheight]{Simulacoes/Ativo/validacao_ativo_map_analitico}
-	        \column{.3\linewidth}
-				\caption*{Analítico}
+	        \column{.5\linewidth}
+			\includegraphics[width=0.7\textheight]{Simulacoes/Ativo/validacao_ativo_map_analitico}
+			\caption*{Analítico}
+	        \column{.5\linewidth}
+	        \includegraphics[width=0.7\textheight]{Simulacoes/Ativo/validacao_ativo_map_fem}
+			\caption*{FEM}
 	      \end{columns}
-	       \begin{columns}
-	      	\column{.6\linewidth}
-				\includegraphics[width=0.5\textheight]{Simulacoes/Ativo/validacao_ativo_map_fem}
-	      	\column{.3\linewidth}
-				\caption*{FEM}
-   	      \end{columns}
+	    
 	\end{figure}
 \end{frame}
 
@@ -470,11 +457,14 @@ Funcional visa alcançar uma :
 
 \begin{frame}{Mancal ativo obitido}{Estator externo}
 \centering
-	\begin{tabular}{c c c c c c c c c}
-		& $h_{fee}$ &$\Delta w_{fee}$ & $w_m$ & $h_m$  & $g_{ne}$ & $\Delta w_{rf}$ & $w_{rr}$ & $r_{eei}$ \\ \hline \hline
-		$L_{n}$  	&  4.2 &   10 &   10 &    12 &   1.4 &  7 &   6 &    70 \\
+
+	\begin{tabular}{c c c c c}
+		 $w_{gi}$ 	& $N$ & $h_n$ & $w_n$ & $w_{fei}$  \\ \hline \hline
+		 0.7		& 300  	& 10.8 	& 14.9	& 6
 	\end{tabular} 
 	
+\hfill [mm]	
+
 \begin{center}
 Força de atração (N) x Corrente (A)
 \includegraphics[width=0.55\linewidth]{Simulacoes/Ativo/ativo_otimizado_fem_I_dx03}
@@ -483,35 +473,40 @@ Força de atração (N) x Corrente (A)
 \end{frame}
 
 \begin{frame}{Mancal ativo obitido}{Estator externo}
-\includegraphics[width=0.7\linewidth]{Simulacoes/Ativo/Cima_dx=03_I=1}
-
-dx = 0.3mm; I=1A.
-
+%\includemovie{1cm}{1cm}{Animacoes/polos.gif}
+ \animategraphics[loop,autoplay,width=1\linewidth]{4}{Animacoes/frame-}{0}{8}{}
 \end{frame}
 
-\begin{frame}{Mancal ativo obitido}{Estator externo}
-\includegraphics[width=1\linewidth]{Simulacoes/Ativo/dx=03_I=1}
-
-dx = 0.3mm; I=1A.
-\end{frame}
-
-\begin{frame}{Mancal ativo obitido}{Estator externo}
-\includegraphics[width=1\linewidth]{Simulacoes/Ativo/dx=03_I=2}
-
-dx = 0.3mm; I=2A.
-\end{frame}
-
-\begin{frame}{Mancal ativo obitido}{Estator externo}
-\includegraphics[width=1\linewidth]{Simulacoes/Ativo/dx=03_I=3}
-
-dx = 0.3mm; I=3A.
-\end{frame}
-
-\begin{frame}{Mancal ativo obitido}{Estator externo}
-\includegraphics[width=1\linewidth]{Simulacoes/Ativo/dx=03_I=4}
-
-dx = 0.3mm; I=4A.
-\end{frame}
+%\begin{frame}{Mancal ativo obitido}{Estator externo}
+%\includegraphics[width=0.7\linewidth]{Simulacoes/Ativo/Cima_dx=03_I=1}
+%
+%dx = 0.3mm; I=1A.
+%
+%\end{frame}
+%
+%\begin{frame}{Mancal ativo obitido}{Estator externo}
+%\includegraphics[width=1\linewidth]{Simulacoes/Ativo/dx=03_I=1}
+%
+%dx = 0.3mm; I=1A.
+%\end{frame}
+%
+%\begin{frame}{Mancal ativo obitido}{Estator externo}
+%\includegraphics[width=1\linewidth]{Simulacoes/Ativo/dx=03_I=2}
+%
+%dx = 0.3mm; I=2A.
+%\end{frame}
+%
+%\begin{frame}{Mancal ativo obitido}{Estator externo}
+%\includegraphics[width=1\linewidth]{Simulacoes/Ativo/dx=03_I=3}
+%
+%dx = 0.3mm; I=3A.
+%\end{frame}
+%
+%\begin{frame}{Mancal ativo obitido}{Estator externo}
+%\includegraphics[width=1\linewidth]{Simulacoes/Ativo/dx=03_I=4}
+%
+%dx = 0.3mm; I=4A.
+%\end{frame}
 
 \section{Modelagem dinâmica}
 
@@ -542,7 +537,7 @@ dx = 0.3mm; I=4A.
 
 Problema:
 	\begin{itemize}
-		\item Dinâmica atrelada a bobina
+		\item Dinâmica atrelada à bobina
 		\item valor da indutância varia com a posição e corrente
 	\end{itemize}
 	
@@ -578,7 +573,7 @@ Premissas:
 \item PID
 \end{itemize}
 
-Dado a não linearidade do atuador, optou-se por trabalhar com o controle de força e não corrente
+Dada a não linearidade do atuador, optou-se por trabalhar com o controle de força e não corrente
 
 \vspace{10px}
 \centering
@@ -598,16 +593,37 @@ Dado a não linearidade do atuador, optou-se por trabalhar com o controle de for
 
 \section{Considerações Finais}
 
-\begin{frame}
+\begin{frame}{Considerações Finais}
+	\begin{itemize}
+	\item Uma topologia nova
+	\item Processo de otimização permite o projeto de mancais com novas especificações
+	\item Escolha de novos materiais
+	\item Construção de um protótipo
+	\item Utilização de clusters para melhoria na computação do FEM
+	\end{itemize}
+\end{frame}
+
+
+\section{FIM}
+
+\begin{frame}{TILT}
+\centering
+\includegraphics[width=0.7\linewidth]{modelo_circuito_passivo_forcas_t}
 
 \begin{itemize}
-\item Uma topologia nova
-\item Processo de otimização permite o projeto de mancais com novas especificações
-\item Escolha de novos materiais
-\item Construção de um protótipo
-\item Utilização de clusters para melhoria na computação do FEM
+\item 1 grau ->
+\begin{itemize}
+	\item Delta radial é de 0.0107 mm
+	\item Delta axial de 1.2 mm
+\end{itemize}
+\item 3.3 N/grau
 \end{itemize}
 
+\end{frame}
+
+\begin{frame}{Otmização estator Interno}
+\centering
+\includegraphics[width=0.7\linewidth]{modelo_ativo_bobina}
 \end{frame}
 
 % % % % % % % % % % % % % % %
