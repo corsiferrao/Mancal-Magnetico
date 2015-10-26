@@ -216,13 +216,16 @@
 \begin{frame}{Corte}
 \begin{figure}[th!]
 \centering
-\includegraphics[width=1\linewidth]{../../Dissertacao/Figs/mancais/mancal_corte2}
+\includegraphics[width=1\linewidth]{mancais/mancal_corte2}
 \caption*{Corte longitudinal do mancal magnético}
+
+
 \end{figure}
 \end{frame}
 
 \begin{frame}{Protótipo}
 \includegraphics[width=1\linewidth]{prototipo/corte}
+
 \end{frame}
 
 
@@ -241,16 +244,31 @@ Objetivo :
 	\end{center}
 \end{frame}	
 
+\begin{frame}{Dimensões}{Estator externo E Rotor}
+
+	Dada	 a definição da geometria, como escolher as dimensões ?
+	
+	\vspace{1cm}
+\centering
+  \includegraphics[width=0.7\linewidth]{modelo_dimensoes}
+\end{frame}	
+
+\begin{frame}{Dimensões}{Estator externo E Rotor}
+
+	Dada	 a definição da geometria, como escolher as dimensões ?
+	
+	\vspace{1cm}
+\centering
+  \includegraphics[width=0.7\linewidth]{modelo_dimensoes_passivo}
+\end{frame}	
 
 \begin{frame}{Dimensões}{Estator externo E Rotor}
 	Dada	 a definição da geometria, como escolher as dimensões ?
-
-	\pause
-	\vspace{10px}
+	
 
 	Duas possibilidades :
 	\begin{itemize}
-		\item Elementos finitos
+		\item Elementos finitos 
 		\begin{itemize}
 			\item alto custo computacional 
 			\item resultado mais preciso
@@ -264,7 +282,7 @@ Objetivo :
 	
 \end{frame}
 
-\begin{frame}{Modelo magnético proposto}{Estator externo E Rotor}
+\begin{frame}{Modelagem Analítica}{Estator externo E Rotor}
 	\begin{itemize}
 	\item Modelo não linear : $B(H) = \mu(H) H$
 	\item Curva de magnetização do ímã : $B_m = B_r + \frac{B_r}{H_c} H_m$
@@ -306,11 +324,11 @@ Funcional visa alcançar uma :
 \begin{itemize}
 	\item Maior
 		\begin{itemize}
-		\item Força radial; entreferro
+		\item Força axial; entreferro
 		\end{itemize}
 	\item Menor
 		\begin{itemize}
-		\item Força axial; variação do campo magnético; raio; volume
+		\item Força radial; variação do campo magnético; raio; volume
 		\end{itemize}
 \end{itemize} 
 \end{frame}
@@ -372,7 +390,7 @@ Funcional visa alcançar uma :
 
 \begin{frame}{FEM}{Estator externo E Rotor}
 \begin{center}
- \animategraphics[loop,autoplay,width=1\linewidth]{4}{Animacoes/interno/dy-}{1}{9}{}
+ \animategraphics[loop,autoplay,width=1\linewidth]{4}{Animacoes/externo/dy-}{1}{9}{}
 
 \end{center}
 
@@ -399,10 +417,16 @@ Funcional visa alcançar uma :
  	\includegraphics[width=0.7\linewidth]{/modelo_mancal_estator_interno_fluxo2}
 \end{frame}
 
-\begin{frame}{Parâmetros}{Estator Interno}
-Como definir as dimensões dessa parte do mancal ?
+\begin{frame}{Dimensões}{Estator externo E Rotor}
 
-Da mesma maneira que na anterior, por otimização utilizando modelagem analítica.
+	Dada	 a definição da geometria, como escolher as dimensões ?
+	
+	\vspace{1cm}
+\centering
+  \includegraphics[width=0.7\linewidth]{modelo_dimensoes_ativo}
+\end{frame}	
+
+\begin{frame}{Circuito Magnético}{Estator Interno}
 
 \vspace{8px}
 	\centering
@@ -474,7 +498,7 @@ Força de atração (N) x Corrente (A)
 
 \begin{frame}{Mancal ativo obitido}{Estator externo}
 %\includemovie{1cm}{1cm}{Animacoes/polos.gif}
- \animategraphics[loop,autoplay,width=1\linewidth]{4}{Animacoes/frame-}{0}{8}{}
+ \animategraphics[loop,autoplay,width=1\linewidth]{4}{Animacoes/interno/frame-}{0}{8}{}
 \end{frame}
 
 %\begin{frame}{Mancal ativo obitido}{Estator externo}
@@ -596,10 +620,11 @@ Dada a não linearidade do atuador, optou-se por trabalhar com o controle de for
 \begin{frame}{Considerações Finais}
 	\begin{itemize}
 	\item Uma topologia nova
-	\item Processo de otimização permite o projeto de mancais com novas especificações
+	\item Processo de otimização permite o projeto de mancais com a partir de especificações
+	\item Utilização de clusters para melhoria na computação do FEM
 	\item Escolha de novos materiais
 	\item Construção de um protótipo
-	\item Utilização de clusters para melhoria na computação do FEM
+	\item Fomento
 	\end{itemize}
 \end{frame}
 
@@ -617,9 +642,17 @@ Dada a não linearidade do atuador, optou-se por trabalhar com o controle de for
 	\item Delta axial de 1.2 mm
 \end{itemize}
 \item 3.3 N/grau
+%\item $\omega_0 = \sqrt{\frac{k}{m}} $
 \end{itemize}
 
 \end{frame}
+
+\begin{frame}{TILT}
+\centering
+ \animategraphics[loop,autoplay,width=1\linewidth]{4}{Animacoes/tilt/tilt-}{1}{6}{}
+
+\end{frame}
+
 
 \begin{frame}{Otmização estator Interno}
 \centering
