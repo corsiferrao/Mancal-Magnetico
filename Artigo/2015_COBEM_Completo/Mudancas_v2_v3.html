@@ -1,0 +1,585 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<style type="text/css">
+.ef0,.f0 { color: #000000; } .eb0,.b0 { background-color: #000000; }
+.ef1,.f1 { color: #AA0000; } .eb1,.b1 { background-color: #AA0000; }
+.ef2,.f2 { color: #00AA00; } .eb2,.b2 { background-color: #00AA00; }
+.ef3,.f3 { color: #AA5500; } .eb3,.b3 { background-color: #AA5500; }
+.ef4,.f4 { color: #0000AA; } .eb4,.b4 { background-color: #0000AA; }
+.ef5,.f5 { color: #AA00AA; } .eb5,.b5 { background-color: #AA00AA; }
+.ef6,.f6 { color: #00AAAA; } .eb6,.b6 { background-color: #00AAAA; }
+.ef7,.f7 { color: #AAAAAA; } .eb7,.b7 { background-color: #AAAAAA; }
+.ef8, .f0 > .bold,.bold > .f0 { color: #555555; font-weight: normal; }
+.ef9, .f1 > .bold,.bold > .f1 { color: #FF5555; font-weight: normal; }
+.ef10,.f2 > .bold,.bold > .f2 { color: #55FF55; font-weight: normal; }
+.ef11,.f3 > .bold,.bold > .f3 { color: #FFFF55; font-weight: normal; }
+.ef12,.f4 > .bold,.bold > .f4 { color: #5555FF; font-weight: normal; }
+.ef13,.f5 > .bold,.bold > .f5 { color: #FF55FF; font-weight: normal; }
+.ef14,.f6 > .bold,.bold > .f6 { color: #55FFFF; font-weight: normal; }
+.ef15,.f7 > .bold,.bold > .f7 { color: #FFFFFF; font-weight: normal; }
+.eb8  { background-color: #555555; }
+.eb9  { background-color: #FF5555; }
+.eb10 { background-color: #55FF55; }
+.eb11 { background-color: #FFFF55; }
+.eb12 { background-color: #5555FF; }
+.eb13 { background-color: #FF55FF; }
+.eb14 { background-color: #55FFFF; }
+.eb15 { background-color: #FFFFFF; }
+.ef16 { color: #000000; } .eb16 { background-color: #000000; }
+.ef17 { color: #00005f; } .eb17 { background-color: #00005f; }
+.ef18 { color: #000087; } .eb18 { background-color: #000087; }
+.ef19 { color: #0000af; } .eb19 { background-color: #0000af; }
+.ef20 { color: #0000d7; } .eb20 { background-color: #0000d7; }
+.ef21 { color: #0000ff; } .eb21 { background-color: #0000ff; }
+.ef22 { color: #005f00; } .eb22 { background-color: #005f00; }
+.ef23 { color: #005f5f; } .eb23 { background-color: #005f5f; }
+.ef24 { color: #005f87; } .eb24 { background-color: #005f87; }
+.ef25 { color: #005faf; } .eb25 { background-color: #005faf; }
+.ef26 { color: #005fd7; } .eb26 { background-color: #005fd7; }
+.ef27 { color: #005fff; } .eb27 { background-color: #005fff; }
+.ef28 { color: #008700; } .eb28 { background-color: #008700; }
+.ef29 { color: #00875f; } .eb29 { background-color: #00875f; }
+.ef30 { color: #008787; } .eb30 { background-color: #008787; }
+.ef31 { color: #0087af; } .eb31 { background-color: #0087af; }
+.ef32 { color: #0087d7; } .eb32 { background-color: #0087d7; }
+.ef33 { color: #0087ff; } .eb33 { background-color: #0087ff; }
+.ef34 { color: #00af00; } .eb34 { background-color: #00af00; }
+.ef35 { color: #00af5f; } .eb35 { background-color: #00af5f; }
+.ef36 { color: #00af87; } .eb36 { background-color: #00af87; }
+.ef37 { color: #00afaf; } .eb37 { background-color: #00afaf; }
+.ef38 { color: #00afd7; } .eb38 { background-color: #00afd7; }
+.ef39 { color: #00afff; } .eb39 { background-color: #00afff; }
+.ef40 { color: #00d700; } .eb40 { background-color: #00d700; }
+.ef41 { color: #00d75f; } .eb41 { background-color: #00d75f; }
+.ef42 { color: #00d787; } .eb42 { background-color: #00d787; }
+.ef43 { color: #00d7af; } .eb43 { background-color: #00d7af; }
+.ef44 { color: #00d7d7; } .eb44 { background-color: #00d7d7; }
+.ef45 { color: #00d7ff; } .eb45 { background-color: #00d7ff; }
+.ef46 { color: #00ff00; } .eb46 { background-color: #00ff00; }
+.ef47 { color: #00ff5f; } .eb47 { background-color: #00ff5f; }
+.ef48 { color: #00ff87; } .eb48 { background-color: #00ff87; }
+.ef49 { color: #00ffaf; } .eb49 { background-color: #00ffaf; }
+.ef50 { color: #00ffd7; } .eb50 { background-color: #00ffd7; }
+.ef51 { color: #00ffff; } .eb51 { background-color: #00ffff; }
+.ef52 { color: #5f0000; } .eb52 { background-color: #5f0000; }
+.ef53 { color: #5f005f; } .eb53 { background-color: #5f005f; }
+.ef54 { color: #5f0087; } .eb54 { background-color: #5f0087; }
+.ef55 { color: #5f00af; } .eb55 { background-color: #5f00af; }
+.ef56 { color: #5f00d7; } .eb56 { background-color: #5f00d7; }
+.ef57 { color: #5f00ff; } .eb57 { background-color: #5f00ff; }
+.ef58 { color: #5f5f00; } .eb58 { background-color: #5f5f00; }
+.ef59 { color: #5f5f5f; } .eb59 { background-color: #5f5f5f; }
+.ef60 { color: #5f5f87; } .eb60 { background-color: #5f5f87; }
+.ef61 { color: #5f5faf; } .eb61 { background-color: #5f5faf; }
+.ef62 { color: #5f5fd7; } .eb62 { background-color: #5f5fd7; }
+.ef63 { color: #5f5fff; } .eb63 { background-color: #5f5fff; }
+.ef64 { color: #5f8700; } .eb64 { background-color: #5f8700; }
+.ef65 { color: #5f875f; } .eb65 { background-color: #5f875f; }
+.ef66 { color: #5f8787; } .eb66 { background-color: #5f8787; }
+.ef67 { color: #5f87af; } .eb67 { background-color: #5f87af; }
+.ef68 { color: #5f87d7; } .eb68 { background-color: #5f87d7; }
+.ef69 { color: #5f87ff; } .eb69 { background-color: #5f87ff; }
+.ef70 { color: #5faf00; } .eb70 { background-color: #5faf00; }
+.ef71 { color: #5faf5f; } .eb71 { background-color: #5faf5f; }
+.ef72 { color: #5faf87; } .eb72 { background-color: #5faf87; }
+.ef73 { color: #5fafaf; } .eb73 { background-color: #5fafaf; }
+.ef74 { color: #5fafd7; } .eb74 { background-color: #5fafd7; }
+.ef75 { color: #5fafff; } .eb75 { background-color: #5fafff; }
+.ef76 { color: #5fd700; } .eb76 { background-color: #5fd700; }
+.ef77 { color: #5fd75f; } .eb77 { background-color: #5fd75f; }
+.ef78 { color: #5fd787; } .eb78 { background-color: #5fd787; }
+.ef79 { color: #5fd7af; } .eb79 { background-color: #5fd7af; }
+.ef80 { color: #5fd7d7; } .eb80 { background-color: #5fd7d7; }
+.ef81 { color: #5fd7ff; } .eb81 { background-color: #5fd7ff; }
+.ef82 { color: #5fff00; } .eb82 { background-color: #5fff00; }
+.ef83 { color: #5fff5f; } .eb83 { background-color: #5fff5f; }
+.ef84 { color: #5fff87; } .eb84 { background-color: #5fff87; }
+.ef85 { color: #5fffaf; } .eb85 { background-color: #5fffaf; }
+.ef86 { color: #5fffd7; } .eb86 { background-color: #5fffd7; }
+.ef87 { color: #5fffff; } .eb87 { background-color: #5fffff; }
+.ef88 { color: #870000; } .eb88 { background-color: #870000; }
+.ef89 { color: #87005f; } .eb89 { background-color: #87005f; }
+.ef90 { color: #870087; } .eb90 { background-color: #870087; }
+.ef91 { color: #8700af; } .eb91 { background-color: #8700af; }
+.ef92 { color: #8700d7; } .eb92 { background-color: #8700d7; }
+.ef93 { color: #8700ff; } .eb93 { background-color: #8700ff; }
+.ef94 { color: #875f00; } .eb94 { background-color: #875f00; }
+.ef95 { color: #875f5f; } .eb95 { background-color: #875f5f; }
+.ef96 { color: #875f87; } .eb96 { background-color: #875f87; }
+.ef97 { color: #875faf; } .eb97 { background-color: #875faf; }
+.ef98 { color: #875fd7; } .eb98 { background-color: #875fd7; }
+.ef99 { color: #875fff; } .eb99 { background-color: #875fff; }
+.ef100 { color: #878700; } .eb100 { background-color: #878700; }
+.ef101 { color: #87875f; } .eb101 { background-color: #87875f; }
+.ef102 { color: #878787; } .eb102 { background-color: #878787; }
+.ef103 { color: #8787af; } .eb103 { background-color: #8787af; }
+.ef104 { color: #8787d7; } .eb104 { background-color: #8787d7; }
+.ef105 { color: #8787ff; } .eb105 { background-color: #8787ff; }
+.ef106 { color: #87af00; } .eb106 { background-color: #87af00; }
+.ef107 { color: #87af5f; } .eb107 { background-color: #87af5f; }
+.ef108 { color: #87af87; } .eb108 { background-color: #87af87; }
+.ef109 { color: #87afaf; } .eb109 { background-color: #87afaf; }
+.ef110 { color: #87afd7; } .eb110 { background-color: #87afd7; }
+.ef111 { color: #87afff; } .eb111 { background-color: #87afff; }
+.ef112 { color: #87d700; } .eb112 { background-color: #87d700; }
+.ef113 { color: #87d75f; } .eb113 { background-color: #87d75f; }
+.ef114 { color: #87d787; } .eb114 { background-color: #87d787; }
+.ef115 { color: #87d7af; } .eb115 { background-color: #87d7af; }
+.ef116 { color: #87d7d7; } .eb116 { background-color: #87d7d7; }
+.ef117 { color: #87d7ff; } .eb117 { background-color: #87d7ff; }
+.ef118 { color: #87ff00; } .eb118 { background-color: #87ff00; }
+.ef119 { color: #87ff5f; } .eb119 { background-color: #87ff5f; }
+.ef120 { color: #87ff87; } .eb120 { background-color: #87ff87; }
+.ef121 { color: #87ffaf; } .eb121 { background-color: #87ffaf; }
+.ef122 { color: #87ffd7; } .eb122 { background-color: #87ffd7; }
+.ef123 { color: #87ffff; } .eb123 { background-color: #87ffff; }
+.ef124 { color: #af0000; } .eb124 { background-color: #af0000; }
+.ef125 { color: #af005f; } .eb125 { background-color: #af005f; }
+.ef126 { color: #af0087; } .eb126 { background-color: #af0087; }
+.ef127 { color: #af00af; } .eb127 { background-color: #af00af; }
+.ef128 { color: #af00d7; } .eb128 { background-color: #af00d7; }
+.ef129 { color: #af00ff; } .eb129 { background-color: #af00ff; }
+.ef130 { color: #af5f00; } .eb130 { background-color: #af5f00; }
+.ef131 { color: #af5f5f; } .eb131 { background-color: #af5f5f; }
+.ef132 { color: #af5f87; } .eb132 { background-color: #af5f87; }
+.ef133 { color: #af5faf; } .eb133 { background-color: #af5faf; }
+.ef134 { color: #af5fd7; } .eb134 { background-color: #af5fd7; }
+.ef135 { color: #af5fff; } .eb135 { background-color: #af5fff; }
+.ef136 { color: #af8700; } .eb136 { background-color: #af8700; }
+.ef137 { color: #af875f; } .eb137 { background-color: #af875f; }
+.ef138 { color: #af8787; } .eb138 { background-color: #af8787; }
+.ef139 { color: #af87af; } .eb139 { background-color: #af87af; }
+.ef140 { color: #af87d7; } .eb140 { background-color: #af87d7; }
+.ef141 { color: #af87ff; } .eb141 { background-color: #af87ff; }
+.ef142 { color: #afaf00; } .eb142 { background-color: #afaf00; }
+.ef143 { color: #afaf5f; } .eb143 { background-color: #afaf5f; }
+.ef144 { color: #afaf87; } .eb144 { background-color: #afaf87; }
+.ef145 { color: #afafaf; } .eb145 { background-color: #afafaf; }
+.ef146 { color: #afafd7; } .eb146 { background-color: #afafd7; }
+.ef147 { color: #afafff; } .eb147 { background-color: #afafff; }
+.ef148 { color: #afd700; } .eb148 { background-color: #afd700; }
+.ef149 { color: #afd75f; } .eb149 { background-color: #afd75f; }
+.ef150 { color: #afd787; } .eb150 { background-color: #afd787; }
+.ef151 { color: #afd7af; } .eb151 { background-color: #afd7af; }
+.ef152 { color: #afd7d7; } .eb152 { background-color: #afd7d7; }
+.ef153 { color: #afd7ff; } .eb153 { background-color: #afd7ff; }
+.ef154 { color: #afff00; } .eb154 { background-color: #afff00; }
+.ef155 { color: #afff5f; } .eb155 { background-color: #afff5f; }
+.ef156 { color: #afff87; } .eb156 { background-color: #afff87; }
+.ef157 { color: #afffaf; } .eb157 { background-color: #afffaf; }
+.ef158 { color: #afffd7; } .eb158 { background-color: #afffd7; }
+.ef159 { color: #afffff; } .eb159 { background-color: #afffff; }
+.ef160 { color: #d70000; } .eb160 { background-color: #d70000; }
+.ef161 { color: #d7005f; } .eb161 { background-color: #d7005f; }
+.ef162 { color: #d70087; } .eb162 { background-color: #d70087; }
+.ef163 { color: #d700af; } .eb163 { background-color: #d700af; }
+.ef164 { color: #d700d7; } .eb164 { background-color: #d700d7; }
+.ef165 { color: #d700ff; } .eb165 { background-color: #d700ff; }
+.ef166 { color: #d75f00; } .eb166 { background-color: #d75f00; }
+.ef167 { color: #d75f5f; } .eb167 { background-color: #d75f5f; }
+.ef168 { color: #d75f87; } .eb168 { background-color: #d75f87; }
+.ef169 { color: #d75faf; } .eb169 { background-color: #d75faf; }
+.ef170 { color: #d75fd7; } .eb170 { background-color: #d75fd7; }
+.ef171 { color: #d75fff; } .eb171 { background-color: #d75fff; }
+.ef172 { color: #d78700; } .eb172 { background-color: #d78700; }
+.ef173 { color: #d7875f; } .eb173 { background-color: #d7875f; }
+.ef174 { color: #d78787; } .eb174 { background-color: #d78787; }
+.ef175 { color: #d787af; } .eb175 { background-color: #d787af; }
+.ef176 { color: #d787d7; } .eb176 { background-color: #d787d7; }
+.ef177 { color: #d787ff; } .eb177 { background-color: #d787ff; }
+.ef178 { color: #d7af00; } .eb178 { background-color: #d7af00; }
+.ef179 { color: #d7af5f; } .eb179 { background-color: #d7af5f; }
+.ef180 { color: #d7af87; } .eb180 { background-color: #d7af87; }
+.ef181 { color: #d7afaf; } .eb181 { background-color: #d7afaf; }
+.ef182 { color: #d7afd7; } .eb182 { background-color: #d7afd7; }
+.ef183 { color: #d7afff; } .eb183 { background-color: #d7afff; }
+.ef184 { color: #d7d700; } .eb184 { background-color: #d7d700; }
+.ef185 { color: #d7d75f; } .eb185 { background-color: #d7d75f; }
+.ef186 { color: #d7d787; } .eb186 { background-color: #d7d787; }
+.ef187 { color: #d7d7af; } .eb187 { background-color: #d7d7af; }
+.ef188 { color: #d7d7d7; } .eb188 { background-color: #d7d7d7; }
+.ef189 { color: #d7d7ff; } .eb189 { background-color: #d7d7ff; }
+.ef190 { color: #d7ff00; } .eb190 { background-color: #d7ff00; }
+.ef191 { color: #d7ff5f; } .eb191 { background-color: #d7ff5f; }
+.ef192 { color: #d7ff87; } .eb192 { background-color: #d7ff87; }
+.ef193 { color: #d7ffaf; } .eb193 { background-color: #d7ffaf; }
+.ef194 { color: #d7ffd7; } .eb194 { background-color: #d7ffd7; }
+.ef195 { color: #d7ffff; } .eb195 { background-color: #d7ffff; }
+.ef196 { color: #ff0000; } .eb196 { background-color: #ff0000; }
+.ef197 { color: #ff005f; } .eb197 { background-color: #ff005f; }
+.ef198 { color: #ff0087; } .eb198 { background-color: #ff0087; }
+.ef199 { color: #ff00af; } .eb199 { background-color: #ff00af; }
+.ef200 { color: #ff00d7; } .eb200 { background-color: #ff00d7; }
+.ef201 { color: #ff00ff; } .eb201 { background-color: #ff00ff; }
+.ef202 { color: #ff5f00; } .eb202 { background-color: #ff5f00; }
+.ef203 { color: #ff5f5f; } .eb203 { background-color: #ff5f5f; }
+.ef204 { color: #ff5f87; } .eb204 { background-color: #ff5f87; }
+.ef205 { color: #ff5faf; } .eb205 { background-color: #ff5faf; }
+.ef206 { color: #ff5fd7; } .eb206 { background-color: #ff5fd7; }
+.ef207 { color: #ff5fff; } .eb207 { background-color: #ff5fff; }
+.ef208 { color: #ff8700; } .eb208 { background-color: #ff8700; }
+.ef209 { color: #ff875f; } .eb209 { background-color: #ff875f; }
+.ef210 { color: #ff8787; } .eb210 { background-color: #ff8787; }
+.ef211 { color: #ff87af; } .eb211 { background-color: #ff87af; }
+.ef212 { color: #ff87d7; } .eb212 { background-color: #ff87d7; }
+.ef213 { color: #ff87ff; } .eb213 { background-color: #ff87ff; }
+.ef214 { color: #ffaf00; } .eb214 { background-color: #ffaf00; }
+.ef215 { color: #ffaf5f; } .eb215 { background-color: #ffaf5f; }
+.ef216 { color: #ffaf87; } .eb216 { background-color: #ffaf87; }
+.ef217 { color: #ffafaf; } .eb217 { background-color: #ffafaf; }
+.ef218 { color: #ffafd7; } .eb218 { background-color: #ffafd7; }
+.ef219 { color: #ffafff; } .eb219 { background-color: #ffafff; }
+.ef220 { color: #ffd700; } .eb220 { background-color: #ffd700; }
+.ef221 { color: #ffd75f; } .eb221 { background-color: #ffd75f; }
+.ef222 { color: #ffd787; } .eb222 { background-color: #ffd787; }
+.ef223 { color: #ffd7af; } .eb223 { background-color: #ffd7af; }
+.ef224 { color: #ffd7d7; } .eb224 { background-color: #ffd7d7; }
+.ef225 { color: #ffd7ff; } .eb225 { background-color: #ffd7ff; }
+.ef226 { color: #ffff00; } .eb226 { background-color: #ffff00; }
+.ef227 { color: #ffff5f; } .eb227 { background-color: #ffff5f; }
+.ef228 { color: #ffff87; } .eb228 { background-color: #ffff87; }
+.ef229 { color: #ffffaf; } .eb229 { background-color: #ffffaf; }
+.ef230 { color: #ffffd7; } .eb230 { background-color: #ffffd7; }
+.ef231 { color: #ffffff; } .eb231 { background-color: #ffffff; }
+.ef232 { color: #080808; } .eb232 { background-color: #080808; }
+.ef233 { color: #121212; } .eb233 { background-color: #121212; }
+.ef234 { color: #1c1c1c; } .eb234 { background-color: #1c1c1c; }
+.ef235 { color: #262626; } .eb235 { background-color: #262626; }
+.ef236 { color: #303030; } .eb236 { background-color: #303030; }
+.ef237 { color: #3a3a3a; } .eb237 { background-color: #3a3a3a; }
+.ef238 { color: #444444; } .eb238 { background-color: #444444; }
+.ef239 { color: #4e4e4e; } .eb239 { background-color: #4e4e4e; }
+.ef240 { color: #585858; } .eb240 { background-color: #585858; }
+.ef241 { color: #626262; } .eb241 { background-color: #626262; }
+.ef242 { color: #6c6c6c; } .eb242 { background-color: #6c6c6c; }
+.ef243 { color: #767676; } .eb243 { background-color: #767676; }
+.ef244 { color: #808080; } .eb244 { background-color: #808080; }
+.ef245 { color: #8a8a8a; } .eb245 { background-color: #8a8a8a; }
+.ef246 { color: #949494; } .eb246 { background-color: #949494; }
+.ef247 { color: #9e9e9e; } .eb247 { background-color: #9e9e9e; }
+.ef248 { color: #a8a8a8; } .eb248 { background-color: #a8a8a8; }
+.ef249 { color: #b2b2b2; } .eb249 { background-color: #b2b2b2; }
+.ef250 { color: #bcbcbc; } .eb250 { background-color: #bcbcbc; }
+.ef251 { color: #c6c6c6; } .eb251 { background-color: #c6c6c6; }
+.ef252 { color: #d0d0d0; } .eb252 { background-color: #d0d0d0; }
+.ef253 { color: #dadada; } .eb253 { background-color: #dadada; }
+.ef254 { color: #e4e4e4; } .eb254 { background-color: #e4e4e4; }
+.ef255 { color: #eeeeee; } .eb255 { background-color: #eeeeee; }
+
+.f9 { color: #000000; }
+.b9 { background-color: #FFFFFF; }
+.f9 > .bold,.bold > .f9, body.f9 > pre > .bold {
+  /* Bold is heavy black on white, or bright white
+     depending on the default background */
+  color: #000000;
+  font-weight: bold;
+}
+.reverse {
+  /* CSS does not support swapping fg and bg colours unfortunately,
+     so just hardcode something that will look OK on all backgrounds. */
+  color: #000000; background-color: #AAAAAA;
+}
+.underline { text-decoration: underline; }
+.line-through { text-decoration: line-through; }
+.blink { text-decoration: blink; }
+
+</style>
+</head>
+
+<body class="f9 b9">
+<pre>
+<span class="bold">diff --git a/Artigo/COBEM 2015 - Completo/COBEM-RCORSI-JJAIME-Mancal.tex b/Artigo/COBEM 2015 - Completo/COBEM-RCORSI-JJAIME-Mancal.tex
+index 5df99f5..fa3a01c 100644</span>
+<span class="bold">--- a/Artigo/COBEM 2015 - Completo/COBEM-RCORSI-JJAIME-Mancal.tex</span>	
+<span class="bold">+++ b/Artigo/COBEM 2015 - Completo/COBEM-RCORSI-JJAIME-Mancal.tex</span>	
+<span class="f6">@@ -45,7 +45,7 @@</span>
+		\end{center}
+		\authors{Rafael~Corsi~Ferr\~{a}o} \\
+		\authors{Jos\'{e} Jaime da Cruz} \\
+		\institution{Escola Polit\'ecnica da <span class="f1">Cidade</span><span class="f2">Universidade</span> de S\~{a}o Paulo} \\
+		\institution{corsiferrao@gmail.com, jaime@lac.usp.br} \\
+		\\
+		%\authors{Third Author's Name} \\
+<span class="f6">@@ -54,41 +54,39 @@</span>
+		%\\
+		%\authors{Same format for others authors, if any} \\
+		\\
+		\abstract{\textbf{Abstract.} In this paper, the development of a novel active magnetic bearing (MB) system for reaction wheels applicable in satellite attitude control is presented. The proposed bearing has <span class="f1">four</span><span class="f2">three</span> degrees of freedom passively stable (EMB) by one pair of permanent magnet; two degrees of freedom (AMB) are actively stabilized by eight electromagnetic poles. The  magnetic model of both EMB and AMB are presented and  equations of force-current and force-position are analyzed <span class="f1">by</span><span class="f2">using</span> the magnetic <span class="f1">circuit</span><span class="f2">circuit's</span> approach and<span class="f1">by</span> the finite <span class="f1">element</span><span class="f2">element's</span> method. With<span class="f1">the force</span> characteristic <span class="f2">force</span> curves a non-linear dynamic model <span class="f2">is</span> for the MB <span class="f2">s present</span> and a control system that stabilizes the bearing at its operating point <span class="f1">are presented.</span><span class="f2">is project.</span> A flat, uncoupled and scalable magnetic bearing with good stiffness, <span class="f1">that</span><span class="f2">which</span> can be used on satellites reaction wheels to improve its performance and reliability, is obtained. A prototype is under construction. Simulation results are presented.}\\
+		\\
+		\keywords{\textbf{Keywords:} Magnetic Bearing, Satellite Attitude Control }\\
+	\end{tabular}
+	
+	<span class="f1">\section{INTRODUCTION}</span><span class="f2">\section{\uppercase{INTRODUCTION}}</span>
+	The attitude and orbit control is one of the most critical technology of any spatial <span class="f1">systems \cite{wertz1978spacecraft},</span><span class="f2">system,</span> the main actuators include propellants, magnetic torques and reaction wheels. Reaction wheels are hard to replace because they present a large operating range in torque (unlike magnetic actuators) and are powered by renewable energy provided by solar panels (unlike propellers based on a finite fuel supply). For these reasons, reaction wheels are present on virtually any satellite with<span class="f1">a</span> minimum performance requirements in attitude.
+	
+	A reaction wheel can be described as an inertial actuator operating on the principle of conservation of angular momentum. The<span class="f1">performance of the</span> reaction wheel <span class="f1">on</span><span class="f2">modifies</span> the<span class="f1">satellite takes place by exchange of</span> angular <span class="f1">momentum,</span><span class="f2">momentum of the satellite,</span> limited to the axis of rotation of the wheel. Due to the <span class="f1">large</span><span class="f2">inertial</span> difference between the satellite and the<span class="f1">inertia of the</span> reaction wheel, a control of attitude with <span class="f1">great,</span><span class="f2">high</span> precision is possible with this system. 
+	
+	Reaction wheels typically consist of an electric motor, usually a DC brushless motor, a bearing system and one element of inertia. The inertia <span class="f1">member</span><span class="f2">component</span> and the motor are mounted on bearings to ensure precise rotation about <span class="f1">an</span><span class="f2">one</span> axis. The rotation speed of the system is controlled by an electronic motor drive. Reaction wheels can be operated in two distinct ways: by rotation or torque.
+	
+	The suspension of the rotor relative to the stator is a critical part in the reaction wheels \citep{taniwaki2003experimental} <span class="f2">due to</span> the consequences of any friction <span class="f2">can cause</span> in the relative movement between these two components. Indeed, the friction is reflected  in <span class="f1">a greater</span><span class="f2">high</span> consumption of electric power, introduction of a dead zone of operation in torque as well as limited life of the reaction wheel due to gradual wear of the bearing.
+	
+	A  mechanical solution for the interface between the rotor and the stator is a rolling bearing. Despite its apparent simplicity, <span class="f2">the are</span> challenges for achieving the minimum friction values needed in view of the demands of consumption and easiness of control \citep{Krishnan2010}.
+	<span class="f1">In the</span><span class="f2">The</span> case of aerospace applications, lubrication rolling <span class="f1">is also difficulty due</span><span class="f2">has problems because</span> to the impossibility of using traditional lubricants under conditions of low or no air pressure, <span class="f1">which leads</span><span class="f2">due</span> to <span class="f2">the</span> loss of volatile components (lubricants) and their consequent deterioration. Another difficulty is <span class="f1">due to the</span><span class="f2">migration's</span> trend of<span class="f1">migration of</span> lubricants in the absence of gravity, which is usually addressed with strategies to recapture or relubrication.
+	
+	Another solution is <span class="f1">to use</span><span class="f2">using</span> a magnetic bearing <span class="f1">\citep{Bangcheng2012},</span><span class="f2">\citep{Bangcheng2012, bleuler2009magnetic},</span> which is an alternative without mechanical contact between the rotor and the stator. The gain in reliability and lifetime of the reaction wheel is considerable \citep{Marble2006}, and basically limited by the durability of electronics. The non-contact operation eliminates the need <span class="f1">for</span><span class="f2">of</span> lubrication and consequently enables the operation under <span class="f1">vacuum</span><span class="f2">vacuum,</span> which results in <span class="f1">simplifying</span><span class="f2">simple</span> the mechanical design requirements.
+	
+	<span class="f1">\subsection{Magnetic</span><span class="f2">\subsection{\uppercase{Magnetic</span> Bearing for Reaction <span class="f1">Wheel}</span><span class="f2">Wheel}}</span>
+	
+	There <span class="f1">is</span><span class="f2">are</span> in the literature three different topologies for bearings in magnetic reaction wheels, <span class="f1">have</span><span class="f2">having</span> mostly two degrees of freedom active, and <span class="f1">makes</span><span class="f2">making</span> use of permanent magnets aiming to minimize power consumption.
+	
+	<span class="f1">The topology</span><span class="f2">Topology</span> proposed by \cite{Bernus1998} works with two active degrees of <span class="f1">liberties</span><span class="f2">liberties,</span> having the permanent magnets on the rotor and two stators. The rotor has <span class="f2">a</span> &quot;I&quot; cross shape and it is surrounded by the external and internal stator<span class="f1">with</span>  both <span class="f2">with</span> &quot;C&quot; cross shape. The internal <span class="f1">stator</span><span class="f2">stator, which</span> is used for active control <span class="f2">of</span> radial directions <span class="f2">and</span> has four independent poles to generate <span class="f1">flux</span><span class="f2">flux,</span> which also contributes to increase the axial stiffness of the rotor. Passive degrees of freedoms are stabilized by the magnetic flux generated by the permanent magnet.
+	
+	Another magnetic bearing <span class="f1">proposition\citep{Scharfe2001}</span><span class="f2">proposition \citep{Scharfe2001}</span> also works with the radial direction <span class="f1">controlled, it</span><span class="f2">controlled. It</span> has only one stator that is located at the center of the bearing and one external rotor, both parts <span class="f1">have</span><span class="f2">having</span> a &quot;C&quot; cross shape. The permanent magnetic poles are located on the rotor generating a magnetic flux that stabilizes the axial <span class="f1">direction, this</span><span class="f2">direction. This</span> topology allows generating a subtractive magnetic flux in some parts of the rotor in favor of <span class="f1">decrease</span><span class="f2">decreasing</span> the attraction force and places the rotor at the operation point with less effort. 
+	
+	A recent topology proposed by \cite{Bangcheng2012} has  three degree of freedom controlled, <span class="f1">this</span><span class="f2">its</span> magnetic bearing  provides an substantial axial stiffness (passive axis) in order to maintain the rotor on its operation point when applied to high rotor speeds.
+		
+	<span class="f1">\section{Project}</span><span class="f2">\section{\uppercase{Project}}</span>
+	
+	The magnetic bearing proposed in this work is inspired on the topologies by \cite{Bernus1998} and \cite{Scharfe2001}. The bearing has <span class="f1">four</span><span class="f2">three</span> degrees of freedom passively stable: tilt,<span class="f1">row,</span> pitch and its axial <span class="f1">direction, the</span><span class="f2">direction. The</span> other<span class="f1">two</span> degrees of freedom (radial) are actively stabilized. Torque imposed for the rotation of the rotor is developed by an electric<span class="f1">motor</span> brushless DC (BLDC) <span class="f2">motor</span> placed inside the bearing. The magnetic circuit comprises two stators: one outer rotor and <span class="f1">other</span><span class="f2">one</span> inner <span class="f2">bearing</span> rotor. The first one is responsible for stabilization of passives degrees of freedom and the inner one to control the rotor radial position through eight magnetic poles.% Was decided to install the permanent magnets in the external stator not in the rotor as seen in the literature, seeking to the best mechanical balance of the rotor. 
+	 Figure \ref{fig:mancal:corte} is a cut of the proposed bearing. We adopted a flat geometry to better stiffness in the unstable modes of the bearing. The outboard bearing to the motor enables a stiffness within the proposed limits of mass and dimensions.
+	
+	\begin{figure}[ht]
+		\centering
+<span class="f6">@@ -97,10 +95,10 @@</span>
+		\label{fig:mancal:corte}
+	\end{figure}
+	
+	<span class="f1">\subsection{External</span><span class="f2">\subsection{\uppercase{External</span> Stator and <span class="f1">Rotor}</span><span class="f2">Rotor}}</span>
+	
+	<span class="f1">Magnetic circuit of a</span><span class="f2">A</span> section of the <span class="f2">magnetic circuit of the</span> outer stator is illustrated in Figure \ref{fig:circuito:passivo}. The magnetic flux generated by the permanent magnet <span class="f2">($R_{ima}$)</span> seeks the path of the <span class="f1">least</span><span class="f2">minimal</span> reluctance to close the magnetic circuit. This occurs by<span class="f1">way of the</span> external stator irons ($\mathcal{R}_f$), then passing through the air gap ($\mathcal{R}_g$) and rotor ($\mathcal{R}_{fr}$). The permanent magnetic is a magnetic field source and is located between two irons. 
+	The rotor undergoes attraction on all <span class="f1">direction, at</span><span class="f2">direction. At</span> equilibrium (with a symmetrical air gap) the resultant force would tend to be null and remain in equilibrium at the operating point (critically stable). 
+			
+	\begin{figure}[ht]
+		\subfigure[Magnetic circuit of the outer stator and rotor]{	
+<span class="f6">@@ -118,20 +116,21 @@</span>
+	
+	The magnetic field in the air gap (generated by the magnetics) can be decomposed into components $B_x$ and $B_z$ that are dependent on rotor displacement $\Delta_x$ and $\Delta_z$. The component z is responsible for stabilizing the passives degrees of freedom, the x component is a consequence of this topology causing the rotor instability on radial plane. Fig. \ref{Fig:modelo:passivo:DxDz} shows the magnetic flow on the external stator when displaced radially. 
+			
+	Magnetic attraction force <span class="f2">$F$ can be</span> calculated using the virtual work \citep{Chiba} <span class="f1">principle been the equation quadratic to</span><span class="f2">it is a function of</span> the magnetic field ($B(l)$) accumulated in <span class="f2">the</span> air gap <span class="f1">plus</span><span class="f2">and</span> the area <span class="f1">that it is concentrated</span><span class="f2">plus</span> ($S(l)$) <span class="f1">divided by two times</span><span class="f2">which $B$ is concentrated, as well as of</span> the air permeability <span class="f2">(permeability)</span> ($\mu_0$). <span class="f2">Eq. \eqref{eq:Force:virtualwork} is the described attraction force resulted from axial rotor displacement.</span>
+	
+	\begin{equation}
+			<span class="f1">F</span><span class="f2">Fx</span> = <span class="f1">\frac{B(l)^2</span><span class="f2">\frac{Bx(l)^2</span> \, S(l)}{2 \mu_0} <span class="f2">; \\</span>
+<span class="f2">			Fz = \frac{Bz(l)^2 \, S(l)}{2 \mu_0}</span>
+<span class="f2">			\label{eq:Force:virtualwork}</span>
+	\end{equation}
+	
+	
+	Both <span class="f1">$B$</span><span class="f2">magnetic field</span> and <span class="f1">$S$</span><span class="f2">air area</span> are dependent of the air length ($l$), which makes the  attraction force non-linear.	Aiming the <span class="f1">linearisation</span><span class="f2">linearization</span> of the attractive force, the outer stator is <span class="f1">project</span><span class="f2">projected</span> to work <span class="f2">under</span> magnetic <span class="f1">saturated</span><span class="f2">saturation state</span> making the quadratic portion of the equation constant ($B(l)^2 = cnt$) for <span class="f2">small</span> variations on gap length. Besides <span class="f1">linearisation,</span><span class="f2">linearization, it</span> is possible <span class="f2">obtain</span> with this technique<span class="f1">obtain</span> a higher axial stiffness without a large increase in <span class="f2">the</span> radial <span class="f1">stiffness,</span><span class="f2">one,</span> which would require higher energy to stabilize actives degree of freedom. In order to make the tilt passive stable, the force generated in $F_z$ must be superior to $F_x $ for a predefined angle range <span class="f2">(Fig. \ref{Fig:modelo:passivo:DxDz}</span> otherwise the tilt would cause a non symmetric force on the rotor causing it to get unstable.<span class="f1">By the development of an analytical model it was possible to choose initial construction parameters for this proposed topology and then an finite element model was created to develop and verify the topology. The aim of this step is to get a good axial rigidity ($F_z$) with a small  radial force ($F_x$). Fig. \ref{fig:forca:passivo:fx} the result of rotor when subjected to radial displacement, it is remarkable the linear force resulted from this topology, by the other side, we have a non linear attraction force for axial displacement (\ref{fig:forca:passivo:comsol:dy}).
+</span>	
+	<span class="f1">% found that</span><span class="f2">By</span> the <span class="f1">force has</span><span class="f2">development of an analytical model it was possible to choose initial construction parameters for this proposed topology and then an finite element model was created to develop and verify the topology. The aim of this step is to get</span> a <span class="f1">component different from zero when</span><span class="f2">good axial rigidity ($F_z$) with a small  radial force ($F_x$). Fig. \ref{fig:forca:passivo:fx} shows</span> the <span class="f2">result of</span> rotor <span class="f2">when subjected to radial displacement, it</span> is <span class="f1">aligned with</span><span class="f2">remarkable</span> the <span class="f1">external stator (z = 0),</span><span class="f2">linear force resulted from</span> this <span class="f1">is caused</span><span class="f2">topology,</span> by<span class="f1">numeric errors on</span> the <span class="f1">FEM analysis. The achieved magnetic stiffness</span><span class="f2">other side, we have a non linear attraction</span> force for<span class="f1">the</span> axial displacement <span class="f1">is of 20 kN/m and for the radial is of 60 kN/m.</span><span class="f2">(\ref{fig:forca:passivo:comsol:dy}).</span>
+	
+	<span class="f2">% Sergio acha que deveria explicar mais o pq é linear, mas já falei que a componente quadratica fica cnst para pequenas variações.</span>
+		
+	\begin{figure}[ht]
+		\subfigure[3D map of attraction force on the radial direction due to passive bearing system]{	
+			\includegraphics[width=0.5\linewidth]{./Figs/Simulacoes/Passivo/forca_passivo_comsol_fx}
+<span class="f6">@@ -153,18 +152,16 @@</span>
+%		F_p(x) = K_p x = 60k \, x
+%	\end{equation}		
+	
+	<span class="f1">\subsection{Inner</span><span class="f2">\subsection{\uppercase{Inner</span> stator and <span class="f1">Rotor}</span>
+<span class="f1">	</span>
+<span class="f1">	The inner stator contains eight magnetic poles evenly distributed at 45 degrees, connected by a internal circulation ring. The poles act as electromagnet generating attraction force to stabilize the rotor on the radial direction (x, y). Each trio of poles acts as a single actuator</span>
+<span class="f1">	, forcing the flux to cycles on a specific place maximizing the attraction force on the desired axis.</span><span class="f2">Rotor}}</span>
+	
+	<span class="f1">Figure \ref{fig:modelo:mancal:estator:interno:fluxo} shows the internal</span><span class="f2">The inner</span> stator <span class="f1">with three poles acting as a single actuator: (A), (B), (C) and the respective</span><span class="f2">contains eight</span> magnetic <span class="f1">flow generated</span><span class="f2">poles evenly distributed at 45 degrees, connected</span> by a <span class="f1">current applied</span><span class="f2">internal circulation ring (component C of Fig. \ref{fig:mancal:corte}). The poles act as electromagnet generating attraction force to stabilize the rotor</span> on the <span class="f1">coils. Poles (A) and (C) work with inverse polarity</span><span class="f2">radial direction (x, y). Each trio</span> of <span class="f1">(B)</span><span class="f2">poles acts as a single actuator,</span> forcing <span class="f1">all flow over (B) and not</span><span class="f2">the flux to cycles</span> by <span class="f1">any other pole, thus</span><span class="f2">specifics poles</span> maximizing the<span class="f1">force of</span> attraction<span class="f1">$F_B$. The applied current on (A) and (C) is half the current in the main pole (B) preventing saturation.	Forces $F_A$ and $F_C$  have components in both directions x and y, for small changes, the components in the y direction is canceled ($F_y$). Leading to a single</span> force <span class="f1">in</span><span class="f2">on</span> the <span class="f1">x direction ($F_x$) :</span><span class="f2">desired axis.</span>
+	
+	<span class="f2">Figure \ref{fig:modelo:mancal:estator:interno:fluxo} shows the internal stator with three poles acting as a single actuator: (A), (B), (C) and the respective magnetic flow generated by a current applied on the coils. Poles (A) and (C) work with inverse polarity of (B) forcing all magnetic flow through (B) and not by any other pole, thus maximizing the force of attraction $F_B$. The applied current on (A) and (C) is half of the current in the main pole (B) to prevent saturation.	Forces $F_A$ and $F_C$  have components in both directions x and y. For small changes on the operation point (nominal air length), the components in the y ($F_y$) direction is canceled because the same force vector is applied with opposite directions, in this example, $F_A$ and $F_B$. Leading to a single force in the x direction ($F_x$). Eq \ref{eq:ativo:F:resultante:x} is the resulted attraction forces on this situation.</span>	
+	
+	<span class="f1">\begin{align}</span><span class="f2">\begin{equation}</span>
+		\vec{F}_x <span class="f1">&amp;=</span><span class="f2">=</span> \vec{F}_B + \cos(45) (\vec{F}_{A} + \vec{F}_{C}) <span class="f1">\label{eq:ativo:F:resultante:y} \\</span><span class="f2">\; ;\\</span>
+		\vec{F}_y <span class="f1">&amp;=</span><span class="f2">=</span>  \cos(45) (\vec{F}_{A} - \vec{F}_{C}) = 0 \label{eq:ativo:F:resultante:x}
+	<span class="f1">\end{align}</span><span class="f2">\end{equation}</span>	
+	
+
+	
+<span class="f6">@@ -175,101 +172,88 @@</span>
+		\label{fig:modelo:mancal:estator:interno:fluxo}
+	\end{figure}
+	
+	The<span class="f1">magnetic circuit between the inner stator and the rotor can be split on four main elements: Coil magnetic field generating source, air gap reluctances which depends on the distance between the rotor poles and,  iron of the rotor and return ring</span>
+<span class="f1">	</span>
+<span class="f1">	The</span> initial geometric parameters of the internal stator were <span class="f1">raised</span><span class="f2">found</span> by analyzing the power restriction. The maximum power for the system is 100W with a  supply voltage of 24V, resulting in a 4A max current. This electric current must be sufficient to generate an attraction force capable of compensate <span class="f1">generated</span><span class="f2">the</span> force created by passive circuit <span class="f1">in the</span><span class="f2">under</span> largest possible gap (Fig. <span class="f1">\ref{fig:forca:passivo:fx}).</span><span class="f2">\ref{fig:forca:passivo:fx}, $\Delta_x = 0.35$).</span> From <span class="f1">an</span><span class="f2">the</span> analytic magnetic force model (Eq. <span class="f1">\eqref{eq:ativo:F:resultante:y})</span><span class="f2">\eqref{eq:ativo:F:resultante:x})</span> was possible to find a initial set of parameters (which include: areas, coil turns and air gap) able to generate a restorative force on the rotor with the imposed power restrictions. With a refined finite element model was possible to determine a better set of parameters by removing the unwanted saturated zones and maximizing the magnetic field on the gap by increasing the pole <span class="f2">air</span> area. <span class="f2">Figure \ref{fig:forca:ativo} shows the achieved attraction force due the inner stator poles. This actuator has different gain depending on rotor position ($d_x$), larger the gap (negative dx) smaller the attraction force generated by the same current.</span>
+	
+<span class="f1">	Figure \ref{fig:forca:ativo} shows the achieved attraction force due the inner stator poles, this actuator has different gain depending on rotor position ($d_x$), larger the gap (negative dx) smaller the attraction force generated by the same current.</span>
+<span class="f1">	</span>
+<span class="f1">		</span>
+	\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.7\linewidth]{/Simulacoes/Ativo/mapa_forcas_ativo_comsol}
+	\caption{Achieved attraction force on active circuit}
+	\label{fig:forca:ativo}
+	\end{figure}		
+		
+	<span class="f2">\subsubsection{\uppercase{Inductance}} \label{subsec:at:indutancia}</span>
+	
+<span class="f1">%This model is used to </span>
+<span class="f1">	%\todo[inline]{comentar o impacto dessa nao linearidade do atuador}</span>
+<span class="f1">	%\todo[inline]{gerar grafico de forca x deslocamento}</span>
+<span class="f1">	</span>
+<span class="f1">	</span>
+<span class="f1">	\subsubsection{Inductance} \label{subsec:at:indutancia}</span>	Inductance plays a crucial role in the performance of the actuator <span class="f1">and the main factor for</span><span class="f2">because</span> its dynamic<span class="f1">its</span> is correlated with the generation capacity (magnetic) <span class="f2">of</span> each pole and its current. Increasing the magnetic efficiency <span class="f1">(with respect</span><span class="f2">(in relation</span> to <span class="f2">the</span> applied current) <span class="f1">of the</span><span class="f2">on</span> poles <span class="f1">impacts</span><span class="f2">results</span> on a better attraction <span class="f1">force but</span><span class="f2">force, on the other hand,</span>  generates a higher inductance that is<span class="f1">a</span> worst <span class="f1">actuator (in</span><span class="f2">in</span> terms of dynamic <span class="f1">response).</span><span class="f2">response.</span> For the present topology, the achieved inductance for each <span class="f1">coils</span><span class="f2">coil</span> is<span class="f1">of</span> $56 mH$ with an electrical resistance of $4 \Omega$. 
+		
+	<span class="f1">\subsection{Auxiliary Bearing}</span>
+<span class="f1">	</span>
+<span class="f1">	Auxiliary bearings are essential in any magnetic bearing, prevents the shock between the rotor and any critical part when the active control is disabled. The proposed auxiliary bearing is a solid ring of bronze limiting the maximum rotor excursion.</span>
+<span class="f1">	</span>
+<span class="f1">	\subsection{Bearing dimensions}</span>
+<span class="f1">	</span>
+<span class="f1">	The magnetic bearing has an external radius of 75.8 mm and max height of 18.0 mm. The nominal air length between the rotor and the external stator is of 1.2 mm and of 0.6 mm internal stator. </span>
+<span class="f1">	</span>
+<span class="f1">	\section{Dynamic Model}</span>
+<span class="f1">	</span>
+<span class="f1">	%Via Lagrangian formalism we obtain the portion of the kinetic energy (T) from the rotor that results from the rotation of the rotor and it displacement. The potential energy (V) is due to axial translation of the rotor (in an environment with gravity):</span><span class="f2">\subsection{\uppercase{Resultant bearing}}</span>
+	
+	<span class="f1">%	\subsection{Rotor Dynamic}</span><span class="f2">The magnetic bearing has an external radius of 75.8 mm and max height of 18.0 mm. The nominal air length between the rotor and the external stator is 1.2 mm and 0.6 mm to the internal stator, the rotor mass is approximately 0,37 kg and axial stiffness is 60 kN/m. Fig. \ref{fig:prototipo} is an image of the constructed magnetic bearing prototype without the top stator iron.</span>
+<span class="f2">	 </span>
+<span class="f2">	\begin{figure}[ht]</span>
+<span class="f2">	\centering</span>
+<span class="f2">	\includegraphics[width=0.4\linewidth]{/mancais/prototipo.jpg}</span>
+<span class="f2">	\caption{Constructed magnetic bearing prototype}</span>
+<span class="f2">	\label{fig:prototipo}</span>
+<span class="f2">	\end{figure}</span>	
+	
+	<span class="f1">Main</span><span class="f2">\section{\uppercase{Dynamic Model}}</span>
+
+<span class="f2">	The main</span> rotor dynamics <span class="f1">are</span><span class="f2">is</span> basically influenced by <span class="f1">your</span><span class="f2">its</span> rotation speed ($\dot{\theta}$), inertia ($I$), mass ($m$) and <span class="f1">its</span><span class="f2">air gap length ($l_g$) that can be  translated to rotor</span> position <span class="f1">($x,y,z$)</span><span class="f2">: $dx,dy,dz$,</span> composing all the kinetic energy (T). The potential energy (V) is due to axial translation (z), gravity (g) and by the passive bearing stiffness ($K_z$) shown in Fig. \ref{fig:forca:passivo:comsol:dy} : 
+	
+	\begin{align}
+		T_{\theta, x, y, z} &amp;= \frac{1}{2} I_z \, \dot{\theta}^2 + \frac{1}{2} \, m \, \left( \dot{x}^2 + \dot{y}^2 + \dot{z}^2 \right) \notag \\
+		V_z &amp;= m \, g \, z + \frac{1}{2} \, K_z \, z^2
+	\end{align}	
+
+	Two different forces <span class="f1">acts</span><span class="f2">act</span> on the rotor: the  non-conservative forces ($Q^{nc}$) caused by the force applied by the actuators ($F_b$) that are depended on the rotor position and on the applied current ($i$); Conservative ($Q^{c}$) forces (which depend only on the position of the rotor) resulted from the passive attraction force ($K_p$). Both $F_b$ and $K_p$ are <span class="f1">raised</span><span class="f2">got</span> from the calculated force by finite element model, respectively shown on Fig. \ref{fig:forca:ativo} and Fig. \ref{fig:forca:passivo:fx}.
+
+	\begin{align}
+		Q_y^{nc} &amp;= <span class="f1">F_{by}(x,i)</span><span class="f2">F_{by}(dx,i)</span>  \\
+		Q_x^{nc} &amp;= <span class="f1">F_{bx}(y,i)</span><span class="f2">F_{bx}(dy,i)</span>  \\
+		Q^{c}_x  &amp;= K_p \, <span class="f1">x</span><span class="f2">dx</span> \\
+		Q^{c}_y  &amp;= K_p \, <span class="f1">y</span><span class="f2">dy</span> 
+	\end{align}
+	
+	Differential dynamic model can be <span class="f1">found</span><span class="f2">obtained</span> by applying the Lagrange formalism on previews equations, resulting on the <span class="f1">fallowing</span><span class="f2">following</span> model:
+			
+	\begin{align}
+		I \ddot{\theta} &amp;= 0 \\
+		m \ddot{x}		&amp;= K_p \, <span class="f1">x</span><span class="f2">dx</span>  - <span class="f1">F_{bx}(x,i)</span><span class="f2">F_{bx}(dx,i)</span> \\
+		m \ddot{y}		&amp;= K_p \, <span class="f1">y</span><span class="f2">dy</span>  - <span class="f1">F_{by}(y,i)\\</span><span class="f2">F_{by}(dy,i)\\</span>	
+		m \ddot{z}  	&amp;= K_z <span class="f1">z</span><span class="f2">\, dz</span> + m g<span class="f1">+ F_{pz}(z)</span> 
+	\end{align}
+	
+	Theses equations shows an uncoupled system (considering balanced). Both x and y directions must be active controlled by $F_b$ to overcome the attractive force ($K_p$) generated to stabilize the z direction. 
+<span class="f1">	</span>
+<span class="f1">	</span>
+<span class="f1">%	\subsection{Actuator Dynamic}</span>
+		
+	Actuator dynamics is primarily caused by coil's electrical resistance (R) and inductance dependent on the operation point (L(x,y)). At the operation point, the resulted actuator has cut-off frequency of $11Hz$. The actuator dynamic ($G_a(S)$) is :
+	
+	\begin{align}
+		G_a(s) = <span class="f1">\frac{1}{L(x,y)</span><span class="f2">\frac{1}{L(dx,dy)</span> \, s + R} 
+	\end{align}
+	
+	<span class="f2">Magnetic bearing radial dynamic model can be represented by the block diagram on Fig. \ref{fig:diagrama_blocos_modelo_linear}. A controller ($C(s)$) is needed to stabilities the system controlling the current on actuators ($i$), the controller is project to work as regulatory ($R=0$) since the bearing is project to work at  operation point ($dx=0, dy=0$).	Open loop system transfer function is derivate on Eq. \ref{eq:MA}, begin current the input of the system and the radial (x) position the output, the system is unstable with negative phase margin.</span> 
+	
+	<span class="f1">%\subsection{Block Diagram}</span>
+<span class="f1">	</span>
+<span class="f1">	Magnetic bearing radial dynamic modem can be represented by the block diagram on Fig. \ref{fig:diagrama_blocos_modelo_linear}. A controller ($C(s)$) is needed to stabilities the system controlling the current on actuators ($i$), this controller is project to work as regulatory ($R=0$).</span><span class="f2">\begin{equation}</span>
+<span class="f2">	dx = i_x \frac{K_b(dx,dy)}{[m s^2 - K_p (dx,dy)] \; [L(dx,dy) \, s + R] } </span>
+<span class="f2">	\label{eq:MA}</span>
+<span class="f2">	\end{equation}</span>
+	
+	<span class="f1">\begin{figure}[ht]</span><span class="f2">\begin{figure}[!ht]</span>
+	\centering
+	\includegraphics[width=1\linewidth]{Figs/Modelagem/diagrama_blocos_modelo_linear}
+<span class="f1">	\caption{Closed loop block diagram of radial rotor dynamic}</span>
+	\label{fig:diagrama_blocos_modelo_linear}
+	\end{figure}	
+	
+<span class="f1">\section{CONTROLLER}</span>
+	
+	<span class="f1">Actuator gain ($Kb(d,i)$) is non linear and dependent of rotor position. To overcome this challenge a force control is designed instead of a current controller. The calculated force is applied to an estimator in order to calculate the current based on the request force and rotor position, Fig. \ref{fig:diagrama_controlador_estimador} is the proposed control scheme.</span><span class="f2">\section{\uppercase{CONTROLLER}}</span>
+	
+	<span class="f1">%discarding</span><span class="f2">To overcome</span> the <span class="f1">attractive</span><span class="f2">non linearity on actuator gain ($Kb(d,i)$), a</span> force<span class="f1">of the coils. he resulting</span> control <span class="f2">is designed instead of a current controller. The calculated</span> force is applied to an <span class="f1">estimator, responsible for translating the desired strength</span><span class="f2">estimator</span> in <span class="f1">a voltage applied</span><span class="f2">order</span> to <span class="f2">calculate the current based on force and rotor position. Fig. \ref{fig:diagrama_controlador_estimador} is</span> the <span class="f1">coils. This system dynamics can be model as:</span>
+<span class="f1">	%\begin{equation}</span>
+<span class="f1">	%G_p(s)</span><span class="f2">proposed control scheme. Eq. \ref{eq:estimator:i} is the proposed current-force estimator, it is dependent on applied current ($I$), air gap length ($d$) and pole area  ($S_g$) obtained from a simplified electromagnetic model, Eq. \ref{eq:estimator:i} is the resulted current-force estimator.</span>
+<span class="f2">		</span>
+<span class="f2">	\begin{equation}</span>
+<span class="f2">	I</span> = <span class="f1">\frac{1}{m</span><span class="f2">\sqrt{\frac{2</span> \, <span class="f1">s^2 - K_p} = \frac{1}{0.369</span><span class="f2">F \, \mu_0}{S_g(d)}} \, \frac{\mu_0</span> \, <span class="f1">s^2 - 60 \,E3}</span>
+<span class="f1">	%\end{equation}</span><span class="f2">S_g(d)^2}{n}</span>
+<span class="f2">	\label{eq:estimator:i}</span>
+<span class="f2">	\end{equation}</span>
+	
+	\begin{figure}[ht]
+	\centering
+<span class="f6">@@ -277,38 +261,25 @@</span>
+	\caption{Proposed controller scheme with current estimator}
+	\label{fig:diagrama_controlador_estimador}
+	\end{figure}
+		
+	<span class="f2">A SISO loop-shaping controller ($H_{\infty}$) \citep{skogestad2007multivariable} was projected to stabilizes the rotor at it operational point  in order to have a good margin between the nominal (linearized) plant and the real one (non linear). The controller was project to model the system frequency response to act as a first order low pass filter with cut-off-frequency of $100$ rad/s and a zero DC gain.</span>
+	
+	<span class="f1">This estimator block is implemented by simplified analytic model, that considerate</span><span class="f2">Projected controller was simulated with</span> the <span class="f1">air ($R_g$) reluctance as principal</span><span class="f2">non linear plant model and the result is show</span> on <span class="f2">Fig. \ref{fig:controlled}. On this simulation</span> the <span class="f1">magnetic flux ($\phi$) circuit. The estimator</span><span class="f2">controller</span> is <span class="f1">than dependent of applied current ($I$) , air gap length ($l_g$)</span><span class="f2">initially disabled</span> and <span class="f1">area ($S_g$). By</span><span class="f2">a no zero initial condition takes</span> the <span class="f1">magnetic attraction force ($F$), we can derive</span><span class="f2">rotor from</span> the <span class="f1">equation that correlates a current by de desired force.</span>
+
+<span class="f1">	\begin{equation}</span>
+<span class="f1">		I</span><span class="f2">equilibrium position to at it maximum excursion ($dy</span> = <span class="f1">\sqrt{\frac{2 \, F \, \mu_0}{S_g}} \, \frac{\mu_0 \, S_g^2}{n}</span>
+<span class="f1">	\end{equation}</span>
+<span class="f1">	</span>
+<span class="f1">	A SISO loop-shaping</span><span class="f2">0.35 mm and dx = 0.18 mm$). The</span> controller <span class="f1">($H_{\infty}$) was project</span><span class="f2">is activated at 0.1 second and takes 0.3 seconds</span> to <span class="f1">model</span><span class="f2">recover the rotor from</span> the <span class="f1">system frequency response</span><span class="f2">worst case</span> to <span class="f1">be a first order low pass filter with cut-off-frequency of $100 Hz$ and a DC gain of 100. Frequency response</span><span class="f2">its nominal position. A disturbance</span> of <span class="f1">open loop and closed loop</span><span class="f2">0.01 mm</span> is <span class="f1">shown on Fig. \ref{fig:bode}.</span><span class="f2">applied to dx position at 0.5 seconds. Max current peak occurs when controlled is activated and wont exceeds 0.5 A.</span>	
+	
+	\begin{figure}[ht]
+	<span class="f1">\subfigure[Open loop]{	</span>
+<span class="f1">			\includegraphics[width=0.5\linewidth]{./Figs/Modelagem/openloop.eps}</span>
+<span class="f1">			\label{fig:bode:gs}</span>
+<span class="f1">		}</span>
+<span class="f1">		\hfill</span>
+<span class="f1">		\subfigure[Closed loop with proposed controller]{	</span>
+<span class="f1">			%{\textit{Magnetic Force (N) x Displacement Y (mm): Equilibrium point}}\\</span>
+<span class="f1">			\includegraphics[width=0.5\linewidth]{./Figs/Modelagem/controlled.eps}</span>
+<span class="f1">			\label{fig:bode:c}</span>
+<span class="f1">		}</span>
+<span class="f1">		\caption{Frequency response of open loop and</span><span class="f2">\centering</span>
+<span class="f2">	\includegraphics[width=0.7\linewidth]{./Figs/Modelagem/controlled_time.eps}</span>
+<span class="f2">	\caption{Simulated</span> controlled <span class="f1">system}</span>
+<span class="f1">		\label{fig:bode}</span><span class="f2">plant time response}</span>
+<span class="f2">	\label{fig:controlled}</span>
+	\end{figure}	
+	
+	\section{CONCLUSION}
+	
+	In this <span class="f1">paper, we proposed</span><span class="f2">paper</span> a new topology <span class="f1">to a</span><span class="f2">of</span> magnetic bearing system <span class="f1">to a</span><span class="f2">aiming the application on</span> satellite reaction <span class="f1">wheel. This</span><span class="f2">wheel is proposed, the suggested</span> bearing <span class="f1">works radially active</span><span class="f2">respects all imposed restrictions (dimensions, mass, power consumption) and can be</span> controlled<span class="f1">by an eight electromagnets that exercises attraction force on the rotor. The passives degrees of freedom are stabilized due</span> to <span class="f1">a magnetic placed on the external stator. Optimizations</span><span class="f2">have low position oscillation</span> and <span class="f1">simulations were performed</span><span class="f2">good performance against perturbation.	Future work are</span> in <span class="f1">order</span><span class="f2">line</span> to <span class="f1">achieve</span><span class="f2">have</span> a <span class="f1">bearing which complies with the restrictions, by the force models we project a dynamic</span><span class="f2">more complete electromagnetic</span> model <span class="f1">that represent</span><span class="f2">aiming the execution of more optimizations on</span> the<span class="f1">instable bearing part. A robust loopshaping controller is</span> proposed <span class="f2">topology. A first functional prototype with position sensors and drive electronics will help</span> to <span class="f1">stabilize</span><span class="f2">push</span> the <span class="f1">rotor at it operation point, with little oscillation.</span><span class="f2">development of others subsystems of the reaction wheel.</span>
+		
+	\section{ACKNOWLEDGEMENTS}
+	
+	 <span class="f1">The author thanks</span><span class="f2">Thanks</span> to Instituto Mau\'{a} de Tecnologia and Dr. Leonardo Pinheiro that made this project possible.
+	
+	\section{REFERENCES} 
+	
+<span class="bold">diff --git a/Artigo/COBEM 2015 - Completo/bibfile.bib b/Artigo/COBEM 2015 - Completo/bibfile.bib</span>
+<span class="bold">index 6dae5c1..acff148 100644</span>
+<span class="bold">--- a/Artigo/COBEM 2015 - Completo/bibfile.bib</span>	
+<span class="bold">+++ b/Artigo/COBEM 2015 - Completo/bibfile.bib</span>	
+<span class="f6">@@ -1224,3 +1224,20 @@</span> year = {1971}
+  publisher={Springer}
+}
+
+<span class="f2">@book{skogestad2007multivariable,</span>
+<span class="f2">  title={Multivariable feedback control: analysis and design},</span>
+<span class="f2">  author={Skogestad, Sigurd and Postlethwaite, Ian},</span>
+<span class="f2">  volume={2},</span>
+<span class="f2">  year={2007},</span>
+<span class="f2">  publisher={Wiley New York}</span>
+<span class="f2">}</span>
+
+
+<span class="f2">@book{bleuler2009magnetic,</span>
+<span class="f2">  title={Magnetic bearings: theory, design, and application to rotating machinery},</span>
+<span class="f2">  author={Bleuler, Hannes and Cole, Matthew and Keogh, Patrick and Larsonneur, R and Maslen, E and Okada, Y and Schweitzer, G and Traxler, A and Schweitzer, Gerhard and Maslen, Eric H and others},</span>
+<span class="f2">  year={2009},</span>
+<span class="f2">  publisher={Springer Science \&amp; Business Media}</span>
+<span class="f2">}</span>
+
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,81 @@
+\begin{thebibliography}{9}
+\newcommand{\enquote}[1]{``#1''}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem[{Bangcheng \emph{et~al.}(2012)Bangcheng, Shiqiang, Xi and
+  Qian}]{Bangcheng2012}
+Bangcheng, H., Shiqiang, Z., Xi, W. and Qian, Y., 2012.
+\newblock \enquote{{Integral Design and Analysis of Passive Magnetic Bearing
+  and Active Radial Magnetic Bearing for Agile Satellite Application}}.
+\newblock \emph{IEEE Transactions on Magnetics}, Vol.~48, No.~6, pp.
+  1959--1966.
+\newblock ISSN 0018-9464.
+\newblock \doi{10.1109/TMAG.2011.2180731}.
+\newblock
+  \urlprefix\url{http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=6111297}.
+
+\bibitem[{Bernus \emph{et~al.}(1998)Bernus, Jamain and Roland}]{Bernus1998}
+Bernus, C., Jamain, P. and Roland, J., 1998.
+\newblock \enquote{{Magnetic bearing with alternating actuators and sensors}}.
+\newblock \emph{US Patent 5,763,972}.
+\newblock \urlprefix\url{http://www.google.com/patents/US5763972}.
+
+\bibitem[{Bleuler \emph{et~al.}(2009)Bleuler, Cole, Keogh, Larsonneur, Maslen,
+  Okada, Schweitzer, Traxler, Schweitzer, Maslen
+  \emph{et~al.}}]{bleuler2009magnetic}
+Bleuler, H., Cole, M., Keogh, P., Larsonneur, R., Maslen, E., Okada, Y.,
+  Schweitzer, G., Traxler, A., Schweitzer, G., Maslen, E.H. \emph{et~al.},
+  2009.
+\newblock \emph{Magnetic bearings: theory, design, and application to rotating
+  machinery}.
+\newblock Springer Science \& Business Media.
+
+\bibitem[{Chiba and Fukao(2005)}]{Chiba}
+Chiba, A. and Fukao, 2005.
+\newblock \emph{{Magnetic bearings and bearingless drives}}.
+\newblock Elsevier.
+
+\bibitem[{Krishnan \emph{et~al.}(2010)Krishnan, Lee, Hsu and
+  Konchady}]{Krishnan2010}
+Krishnan, S., Lee, S.h., Hsu, H.y. and Konchady, G., 2010.
+\newblock \enquote{{Lubrication of Attitude Control Systems}}.
+\newblock \emph{Advances in Spacecraft Technologies}, Vol.~1.
+
+\bibitem[{Marble and Tow(2006)}]{Marble2006}
+Marble, S. and Tow, D., 2006.
+\newblock \enquote{{Bearing health monitoring and life extension in satellite
+  momentum/reaction wheels}}.
+\newblock \emph{Aerospace Conference, 2006 IEEE}, pp. 1--7.
+\newblock
+  \urlprefix\url{http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=1656138}.
+
+\bibitem[{Scharfe \emph{et~al.}(2001)Scharfe, Roschke, Bindl and
+  Blonski}]{Scharfe2001}
+Scharfe, M., Roschke, T., Bindl, E. and Blonski, D., 2001.
+\newblock \enquote{{Design and development of a compact magnetic bearing
+  momentum wheel for micro and small satellites}}.
+\newblock In \emph{Proceedings of the 15th Annual Utah State University
+  Conference on Small Satellites}. Vol.~15, pp. 1--9.
+\newblock
+  \urlprefix\url{http://digitalcommons.usu.edu/smallsat/2001/All2001/63/}.
+
+\bibitem[{Skogestad and Postlethwaite(2007)}]{skogestad2007multivariable}
+Skogestad, S. and Postlethwaite, I., 2007.
+\newblock \emph{Multivariable feedback control: analysis and design}, Vol.~2.
+\newblock Wiley New York.
+
+\bibitem[{{Taniwaki, Shigemune and Ohkami}(2003)}]{taniwaki2003experimental}
+{Taniwaki, Shigemune and Ohkami}, Y., 2003.
+\newblock \enquote{{Experimental and numerical analysis of reaction wheel
+  disturbances}}.
+\newblock \emph{JSME International Journal Series C}, Vol.~46, pp. 519----526.
+\newblock
+  \urlprefix\url{http://jlc.jst.go.jp/JST.JSTAGE/jsmec/46.519?from=Google}.
+
+\end{thebibliography}

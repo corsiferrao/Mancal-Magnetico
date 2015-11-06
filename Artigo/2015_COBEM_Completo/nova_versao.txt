@@ -1,0 +1,291 @@
+[1mdiff --git a/Artigo/COBEM 2015 - Completo/COBEM-RCORSI-JJAIME-Mancal.tex b/Artigo/COBEM 2015 - Completo/COBEM-RCORSI-JJAIME-Mancal.tex[m
+[1mindex 5df99f5..fa3a01c 100644[m
+[1m--- a/Artigo/COBEM 2015 - Completo/COBEM-RCORSI-JJAIME-Mancal.tex[m	
+[1m+++ b/Artigo/COBEM 2015 - Completo/COBEM-RCORSI-JJAIME-Mancal.tex[m	
+[36m@@ -45,7 +45,7 @@[m
+		\end{center}[m
+		\authors{Rafael~Corsi~Ferr\~{a}o} \\[m
+		\authors{Jos\'{e} Jaime da Cruz} \\[m
+		\institution{Escola Polit\'ecnica da [31mCidade[m[32mUniversidade[m de S\~{a}o Paulo} \\
+		\institution{corsiferrao@gmail.com, jaime@lac.usp.br} \\[m
+		\\[m
+		%\authors{Third Author's Name} \\[m
+[36m@@ -54,41 +54,39 @@[m
+		%\\[m
+		%\authors{Same format for others authors, if any} \\[m
+		\\[m
+		\abstract{\textbf{Abstract.} In this paper, the development of a novel active magnetic bearing (MB) system for reaction wheels applicable in satellite attitude control is presented. The proposed bearing has [31mfour[m[32mthree[m degrees of freedom passively stable (EMB) by one pair of permanent magnet; two degrees of freedom (AMB) are actively stabilized by eight electromagnetic poles. The  magnetic model of both EMB and AMB are presented and  equations of force-current and force-position are analyzed [31mby[m[32musing[m the magnetic [31mcircuit[m[32mcircuit's[m approach and[31mby[m the finite [31melement[m[32melement's[m method. With[31mthe force[m characteristic [32mforce[m curves a non-linear dynamic model [32mis[m for the MB [32ms present[m and a control system that stabilizes the bearing at its operating point [31mare presented.[m[32mis project.[m A flat, uncoupled and scalable magnetic bearing with good stiffness, [31mthat[m[32mwhich[m can be used on satellites reaction wheels to improve its performance and reliability, is obtained. A prototype is under construction. Simulation results are presented.}\\
+		\\[m
+		\keywords{\textbf{Keywords:} Magnetic Bearing, Satellite Attitude Control }\\[m
+	\end{tabular}[m
+	[m
+	[31m\section{INTRODUCTION}[m[32m\section{\uppercase{INTRODUCTION}}[m
+	The attitude and orbit control is one of the most critical technology of any spatial [31msystems \cite{wertz1978spacecraft},[m[32msystem,[m the main actuators include propellants, magnetic torques and reaction wheels. Reaction wheels are hard to replace because they present a large operating range in torque (unlike magnetic actuators) and are powered by renewable energy provided by solar panels (unlike propellers based on a finite fuel supply). For these reasons, reaction wheels are present on virtually any satellite with[31ma[m minimum performance requirements in attitude.
+	[m
+	A reaction wheel can be described as an inertial actuator operating on the principle of conservation of angular momentum. The[31mperformance of the[m reaction wheel [31mon[m[32mmodifies[m the[31msatellite takes place by exchange of[m angular [31mmomentum,[m[32mmomentum of the satellite,[m limited to the axis of rotation of the wheel. Due to the [31mlarge[m[32minertial[m difference between the satellite and the[31minertia of the[m reaction wheel, a control of attitude with [31mgreat,[m[32mhigh[m precision is possible with this system. 
+	[m
+	Reaction wheels typically consist of an electric motor, usually a DC brushless motor, a bearing system and one element of inertia. The inertia [31mmember[m[32mcomponent[m and the motor are mounted on bearings to ensure precise rotation about [31man[m[32mone[m axis. The rotation speed of the system is controlled by an electronic motor drive. Reaction wheels can be operated in two distinct ways: by rotation or torque.
+	[m
+	The suspension of the rotor relative to the stator is a critical part in the reaction wheels \citep{taniwaki2003experimental} [32mdue to[m the consequences of any friction [32mcan cause[m in the relative movement between these two components. Indeed, the friction is reflected  in [31ma greater[m[32mhigh[m consumption of electric power, introduction of a dead zone of operation in torque as well as limited life of the reaction wheel due to gradual wear of the bearing.
+	[m
+	A  mechanical solution for the interface between the rotor and the stator is a rolling bearing. Despite its apparent simplicity, [32mthe are[m challenges for achieving the minimum friction values needed in view of the demands of consumption and easiness of control \citep{Krishnan2010}.
+	[31mIn the[m[32mThe[m case of aerospace applications, lubrication rolling [31mis also difficulty due[m[32mhas problems because[m to the impossibility of using traditional lubricants under conditions of low or no air pressure, [31mwhich leads[m[32mdue[m to [32mthe[m loss of volatile components (lubricants) and their consequent deterioration. Another difficulty is [31mdue to the[m[32mmigration's[m trend of[31mmigration of[m lubricants in the absence of gravity, which is usually addressed with strategies to recapture or relubrication.
+	[m
+	Another solution is [31mto use[m[32musing[m a magnetic bearing [31m\citep{Bangcheng2012},[m[32m\citep{Bangcheng2012, bleuler2009magnetic},[m which is an alternative without mechanical contact between the rotor and the stator. The gain in reliability and lifetime of the reaction wheel is considerable \citep{Marble2006}, and basically limited by the durability of electronics. The non-contact operation eliminates the need [31mfor[m[32mof[m lubrication and consequently enables the operation under [31mvacuum[m[32mvacuum,[m which results in [31msimplifying[m[32msimple[m the mechanical design requirements.
+	[m
+	[31m\subsection{Magnetic[m[32m\subsection{\uppercase{Magnetic[m Bearing for Reaction [31mWheel}[m[32mWheel}}[m
+	[m
+	There [31mis[m[32mare[m in the literature three different topologies for bearings in magnetic reaction wheels, [31mhave[m[32mhaving[m mostly two degrees of freedom active, and [31mmakes[m[32mmaking[m use of permanent magnets aiming to minimize power consumption.
+	[m
+	[31mThe topology[m[32mTopology[m proposed by \cite{Bernus1998} works with two active degrees of [31mliberties[m[32mliberties,[m having the permanent magnets on the rotor and two stators. The rotor has [32ma[m "I" cross shape and it is surrounded by the external and internal stator[31mwith[m  both [32mwith[m "C" cross shape. The internal [31mstator[m[32mstator, which[m is used for active control [32mof[m radial directions [32mand[m has four independent poles to generate [31mflux[m[32mflux,[m which also contributes to increase the axial stiffness of the rotor. Passive degrees of freedoms are stabilized by the magnetic flux generated by the permanent magnet.
+	[m
+	Another magnetic bearing [31mproposition\citep{Scharfe2001}[m[32mproposition \citep{Scharfe2001}[m also works with the radial direction [31mcontrolled, it[m[32mcontrolled. It[m has only one stator that is located at the center of the bearing and one external rotor, both parts [31mhave[m[32mhaving[m a "C" cross shape. The permanent magnetic poles are located on the rotor generating a magnetic flux that stabilizes the axial [31mdirection, this[m[32mdirection. This[m topology allows generating a subtractive magnetic flux in some parts of the rotor in favor of [31mdecrease[m[32mdecreasing[m the attraction force and places the rotor at the operation point with less effort. 
+	[m
+	A recent topology proposed by \cite{Bangcheng2012} has  three degree of freedom controlled, [31mthis[m[32mits[m magnetic bearing  provides an substantial axial stiffness (passive axis) in order to maintain the rotor on its operation point when applied to high rotor speeds.
+		[m
+	[31m\section{Project}[m[32m\section{\uppercase{Project}}[m
+	[m
+	The magnetic bearing proposed in this work is inspired on the topologies by \cite{Bernus1998} and \cite{Scharfe2001}. The bearing has [31mfour[m[32mthree[m degrees of freedom passively stable: tilt,[31mrow,[m pitch and its axial [31mdirection, the[m[32mdirection. The[m other[31mtwo[m degrees of freedom (radial) are actively stabilized. Torque imposed for the rotation of the rotor is developed by an electric[31mmotor[m brushless DC (BLDC) [32mmotor[m placed inside the bearing. The magnetic circuit comprises two stators: one outer rotor and [31mother[m[32mone[m inner [32mbearing[m rotor. The first one is responsible for stabilization of passives degrees of freedom and the inner one to control the rotor radial position through eight magnetic poles.% Was decided to install the permanent magnets in the external stator not in the rotor as seen in the literature, seeking to the best mechanical balance of the rotor. 
+	 Figure \ref{fig:mancal:corte} is a cut of the proposed bearing. We adopted a flat geometry to better stiffness in the unstable modes of the bearing. The outboard bearing to the motor enables a stiffness within the proposed limits of mass and dimensions.
+	[m
+	\begin{figure}[ht][m
+		\centering[m
+[36m@@ -97,10 +95,10 @@[m
+		\label{fig:mancal:corte}[m
+	\end{figure}[m
+	[m
+	[31m\subsection{External[m[32m\subsection{\uppercase{External[m Stator and [31mRotor}[m[32mRotor}}[m
+	[m
+	[31mMagnetic circuit of a[m[32mA[m section of the [32mmagnetic circuit of the[m outer stator is illustrated in Figure \ref{fig:circuito:passivo}. The magnetic flux generated by the permanent magnet [32m($R_{ima}$)[m seeks the path of the [31mleast[m[32mminimal[m reluctance to close the magnetic circuit. This occurs by[31mway of the[m external stator irons ($\mathcal{R}_f$), then passing through the air gap ($\mathcal{R}_g$) and rotor ($\mathcal{R}_{fr}$). The permanent magnetic is a magnetic field source and is located between two irons. 
+	The rotor undergoes attraction on all [31mdirection, at[m[32mdirection. At[m equilibrium (with a symmetrical air gap) the resultant force would tend to be null and remain in equilibrium at the operating point (critically stable). 
+			[m
+	\begin{figure}[ht][m
+		\subfigure[Magnetic circuit of the outer stator and rotor]{	[m
+[36m@@ -118,20 +116,21 @@[m
+	[m
+	The magnetic field in the air gap (generated by the magnetics) can be decomposed into components $B_x$ and $B_z$ that are dependent on rotor displacement $\Delta_x$ and $\Delta_z$. The component z is responsible for stabilizing the passives degrees of freedom, the x component is a consequence of this topology causing the rotor instability on radial plane. Fig. \ref{Fig:modelo:passivo:DxDz} shows the magnetic flow on the external stator when displaced radially. [m
+			[m
+	Magnetic attraction force [32m$F$ can be[m calculated using the virtual work \citep{Chiba} [31mprinciple been the equation quadratic to[m[32mit is a function of[m the magnetic field ($B(l)$) accumulated in [32mthe[m air gap [31mplus[m[32mand[m the area [31mthat it is concentrated[m[32mplus[m ($S(l)$) [31mdivided by two times[m[32mwhich $B$ is concentrated, as well as of[m the air permeability [32m(permeability)[m ($\mu_0$). [32mEq. \eqref{eq:Force:virtualwork} is the described attraction force resulted from axial rotor displacement.[m
+	[m
+	\begin{equation}[m
+			[31mF[m[32mFx[m = [31m\frac{B(l)^2[m[32m\frac{Bx(l)^2[m \, S(l)}{2 \mu_0} [32m; \\[m
+[32m			Fz = \frac{Bz(l)^2 \, S(l)}{2 \mu_0}[m
+[32m			\label{eq:Force:virtualwork}[m
+	\end{equation}[m
+	[m
+	[m
+	Both [31m$B$[m[32mmagnetic field[m and [31m$S$[m[32mair area[m are dependent of the air length ($l$), which makes the  attraction force non-linear.	Aiming the [31mlinearisation[m[32mlinearization[m of the attractive force, the outer stator is [31mproject[m[32mprojected[m to work [32munder[m magnetic [31msaturated[m[32msaturation state[m making the quadratic portion of the equation constant ($B(l)^2 = cnt$) for [32msmall[m variations on gap length. Besides [31mlinearisation,[m[32mlinearization, it[m is possible [32mobtain[m with this technique[31mobtain[m a higher axial stiffness without a large increase in [32mthe[m radial [31mstiffness,[m[32mone,[m which would require higher energy to stabilize actives degree of freedom. In order to make the tilt passive stable, the force generated in $F_z$ must be superior to $F_x $ for a predefined angle range [32m(Fig. \ref{Fig:modelo:passivo:DxDz}[m otherwise the tilt would cause a non symmetric force on the rotor causing it to get unstable.[31mBy the development of an analytical model it was possible to choose initial construction parameters for this proposed topology and then an finite element model was created to develop and verify the topology. The aim of this step is to get a good axial rigidity ($F_z$) with a small  radial force ($F_x$). Fig. \ref{fig:forca:passivo:fx} the result of rotor when subjected to radial displacement, it is remarkable the linear force resulted from this topology, by the other side, we have a non linear attraction force for axial displacement (\ref{fig:forca:passivo:comsol:dy}).[m
+	[m
+	[31m% found that[m[32mBy[m the [31mforce has[m[32mdevelopment of an analytical model it was possible to choose initial construction parameters for this proposed topology and then an finite element model was created to develop and verify the topology. The aim of this step is to get[m a [31mcomponent different from zero when[m[32mgood axial rigidity ($F_z$) with a small  radial force ($F_x$). Fig. \ref{fig:forca:passivo:fx} shows[m the [32mresult of[m rotor [32mwhen subjected to radial displacement, it[m is [31maligned with[m[32mremarkable[m the [31mexternal stator (z = 0),[m[32mlinear force resulted from[m this [31mis caused[m[32mtopology,[m by[31mnumeric errors on[m the [31mFEM analysis. The achieved magnetic stiffness[m[32mother side, we have a non linear attraction[m force for[31mthe[m axial displacement [31mis of 20 kN/m and for the radial is of 60 kN/m.[m[32m(\ref{fig:forca:passivo:comsol:dy}).[m
+	[m
+	[32m% Sergio acha que deveria explicar mais o pq é linear, mas já falei que a componente quadratica fica cnst para pequenas variações.[m
+		
+	\begin{figure}[ht][m
+		\subfigure[3D map of attraction force on the radial direction due to passive bearing system]{	[m
+			\includegraphics[width=0.5\linewidth]{./Figs/Simulacoes/Passivo/forca_passivo_comsol_fx}[m
+[36m@@ -153,18 +152,16 @@[m
+%		F_p(x) = K_p x = 60k \, x[m
+%	\end{equation}		[m
+	[m
+	[31m\subsection{Inner[m[32m\subsection{\uppercase{Inner[m stator and [31mRotor}[m
+[31m	[m
+[31m	The inner stator contains eight magnetic poles evenly distributed at 45 degrees, connected by a internal circulation ring. The poles act as electromagnet generating attraction force to stabilize the rotor on the radial direction (x, y). Each trio of poles acts as a single actuator[m
+[31m	, forcing the flux to cycles on a specific place maximizing the attraction force on the desired axis.[m[32mRotor}}[m
+	[m
+	[31mFigure \ref{fig:modelo:mancal:estator:interno:fluxo} shows the internal[m[32mThe inner[m stator [31mwith three poles acting as a single actuator: (A), (B), (C) and the respective[m[32mcontains eight[m magnetic [31mflow generated[m[32mpoles evenly distributed at 45 degrees, connected[m by a [31mcurrent applied[m[32minternal circulation ring (component C of Fig. \ref{fig:mancal:corte}). The poles act as electromagnet generating attraction force to stabilize the rotor[m on the [31mcoils. Poles (A) and (C) work with inverse polarity[m[32mradial direction (x, y). Each trio[m of [31m(B)[m[32mpoles acts as a single actuator,[m forcing [31mall flow over (B) and not[m[32mthe flux to cycles[m by [31many other pole, thus[m[32mspecifics poles[m maximizing the[31mforce of[m attraction[31m$F_B$. The applied current on (A) and (C) is half the current in the main pole (B) preventing saturation.	Forces $F_A$ and $F_C$  have components in both directions x and y, for small changes, the components in the y direction is canceled ($F_y$). Leading to a single[m force [31min[m[32mon[m the [31mx direction ($F_x$) :[m[32mdesired axis.[m
+	[m
+	[32mFigure \ref{fig:modelo:mancal:estator:interno:fluxo} shows the internal stator with three poles acting as a single actuator: (A), (B), (C) and the respective magnetic flow generated by a current applied on the coils. Poles (A) and (C) work with inverse polarity of (B) forcing all magnetic flow through (B) and not by any other pole, thus maximizing the force of attraction $F_B$. The applied current on (A) and (C) is half of the current in the main pole (B) to prevent saturation.	Forces $F_A$ and $F_C$  have components in both directions x and y. For small changes on the operation point (nominal air length), the components in the y ($F_y$) direction is canceled because the same force vector is applied with opposite directions, in this example, $F_A$ and $F_B$. Leading to a single force in the x direction ($F_x$). Eq \ref{eq:ativo:F:resultante:x} is the resulted attraction forces on this situation.[m	
+	[m
+	[31m\begin{align}[m[32m\begin{equation}[m
+		\vec{F}_x [31m&=[m[32m=[m \vec{F}_B + \cos(45) (\vec{F}_{A} + \vec{F}_{C}) [31m\label{eq:ativo:F:resultante:y} \\[m[32m\; ;\\[m
+		\vec{F}_y [31m&=[m[32m=[m  \cos(45) (\vec{F}_{A} - \vec{F}_{C}) = 0 \label{eq:ativo:F:resultante:x}
+	[31m\end{align}[m[32m\end{equation}[m	
+	[m
+
+	[m
+[36m@@ -175,101 +172,88 @@[m
+		\label{fig:modelo:mancal:estator:interno:fluxo}[m
+	\end{figure}[m
+	[m
+	The[31mmagnetic circuit between the inner stator and the rotor can be split on four main elements: Coil magnetic field generating source, air gap reluctances which depends on the distance between the rotor poles and,  iron of the rotor and return ring[m
+[31m	[m
+[31m	The[m initial geometric parameters of the internal stator were [31mraised[m[32mfound[m by analyzing the power restriction. The maximum power for the system is 100W with a  supply voltage of 24V, resulting in a 4A max current. This electric current must be sufficient to generate an attraction force capable of compensate [31mgenerated[m[32mthe[m force created by passive circuit [31min the[m[32munder[m largest possible gap (Fig. [31m\ref{fig:forca:passivo:fx}).[m[32m\ref{fig:forca:passivo:fx}, $\Delta_x = 0.35$).[m From [31man[m[32mthe[m analytic magnetic force model (Eq. [31m\eqref{eq:ativo:F:resultante:y})[m[32m\eqref{eq:ativo:F:resultante:x})[m was possible to find a initial set of parameters (which include: areas, coil turns and air gap) able to generate a restorative force on the rotor with the imposed power restrictions. With a refined finite element model was possible to determine a better set of parameters by removing the unwanted saturated zones and maximizing the magnetic field on the gap by increasing the pole [32mair[m area. [32mFigure \ref{fig:forca:ativo} shows the achieved attraction force due the inner stator poles. This actuator has different gain depending on rotor position ($d_x$), larger the gap (negative dx) smaller the attraction force generated by the same current.[m
+	[m
+[31m	Figure \ref{fig:forca:ativo} shows the achieved attraction force due the inner stator poles, this actuator has different gain depending on rotor position ($d_x$), larger the gap (negative dx) smaller the attraction force generated by the same current.[m
+[31m	[m
+[31m		[m
+	\begin{figure}[ht][m
+	\centering[m
+	\includegraphics[width=0.7\linewidth]{/Simulacoes/Ativo/mapa_forcas_ativo_comsol}[m
+	\caption{Achieved attraction force on active circuit}[m
+	\label{fig:forca:ativo}[m
+	\end{figure}		[m
+		
+	[32m\subsubsection{\uppercase{Inductance}} \label{subsec:at:indutancia}[m
+	[m
+[31m%This model is used to [m
+[31m	%\todo[inline]{comentar o impacto dessa nao linearidade do atuador}[m
+[31m	%\todo[inline]{gerar grafico de forca x deslocamento}[m
+[31m	[m
+[31m	[m
+[31m	\subsubsection{Inductance} \label{subsec:at:indutancia}[m	Inductance plays a crucial role in the performance of the actuator [31mand the main factor for[m[32mbecause[m its dynamic[31mits[m is correlated with the generation capacity (magnetic) [32mof[m each pole and its current. Increasing the magnetic efficiency [31m(with respect[m[32m(in relation[m to [32mthe[m applied current) [31mof the[m[32mon[m poles [31mimpacts[m[32mresults[m on a better attraction [31mforce but[m[32mforce, on the other hand,[m  generates a higher inductance that is[31ma[m worst [31mactuator (in[m[32min[m terms of dynamic [31mresponse).[m[32mresponse.[m For the present topology, the achieved inductance for each [31mcoils[m[32mcoil[m is[31mof[m $56 mH$ with an electrical resistance of $4 \Omega$. 
+		
+	[31m\subsection{Auxiliary Bearing}[m
+[31m	[m
+[31m	Auxiliary bearings are essential in any magnetic bearing, prevents the shock between the rotor and any critical part when the active control is disabled. The proposed auxiliary bearing is a solid ring of bronze limiting the maximum rotor excursion.[m
+[31m	[m
+[31m	\subsection{Bearing dimensions}[m
+[31m	[m
+[31m	The magnetic bearing has an external radius of 75.8 mm and max height of 18.0 mm. The nominal air length between the rotor and the external stator is of 1.2 mm and of 0.6 mm internal stator. [m
+[31m	[m
+[31m	\section{Dynamic Model}[m
+[31m	[m
+[31m	%Via Lagrangian formalism we obtain the portion of the kinetic energy (T) from the rotor that results from the rotation of the rotor and it displacement. The potential energy (V) is due to axial translation of the rotor (in an environment with gravity):[m[32m\subsection{\uppercase{Resultant bearing}}[m
+	[m
+	[31m%	\subsection{Rotor Dynamic}[m[32mThe magnetic bearing has an external radius of 75.8 mm and max height of 18.0 mm. The nominal air length between the rotor and the external stator is 1.2 mm and 0.6 mm to the internal stator, the rotor mass is approximately 0,37 kg and axial stiffness is 60 kN/m. Fig. \ref{fig:prototipo} is an image of the constructed magnetic bearing prototype without the top stator iron.[m
+[32m	 [m
+[32m	\begin{figure}[ht][m
+[32m	\centering[m
+[32m	\includegraphics[width=0.4\linewidth]{/mancais/prototipo.jpg}[m
+[32m	\caption{Constructed magnetic bearing prototype}[m
+[32m	\label{fig:prototipo}[m
+[32m	\end{figure}[m	
+	[m
+	[31mMain[m[32m\section{\uppercase{Dynamic Model}}[m
+
+[32m	The main[m rotor dynamics [31mare[m[32mis[m basically influenced by [31myour[m[32mits[m rotation speed ($\dot{\theta}$), inertia ($I$), mass ($m$) and [31mits[m[32mair gap length ($l_g$) that can be  translated to rotor[m position [31m($x,y,z$)[m[32m: $dx,dy,dz$,[m composing all the kinetic energy (T). The potential energy (V) is due to axial translation (z), gravity (g) and by the passive bearing stiffness ($K_z$) shown in Fig. \ref{fig:forca:passivo:comsol:dy} : 
+	[m
+	\begin{align}[m
+		T_{\theta, x, y, z} &= \frac{1}{2} I_z \, \dot{\theta}^2 + \frac{1}{2} \, m \, \left( \dot{x}^2 + \dot{y}^2 + \dot{z}^2 \right) \notag \\[m
+		V_z &= m \, g \, z + \frac{1}{2} \, K_z \, z^2[m
+	\end{align}	[m
+
+	Two different forces [31macts[m[32mact[m on the rotor: the  non-conservative forces ($Q^{nc}$) caused by the force applied by the actuators ($F_b$) that are depended on the rotor position and on the applied current ($i$); Conservative ($Q^{c}$) forces (which depend only on the position of the rotor) resulted from the passive attraction force ($K_p$). Both $F_b$ and $K_p$ are [31mraised[m[32mgot[m from the calculated force by finite element model, respectively shown on Fig. \ref{fig:forca:ativo} and Fig. \ref{fig:forca:passivo:fx}.
+
+	\begin{align}[m
+		Q_y^{nc} &= [31mF_{by}(x,i)[m[32mF_{by}(dx,i)[m  \\
+		Q_x^{nc} &= [31mF_{bx}(y,i)[m[32mF_{bx}(dy,i)[m  \\
+		Q^{c}_x  &= K_p \, [31mx[m[32mdx[m \\
+		Q^{c}_y  &= K_p \, [31my[m[32mdy[m 
+	\end{align}[m
+	[m
+	Differential dynamic model can be [31mfound[m[32mobtained[m by applying the Lagrange formalism on previews equations, resulting on the [31mfallowing[m[32mfollowing[m model:
+			[m
+	\begin{align}[m
+		I \ddot{\theta} &= 0 \\[m
+		m \ddot{x}		&= K_p \, [31mx[m[32mdx[m  - [31mF_{bx}(x,i)[m[32mF_{bx}(dx,i)[m \\
+		m \ddot{y}		&= K_p \, [31my[m[32mdy[m  - [31mF_{by}(y,i)\\[m[32mF_{by}(dy,i)\\[m	
+		m \ddot{z}  	&= K_z [31mz[m[32m\, dz[m + m g[31m+ F_{pz}(z)[m 
+	\end{align}[m
+	[m
+	Theses equations shows an uncoupled system (considering balanced). Both x and y directions must be active controlled by $F_b$ to overcome the attractive force ($K_p$) generated to stabilize the z direction. [m
+[31m	[m
+[31m	[m
+[31m%	\subsection{Actuator Dynamic}[m
+		[m
+	Actuator dynamics is primarily caused by coil's electrical resistance (R) and inductance dependent on the operation point (L(x,y)). At the operation point, the resulted actuator has cut-off frequency of $11Hz$. The actuator dynamic ($G_a(S)$) is :[m
+	[m
+	\begin{align}[m
+		G_a(s) = [31m\frac{1}{L(x,y)[m[32m\frac{1}{L(dx,dy)[m \, s + R} 
+	\end{align}[m
+	[m
+	[32mMagnetic bearing radial dynamic model can be represented by the block diagram on Fig. \ref{fig:diagrama_blocos_modelo_linear}. A controller ($C(s)$) is needed to stabilities the system controlling the current on actuators ($i$), the controller is project to work as regulatory ($R=0$) since the bearing is project to work at  operation point ($dx=0, dy=0$).	Open loop system transfer function is derivate on Eq. \ref{eq:MA}, begin current the input of the system and the radial (x) position the output, the system is unstable with negative phase margin.[m 
+	[m
+	[31m%\subsection{Block Diagram}[m
+[31m	[m
+[31m	Magnetic bearing radial dynamic modem can be represented by the block diagram on Fig. \ref{fig:diagrama_blocos_modelo_linear}. A controller ($C(s)$) is needed to stabilities the system controlling the current on actuators ($i$), this controller is project to work as regulatory ($R=0$).[m[32m\begin{equation}[m
+[32m	dx = i_x \frac{K_b(dx,dy)}{[m s^2 - K_p (dx,dy)] \; [L(dx,dy) \, s + R] } [m
+[32m	\label{eq:MA}[m
+[32m	\end{equation}[m
+	[m
+	[31m\begin{figure}[ht][m[32m\begin{figure}[!ht][m
+	\centering[m
+	\includegraphics[width=1\linewidth]{Figs/Modelagem/diagrama_blocos_modelo_linear}[m
+[31m	\caption{Closed loop block diagram of radial rotor dynamic}[m
+	\label{fig:diagrama_blocos_modelo_linear}[m
+	\end{figure}	[m
+	[m
+[31m\section{CONTROLLER}[m
+	[m
+	[31mActuator gain ($Kb(d,i)$) is non linear and dependent of rotor position. To overcome this challenge a force control is designed instead of a current controller. The calculated force is applied to an estimator in order to calculate the current based on the request force and rotor position, Fig. \ref{fig:diagrama_controlador_estimador} is the proposed control scheme.[m[32m\section{\uppercase{CONTROLLER}}[m
+	[m
+	[31m%discarding[m[32mTo overcome[m the [31mattractive[m[32mnon linearity on actuator gain ($Kb(d,i)$), a[m force[31mof the coils. he resulting[m control [32mis designed instead of a current controller. The calculated[m force is applied to an [31mestimator, responsible for translating the desired strength[m[32mestimator[m in [31ma voltage applied[m[32morder[m to [32mcalculate the current based on force and rotor position. Fig. \ref{fig:diagrama_controlador_estimador} is[m the [31mcoils. This system dynamics can be model as:[m
+[31m	%\begin{equation}[m
+[31m	%G_p(s)[m[32mproposed control scheme. Eq. \ref{eq:estimator:i} is the proposed current-force estimator, it is dependent on applied current ($I$), air gap length ($d$) and pole area  ($S_g$) obtained from a simplified electromagnetic model, Eq. \ref{eq:estimator:i} is the resulted current-force estimator.[m
+[32m		[m
+[32m	\begin{equation}[m
+[32m	I[m = [31m\frac{1}{m[m[32m\sqrt{\frac{2[m \, [31ms^2 - K_p} = \frac{1}{0.369[m[32mF \, \mu_0}{S_g(d)}} \, \frac{\mu_0[m \, [31ms^2 - 60 \,E3}[m
+[31m	%\end{equation}[m[32mS_g(d)^2}{n}[m
+[32m	\label{eq:estimator:i}[m
+[32m	\end{equation}[m
+	[m
+	\begin{figure}[ht][m
+	\centering[m
+[36m@@ -277,38 +261,25 @@[m
+	\caption{Proposed controller scheme with current estimator}[m
+	\label{fig:diagrama_controlador_estimador}[m
+	\end{figure}[m
+		
+	[32mA SISO loop-shaping controller ($H_{\infty}$) \citep{skogestad2007multivariable} was projected to stabilizes the rotor at it operational point  in order to have a good margin between the nominal (linearized) plant and the real one (non linear). The controller was project to model the system frequency response to act as a first order low pass filter with cut-off-frequency of $100$ rad/s and a zero DC gain.[m
+	[m
+	[31mThis estimator block is implemented by simplified analytic model, that considerate[m[32mProjected controller was simulated with[m the [31mair ($R_g$) reluctance as principal[m[32mnon linear plant model and the result is show[m on [32mFig. \ref{fig:controlled}. On this simulation[m the [31mmagnetic flux ($\phi$) circuit. The estimator[m[32mcontroller[m is [31mthan dependent of applied current ($I$) , air gap length ($l_g$)[m[32minitially disabled[m and [31marea ($S_g$). By[m[32ma no zero initial condition takes[m the [31mmagnetic attraction force ($F$), we can derive[m[32mrotor from[m the [31mequation that correlates a current by de desired force.[m
+
+[31m	\begin{equation}[m
+[31m		I[m[32mequilibrium position to at it maximum excursion ($dy[m = [31m\sqrt{\frac{2 \, F \, \mu_0}{S_g}} \, \frac{\mu_0 \, S_g^2}{n}[m
+[31m	\end{equation}[m
+[31m	[m
+[31m	A SISO loop-shaping[m[32m0.35 mm and dx = 0.18 mm$). The[m controller [31m($H_{\infty}$) was project[m[32mis activated at 0.1 second and takes 0.3 seconds[m to [31mmodel[m[32mrecover the rotor from[m the [31msystem frequency response[m[32mworst case[m to [31mbe a first order low pass filter with cut-off-frequency of $100 Hz$ and a DC gain of 100. Frequency response[m[32mits nominal position. A disturbance[m of [31mopen loop and closed loop[m[32m0.01 mm[m is [31mshown on Fig. \ref{fig:bode}.[m[32mapplied to dx position at 0.5 seconds. Max current peak occurs when controlled is activated and wont exceeds 0.5 A.[m	
+	[m
+	\begin{figure}[ht][m
+	[31m\subfigure[Open loop]{	[m
+[31m			\includegraphics[width=0.5\linewidth]{./Figs/Modelagem/openloop.eps}[m
+[31m			\label{fig:bode:gs}[m
+[31m		}[m
+[31m		\hfill[m
+[31m		\subfigure[Closed loop with proposed controller]{	[m
+[31m			%{\textit{Magnetic Force (N) x Displacement Y (mm): Equilibrium point}}\\[m
+[31m			\includegraphics[width=0.5\linewidth]{./Figs/Modelagem/controlled.eps}[m
+[31m			\label{fig:bode:c}[m
+[31m		}[m
+[31m		\caption{Frequency response of open loop and[m[32m\centering[m
+[32m	\includegraphics[width=0.7\linewidth]{./Figs/Modelagem/controlled_time.eps}[m
+[32m	\caption{Simulated[m controlled [31msystem}[m
+[31m		\label{fig:bode}[m[32mplant time response}[m
+[32m	\label{fig:controlled}[m
+	\end{figure}	[m
+	[m
+	\section{CONCLUSION}[m
+	[m
+	In this [31mpaper, we proposed[m[32mpaper[m a new topology [31mto a[m[32mof[m magnetic bearing system [31mto a[m[32maiming the application on[m satellite reaction [31mwheel. This[m[32mwheel is proposed, the suggested[m bearing [31mworks radially active[m[32mrespects all imposed restrictions (dimensions, mass, power consumption) and can be[m controlled[31mby an eight electromagnets that exercises attraction force on the rotor. The passives degrees of freedom are stabilized due[m to [31ma magnetic placed on the external stator. Optimizations[m[32mhave low position oscillation[m and [31msimulations were performed[m[32mgood performance against perturbation.	Future work are[m in [31morder[m[32mline[m to [31machieve[m[32mhave[m a [31mbearing which complies with the restrictions, by the force models we project a dynamic[m[32mmore complete electromagnetic[m model [31mthat represent[m[32maiming the execution of more optimizations on[m the[31minstable bearing part. A robust loopshaping controller is[m proposed [32mtopology. A first functional prototype with position sensors and drive electronics will help[m to [31mstabilize[m[32mpush[m the [31mrotor at it operation point, with little oscillation.[m[32mdevelopment of others subsystems of the reaction wheel.[m
+		[m
+	\section{ACKNOWLEDGEMENTS}[m
+	[m
+	 [31mThe author thanks[m[32mThanks[m to Instituto Mau\'{a} de Tecnologia and Dr. Leonardo Pinheiro that made this project possible.
+	[m
+	\section{REFERENCES} [m
+	[m
+[1mdiff --git a/Artigo/COBEM 2015 - Completo/bibfile.bib b/Artigo/COBEM 2015 - Completo/bibfile.bib[m
+[1mindex 6dae5c1..acff148 100644[m
+[1m--- a/Artigo/COBEM 2015 - Completo/bibfile.bib[m	
+[1m+++ b/Artigo/COBEM 2015 - Completo/bibfile.bib[m	
+[36m@@ -1224,3 +1224,20 @@[m [myear = {1971}[m
+  publisher={Springer}[m
+}[m
+
+[32m@book{skogestad2007multivariable,[m
+[32m  title={Multivariable feedback control: analysis and design},[m
+[32m  author={Skogestad, Sigurd and Postlethwaite, Ian},[m
+[32m  volume={2},[m
+[32m  year={2007},[m
+[32m  publisher={Wiley New York}[m
+[32m}[m
+
+
+[32m@book{bleuler2009magnetic,[m
+[32m  title={Magnetic bearings: theory, design, and application to rotating machinery},[m
+[32m  author={Bleuler, Hannes and Cole, Matthew and Keogh, Patrick and Larsonneur, R and Maslen, E and Okada, Y and Schweitzer, G and Traxler, A and Schweitzer, Gerhard and Maslen, Eric H and others},[m
+[32m  year={2009},[m
+[32m  publisher={Springer Science \& Business Media}[m
+[32m}[m
+
+

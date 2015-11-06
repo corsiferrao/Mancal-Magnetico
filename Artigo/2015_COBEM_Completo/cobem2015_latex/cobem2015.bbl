@@ -1,0 +1,71 @@
+\begin{thebibliography}{9}
+\newcommand{\enquote}[1]{``#1''}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem[{Aparecido(1988)}]{Aparecido:PhD}
+Aparecido, J.B., 1988.
+\newblock \emph{Transformada Integral Generalizada no Escoamento Laminar e
+  Transfer{\^e}ncia de Calor em Dutos Retil{\'\i}neos de Geometria
+  Arbitr{\'a}ria}.
+\newblock Ph.D. thesis, Instituto Tecnol{\'o}gico de Aeron{\'a}utica, S{\~a}o
+  Jos{\'e} dos Campos, SP, Brazil.
+
+\bibitem[{Charoensupaya(1986)}]{Charoensupaya:Phd}
+Charoensupaya, D., 1986.
+\newblock \emph{Experimental and Analytical Investigations of Composite
+  Desiccant Structures and Low Humidity Adsorption}.
+\newblock Ph.D. thesis, Illinois Institute of Technology, Chicago, IL, USA.
+
+\bibitem[{Mikhailov and {\"O}zi{\c s}ik(1984)}]{Mikhailov:1984}
+Mikhailov, M.D. and {\"O}zi{\c s}ik, M.N., 1984.
+\newblock \emph{Unified Analysis and Solutions of Heat and Mass Diffusion}.
+\newblock John Wiley $\&$ Sons, New York.
+
+\bibitem[{{\"O}zi{\c s}ik and Murray(1974)}]{Ozisik:1974}
+{\"O}zi{\c s}ik, M.N. and Murray, R.L., 1974.
+\newblock \enquote{On the solution of linear diffusion problems with variable
+  boundary condition parameters}.
+\newblock \emph{Journal of Heat Transfer ({ASME})}, Vol.~96, pp. 48--51.
+
+\bibitem[{Panaras \emph{et~al.}(2010)Panaras, Mathioulakis, Belessiotis and
+  Kyriakis}]{Panaras:2010}
+Panaras, G., Mathioulakis, E., Belessiotis, V. and Kyriakis, N., 2010.
+\newblock \enquote{Experimental validation of a simplified approach for a
+  desiccant wheel model}.
+\newblock \emph{Energy and Buildings}, Vol.~42, No.~10, pp. 1719--1725.
+
+\bibitem[{Simonson and Besant(1999{\natexlab{a}})}]{Simonson:1999a}
+Simonson, C.J. and Besant, R.W., 1999{\natexlab{a}}.
+\newblock \enquote{Energy wheel effectiveness -- part {I}: Development of
+  dimensionless groups}.
+\newblock \emph{International Journal of Heat and Mass Transfer}, Vol.~42, pp.
+  2161--2170.
+
+\bibitem[{Simonson and Besant(1999{\natexlab{b}})}]{Simonson:1999b}
+Simonson, C.J. and Besant, R.W., 1999{\natexlab{b}}.
+\newblock \enquote{Energy wheel effectiveness -- part {II}: Correlations}.
+\newblock \emph{International Journal of Heat and Mass Transfer}, Vol.~42, pp.
+  2171--2185.
+
+\bibitem[{Tuckerman and Pease(2011)}]{Tuckerman:2011}
+Tuckerman, D.B. and Pease, R.F.W., 2011.
+\newblock \enquote{Microchannel heat transfer: early history, commercial
+  applications, and emerging opportunities}.
+\newblock In \emph{Proceedings of the ASME 2011 9th International Conference on
+  Nanochannels, Microchannels, and Minichannels}. Edmonton, Alberta, Canada.
+\newblock {Paper no.~58308}.
+
+\bibitem[{Vajjha and Das(2009)}]{Vajjha:2009}
+Vajjha, R.S. and Das, D.K., 2009.
+\newblock \enquote{Experimental determination of thermal conductivity of three
+  nanofluids and development of new correlations}.
+\newblock \emph{International Journal of Heat and Mass Transfer}, Vol.~52, No.
+  21-22, pp. 4675--4682.
+
+\end{thebibliography}

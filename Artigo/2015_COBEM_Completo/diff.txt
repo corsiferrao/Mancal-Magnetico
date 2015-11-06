@@ -1,0 +1,8 @@
+Usage: 
+  meld                                 Iniciar com a janela vazia
+  meld <arquivo|pasta>                 Inicia uma comparação de controle de versões
+  meld <arquivo> <arquivo> [<arquivo>] Inicia uma comparação de arquivo em 2 ou 3 vias
+  meld <pasta> <pasta> [<pasta>]       Inicia uma comparação de pasta em 2 ou 3 vias
+
+Erro: muitos argumentos (esperava 0-3, obteve 7)
+

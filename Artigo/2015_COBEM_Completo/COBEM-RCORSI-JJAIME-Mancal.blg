@@ -1,0 +1,47 @@
+This is BibTeX, Version 0.99d (TeX Live 2014/Arch Linux)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: COBEM-RCORSI-JJAIME-Mancal.aux
+The style file: cobem2015.bst
+Database file #1: ./bibfile.bib
+Reallocated wiz_functions (elt_size=8) to 6000 items from 3000.
+You've used 9 entries,
+            3271 wiz_defined-function locations,
+            723 strings with 7249 characters,
+and the built_in function-call counts, 6278 in all, are:
+= -- 480
+> -- 282
+< -- 14
++ -- 108
+- -- 99
+* -- 463
+:= -- 933
+add.period$ -- 35
+call.type$ -- 9
+change.case$ -- 76
+chr.to.int$ -- 9
+cite$ -- 9
+duplicate$ -- 492
+empty$ -- 457
+format.name$ -- 130
+if$ -- 1243
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 108
+newline$ -- 62
+num.names$ -- 36
+pop$ -- 242
+preamble$ -- 1
+purify$ -- 68
+quote$ -- 0
+skip$ -- 184
+stack$ -- 0
+substring$ -- 207
+swap$ -- 270
+text.length$ -- 10
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 72
+warning$ -- 0
+while$ -- 39
+width$ -- 0
+write$ -- 138

@@ -14,7 +14,7 @@ Dev/Modelagem/Eletromagnetica/Circuito Ativo/Bck/
 *.toc
 *.pygstyle
 
-Artigo/
+#Artigo/
 Artigo/ensaio/
 Bck/
 Dev/FEM/
