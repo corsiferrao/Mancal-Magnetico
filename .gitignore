@@ -5,6 +5,15 @@ Dev/Modelagem/Eletromagnetica/Circuito Ativo/Bck/
 *.nlo
 *.tdo
 
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.synctex*
+*.toc
+*.pygstyle
+
 Artigo/
 Artigo/ensaio/
 Bck/
