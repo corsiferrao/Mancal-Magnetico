@@ -19,9 +19,9 @@ Rodas de reação são dificilmente substituíveis pois apresentam larga faixa d
 
 Uma roda de reação pode ser descrita como um atuador inercial com funcionamento baseado no princípio de conservação do momento angular. A atuação da roda de reação sobre o satélite se realiza por intercâmbio do momento angular, limitado ao eixo de rotação da roda. Devido à grande diferença entre a inércia do satélite e da roda de reação, um controle de atitude com muita precisão é possível com esse sistema.
 
-Rodas de reação são tipicamente constituídas de um motor elétrico, geralmente um motor sem escovas, um mancal e um elemento de inércia.  O elemento de inércia e o motor são montados sobre o mancal que deve garantir a  precisa rotação em torno de um eixo. O motor e o mancal são considerados os sistemas mais críticos, influenciando diretamente a qualidade da roda de reação e o cumprimento dos requisitos A velocidade de rotação do sistema é controlada por uma eletrônica de acionamento do motor. Rodas de reação podem ser comandadas de duas maneiras distintas: por rotação ou por torque. Quando comandada por torque, a roda de reação deve ser capaz de estimar o torque útil gerado por ela (o torque efetivo menos as perdas). 
+Rodas de reação são tipicamente constituídas de um motor elétrico, geralmente um motor sem escovas, um mancal e um elemento de inércia.  O elemento de inércia e o motor são montados sobre o mancal que deve garantir a  precisa rotação em torno de um eixo. O motor e o mancal são considerados os sistemas mais críticos, influenciando diretamente a qualidade da roda de reação e o cumprimento dos requisitos. A velocidade de rotação do sistema é controlada por uma eletrônica de acionamento do motor. Rodas de reação podem ser comandadas de duas maneiras distintas: por rotação ou por torque. Quando comandada por torque, a roda de reação deve ser capaz de estimar o torque útil gerado por ela (o torque efetivo menos as perdas). 
 
-Este projeto de pesquisa, buscou projetar um mancal magnético que pudesse fazer parte de uma roda de reação para satélites de médio porte. Para tanto, é necessário que o mancal satisfaça os requisitos impostos para uma roda de reação, tais como: desbalanceamento, consumo, velocidade e atrito.
+Este projeto de pesquisa buscou projetar um mancal magnético que pudesse fazer parte de uma roda de reação para satélites de médio porte. Para tanto, é necessário que o mancal satisfaça os requisitos impostos para uma roda de reação, tais como: mínimo desbalanceamento, baixo consumo, alta velocidade e atrito reduzido.
 
 A Fig.\ref{fig:EsquemaRoda} ilustra um esquema genérico de uma roda de reação. No caso, quatro são os subsistemas: eletrônica de acionamento, motor, mancal e inércia. A eletrônica é responsável pelo controle e pelo acionamento do motor que, por sua vez, possui um sensor de velocidade e um de corrente. 
 
@@ -35,20 +35,20 @@ A Fig.\ref{fig:EsquemaRoda} ilustra um esquema genérico de uma roda de reação
 
 O controle de atitude  com rodas de reação demanda que esse tipo de  atuador opere em toda sua escala de velocidade, inclusive na inversão de seu sentido de rotação (passagem pelo zero), de uma forma estável e controlada. A zona morta, efeito do atrito estático do mancal, deve ser minimizada a fim de se obter um bom funcionamento da roda de reação. A zona morta pode ser compensada (no caso do mancal por rolamento) pela implementação de leis de controle com malhas de velocidade e corrente, além de um estimador de atrito \citep{Carrara2010}.
 
-O projeto de uma roda de reação começa pelo estudo e definição do momento angular a ser utilizado na roda de reação, essa escolha leva em consideração os distúrbios sofridos pelo satélite e a precisão necessária na missão. Com o momento angular definido, especifica-se a inércia e então o mancal, por último projeta-se um motor capaz de girar o conjunto mancal mais inércia.
+O projeto de uma roda de reação começa pelo estudo e definição do momento angular a ser utilizado na roda de reação; essa escolha leva em consideração os distúrbios sofridos pelo satélite e a precisão necessária na missão. Com o momento angular definido, especifica-se a inércia o mancal, e por último projeta-se um motor capaz de girar o conjunto formado pelo mancal e a inércia.
 
 \section{Objetivo}
 
 Essa dissertação acompanha o esforço de projetar um mancal magnético para uma roda de reação que está sendo desenvolvida no Núcleo de Sistemas Eletrônicos Embarcados (NSEE) do Instituto Mauá De Tecnologia (IMT) com apoio do Instituto Nacional De Pesquisas Espaciais (INPE).
 
-O projeto, envolve o desenvolvimento de uma topologia capaz de ser utilizada numa roda de reação para satélites de médio porte, mais especificamente, para a plataforma multi missão.
+O projeto, envolve o desenvolvimento de uma topologia capaz de ser utilizada numa roda de reação para satélites de médio porte, mais especificamente para a plataforma multi missão.
 
 
 \section{Justificativa}
 
 A suspensão do rotor com relação ao estator representa uma parte crítica em rodas de reação \citep{taniwaki2003experimental} devido às consequências de qualquer fricção no movimento relativo entre estes dois componentes. Com efeito, a fricção se traduz não apenas em um maior consumo de potência elétrica como também na introdução de uma zona morta de atuação em torque, bem como na limitação da vida útil da roda de reação devido ao gradual desgaste do mancal.
 
-Uma solução mecânica para a interface entre o rotor e o estator é o mancal por rolamento. Apesar de sua aparente simplicidade, apresenta desafios para a obtenção dos valores mínimos de fricção necessários, em vista das exigências de consumo, controlabilidade e vida útil da roda de reação \citep{Krishnan2010}. No caso de aplicações aerospaciais, a lubrificação do rolamento representa também considerável dificuldade devido à impossibilidade de utilização de lubrificantes tradicionais em condições de baixa ou nenhuma pressão atmosférica, que leva à perda dos componentes voláteis destes lubrificantes e sua consequente degradação. Outra dificuldade se deve à tendência de migração dos lubrificantes na ausência de gravidade, o que costuma ser abordado com estratégias de recaptura ou relubrificação. Sistemas desse tipo, apresentam grande complexidade e seu comportamento orbital é de difícil validação em laboratório.
+Uma solução mecânica para a interface entre o rotor e o estator é o mancal por rolamento. Apesar de sua aparente simplicidade, apresenta desafios para a obtenção dos valores máximos de fricção admitidos, em vista das exigências de consumo, controlabilidade e vida útil da roda de reação \citep{Krishnan2010}. No caso de aplicações aerospaciais, a lubrificação do rolamento representa também considerável dificuldade devido à impossibilidade de utilização de lubrificantes tradicionais em condições de baixa ou nenhuma pressão atmosférica, que leva à perda dos componentes voláteis destes lubrificantes e sua consequente degradação. Outra dificuldade se deve à tendência de migração dos lubrificantes na ausência de gravidade, o que costuma ser abordado com estratégias de recaptura ou relubrificação. Sistemas desse tipo apresentam grande complexidade e seu comportamento orbital é de difícil validação em laboratório.
 
 As dificuldades associadas ao uso de mancal de rolamento residem também em sua modelagem, consequência da variação de viscosidade do lubrificante em função da temperatura do mancal, o que torna o coeficiente de fricção dependente da velocidade de rotação e das condições térmicas em geral \citep{Carrara2007}. O mancal por rolamento apresenta, por outro lado, grande vantagem construtiva devido à compactação do sistema e não necessidade de eletrônica extra para o seu controle. 
 
@@ -56,7 +56,7 @@ Para contornar os problemas de lubrificação em baixa pressão, algumas rodas d
 
 Outra solução é a utilização de um mancal magnético \citep{Bangcheng2012}, que é uma alternativa sem contato mecânico entre o rotor e o estator, pela qual o rotor é mantido suspenso magneticamente. O ganho em confiabilidade e vida útil da roda de reação é considerável \citep{Marble2006}, sendo a vida útil basicamente limitada  pela durabilidade da eletrônica. A operação sem contato elimina a necessidade de lubrificante e possibilita consequentemente a operação em vácuo, o que se traduz em simplificação nos requisitos da concepção mecânica. 
 
-A ausência de fricção faz com que deixe de existir a zona morta de aplicação de torque em baixas velocidades, eliminando não-linearidades da lei de controle, além de possibilitar a diminuição da causa de defeitos de balanceamento e vibrações mecânicas. Consequentemente, gera um ganho em simplicidade dos algoritmos e em desempenho do controle de atitude. A contrapartida é a adição de uma malha ou mais de controle para a suspensão eletromagnética. O ganho de eficiência trazido pela ausência de fricção também é contrabalançado, ao menos parcialmente, pelo consumo de potência dos atuadores deste tipo de mancal.
+A ausência de fricção faz com que deixe de existir a zona morta de aplicação de torque em baixas velocidades, eliminando não-linearidades da lei de controle, além de possibilitar a diminuição da causa de efeitos de desbalanceamento e vibrações mecânicas. Consequentemente, gera um ganho em simplicidade dos algoritmos e em desempenho do controle de atitude. A contrapartida é a adição de uma malha ou mais de controle para a suspensão eletromagnética. O ganho de eficiência trazido pela ausência de fricção também é contrabalançado, ao menos parcialmente, pelo consumo de potência dos atuadores deste tipo de mancal.
 
 
 \section{Revisão bibliográfica}
@@ -108,7 +108,7 @@ Nessa topologia (Fig. \ref{Fig:modelo:frances}), um fluxo magnético contínuo �
 	\label{Fig:modelo:frances}
 \end{figure}
 
-A topologia proposta por \citet{Scharfe2001} difere por ter somente um estator e pelos ímãs permanentes estarem localizados no estator e não no rotor. Como ilustrado na Fig. \ref{Fig:modelo:alemao}. 
+A topologia proposta por \citet{Scharfe2001} difere por ter somente um estator e pelos ímãs permanentes estarem localizados no estator e não no rotor, como ilustrado na Fig. \ref{Fig:modelo:alemao}. 
 
 %\todo[inline]{falar mais ...}
 
