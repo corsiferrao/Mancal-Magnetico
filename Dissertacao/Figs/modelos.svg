@@ -15968,9 +15968,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="4"
-     inkscape:cx="2642.479"
-     inkscape:cy="468.27192"
+     inkscape:zoom="2"
+     inkscape:cx="2936.9554"
+     inkscape:cy="446.9704"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
      showgrid="false"
@@ -23134,12 +23134,12 @@
          id="text4611-1"
          y="602.74377"
          x="217.74763"
-         style="font-size:11px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;stroke-width:0.99999998;stroke-miterlimit:4;stroke-dasharray:none"
+         style="font-style:normal;font-weight:normal;font-size:11px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
          xml:space="preserve"><tspan
            y="602.74377"
            x="217.74763"
            id="tspan4613-4"
-           sodipodi:role="line">$g_{eO}$</tspan></text>
+           sodipodi:role="line">$g_{ni}$</tspan></text>
       <g
          id="g5685"
          style="stroke-width:0.99999998;stroke-miterlimit:4;stroke-dasharray:none">

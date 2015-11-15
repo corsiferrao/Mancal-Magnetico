@@ -14,12 +14,13 @@
 				\pgfmathtruncatemacro{\cur}{\i *2 + 2}
 			    \pgfmathtruncatemacro{\pre}{\i *2 }
   			    \pgfmathtruncatemacro{\name}{\i+2}
+  			     \pgfmathtruncatemacro{\namea}{\i+1}
 					\draw (\pre,6)
-					to[R=$R_{ri\name}$] (\cur,6) 
-					to[R=$R_{gi\name}$] (\cur,4) 
+					to[R=$R_{ri\namea}$] (\cur,6) 
+					to[R=$R_{n\name}$] (\cur,4) 
 					to[R=$R_{gi\name}$] (\cur,2) 
 					to[V,v=$\mathcal{F}_\name$] (\cur,0)
-					to[R=$R_{fi\name}$] (\pre,0); 			
+					to[R=$R_{fi\namea}$] (\pre,0); 			
 			}
 			\draw (14,6)
 			to[short](14,8)

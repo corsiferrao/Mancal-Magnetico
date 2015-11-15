@@ -19,11 +19,11 @@
 \chapter{Estator Interno}
 %
 
-O desenvolvimento do circuito ativo visou obter um atuador capaz de agir sobre o rotor fazendo com que o mesmo se mantivesse em sua posição de equilíbrio ($d_x = 0 \, ; d_z = 0$) através de forças geradas por campos eletromagnéticos via oito diferentes núcleos.
+O desenvolvimento do circuito ativo visou obter um atuador capaz de agir sobre o rotor fazendo com que o mesmo se mantivesse em sua posição de equilíbrio ($d_x = 0 \, ; d_y= 0$) através de forças geradas por campos eletromagnéticos via oito diferentes núcleos.
 
 Cada núcleo age em colaboração com os núcleos vizinhos, sendo quatro núcleos principais e quatro secundários. Os núcleos principais estão localizados nos eixos radias do mancal (x,z), os núcleos secundários estão posicionados a uma distância angular de $45 ^\circ$. Essa topologia permitiu a maximização do fluxo magnético no eixo de interesse.
 
-A parte ativa tem que ser capaz de vencer a força de atração gerada pelo circuito ativo quando o rotor estiver em sua excursão máxima. Para isso, criou-se um modelo analítico que representa essa parte do mancal e uma otimização numérica foi realizada visando a obtenção de um atuador dentro das especificações.
+A parte ativa tem que ser capaz de vencer a força de atração gerada pelo circuito passivo quando o rotor estiver em sua excursão máxima. Para isso, criou-se um modelo analítico que representa essa parte do mancal e uma otimização numérica foi realizada visando a obtenção de um atuador dentro das especificações.
 
 \begin{figure}[!ht]
 	\centering
@@ -35,11 +35,11 @@ A parte ativa tem que ser capaz de vencer a força de atração gerada pelo circ
 
 \section{Modelagem Magnética}
 
-Partindo da premissa que todas as linhas de campo magnético estão contidas nos componentes listados anteriormente e que o rotor encontra-se em sua posição de equilíbrio axial ($d_y = 0$) e sem inclinação, realizou-se o acionamento nas bobinas com uma tensão contínua e se considerou o campo magnético estático.
+Partindo da premissa que todas as linhas de campo magnético estão contidas nos componentes listados anteriormente e que o rotor encontra-se em sua posição de equilíbrio axial ($d_z = 0$) e sem inclinação, realizou-se o acionamento nas bobinas com uma tensão contínua e se considerou o campo magnético estático.
 
 %\subsection{Campo Magnético no Entreferro}
 
-A modelagem da parte ativa (atuadores) foi realizada considerando o circuito magnético da Fig. \ref{Fig:modelagem:ativo:circuito2}, onde: $\mathcal{F}$ é a força contra eletromotriz gerada pela bobina; $R_n$ a relutância magnética associada ao núcleo da bobina; $R_{gi}$ a relutância do entreferro; $R_{ri}$ a relutância entre dois núcleos pelo ferro do rotor e $R_{fi}$ a relutância de conexão entre dois núcleos pelo ferro de retorno do atuador.
+A modelagem da parte ativa (atuadores) foi realizada considerando o circuito magnético da Fig. \ref{Fig:modelagem:ativo:circuito2}, onde: $\mathcal{F}$ é a força magnetomotriz gerada pela bobina; $R_n$ a relutância magnética associada ao núcleo da bobina; $R_{gi}$ a relutância do entreferro; $R_{ri}$ a relutância entre dois núcleos pelo ferro do rotor e $R_{fi}$ a relutância de conexão entre dois núcleos pelo estator interno.
 
 \begin{figure}[h!]
 	\input{Figs/modelo_circuito_ativo.tex}
@@ -52,7 +52,7 @@ O desenvolvimento da modelagem foi realizado via análise de malhas. Adotando co
 	(\sum R_m  - \sum  R_a ) \, \phi_m = \sum F_{EM} - \sum F_{CEM}
 \end{align}
 
-Sendo $\sum R_m$ e $I_m$  respectivamente, a relutância e a corrente interna de cada malha, $R_a$, $I_{a}$ a relutância e a corrente adjacente da malha, $F_{EM}$ a força contra eletromotriz positiva (sentido horário) e $\sum F_{CEM}$ a negativa. Obtivemos as matrizes que representam o circuito:
+Sendo $\sum R_m$ e $\phi_m$  respectivamente, a relutância e o fluxo interna de cada malha, $R_a$, $\phi_m$ a relutância e a corrente adjacente da malha, $F_{EM}$ a força magnetomotriz (sentido horário) e $\sum F_{CEM}$ a negativa. Obteve-se as matrizes que representam o circuito:
 
 \begin{align}
 	\phi_m = 
@@ -75,7 +75,7 @@ Sendo $\sum R_m$ e $I_m$  respectivamente, a relutância e a corrente interna de
 	\end{bmatrix}
  \end{align}
  
-Com:
+com:
  
  \begin{align}
 	 R_{m1} &= R_{f1} + R_{n1} + R_{gi1} + R_{r1} + R_{gi2} + R_{n2} \\
@@ -84,7 +84,7 @@ Com:
  	 R_{m3} &= R_{f8} + R_{n8} + R_{gi8} + R_{r8} + R_{gi1} + R_{n1}  \\
  \end{align}
 
-E o componente devido a relutância adjacentes:
+e o componente devido a relutância adjacentes:
 
 \begin{align}
 R_a =
@@ -94,7 +94,7 @@ R_a =
 	\end{bmatrix}
 \end{align}
 
-Sendo as relutâncias adjacentes calculadas como:
+sendo as relutâncias adjacentes calculadas como:
 
  \begin{align}
 	 R_{a1} =& 
@@ -104,15 +104,15 @@ Sendo as relutâncias adjacentes calculadas como:
 	 R_{a2} =&
 	 \begin{bmatrix}
 		R{gi1}+R{n1} & 0 & R{gi3}+R_{n3} & 0 & 0 & 0 & 0 & 0
-	 \end{bmatrix} \\
-	 & \ldots \\
+	 \end{bmatrix} \notag\\
+	 & \ldots \notag \\ 
 	 R_{a8} =&
 	 \begin{bmatrix}
-		R_{gi1}+R_{n1} & 0 & 0 & 0 & 0  &0 & R_{gi7}+R_{n7} & 0 
+		R_{gi1}+R_{n1} & 0 & 0 & 0 & 0  &0 & R_{gi7}+R_{n7} & 0 \notag
 	 \end{bmatrix} 
  \end{align}
 
-A matriz que correlaciona as forças contra eletromotrizes:
+A matriz que correlaciona as forças magnetomotriz:
 
 \begin{align}
 F_m = 
@@ -128,7 +128,7 @@ F_m =
 \end{bmatrix}
 \end{align}
 
-Podemos resolver a equação do circuito com: $ \phi_m = (R_m - R_a) \, F_m^{-1}$, dado o resultado de cada fluxo eletromagnético nas malhas, foi possível calcular os fluxos individuais nos entreferro ($\phi_{g}$). Uma vez encontrado o fluxo magnético, pode-se obter o campo magnético através da simples relação que engloba o fluxo e a área em que ele está distribuído.
+Pode-se resolver a equação do circuito com: $ \phi_m = (R_m - R_a)^{-1} \, F_m$, dado o resultado de cada fluxo eletromagnético nas malhas, foi possível calcular os fluxos individuais nos entreferros ($\phi_{g}$). Uma vez encontrado o fluxo magnético, pode-se obter o campo magnético através da simples relação que engloba o fluxo e a área em que ele está distribuído.
 
 \begin{align}
 	\phi_g = 
@@ -145,7 +145,7 @@ Podemos resolver a equação do circuito com: $ \phi_m = (R_m - R_a) \, F_m^{-1}
 	\label{eq:ativo:fluxo:entreferro}
 \end{align}
 
-As relutâncias foram calculadas utilizando as dimensões dos componentes do mancal com os comprimentos das linhas de campo ilustrados na Fig. \ref{Fig:modelagem:dim:ativo}. Resultando nas equações:
+As relutâncias foram calculadas utilizando as dimensões dos componentes do mancal com os comprimentos das linhas de campo ilustrados na Fig. \ref{Fig:modelagem:dim:ativo}, resultando nas equações:
 
 \begin{align}
 R_{ri}  &= \frac{l_{ri}}{\mu_{ri} \, S_{ri}}			\\
@@ -164,10 +164,10 @@ A força resultante de atração referente a cada bobina pôde ser calculada pel
 	\vec{F_{nx}} = \frac{\vec{B}_{gx}^2 \; S_{gx}}{2 \mu_0} 
 \end{align}
 
-A força resultante projetada puramente no eixo normal ao núcleo principal é composto pela somatória das forças geradas pelos núcleos secundários, como mostrado na Fig. \ref{Fig:modelo:circuito:ativo:forcas}. Adotando que para pequenos deslocamentos no plano radial (x e y) a variação dos ângulos $\theta$ possam ser desprezíveis, obtivemos:
+A força resultante projetada puramente no eixo normal ao núcleo principal é composto pela somatória das forças geradas pelos núcleos secundários, como mostrado na Fig. \ref{Fig:modelo:circuito:ativo:forcas}. Adotando que para pequenos deslocamentos no plano radial (x e y) a variação dos ângulos $\theta$ possam ser desprezíveis, obteve-se:
 
 \begin{align}
-\vec{F}_y &= \vec{F}_{gn} + \cos(45) (\vec{F}_{ga} + \vec{F}_{gb}) \label{eq:ativo:F:resultante:y} \\
+\vec{F}_y &= \vec{F}_{gn} + \sin(45) (\vec{F}_{ga} + \vec{F}_{gb}) \label{eq:ativo:F:resultante:y} \\
 \vec{F}_x &= \cos(45) (\vec{F}_{ga} - \vec{F}_{gb})  \label{eq:ativo:F:resultante:x}
 \end{align}
 
@@ -182,14 +182,14 @@ A força resultante projetada puramente no eixo normal ao núcleo principal é c
 
 \section{Indutância} \label{subsec:at:indutancia}
 
-O cálculo da indutância é importante pois atrela uma dinâmica ao atuador, a indutância está correlacionada a capacidade de geração de fluxo magnético de uma bobina e de sua corrente: $L = \frac {d\phi}{di}$. Das equações de densidade de campo magnético no entreferro de cada bobina, Eq. \eqref{eq:ativo:fluxo:entreferro} encontra-se o fluxo magnético em cada núcleo.
+O cálculo da indutância é importante pois atrela uma dinâmica ao atuador; a indutância está correlacionada à capacidade de geração de fluxo magnético de uma bobina e de sua corrente: $L = \frac {d\phi}{di}$. Das equações de densidade de campo magnético no entreferro de cada bobina, Eq. \eqref{eq:ativo:fluxo:entreferro}, encontra-se o fluxo magnético em cada núcleo.
 
-Definindo o fluxo da bobina como o número de espiras N pelo fluxo que a atravessa e a indutância própria com o fluxo concentrado dividido pela corrente aplicada a bobina, obtivemos, desconsiderando as demais fontes geradoras de fluxo, a indutância ($L$) em cada polo:
+Definindo o fluxo da bobina como o número de espiras N pelo campo que a atravessa e a indutância própria com o fluxo concentrado dividido pela corrente aplicada a bobina, obteve-se, desconsiderando as demais fontes geradoras de fluxo, a indutância ($L$) em cada polo:
 
 \begin{align}
-	L_{a} &= \frac{\Phi_{fa}}{Ia} = N B_{ga}\biggr\rvert_{(I_b = 0, I_n = 0)} S_{ga}  I_a^{-1} \\
-	L_{b} &= \frac{\Phi_{fa}}{Ib} = N B_{gb}\biggr\rvert_{(I_a = 0, I_n = 0)} S_{gb} \, I_b^{-1} \\
-	L_{n} &= \frac{\Phi_{fa}}{In} = N B_{gn}\biggr\rvert_{(I_a = 0, I_b = 0)} S_{gn} \, I_n^{-1}
+	L_{a} &= \frac{\Phi_{fa}}{I_a} = N B_{ga}\biggr\rvert_{(I_b = 0, I_n = 0)} S_{ga}  I_a^{-1} \\
+	L_{b} &= \frac{\Phi_{fb}}{I_b} = N B_{gb}\biggr\rvert_{(I_a = 0, I_n = 0)} S_{gb} \, I_b^{-1} \\
+	L_{n} &= \frac{\Phi_{fc}}{I_n} = N B_{gn}\biggr\rvert_{(I_a = 0, I_b = 0)} S_{gn} \, I_n^{-1}
 \end{align}
 
 Sendo: $L_a$ a indutância no polo principal; $L_b$ e $L_c$ as indutâncias nos polos secundários; $B_a$ o vetor campo magnético no polo primário; $B_b$ e $B_c$ os vetores campo magnéticos nos polos secundários; $I_a$, $I_b$ e $I_c$ as correntes aplicadas em cada bobina.
@@ -197,17 +197,14 @@ Sendo: $L_a$ a indutância no polo principal; $L_b$ e $L_c$ as indutâncias nos 
 As indutâncias mútuas ($M$) são calculadas como sendo o fluxo que atravessa a bobina produzida por outras fontes:
 
 \begin{align}
-M_{ab} &= \frac{\Phi_{b \rightarrow a}}{Ib} = N B_{ga}\biggr\rvert_{(I_a = 0, I_n = 0)} S_{ga} \, I_b^{-1} \\
-M_{an} &= \frac{\Phi_{a \rightarrow n}}{Ia} = N B_{ga}\biggr\rvert_{(I_b = 0, I_n = 0)} S_{ga} \, I_a^{-1} \\
-M_{ba} &= \frac{\Phi_{a \rightarrow b}}{Ib} = N B_{ga}\biggr\rvert_{(I_b = 0, I_n = 0)} S_{ga} \, I_b^{-1} \\
-M_{bn} &= \frac{\Phi_{a \rightarrow b}}{I} = N B_{ga}\biggr\rvert_{(I_b = 0, I_n = 0)} S_{ga} \, I_b^{-1} 
+M_{ab} &= \frac{\Phi_{b \rightarrow a}}{Ib} = N B_{ga}\biggr\rvert_{(I_a = 0, I_n = 0)} S_{ga} \, I_b^{-1} 
 \end{align}
 
 Via modelo de elementos finitos, a indutância é calculada a partir da energia magnética acumulada no volume do polo ($W_m$ [$J/mm^3$]), sendo: $W_m = \frac{1}{2} L i^2$, alcança-se assim a indutância de cada polo.
 
 \section{Convergência}
 
-Devido ao fato do modelo apresentar componentes não lineares, dado a curva de magnetização dos componentes ferro magnéticos do circuito, utilizamos o método de Newton-Rapson e, também no circuito passivo. Em cada nova interação, calculou-se as novas permeabilidades para os componentes compostos pelos ferros do rotor, pelo ferro do núcleo e pelo ferro do estator interno. Então, resolveu-se a equação de malha obtendo um novo resultado.
+Devido ao fato do modelo apresentar componentes não lineares, dada a curva de magnetização dos componentes ferro magnéticos do circuito, utilizou-se o método de Newton-Rapson e, também como no circuito passivo. Em cada nova interação, calculou-se as novas permeabilidades para os componentes compostos pelos ferros do rotor, pelo ferro do núcleo e pelo ferro do estator interno. Então, resolveu-se a equação de malha obtendo um novo resultado.
 
 \section{Validação do Modelo}
 
@@ -232,7 +229,7 @@ Isso acontece devido a saturação do ferro e o início da dispersão do campo m
 		\label{Fig:simulacoes:ativo:comparacao:dx:i}
 	\end{figure}
 
-A Fig. \ref{fig:validacao_ativo_2d} é um comparativo dos modelos quando submetidos a variação nos parâmetros construtivos, nesse caso variou-se a largura do núcleo da bobina ($w_n$), sua altura ($h_n$) e a largura do estator interno ($w_{fei}$). Nota-se a relação estreita entre os modelos quando as dimensões assumem valores maiores, a justificativa para tal fato é o desaparecimento de fluxos magnéticos não previstos no modelo analítico. Quanto mais próxima uma curva da outra, melhor é o ajuste do modelo, nesta simulação, os modelos assuem os valores da lista a seguir :
+A Fig. \ref{fig:validacao_ativo_2d} mostra uma comparação dos modelos quando submetidos a variação nos parâmetros construtivos, nesse caso variou-se a largura do núcleo da bobina ($w_n$), sua altura ($h_n$) e a largura do estator interno ($w_{fei}$). Nota-se a relação estreita entre os modelos quando as dimensões assumem valores maiores, a justificativa para tal fato é o desaparecimento de fluxos magnéticos não previstos no modelo analítico. Quanto mais próxima uma curva da outra, melhor é o ajuste do modelo, nesta simulação, os modelos assumem os valores da lista a seguir :
 
 \begin{align}
 	h_n		&=	[1:2:8] \, 10^{-3} \\
@@ -254,15 +251,15 @@ A Fig. \ref{fig:validacao_ativo_2d} é um comparativo dos modelos quando submeti
 
 Os parâmetros que devem ser otimizados são aqueles que não influenciam na topologia definida para a parte passiva do mancal, já que a mesma foi otimizada separadamente. Optou-se por não realizar uma otimização de ambas as partes simultaneamente evitando o problema da dimensionalidade.
 
-As variáveis otimizadas nesta etapa do projeto foram:  o entreferro interno ($g_{gi}$), o comprimento ($w_n$), altura ($l_n$) e largura ($h_n$)  do núcleo da bobina e a quantidade de espiras da bobina ($N$). O atuador tem que ser capaz de vencer a força de atração de 160N gerada pelo circuito passivo quando o rotor encontra-se no maior deslocamento (0.3 mm, limitado pelo batente). 
+As variáveis otimizadas nesta etapa do projeto foram:  o entreferro interno ($g_{gi}$), o comprimento ($w_n$), altura ($l_n$) e largura ($h_n$)  do núcleo da bobina e a quantidade de espiras da bobina ($N$). O atuador tem que ser capaz de vencer a força de atração de 140N gerada pelo circuito passivo quando o rotor encontra-se no maior deslocamento (0.3 mm, limitado pelo batente). 
 
-Uma ponto levado em consideração nessa etapa foi o da área útil das bobinas, esse espaço restrito é limitado pelo tamanho do ferro e pela largura do núcleo da bobina. A Fig. \ref{fig:modelo_ativo_bobina} ilustra a área em que a bobina está localizada. O cálculo dessa área ($S_{bob}$) levou em consideração a secção do fio utilizado ($S_{fio}$), o fator de embobinamento ($K_b$) e o número de espiras ($N$), podendo ser calculado como: 
+Um ponto levado em consideração nessa etapa foi o da área útil das bobinas. Esse espaço restrito é limitado pelo tamanho do ferro e pela largura do núcleo da bobina. A Fig. \ref{fig:modelo_ativo_bobina} ilustra a área em que a bobina está localizada. O cálculo dessa área ($S_{bob}$) levou em consideração a secção do fio utilizado ($S_{fio}$), o fator de embobinamento ($K_b$) e o número de espiras ($N$), podendo ser calculado como: 
 
 \begin{align}
 	S_{bob} = 2 \, N \, \, S_{fio} \, K_b
 \end{align}
 
-Durante a otimização, verificou-se se a área útil para embobinamento era satisfeita, caso contrário, o modelo obtido era descartado e uma nova otimização realizada.
+Durante a otimização, verificou-se se a área útil para embobinamento era satisfeita, caso contrário o modelo obtido era descartado e uma nova otimização realizada.
 
 \begin{figure}[ht!]
 \centering
@@ -271,9 +268,9 @@ Durante a otimização, verificou-se se a área útil para embobinamento era sat
 \label{fig:modelo_ativo_bobina}
 \end{figure}
 
-Os parâmetros geométricos iniciais ($L_0$) do estator interno foram levantados partindo da restrição de potência imposta pela especificação da Tab. \ref{tab:PMM:especificações}. Com a potência (100W) e tensão elétrica de alimentação (24V) obtemos a corrente máxima de trabalho (4A). Essa corrente elétrica deve ser suficiente para gerar uma força de atração que consiga compensar a força gerada pelo circuito passivo no maior entreferro, levantada no modelo em elementos finitos (160N). Da equação de força magnética ($\nicefrac{B^2.A}{(l/\mu +2g)^2}$ ) foi possível encontrar uma aproximação da área do polo necessária para gerar uma força capaz de vencer a força imposta pelo ímã. Com um valor inicial da área transversal do polo, definiu-se o número de  bobinas necessário para gerar o fluxo magnético no entreferro. Com a área útil e a quantidade, definiu-se a bitola do fio com base na resistência elétrica capaz de gerar a corrente de 4A (AWG 33).
+Os parâmetros geométricos iniciais ($L_0$) do estator interno foram levantados partindo da restrição de potência imposta pela especificação da Tab. \ref{tab:PMM:especificações}. Com a potência (100W) e tensão elétrica de alimentação (24V) obtemos a corrente máxima de trabalho (4A). Essa corrente elétrica deve ser suficiente para gerar uma força de atração que consiga compensar a força gerada pelo circuito passivo no maior entreferro, levantada no modelo em elementos finitos (160N). Da equação de força magnética ($\nicefrac{B^2.A}{(l/\mu +2g)^2}$ ) foi possível encontrar uma aproximação da área do polo necessária para gerar uma força capaz de vencer a força imposta pelo ímã. Com um valor inicial da área transversal do polo, definiu-se o número de  espiras necessário para gerar o fluxo magnético no entreferro. Com a área útil e a quantidade, definiu-se a bitola do fio com base na resistência elétrica capaz de gerar a corrente de 4A resultante em um fio AWG 23.
 
-A otimização foi realizada via método de Nelder-Mead Simplex com restrições, limitando assim a dimensão máxima do mancal, evitando que a topologia proposta sofresse alterações ao longo da otimização e que dimensões não condizentes com as especificações fossem obtidas. A condição inicial obtida do método citado anteriormente, assim como as restrições estão na Tab. \ref{tab:ativo:restrições}.
+A otimização foi realizada via método de Nelder-Mead Simplex com restrições, limitando assim a dimensão máxima do mancal, evitando que a topologia proposta sofresse alterações ao longo da otimização e que dimensões não condizentes com as especificações fossem obtidas. A condição inicial adotada no método citado anteriormente, assim como as restrições são apresentadas na Tab. \ref{tab:ativo:restrições}.
 
 \begin{table}[ht!]
 	\centering
@@ -297,7 +294,7 @@ A função de mérito utilizada no projeto do atuador engloba a força de atraç
 	F   &= P_1 + P_2 + P_3 + P_4
 \end{align}
 
-A evolução dos parâmetros ao longo da otimização está ilustrada na Fig. \ref{fig:otimizacao_ativo_parametros}. Durante o processo interativo, verificamos o acréscimo da força de atração, maior ponderada na função de mérito.  A evolução do valor do entreferro assumiu uma medida média, já que seu peso influência diretamente a força de atração. A Fig. \ref{fig:otimizacao_ativo_pesos} mostra a evolução dos pesos propostos para o funcional ao longo da otimização. Obteve-se com a otimização proposta um mancal com volume inferior ao inicialmente proposto com indutância diminuída.
+A evolução dos parâmetros ao longo da otimização está ilustrada na Fig. \ref{fig:otimizacao_ativo_parametros}. Durante o processo interativo, verificou-se o acréscimo da força de atração, com maior peso na função de mérito.  A evolução do valor do entreferro assumiu uma medida média, já que seu peso influencia diretamente a força de atração. A Fig. \ref{fig:otimizacao_ativo_pesos} mostra a evolução dos pesos propostos para o funcional ao longo da otimização. Obteve-se com a otimização proposta um mancal com volume inferior ao inicialmente proposto com indutância diminuída.
 
 \begin{figure}[ht!]
 	\centering
@@ -316,7 +313,7 @@ A evolução dos parâmetros ao longo da otimização está ilustrada na Fig. \r
 
 \section{Mancal Ativo Resultante da Otimização}
 
-O mancal ativo resultante possui as dimensões listadas na Tab. \ref{tab:ativo:resultado}. A força de atração resultante da excitação das bobinas com uma corrente principal de 4A, com o rotor no seu deslocamento máximo e sob o efeito da atração oposto do circuito passivo é de 23 N , ou seja, o atuador proposto é capaz de retirar o rotor de sua posição de máximo deslocamento e movê-lo para seu ponto de operação.
+O mancal ativo resultante possui as dimensões listadas na Tab. \ref{tab:ativo:resultado}. A força de atração resultante da excitação das bobinas com uma corrente principal de 4A, com o rotor no seu deslocamento máximo e sob o efeito da atração oposto do circuito passivo é de 23 N (força resultante da soma das forças do estator externo e bobinas) , ou seja, o atuador proposto é capaz de retirar o rotor de sua posição de máximo deslocamento e movê-lo para seu ponto de operação.
 
 \begin{table}[ht!]
 	\centering
@@ -328,7 +325,7 @@ O mancal ativo resultante possui as dimensões listadas na Tab. \ref{tab:ativo:r
 	\label{tab:ativo:resultado} 
 \end{table}
 
-A curva de força ($F_b$) por deslocamento é ilustrada na Fig. \ref{ativo_otimizado_fem_I_dx03}, nessa simulação o rotor está deslocado 0.3 milímetros de sua posição nominal, as bobinas exitadas são aquelas do mesmo sentido do deslocamento do rotor, gerando assim, uma força de atração oposta a do estator externo.  
+A curva de força ($F_b$) por deslocamento é ilustrada na Fig. \ref{ativo_otimizado_fem_I_dx03}. Nessa simulação o rotor está deslocado 0.3 milímetros de sua posição nominal, as bobinas exitadas são aquelas do mesmo sentido do deslocamento do rotor, gerando assim, uma força de atração oposta à do estator externo.  
 
 \begin{figure}[ht!]
 \centering
@@ -340,8 +337,7 @@ Força de atração (N) x Corrente (A)
 
 Verifica-se que a força gerada pelas bobinas vence a força gerada pelo estator externo quando uma corrente superior a $3.5$A é aplicada no polo principal. A curva de força por corrente nesse ponto de operação é não linear, o que dificulta o projeto do controlador.
 
-
-Diversas simulações foram realizadas para caracterizar a força de atração quanto a variação da corrente e da posição, o resultado é demonstrado na Fig. \ref{ativo_otimizado_fem_I_dx_map}. Nele notamos o comportamento similar da força de atração com o diferencial do ganho do sistema.
+Diversas simulações foram realizadas para caracterizar a força de atração quanto à variação da corrente e da posição, o resultado é mostrado na Fig. \ref{ativo_otimizado_fem_I_dx_map}. Nele nota-se o comportamento similar da força de atração com o diferencial do ganho do sistema.
 
 \begin{figure}[ht!]
 \centering
@@ -377,6 +373,3 @@ Através de um corte axial verificamos que as linhas de campo magnético estão 
 \caption{Vetor campo magnético de uma secção radial do mancal quando aplicada uma corrente de 4A no polo principal}
 \label{fig:ativo:fem:b:radial}
 \end{figure}
-
-
-
