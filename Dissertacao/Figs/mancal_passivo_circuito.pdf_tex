@@ -1,6 +1,6 @@
-%% Creator: Inkscape inkscape 0.48.4, www.inkscape.org
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'mancal:passivo:circuito.pdf' (pdf, eps, ps)
+%% Accompanies image file 'mancal_passivo_circuito.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{408.42158203bp}%
+    \setlength{\unitlength}{407.18418702bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,25 +48,31 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.28808602)%
-    \put(0,0){\includegraphics[width=\unitlength]{mancal_passivo_circuito.pdf}}%
-    \put(0.1300422,0.11471752){\makebox(0,0)[lb]{\smash{+}}}%
-    \put(0.13347551,0.09343344){\makebox(0,0)[lb]{\smash{-}}}%
-    \put(0.20418714,0.27320403){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{ft}$}}}%
-    \put(0.20418696,0.00461954){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{fb}$}}}%
-    \put(0.29890062,0.27320403){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{gt}$}}}%
-    \put(0.29890044,0.00461954){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{gb}$}}}%
-    \put(0.40372282,0.13095934){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$R_{fr}$}}}%
-    \put(0.10587656,0.10353693){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$F_{ímã}$}}}%
-    \put(0.10821003,0.17992847){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$R_{ímã}$}}}%
-    \put(0.86588415,0.11471752){\rotatebox{-180}{\makebox(0,0)[lb]{\smash{+}}}}%
-    \put(0.86245084,0.09343344){\rotatebox{-180}{\makebox(0,0)[lb]{\smash{-}}}}%
-    \put(0.789933,0.27320403){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{ft}$}}}%
-    \put(0.789933,0.00634768){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{fb}$}}}%
-    \put(0.68678162,0.27320403){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{gt}$}}}%
-    \put(0.68678162,0.00634768){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{gb}$}}}%
-    \put(0.50865739,0.13095934){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$R_{fr}$}}}%
-    \put(0.98841948,0.17992847){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$F_{ímã}$}}}%
-    \put(1.00163549,0.10353693){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$R_{ímã}$}}}%
+  \begin{picture}(1,0.28896152)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{mancal_passivo_circuito.pdf}}%
+    \put(0.13043726,0.11506616){\makebox(0,0)[lb]{\smash{+}}}%
+    \put(0.13388101,0.09371743){\makebox(0,0)[lb]{\smash{-}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{mancal_passivo_circuito.pdf}}%
+    \put(0.20480767,0.27403431){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{ft}$}}}%
+    \put(0.20480746,0.00463358){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{fb}$}}}%
+    \put(0.29980899,0.27403431){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{gt}$}}}%
+    \put(0.29980878,0.00463358){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{gb}$}}}%
+    \put(0.40494972,0.13135738){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$R_{fr}$}}}%
+    \put(0.10619831,0.10385161){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$F_{ímã}$}}}%
+    \put(0.10853887,0.18047532){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$R_{ímã}$}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{mancal_passivo_circuito.pdf}}%
+    \put(0.86851543,0.11506615){\rotatebox{-180}{\makebox(0,0)[lb]{\smash{+}}}}%
+    \put(0.86507168,0.09371738){\rotatebox{-180}{\makebox(0,0)[lb]{\smash{-}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{mancal_passivo_circuito.pdf}}%
+    \put(0.79233319,0.27403431){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{ft}$}}}%
+    \put(0.79233319,0.00636696){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{fb}$}}}%
+    \put(0.68886848,0.27403431){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{gt}$}}}%
+    \put(0.68886848,0.00636696){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$R_{gb}$}}}%
+    \put(0.59545884,0.13135738){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$R_{fr}$}}}%
+    \put(0.89381149,0.1061498){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$F_{ímã}$}}}%
+    \put(0.88736107,0.18026106){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$R_{ímã}$}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{mancal_passivo_circuito.pdf}}%
+    \put(0.75769312,0.13900082){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$R_{dis}$}}}%
+    \put(0.26944003,0.13900082){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$R_{dis}$}}}%
   \end{picture}%
 \endgroup%

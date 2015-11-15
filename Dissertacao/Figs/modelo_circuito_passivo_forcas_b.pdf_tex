@@ -1,6 +1,6 @@
-%% Creator: Inkscape inkscape 0.48.4, www.inkscape.org
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'modelo:circuito:passivo:forcas:b.pdf' (pdf, eps, ps)
+%% Accompanies image file 'modelo_circuito_passivo_forcas_b.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{329.13266415bp}%
+    \setlength{\unitlength}{287.28640798bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,13 +48,17 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.38405297)%
-    \put(0,0){\includegraphics[width=\unitlength]{modelo:circuito:passivo:forcas:b.pdf}}%
-    \put(0.20188662,0.2789368){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{F}}}%
-    \put(0.20426447,0.16857245){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{F}}}%
-    \put(0.66594372,0.27226354){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{F}}}%
-    \put(0.66832154,0.16189964){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{F}}}%
-    \put(0.96587796,0){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{x}}}%
-    \put(0.91284679,0.04966048){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{z}}}%
+  \begin{picture}(1,0.53409146)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{modelo_circuito_passivo_forcas_b.pdf}}%
+    \put(0.23136327,0.41366525){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{F}}}%
+    \put(0.23408747,0.28722516){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{F}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{modelo_circuito_passivo_forcas_b.pdf}}%
+    \put(0.7630151,0.40601992){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{F}}}%
+    \put(0.7657393,0.27958043){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{F}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{modelo_circuito_passivo_forcas_b.pdf}}%
+    \put(0.9013809,0.11342442){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{z}}}%
+    \put(0.98560002,0.00217216){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{x}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{modelo_circuito_passivo_forcas_b.pdf}}%
+    \put(0.90068231,0.00434426){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{y}}}%
   \end{picture}%
 \endgroup%
