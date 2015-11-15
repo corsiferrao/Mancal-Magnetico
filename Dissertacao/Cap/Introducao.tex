@@ -110,19 +110,20 @@ Nessa topologia (Fig. \ref{Fig:modelo:frances}), um fluxo magnético contínuo �
 
 A topologia proposta por \citet{Scharfe2001} difere por ter somente um estator e pelos ímãs permanentes estarem localizados no estator e não no rotor, como ilustrado na Fig. \ref{Fig:modelo:alemao}. 
 
-%\todo[inline]{falar mais ...}
-
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.8\linewidth]{./Figs/mancais/alemao.pdf}
 	\caption{Corte da topologia proposta por \cite{Scharfe2001} \\
-	a: estator externo; b: rotor; c: estator interno; d: ímãs permanentes}
+	a: estator externo; b: ímãs; c: bobinas; d: estator interno}
 	\label{Fig:modelo:alemao}
 \end{figure} 
 
 Com essa arquitetura é possível utilizar as bobinas tanto para exercer uma força atrativa no rotor quanto para tornar a sua rigidez mais branda, facilitando a atração do rotor. É possível também aumentar a rigidez axial por permitir a inserção um fluxo positivo em ambas as bobinas, esse fluxo soma-se com o fluxo gerado pelos ímãs permanentes.
 
-Mais recentemente, uma nova arquitetura foi proposta por \citet{Bangcheng2012} para ser utilizada em uma roda de reação de um satélite ágil.  O rotor é composto de duas partes, uma externa utilizada para estabilizar o mancal na direção axial e outra interna para controle de posição na direção radial. Diferente das outras propostas, essa não utiliza um perfil em "C" para estabilização dos graus de liberdade passivos, mas sim, faz uso de um perfil plano com ímãs permanentes tanto no rotor quanto no estator.  Ímãs permanentes também são usados nos polos do mancal, esses criam um fluxo (\textit{bias}) constante diminuindo a corrente necessária para controlar o rotor.
+Mais recentemente, uma nova arquitetura foi proposta por \citet{Bangcheng2012} para ser utilizada em uma roda de reação de um satélite ágil.  O rotor é composto de duas partes, uma externa utilizada para estabilizar o mancal na direção axial e outra interna para controle de posição na direção radial. Diferente das outras propostas, essa não utiliza um perfil em ''C ''  para estabilização dos graus de liberdade passivos, mas sim, faz uso de um perfil plano com ímãs permanentes tanto no rotor quanto no estator.  Ímãs permanentes também são usados nos polos do mancal; esses criam um fluxo (\textit{bias}) constante diminuindo a corrente necessária para controlar o rotor.
+ 
+ 
+Os mancais magnéticos descritos anteriormente são únicos na roda de reação, diferente da topologia utilizada em mancais mecânicos onde utiliza-se dois mancais contrapostos no eixo.
  
 %\begin{figure}[!ht]
 %	\centering
@@ -137,7 +138,7 @@ Devido às não linearidades do mancal magnético (por exemplo a sua rigidez em 
 
 Modelos analíticos \citep{Tezuka2013, Chiba} auxiliam no entendimento e na escolha dos parâmetros construtivos e magnéticos do mancal. A solução de um modelo analítico quando comparada à de um modelo com elementos finitos é computacionalmente mais rápida.
 
-Com o modelo analítico é possível a utilização de métodos de otimização \citep{Wu2009, Fang2014} para a obtenção de um mancal com melhores propriedades, dentre elas, menor potência, maior rigidez e dimensões dentro das especificações. 
+Com o modelo analítico é possível a utilização de métodos de otimização \citep{Wu2009, Fang2014} para a obtenção de um mancal com melhores propriedades, dentre elas menor potência, maior rigidez e dimensões dentro das especificações. 
 
 \subsection{Sensoriamento}
 
@@ -153,9 +154,9 @@ Já os mancais sensoriados utilizam sensores de deslocamentos exclusivos para a 
  
 \subsection{Técnicas de controle}
 
-O controle de mancais magnéticos é uma área fértil da engenharia de controle, as não linearidades do sistema tornam os projetos nada triviais.  
+O controle de mancais magnéticos é uma área fértil da engenharia de controle; as não linearidades do sistema tornam os projetos nada triviais.  
 
-Técnicas de controle clássicas são utilizadas com bastante frequência em mancais magnéticos. Controle do tipo PID \citep{Tezuka2013} possui ampla utilização pela sua fácil implementação na forma analógica e consolidada técnica. O controle  do tipo \textit{feedforward} é utilizado em casos onde há o acoplamento entre os graus de liberdade, podendo ser utilizado para o desacoplamento dos mesmos. Outras técnicas propostas na literatura situam-se na área de controle multivariável, e fazem uso de controle robusto \citep{Jimenez-Lizafrraga2007}, controle ótimo \citep{Schuhmann2012} e controle não linear \citep{Rundell1996}.
+Técnicas de controle clássicas são utilizadas com bastante frequência em mancais magnéticos. Controle do tipo PID \citep{Tezuka2013} possui ampla utilização pela sua fácil implementação na forma analógica e consolidada técnica. O controle  do tipo \textit{feedforward} é utilizado em casos onde há o acoplamento entre os graus de liberdade, podendo ser utilizado para o desacoplamento deles. Outras técnicas propostas na literatura situam-se na área de controle multivariável, e fazem uso de controle robusto \citep{Jimenez-Lizafrraga2007}, controle ótimo \citep{Schuhmann2012} e controle não linear \citep{Rundell1996}.
 
 \subsection{Eletrônica}
 
