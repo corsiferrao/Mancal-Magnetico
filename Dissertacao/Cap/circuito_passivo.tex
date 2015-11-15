@@ -5,7 +5,7 @@
 
 \chapter{Estator Externo e Rotor}
 
-A parte passiva do mancal magnético, composta pelo estator externo e pelo rotor,  pode ser descrita como o circuito da Fig. \ref{Fig:Modelagem:circuito:passivo:umlado}, onde um ímã permanente gera um fluxo magnético ($\mathcal{F}_c$) que estabiliza o eixo axial (passivo). O caminho principal desse fluxo é através do entreferro ($R_{ge}$) tanto pelos ferros do estator ($R_{ef}$) quanto pelos ferros do rotor ($R_{rf}$ e $R_{rr}$). Dois caminhos extras são considerados, um de vazamento de fluxo magnético no ímã ($R_{lm}$) e outro em cada entreferro ($R_{lg}$). 
+A parte passiva do mancal magnético, composta pelo estator externo e pelo rotor,  pode ser descrita como o circuito da Fig. \ref{Fig:Modelagem:circuito:passivo:umlado}, onde um ímã permanente gera um fluxo magnético ($\mathcal{F}_c$) que estabiliza o eixo axial (passivo). O caminho principal desse fluxo é através do entreferro ($R_{ge}$) tanto pelos ferros do estator ($R_{ef}$) quanto pelos ferros do rotor ($R_{rf}$ e $R_{rr}$). Dois caminhos extras são considerados, um de dispersão de fluxo magnético no ímã ($R_{lm}$) e outro em cada entreferro ($R_{lg}$). 
 
 \begin{figure}[!ht]
 	\centering
@@ -19,7 +19,7 @@ Um modelo fenomenológico foi inicialmente criado e nele aplicado um algorítimo
 
 \section{Modelagem Magnética}
 
-Nesse modelo, o ímã é considerado como uma fonte de fluxo magnético na forma equivalente a um circuito Thevenin. A força magnética coerciva ($\mathcal{F}_c$) representa a força magnética necessária para levar o ímã permanente a produzir um fluxo magnético nulo. Ímãs de terra rara (Samário Cobalto - Neodímio), possuem tipicamente uma curva linear de magnetização no segundo quadrante, essa curva depende de duas constantes físicas que variam com o material usado: $H_c$ constante que associa o comprimento do ímã com a força coerciva ($ F_c = H_c \, l_m$) e $B_r$ que descreve o fluxo máximo do ímã num cenário de curto circuíto ($\phi_r = B_r \, A_m$), ilustrada na Fig. \ref{Fig:Modelagem:circuito:passivo:ima}.
+Nesse modelo, o ímã é considerado como uma fonte de fluxo magnético na forma equivalente a um circuito Thevenin. A força magnetomotriz coerciva ($\mathcal{F}_c$) representa a excitação necessária para levar o ímã permanente a produzir um fluxo magnético nulo. Ímãs de terra rara (Samário Cobalto - Neodímio), possuem tipicamente uma curva linear de desmagnetização no segundo quadrante; essa curva depende de duas constantes físicas que variam com o material usado: $H_c$ campo coercitivo que associa o comprimento do ímã com a força coerciva ($ F_c = H_c \, l_m$) e a indução remanente ($B_r$) que descreve o fluxo máximo do ímã num cenário de curto circuíto ($\phi_r = B_r \, A_m$), ilustrada na Fig. \ref{Fig:Modelagem:circuito:passivo:ima}.
 
 \begin{figure}[!ht]
 	\centering
@@ -32,13 +32,13 @@ Nesse modelo, o ímã é considerado como uma fonte de fluxo magnético na forma
 A curva de magnetização é descrita como :
 
 \begin{align}
-B_m = B_r + \frac{B_r}{H_c} H_m
+B_m = B_r - \frac{B_r}{H_c} H_m
 \label{eq:p:ima}
 \end{align}
 
 A relação $\frac{B_r}{H_c}$ pode ser interpretada como a permeabilidade do meio (ímã) e possui tipicamente um valor próximo da permeabilidade do vácuo, $\mu_0$. O ponto de operação do ímã depende da curva de carga do circuíto magnético em que ele está inserido, para isso é necessário primeiramente calcular o valor da permeabilidade total e então identificar o ponto de operação do ímã e o seu fluxo produzido.
 
-Considera-se nesse modelo para os materiais ferros magnéticos a curva de magnetização do ferro 1020, a curva não linear é apresentada na Fig. \ref{Fig:Modelagem:BH}, nota-se que a saturação ocorre por volta de 1.3T. Essa relação pode ser descrita como:
+Considera-se nesse modelo para os materiais ferros magnéticos a curva de magnetização do ferro 1020. A curva não linear é apresentada na Fig. \ref{Fig:Modelagem:BH}, nota-se que a saturação ocorre por volta de 1.3T. Essa relação pode ser descrita como:
 
 \begin{align}
 B(H) = \mu(H) \, H
@@ -56,11 +56,11 @@ B(H) = \mu(H) \, H
 
 \subsection{Campo Magnético no Entreferro}
 
-A relutância magnética é proporcional ao comprimento da linha de campo no meio e inversamente proporcional a permeabilidade do meio e a área em que o campo está disperso. Com isso, calcula-se as relutância principais do circuíto :
+A relutância magnética é proporcional ao comprimento da linha de campo no meio e inversamente proporcional à permeabilidade do meio e à área em que o campo está estabelecido. Com isso, calculam-se as relutâncias principais do circuíto :
 
 \begin{align}
 R_{p}  &= \frac{h_m}{\mu_m \, S_m}			\\
-R_{ef} &= \frac{w_{ef}}{\mu_{ef}\, S_{ef}}  \\     
+R_{ef} &= \frac{w_{fee}}{\mu_{ef}\, S_{ef}}  \\     
 R_{rf} &= \frac{w_{rf}}{\mu_{rf}\, S_{rf}}   \\    
 R_{rr} &= \frac{h_m}{\mu_{rr} \, S_{rr}}     \\      
 R_{ge} &= \frac{g_{ne}}{\mu_0  \, S_{ge}}        
@@ -74,7 +74,7 @@ P_{lm} &= \frac{0.64 \,  \mu_0 \,r_{ee}}{h_m/(h_m+2h_{ef})+1} \\
 R_{lg} &= P_1 + P_2 + P_3 + P_4	
 \end{align} 
 
-Sendo $R_{g//}$ a associação paralela entre a relutância do entreferro e o vazamento associado, $R_1$ a soma das relutâncias do circuíto principal e $R_T$ a associação entre todas as relutâncias do circuíto. $\phi_1$ é o fluxo magnético na primeira malha e $\phi_2$ o fluxo magnético na malha principal. Obtém-se as seguintes equações:
+Sendo $R_{g//}$ a associação paralela entre a relutância do entreferro e o vazamento associado, $R_1$ a soma das relutâncias do circuíto principal e $R_T$ a associação entre todas as relutâncias do circuíto. Sendo  $\phi_1$ o fluxo magnético total da malha criada entre o ímã e a relutância de fuga ($R_{lm}$) e $\phi_2$ o fluxo magnético na malha principal. Obtém-se as seguintes equações:
 
 \begin{align}
 \phi_m &= \phi_1 + \phi_2 \\
@@ -93,7 +93,7 @@ B_{ge} &= \frac{\phi_g}{S_{ge}}
 
 \subsection{Decomposição do Vetor Campo Magnético B em X e Z} \label{SubSec:CampoX/Y}
 
-O campo magnético acumulado no entreferro pode ser decomposto em componentes $B_x$ e $B_z$ que dependem do deslocamento do rotor em $\Delta_x$ e $\Delta_z$. Esse deslocamento implica também em um aumento no comprimento do entreferro: $l_g$. A Fig. \ref{Fig:modelo:passivo:DxDz} ilustra o deslocamento. Tal modelo não leva en consideração o \textit{tilt} do rotor, o que implicaria em relutâncias diferentes para a parte superior e inferior do entreferro, já que os comprimentos seriam diferentes. 
+O campo magnético acumulado no entreferro pode ser decomposto em componentes $B_x$ e $B_z$ que dependem do deslocamento do rotor em $\Delta_x$ e $\Delta_z$. Esse deslocamento implica também em um aumento no comprimento do entreferro: $l_g$. A Fig. \ref{Fig:modelo:passivo:DxDz} ilustra o deslocamento. Tal modelo não leva em consideração o \textit{tilt} do rotor, o que implicaria em relutâncias diferentes para a parte superior e inferior do entreferro, já que os comprimentos seriam diferentes. 
 
 \begin{figure}[!ht]
 	\centering
@@ -115,37 +115,32 @@ B_{gz} &= B \, sin(\theta_z)
 
 \section{Força}
 
-A força magnética de atração do rotor pelo estator é gerada pela energia eletromagnética acumulada no entreferro (superior e inferior), essa força pode ser calculada através do trabalho virtual \citep{Chiba}:
+A força magnética de atração do rotor pelo estator é gerada pela variação potencial da energia eletromagnética acumulada no entreferro (superior e inferior), essa força pode ser calculada através do trabalho virtual \citep{Chiba}:
 
 \begin{align}
 |\vec{F}(l_g)| &=  \frac{ \vec{B}_{g}^2 \; S_g}{2 \, \mu_0} \label{eq:passivo:Fx}
 \end{align}
+
+Sendo $B_g$ a área acumulada no entreferro e $S_g$ a secção do entreferro.
 
 A força resultante de atração é composta pela força dos dois entreferros (superior e inferior) que possuem mesmo módulo e direção já que os deslocamentos são simétricos. 
 
 \subsection{Força Radial} \label{subsection:forca:x}
 
 
-Visando obter as resultantes das forças projetadas nos eixos radiais (x e y), para alcançarmos um modelo mais preciso das forças, o mancal foi dividido em oito partes distintas sendo que cada parte possuía um componente de campo magnético diferente das outras partes. Para que obtivéssemos o valor das forças radiais, foi preciso calcular todas as forças e então decompô-las nos seus respectivos eixos (Fig. \ref{fig:Passivo:decomposicao}). Por inspeção:
+Visando obter as resultantes das forças projetadas nos eixos radiais (x e y), para alcançar um modelo mais preciso das forças, o mancal foi dividido em oito partes distintas sendo que cada parte possuí um componente de campo magnético diferente das outras partes. Para obter o valor das forças radiais, calculou-se todas as forças e então decompô-las nos seus respectivos eixos (Fig. \ref{fig:Passivo:decomposicao}). Por inspeção:
 
 \begin{align}
-F_{ex} &= F_{L} + F_{NL} \, \boldsymbol{x} + F_{SL} \, \boldsymbol{x} - F_{O} - F_{NO} \, \boldsymbol{i}  - F_{SO} \, \boldsymbol{x} \label{eq:p:F:resultante:x} \\
-F_{ey} &= F_{N} + F_{NL} \, \boldsymbol{j} + F_{SL} \, \boldsymbol{y} - F_{S} - F_{NO} \, \boldsymbol{y}  - F_{SO} \, \boldsymbol{y}
+F_{x} &= F_{B} + F_{A} \, \boldsymbol{x} + F_{C} \, \boldsymbol{x} - F_{F} - F_{G} \, \boldsymbol{x}  - F_{E} \, \boldsymbol{x} \label{eq:p:F:resultante:x} \\
+F_{y} &= F_{H} + F_{A} \, \boldsymbol{y} + F_{G} \, \boldsymbol{y} - F_{D} - F_{C} \, \boldsymbol{y}  - F_{E} \, \boldsymbol{y}
 \label{eq:p:F:resultante:y} 
 \end{align}
 
-Onde : L leste; NL noroeste; SL sudeste; O oeste; SO sudoeste; N norte. Para pequenos deslocamentos, a variação no ângulo $\theta$ pode ser desprezível e numa simplificação, ser considerada como $\theta = 45$ graus.
-
-\begin{figure}[!ht]
-	\centering
-	\includesvg{modelo_circuito_passivo_gap}
-	\caption{Decomposição de força passiva para uma determinada secção}
-	\label{fig:Passivo:decomposicao}
-\end{figure}
+Onde os subscritos fazem referência as numerações das bobinas descritos na Fig. \ref{fig:modelo:mancal:estator:interno:fluxo}.
 
 \subsection{Força Axial}
 
-A força perpendicular ao plano de rotação é a composição de todos os oito componentes onde não é levado em consideração o efeito de inclinação do rotor. Assim, obtemos:
+A força perpendicular ao plano de rotação é a composição de todos os oito componentes onde não é levado em consideração o efeito de inclinação do rotor. Assim, obtém-se:
 
 \begin{equation}
 F_{ez}(l_g) = \frac{S_{g}}{2 \, \mu_0} 	2 \,\sum_{i=N}^{NO} B_{giz}^2
@@ -153,9 +148,9 @@ F_{ez}(l_g) = \frac{S_{g}}{2 \, \mu_0} 	2 \,\sum_{i=N}^{NO} B_{giz}^2
 
 \section{Convergência}
 
-Como a permeabilidade de materiais ferros magnéticos varia com o campo magnético, é preciso realizar uma série de iterações para alcançar a convergência do valor do campo magnético nas partes do circuíto. 
+Como a permeabilidade de materiais ferro magnéticos varia com o campo magnético induzido, é preciso realizar uma série de iterações para alcançar a convergência do valor do campo magnético em partes do circuíto. 
 
-Nesse caso atribuiu-se um valor inicial para a permeabilidade nos três componentes do circuíto (ferro estator, ferro rotor e ferro retorno), aplicando esses valores para o cálculo do campo magnético no entreferro obteve-se novos valores do campo magnético nesses mesmos componentes, foi então derivado os valores para a permeabilidade através de uma interpolação linear. Calculou-se assim os novos valores da próxima interação pelo método de  Newton-Raphson \citep{Ortner2010}, a Eq. \ref{eq:newton:method} demonstra o método utilizado. A convergência é truncada quando encontrada uma diferença entre os campos magnéticos inferior a 0.1 Tesla. 
+Nesse caso atribuiu-se um valor inicial para a permeabilidade nos três componentes do circuíto (ferro estator, ferro rotor e ferro retorno). Aplicando estes valores para o cálculo do campo magnético no entreferro obteve-se novos valores do campo magnético nestes mesmos componentes. Foi então derivado os valores para a permeabilidade através de uma interpolação linear. Calculou-se assim os novos valores da próxima interação pelo método de  Newton-Raphson \citep{Ortner2010}, a Eq. \ref{eq:newton:method} demonstra o método utilizado. A convergência é satisfeita quando for encontrada uma diferença entre os campos magnéticos inferior a 0.1 Tesla. 
 
 \begin{align}
 	\mu_{n+1} &= \mu_n - \frac{H(\mu_n)}{H'}(\mu_n)
@@ -176,7 +171,7 @@ Nesse caso atribuiu-se um valor inicial para a permeabilidade nos três componen
 
 \section{Validação do Modelo}
 
-O modelo obtido analiticamente foi comparado com um em elementos finitos desenvolvido em três dimensões, aplicou-se a ambos os modelos as mesmas constantes magnéticas (permeabilidade, curva B-H) e parâmetros geométricos/construtivos.
+O modelo obtido analiticamente foi comparado com um modelo em elementos finitos desenvolvido em três dimensões; aplicou-se a ambos os modelos as mesmas constantes magnéticas (permeabilidade, curva B-H) e parâmetros geométricos/construtivos.
 
 Os resultados obtidos por ambos os métodos são similares, podendo confirmar a qualidade do modelo linear proposto.  A Fig. \ref{fig:validacao_passivo_dx_calibrado} é um gráfico comparativo entre o resultado da força magnética de atração devido a um deslocamento no eixo radial entre ambos os modelos (FEM e analítico) para uma secção de 30 graus do mancal.
 
@@ -188,7 +183,7 @@ Os resultados obtidos por ambos os métodos são similares, podendo confirmar a 
 	\label{fig:validacao_passivo_dx_calibrado}
 \end{figure}
 
-Os modelos também foram confrontados com a variação de parâmetros, no caso, variou-se a largura do ímã e o comprimento do entreferro. A Fig. \ref{fig:validacao_passivo_parametros} compara os resultados em ambos os modelos. 12 situações distintas foram simuladas e o resultado comparado a fim de validar o modelo obtido em diferentes geometrias. Os modelos foram variados conforme a seguir :
+Os modelos também foram confrontados com a variação de parâmetros, no qual, variou-se a largura do ímã e o comprimento do entreferro. A Fig. \ref{fig:validacao_passivo_parametros} compara os resultados em ambos os modelos. 12 situações distintas foram simuladas e o resultado comparado a fim de validar o modelo obtido em diferentes geometrias. Os modelos foram variados conforme a seguir :
 
 \begin{align}
 	w_m &= [4:2:10 ] \, 10^{-3} \\
@@ -209,13 +204,13 @@ Os modelos também foram confrontados com a variação de parâmetros, no caso, 
 
 \section{Otimização dos Parâmetros}
 
-Buscou-se uma combinação de parâmetros que maximizasse a força de atração axial e que minimizasse a força longitudinal. O mancal deve possuir rigidez suficiente para suspender o conjunto inércia, rotor mancal, rotor motor. Estudos realizados com base na especificação de uma roda de reação pelo INPE estima um momento de inércia total para o sistema de $6.9 \, 10^{-2} \, kg \, m^2$ com uma massa de 3.52 kg (para operar em ambiente com gravidade). 
+Buscou-se uma combinação de parâmetros que maximizasse a força de atração axial e que minimizasse a força longitudinal. O mancal deve possuir rigidez suficiente para suspender o conjunto inércia, o rotor do mancal e o rotor do motor. Estudos realizados com base na especificação de uma roda de reação pelo INPE estima um momento de inércia total para o sistema de $6.9 \, 10^{-2} \, kg \, m^2$ com uma massa de 3.52 kg (para operar em ambiente com gravidade). 
 
-O método de otimização utilizado para minimizar o funcional foi o de Nelder-Mead Simplex com restrição de fronteira. Nessa etapa, a otimização foi realizada com o modelo analítico levantado anteriormente, otimizando o tempo de processamento já que a resolução do modelo analítico leva segundos a ser realizado enquanto a do elementos finitos chega a dezenas de minutos.
+O método de otimização utilizado para minimizar o funcional foi o de Nelder-Mead Simplex com restrição de fronteira. Nessa etapa, a otimização foi realizada com o modelo analítico levantado anteriormente, viabilizando o tempo de processamento já que a resolução do modelo analítico leva segundos a ser realizado enquanto a do elementos finitos chega a dezenas de minutos.
 
-Os parâmetros escolhidos para a otimização foram todos os que definem construtivamente o circuito passivo do mancal, sendo eles: altura  ($h_{fee}$) e largura  ($w_{fee}$) do ferro estator externo; a altura ($h_m$) e largura ($w_m$) do ímã e largura ($w_{rf}$) do ferro rotor e largura do retorno rotor ($w_{rr}$). Além do comprimento do entreferro ($g_{ne}$) e raio externo do mancal ($r_{eei}$).
+Os parâmetros escolhidos para a otimização foram todos os que definem construtivamente o circuito passivo do mancal, sendo eles: altura  ($h_{fee}$) e largura  ($w_{fee}$) do ferro estator externo; a altura ($h_m$) e largura ($w_m$) do ímã e largura ($w_{rf}$) do ferro rotor e largura do retorno rotor ($w_{rr}$), além do comprimento do entreferro ($g_{ne}$) e raio externo do mancal ($r_{eei}$).
 
-Para respeitar a geometria proposta durante a otimização, os parâmetros $w_{fee}$ e $w_{rf}$ não foram manipulados diretamente na otimização, já que não podem assumir valores inferiores a $w_m$ e $w_{rr}$ respectivamente, caso contrário, o mancal encontrado durante a otimização possuiria propriedades distintas da proposta e o modelo analítico seria invalidado. Otimizamos nesse caso, duas componentes $\Delta w_{fee}$ e $\Delta w_{rf}$ que compõem em conjunto com seus pares os comprimentos dos ferros:
+Para respeitar a geometria proposta durante a otimização, os parâmetros $w_{fee}$ e $w_{rf}$ não foram manipulados diretamente na otimização, já que não podem assumir valores inferiores a $w_m$ e $w_{rr}$ respectivamente, caso contrário o mancal encontrado durante a otimização possuiria propriedades distintas da proposta e o modelo analítico seria inválido. Otimizou-se neste caso, duas componentes $\Delta w_{fee}$ e $\Delta w_{rf}$ que compõem, em conjunto com seus pares, os comprimentos dos ferros:
 
 \begin{align}
 w_{fee}  &= \Delta w_{fee} + w_m \\
@@ -238,9 +233,9 @@ Restrições foram impostas para evitar a otimização do mancal para um caso em
 	\label{tab:passivo:restrições} 
 \end{table}
 
-Diversas funções méritos foram testadas visando a obtenção de um mancal que atendesse as especificações. A função pondera seis componentes do mancal, sendo elas: forças de atração em x e y, tamanho do entreferro, raio externo do mancal,  volume ($V_m$) e variação no vetor campo magnético para pequenos deslocamentos ($\Delta B_{g}$).
+Diversas funções méritos de foram testadas visando a obtenção de um mancal que atendesse as especificações. A função pondera seis componentes do mancal, sendo elas: forças de atração em x e y, tamanho do entreferro, raio externo do mancal,  volume ($V_m$) e variação no vetor campo magnético para pequenos deslocamentos ($\Delta B_{g}$).
 
-Buscou-se nessa otimização uma menor força de atração axial ($P_1$) e uma maior força radial ($P_2$). O funcional foi ponderado para privilegiar um maior entreferro ($P_3$) e um menor raio ($P_4$). O volume total ($P_5$) do mancal foi também ponderado no funcional, visando um mancal de dimensões menores. Para obtermos uma força radial linearizada, necessitamos que o vetor campo magnético no entreferro não variasse consideravelmente para pequenos deslocamentos radiais do rotor, o $\Delta B_{g}$ foi ponderado no funcional ($P_6$) . A função mérito ($F$) utilizada na otimização está descrito na Eq. \ref{eq:passivo:merito}, as parcelas (P) estão separados por importância.
+Buscou-se nessa otimização uma menor força de atração axial ($P_1$) e uma maior força radial ($P_2$). O funcional foi ponderado para privilegiar um maior entreferro ($P_3$) e um menor raio ($P_4$). O volume total ($P_5$) do mancal foi também ponderado no funcional, visando um mancal de dimensões menores. Para se obter uma força radial linearizada, necessita-se que o vetor campo magnético no entreferro não variasse consideravelmente para pequenos deslocamentos radiais do rotor, o $\Delta B_{g}$ foi ponderado no funcional ($P_6$) . A função de mérito ($F$) utilizada na otimização está descrito na Eq. \ref{eq:passivo:merito}, com as parcelas (P) separadas por importância.
 
 \begin{align}
 P_1 &= Fx/2 				\\ 
@@ -252,7 +247,7 @@ P_6 &= 25 \,  |{\Delta B_{g}}|\\
 F &= P_1 + P_2 + P_3 + P_4 + P_5 + P_6   \label{eq:passivo:merito}
 \end{align}
 
-A Fig. \ref{fig:otimizacao_passivo_parametros} mostra a evolução dos parâmetros ao longo da otimização. Verificamos que a força de atração $F_y$ é maximizada ao longo das interações, porém verificamos que é acompanhada pela força $F_x$ que deveria ser minimizada. Isso ocorre devido a correlação entre as duas forças, sendo que ambas depende do vetor campo magnético acumulado no entreferro ($B_{ge}$). Outra relação direta que é possível ser notada é a do tamanho do entreferro ($g_{ne}$), quanto menor o entreferro menor a relutância do circuito magnético e maior o campo magnético acumulado no entreferro.
+A Fig. \ref{fig:otimizacao_passivo_parametros} mostra a evolução dos parâmetros ao longo da otimização. Verificou-se que a força de atração $F_y$ é maximizada ao longo das interações, porém verificou-se que é acompanhada pela força $F_x$ que deveria ser minimizada. Isso ocorre devido à correlação entre as duas forças, sendo que ambas dependem do vetor campo magnético acumulado no entreferro ($B_{ge}$). Outra relação direta que é possível ser notada é a do tamanho do entreferro ($g_{ne}$); quanto menor o entreferro menor a relutância do circuito magnético e maior o campo magnético acumulado no entreferro.
 
 
 \begin{figure}[bh!]
@@ -262,7 +257,7 @@ A Fig. \ref{fig:otimizacao_passivo_parametros} mostra a evolução dos parâmetr
 	\label{fig:otimizacao_passivo_parametros}
 \end{figure} 
 
-Os pesos da função mérito ao longo da otimização são ilustrados na Fig. \ref{fig:otimizacao_passivo_pesos}, verificamos que as parcelas que mais contribuem para o valor do funcional são: P1, P2 que estão relacionados com a força de atração. Em seguida, com uma menor ponderação os demais. 
+Os pesos da função de mérito ao longo da otimização são ilustrados na Fig. \ref{fig:otimizacao_passivo_pesos}, verificou-se que as parcelas que mais contribuem para o valor do funcional são P1 e P2 que estão relacionados com a força de atração. Em seguida, com uma menor ponderação em todos os demais. 
 
 \begin{figure}[th!]
 	\centering
@@ -285,7 +280,7 @@ As dimensões alcançadas devido a otimização do mancal estão listada na Tab.
 	\label{tab:passivo:dimensoes:otimizado} 
 \end{table}
 
-Verificamos na Fig. \ref{fig:forca:passivo:otimizado:fem:dx} o resultante  da força devido a translação do rotor em apenas um dos eixos radiais e, também a linearidade da força quando o rotor trabalha em modo diferencial.  
+Verificou-se na Fig. \ref{fig:forca:passivo:otimizado:fem:dx} o resultante  da força devido a translação do rotor em apenas um dos eixos radiais e, também a linearidade da força quando o rotor trabalha em modo diferencial.  
 
 \begin{figure}[!ht]
 \centering
@@ -295,7 +290,7 @@ Verificamos na Fig. \ref{fig:forca:passivo:otimizado:fem:dx} o resultante  da fo
 \label{fig:forca:passivo:otimizado:fem:dx}
 \end{figure} 
 
-A força gerado pela translação axial é ilustrada na Fig. \ref{fig:forca:passivo:otimizado:fem:dy}, essa força restaurativa torna a parte passiva do mancal estável e é a responsável pela rigidez nesse grau de liberdade. Notamos que a força necessária para deslocar 1 mm axialmente quando o mancal está no ponto de operação é de aproximadamente 140N. Verificamos que a força possui um componente diferente de zero quando o rotor está alinhado com o estator externo (z = 0), diferente do encontrado via  modelo analítico, explica-se esse fenômeno pelo erro numérico causado pela malha de cálculo.
+A força gerada pela translação axial é ilustrada na Fig. \ref{fig:forca:passivo:otimizado:fem:dy}, essa força restaurativa torna a parte passiva do mancal estável e é a responsável pela rigidez nesse grau de liberdade. Notou-se que a força necessária para deslocar 1 mm axialmente quando o mancal está no ponto de operação é de aproximadamente 140N. Verificou-se que a força possui um componente diferente de zero quando o rotor está alinhado com o estator externo (z = 0), diferente do encontrado via  modelo analítico. Explica-se esse fenômeno pelo erro numérico causado pela malha de cálculo.
 
 \begin{figure}[!ht]
 	\centering
@@ -305,7 +300,7 @@ A força gerado pela translação axial é ilustrada na Fig. \ref{fig:forca:pass
 	\label{fig:forca:passivo:otimizado:fem:dy}
 \end{figure}
 
-Um mapa do módulo da força radial no plano x,y é ilustrado na Fig. \ref{fig:passivo_otimizado_fem_plano}, notamos que em torno do ponto de operação a força é praticamente nula. Porém, quando o rotor encontra-se em algum de seus extremos, a força de atração é da ordem de centenas de Newton o que influencia na definição do circuito ativo que tem que ser capaz de vencer essa força.
+Um mapa do módulo da força radial no plano x,y é ilustrado na Fig. \ref{fig:passivo_otimizado_fem_plano}. Notou-se que a força é praticamente nula em torno do ponto de operação. Porém, quando o rotor encontra-se em algum de seus extremos, a força de atração é da ordem de centenas de Newtonm o que influencia na definição do circuito ativo que tem que ser capaz de vencer essa força.
 
 \begin{figure}[!ht]
 \centering
@@ -314,7 +309,7 @@ Um mapa do módulo da força radial no plano x,y é ilustrado na Fig. \ref{fig:p
 \label{fig:passivo_otimizado_fem_plano}
 \end{figure} 
 
-A Fig. \ref{Fig:Modelagem:Curva:passivo:dy:linhas} ilustra o resultado da simulação através de elementos finitos onde o rotor é transladado verticalmente a 0.8 mm. Verificamos que as linhas de campo não sofrem inclinação proporcional ao deslocamento do rotor, essas deformações apresentam um erro no modelo analítico já que supusemos na Subsec. \ref{SubSec:CampoX/Y} que as linhas de campo poderiam ser decompostas em x e z e que essa decomposição é diretamente relacionada com o deslocamento do rotor ($\theta$). 
+A Fig. \ref{Fig:Modelagem:Curva:passivo:dy:linhas} ilustra o resultado da simulação através de elementos finitos onde o rotor é transladado verticalmente a 0.8 mm. Verificou-se que as linhas de campo não sofrem inclinação proporcional ao deslocamento do rotor; essas deformações apresentam um erro no modelo analítico já que supos se na Subsec. \ref{SubSec:CampoX/Y} que as linhas de campo poderiam ser decompostas em x e z e que essa decomposição é diretamente relacionada com o deslocamento do rotor ($\theta$). 
 
 \begin{figure}[!ht]
 	\centering
@@ -330,11 +325,11 @@ A Fig. \ref{Fig:Modelagem:Curva:passivo:dy:linhas} ilustra o resultado da simula
 	\label{Fig:Modelagem:Curva:passivo:dy:linhas}
 \end{figure}
 
-Na Fig. \ref{Fig:Modelagem:Curva:passivo:dx:linhas} tem-se o resultado da simulação FEM para o deslocamento radial do rotor. Notamos nessa simulação que o fluxo magnético é contido nos ferros e que ocorre pouca dispersão das linhas de campo. Observamos, também a saturação dos ferros em todos os casos, essa saturação é necessária para forçar a linearidade da força de atração quando trabalhado em modo diferencial. Além disso,  verificamos que a área do entreferro ($S_g$) possui um pequeno espraiamento causando um aumentado no volume em que o campo magnético está acumulado e por consequência um aumento na força. 
+Na Fig. em anexo \ref{Fig:Modelagem:Curva:passivo:dx:linhas} tem-se o resultado da simulação FEM para o deslocamento radial do rotor. Nota-se nessa simulação que o fluxo magnético é contido nos ferros e que ocorre pouca dispersão das linhas de campo. Observa-se também, a saturação dos ferros em todos os casos, essa saturação é necessária para forçar a linearidade da força de atração quando trabalhado em modo diferencial. Além disso,  verificamos que a área do entreferro ($S_g$) possui um pequeno espraiamento causando um aumentado no volume em que o campo magnético está acumulado e por consequência uma diminuição da força. 
 %\todo{confusa a relação da última frase com o começo do paragrafo}
 
 
-A massa do rotor (m) é calculada pelo volume obtido das otimizações, sendo o volume 47940 $mm^6$ e a densidade do material utilizado como $7.8$ [g/$mm^3$], a massa do sistema é:
+A massa do rotor (m) é calculada pelo volume obtido das otimizações, sendo o volume 47940 $mm^3$ e a densidade do material utilizado de $7.8$ [g/$cm^3$], a massa do sistema é:
 
 \begin{align}
 	m = 0.375 \; [Kg]
@@ -342,11 +337,9 @@ A massa do rotor (m) é calculada pelo volume obtido das otimizações, sendo o 
 \end{align}
 
 
-%\subsection{Estabilidade em Tilt}
+Verificada a estabilidade na inclinação axial, analisou-se a estabilidade para tilt, projetando o deslocamento angular em deslocamentos radial e axial. Dada a propriedade plana do mancal proposto, obteve-se um grande deslocamento axial comparado com o radial, gerando assim a estabilidade do rotor. Para o caso da inclinação máxima do rotor (um grau, limitada pelo batente) o deslocamento radial é de $0.0107$ mm e o deslocamento axial é de $1.2$ mm, gerando assim uma recuperação mais forte axial que radial, o que impede o rotor de entrar em instabilidade.
 
-Verificada a estabilidade na inclinação axial, pudemos projetar em dois movimentos distintos: deslocamento radial e axial. Dado a propriedade plana do mancal proposto, obtivemos um grande deslocamento axial comparado com o radial, gerando assim a estabilidade do rotor. Para o caso da inclinação máxima do rotor (um grau, limitada pelo batente) o deslocamento radial é de $0.0107$ mm e o deslocamento axial de $1.2$ mm axial, gerando assim uma recuperação mais forte axial que radial, o que impede o rotor de entrar em instabilidade.
-
-Em simulação de elementos finitos, calculamos que o torque restaurativo para uma inclinação de um grau em torno de um dos eixos é de $3 N.m$, ou seja, o resultante da força em z devido a inclinação é de 42N. O gráfico da Fig. \ref{fig:passivo:torque:tilt} ilustra a força restaurativa gerada devido a inclinação do rotor.
+Em simulação de elementos finitos, calculou-se que o torque restaurativo para uma inclinação de um grau em torno de um dos eixos é de $3 N.m$, ou seja, o resultante da força em z devido à inclinação é de 42N. O gráfico da Fig. \ref{fig:passivo:torque:tilt} ilustra a força restaurativa gerada devido à inclinação do rotor.
 
 \begin{figure}[!ht]
 \centering
