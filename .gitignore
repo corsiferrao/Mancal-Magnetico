@@ -1,5 +1,5 @@
 Dev/Modelagem/Eletromagnetica/Circuito Ativo/Bck/
-*.mph
+#*.mph
 *~
 *.bak
 *.nlo
